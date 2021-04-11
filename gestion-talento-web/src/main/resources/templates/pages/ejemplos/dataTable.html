@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:with="http://www.thymeleaf.org/extras/with"
+	layout:decorate="~{layout}"
+	th:with="funcionalidad='Home', evento='tablas'">
+<th:block layout:fragment="content">
+	<table id="example1" class="table table-bordered table-striped">
+		<thead>
+			<tr>
+				<th>Subscriber ID</th>
+				<th>Install Location</th>
+				<th>Subscriber Name</th>
+				<th>some data</th>
+				<th>some data2</th>
+				<th>some data3</th>
+				<th>Acciones</th>
+			</tr>
+		</thead>
+	</table>
+</th:block>
+<th:block layout:fragment="body_end">
+	<script>
+	 $(document).ready(function() {
+		 var table =  $('#example1').DataTable( {
+		    	 "responsive": true, "lengthChange": false, "autoWidth": false,
+		         "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"],
+		        "processing": true,
+		        "serverSide": true,
+		        "ajax": "data",
+		        "deferLoading":30 ,
+		        "columnDefs": [ {
+		            "targets": -1,
+		            "data": null,
+		            "render":function (data,type,row,meta){
+		            	let templete=`<button type="button" onclick="show('${data[0]}')" 
+		            						class="btn btn-danger btn-block btn-sm">
+		            						<i class="fa fa-bell"></i>
+		            					</button>`;
+		            	
+		            	return  templete;
+		            }
+		            
+		        } ]
+		    } ).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+		    
+		  
+		    
+		} );
+	 
+	 function show(data){
+		  console.log(data);
+	  }
+		
+	</script>
+</th:block>
+</html>
