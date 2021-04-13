@@ -7,3 +7,8 @@
 .center-element{
 	margin: auto;
 }
+
+.boton-login{
+	padding-block: 13px;
+    padding-right: 39px;
+}
