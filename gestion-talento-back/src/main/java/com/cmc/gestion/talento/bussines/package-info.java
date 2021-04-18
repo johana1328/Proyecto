@@ -1,1 +1,1 @@
-package com.cmc.gestion.talento.jpa.bussines;
+package com.cmc.gestion.talento.bussines;
