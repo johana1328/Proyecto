@@ -1,4 +1,6 @@
-<aside class="main-sidebar sidebar-dark-primary elevation-4" xmlns:th="http://www.thymeleaf.org" >
+<aside class="main-sidebar sidebar-dark-primary elevation-4" 
+xmlns:th="http://www.thymeleaf.org" 
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
       <img th:src="@{resources/gestion-cmc/img/logo.png}" alt="" class="brand-image img-circle">
@@ -8,7 +10,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="info center-element">
-          <a href="#" class="d-block"> Hola Mario Mendez</a>
+          <a href="#" class="d-block" th:text="${#authentication.name}" > Usuario</a>
         </div>
       </div>
       <!-- Sidebar Menu -->
@@ -16,43 +18,134 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+            <li class="nav-item">
+                <a th:href="@{/tabla}" class="nav-link ">
+                  <i class=" nav-icon fas fa-user-circle"></i>
+                  <p>Mi perfil</p>
+                </a>
+              </li>   
+              <li class="nav-item">
+                <a th:href="@{/tabla}" class="nav-link ">
+                 <i class="nav-icon fas fa-edit"></i>
+                  <p>Evaluaci&oacute;n de desempe&ntilde;o</p>
+                </a>
+              </li> 
+              <li class="nav-item" sec:authorize="hasAnyAuthority('ANALISTA_RRHH','GERENTE_RRHH')" >
+                <a th:href="@{/tabla}" class="nav-link ">
+                 <i class="nav-icon fas fa-users"></i>
+                  <p>Usuarios</p>
+                </a>
+              </li> 
+               <li class="nav-item">
+                <a th:href="@{/tabla}" class="nav-link ">
+                 <i class="nav-icon fas fa-file-alt"></i>
+                  <p>Documentaci&oacute;n</p>
+                </a>
+              </li> 
+          <li class="nav-item ">
+            <a href="#" class="nav-link ">
+              <i class="nav-icon fas fa-envelope-open-text"></i>
               <p>
-                Starter Pages
+                Solicitudes
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a th:href="@{/tabla}" class="nav-link active">
+                <a th:href="@{/tabla}" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Active Page</p>
+                  <p>Permisos</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a th:href="@{/pagina1}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>pagina1</p>
+                  <p>Vacaciones</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Inactive Page</p>
+                  <p>Certificaciones</p>
+                </a>
+              </li>
+               <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Incapacidades</p>
+                </a>
+              </li>
+               <li class="nav-item" sec:authorize="hasAnyAuthority('ANALISTA_RRHH','GERENTE_RRHH','GERENTE')" >
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Solicitud de personal</p>
                 </a>
               </li>
             </ul>
           </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+           <li class="nav-item " sec:authorize="hasAnyAuthority('ANALISTA_RRHH','GERENTE','GERENTE_RRHH','EVALUADOR')"   >
+            <a href="#" class="nav-link ">
+              <i class="fas fa-user-check nav-icon"></i>
               <p>
-                Simple Link
-                <span class="right badge badge-danger">New</span>
+                Selecci&oacute;n
+                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a th:href="@{/tabla}" class="nav-link ">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Pruebas t&eacute;cnica</p>
+                </a>
+              </li>
+              <li class="nav-item" sec:authorize="hasAnyAuthority('ANALISTA_RRHH','GERENTE_RRHH','EVALUADOR')" >
+                <a th:href="@{/pagina1}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Pruebas psicot&eacute;cnica</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Entrevista</p>
+                </a>
+              </li>
+               <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Procesos</p>
+                </a>
+              </li>
+               <li class="nav-item"  sec:authorize="hasAnyAuthority('ANALISTA_RRHH','GERENTE_RRHH')" >
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Candidatos</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+           <li class="nav-item " sec:authorize="hasAuthority('GERENTE_RRHH')"   >
+            <a href="#" class="nav-link ">
+             <i class="fas fa-mail-bulk nav-icon"></i>
+              <p>
+                Parametria
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a th:href="@{/tabla}" class="nav-link ">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Serie</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a th:href="@{/pagina1}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Subserie</p>
+                </a>
+              </li>
+            </ul>
           </li>
         </ul>
       </nav>
