@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:with="http://www.thymeleaf.org/extras/with"
+	layout:decorate="~{layout}"
+	th:with="funcionalidad='Administraci&oacuten', evento='Tarifas'">
+<th:block layout:fragment="content">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-sm">
+         Crear Tarifa
+    </button>
+    
+    
+	<!-- Modal creacion -->
+	<form id="crearTarifa" method="post">
+	<div class="modal fade" id="modal-sm">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header modal-header">
+					<h5 class="modal-title">Crear Tarifa</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+						<label for="valorTarifa" >Tarifa</label>
+						<input type="text" class="form-control money" id="valorTarifa" name="valorTarifa" >
+					</div>
+				</div>
+				<div class="modal-footer justify-content-between">
+					<button type="button" class="btn pull-left btn-primary" data-dismiss="modal">Cancelar</button>
+					<button type="submit"  class="btn btn-primary">Guardar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+
+</th:block>
+<th:block layout:fragment="body_end">
+	<script type="text/javascript">
+	$(document).ready(function(){
+		 $(".money").inputmask({ alias : "pesos" });
+		 $("#crearTarifa").validate({
+			 rules: {
+				 valorTarifa:{
+					 required: true
+				 }
+			 },
+			 messages:{
+				 valorTarifa:{
+					 required: "El campo Tarifa es requerido"
+				 }
+			 },
+			 errorElement: 'span',
+			 errorPlacement: function (error, element) {
+			      error.addClass('invalid-feedback');
+			      element.closest('.form-group').append(error);
+			    },
+			    highlight: function (element, errorClass, validClass) {
+			      $(element).addClass('is-invalid');
+			    },
+			    unhighlight: function (element, errorClass, validClass) {
+			      $(element).removeClass('is-invalid');
+			    },
+			    submitHandler: function(form){
+				 var valorTarifaInput = document.getElementById("valorTarifa");
+				 var valorTarifa=valorTarifaInput.inputmask.unmaskedvalue();
+				 var data={id:0,valor:valorTarifa}
+				 var resp=ajaxRequest('crear', data)
+			 }
+		 });
+	});
+	</script>
+</th:block>
+</html>

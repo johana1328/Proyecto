@@ -1,146 +1,198 @@
 package com.cmc.gestion.talento.jpa.entity;
 
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.List;
 
-import javax.persistence.CascadeType;
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.Index;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
+import com.cmc.gestion.talento.jpa.type.TipoDocumento;
+import com.cmc.gestion.talento.jpa.type.TipoEstadoUsuario;
+import com.cmc.gestion.talento.jpa.type.TipoPerfil;
 
 @Entity
-@Table(name="us_usuario")
+@Table(name = "usuario", indexes = { @Index(name = "candidato_index", columnList = "documento", unique = true) })
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Usuario implements Serializable {
+
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="id_usuario")
+	@Column(name = "id_usuario", nullable = false, length = 100)
 	private String idUsuario;
 
-	
-	private String apellidos;
+	@Column(name = "documento", nullable = false, length = 100)
+	private String documento;
 
-	private String area;
+	@Column(name = "tipo_documento", nullable = false, length = 2)
+	@Enumerated(value = EnumType.STRING)
+	private TipoDocumento tipoDocumento;
 
-	private String contrasena;
+	@Column(name = "primer_nombre", nullable = false, length = 100)
+	private String primerNombre;
 
-	
-	@Column(name="correo_electronico")
+	@Column(name = "segundo_nombre", length = 100)
+	private String segundoNombre;
+
+	@Column(name = "primer_apellido", nullable = false, length = 100)
+	private String primerApellido;
+
+	@Column(name = "segundo_apellido", length = 100)
+	private String segundoApellido;
+
+	@Column(name = "telefono", nullable = false, length = 100)
+	private String telefono;
+
+	@Column(name = "correo_electronico", nullable = false, length = 100)
 	private String correoElectronico;
 
+	@Column(name = "contrasena", length = 100)
+	private String contrasena;
+
 	@Enumerated(value = EnumType.STRING)
-	private EstadoUsuario estado;
+	@Column(name = "estado")
+	private TipoEstadoUsuario estado;
 
-	private String jefe;
+	@Column(name = "fecha_creacion", updatable = false, nullable = false)
+	@Temporal(TemporalType.DATE)
+	private Calendar fechaCreacion;
 
+	@Column(name = "fecha_actualizacion")
+	@Temporal(TemporalType.DATE)
+	private Calendar fechaActualizacion;
 	
-	private String nombres;
-
-	private String usuario;
-
-	
-	@ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-	@JoinTable(
-		name="us_perfil_usuario"
-		, joinColumns={
-			@JoinColumn(name="codigo_usuario")
-			}
-		, inverseJoinColumns={
-			@JoinColumn(name="codigo_perfil")
-			}
-		)
-	private List<Perfil> usPerfils;
-
-	public Usuario() {
-	}
+	@ElementCollection(targetClass  = TipoPerfil.class, fetch = FetchType.EAGER)
+	@CollectionTable(name = "perfil_usuario",joinColumns = @JoinColumn(name = "id_usuario"))
+	@Column(name = "perfil", nullable = false)
+	@Enumerated(EnumType.STRING)
+	private List<TipoPerfil> perfilUsuario;
 
 	public String getIdUsuario() {
-		return this.idUsuario;
+		return idUsuario;
 	}
 
 	public void setIdUsuario(String idUsuario) {
 		this.idUsuario = idUsuario;
 	}
 
-	public String getApellidos() {
-		return this.apellidos;
+	public String getDocumento() {
+		return documento;
 	}
 
-	public void setApellidos(String apellidos) {
-		this.apellidos = apellidos;
+	public void setDocumento(String documento) {
+		this.documento = documento;
 	}
 
-	public String getArea() {
-		return this.area;
+	public TipoDocumento getTipoDocumento() {
+		return tipoDocumento;
 	}
 
-	public void setArea(String area) {
-		this.area = area;
+	public void setTipoDocumento(TipoDocumento tipoDocumento) {
+		this.tipoDocumento = tipoDocumento;
 	}
 
-	public String getContrasena() {
-		return this.contrasena;
+	public String getPrimerNombre() {
+		return primerNombre;
 	}
 
-	public void setContrasena(String contrasena) {
-		this.contrasena = contrasena;
+	public void setPrimerNombre(String primerNombre) {
+		this.primerNombre = primerNombre;
+	}
+
+	public String getSegundoNombre() {
+		return segundoNombre;
+	}
+
+	public void setSegundoNombre(String segundoNombre) {
+		this.segundoNombre = segundoNombre;
+	}
+
+	public String getPrimerApellido() {
+		return primerApellido;
+	}
+
+	public void setPrimerApellido(String primerApellido) {
+		this.primerApellido = primerApellido;
+	}
+
+	public String getSegundoApellido() {
+		return segundoApellido;
+	}
+
+	public void setSegundoApellido(String segundoApellido) {
+		this.segundoApellido = segundoApellido;
+	}
+
+	public String getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
 	}
 
 	public String getCorreoElectronico() {
-		return this.correoElectronico;
+		return correoElectronico;
 	}
 
 	public void setCorreoElectronico(String correoElectronico) {
 		this.correoElectronico = correoElectronico;
 	}
 
+	public String getContrasena() {
+		return contrasena;
+	}
 
-	public EstadoUsuario getEstado() {
+	public void setContrasena(String contrasena) {
+		this.contrasena = contrasena;
+	}
+
+	public TipoEstadoUsuario getEstado() {
 		return estado;
 	}
 
-	public void setEstado(EstadoUsuario estado) {
+	public void setEstado(TipoEstadoUsuario estado) {
 		this.estado = estado;
 	}
 
-	public String getJefe() {
-		return this.jefe;
+	public Calendar getFechaCreacion() {
+		return fechaCreacion;
 	}
 
-	public void setJefe(String jefe) {
-		this.jefe = jefe;
+	public void setFechaCreacion(Calendar fechaCreacion) {
+		this.fechaCreacion = fechaCreacion;
 	}
 
-	public String getNombres() {
-		return this.nombres;
+	public Calendar getFechaActualizacion() {
+		return fechaActualizacion;
 	}
 
-	public void setNombres(String nombres) {
-		this.nombres = nombres;
+	public void setFechaActualizacion(Calendar fechaActualizacion) {
+		this.fechaActualizacion = fechaActualizacion;
 	}
 
-	public String getUsuario() {
-		return this.usuario;
+	public List<TipoPerfil> getPerfilUsuario() {
+		return perfilUsuario;
 	}
 
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
+	public void setPerfilUsuario(List<TipoPerfil> perfilUsuario) {
+		this.perfilUsuario = perfilUsuario;
 	}
-
-	public List<Perfil> getUsPerfils() {
-		return this.usPerfils;
-	}
-
-	public void setUsPerfils(List<Perfil> usPerfils) {
-		this.usPerfils = usPerfils;
-	}
-
 }
