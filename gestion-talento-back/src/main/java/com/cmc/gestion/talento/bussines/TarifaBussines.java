@@ -67,5 +67,13 @@ public class TarifaBussines {
 			parametria.setValor(tarifa.getValor());
 		}
 	}
+	
+	public void eliminarTarifa(long id) {
+		Optional<ParametriaDetalle> parametriaOptional=this.parametriaDetalle.findById(id);
+		if(parametriaOptional.isPresent()) {
+			ParametriaDetalle parametria=parametriaOptional.get();
+			this.parametriaDetalle.delete(parametria);
+		}
+	}
 
 }

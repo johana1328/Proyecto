@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:with="http://www.thymeleaf.org/extras/with"
+	layout:decorate="~{layout}"
+	th:with="funcionalidad='Administraci&oacuten', evento='Tarifas'">
+<th:block layout:fragment="content">
+     
+     <table id="tablaTarifa" class="table table-bordered table-hover">
+     	<thead>
+        	<tr>
+            	<th>Id</th>
+                <th>Valor</th>
+                <th width="80px">Acciones</th>
+            </tr>
+        </thead>
+     </table>   
+   
+</th:block>
+<th:block layout:fragment="body_end">
+    <script th:src="@{~/gestion-cmc/resources/gestion-cmc/js/tarifa.js}"></script>
+</th:block>
+</html>
