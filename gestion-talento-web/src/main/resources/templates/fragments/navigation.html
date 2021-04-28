@@ -4,7 +4,7 @@
 		<li class="nav-item"><a class="nav-link" data-widget="pushmenu"
 			href="#" role="button"><i class="fas fa-bars"></i></a></li>
 		<li class="nav-item d-none d-sm-inline-block"><a
-			th:href="@{/home}" class="nav-link">Home</a></li>
+			th:href="@{/home}" class="nav-link" th:text="#{navigation.inicio}">Home</a></li>
 	</ul>
 
 	<ul class="navbar-nav ml-auto">
@@ -22,7 +22,7 @@
 				class="badge badge-warning navbar-badge">15</span>
 		</a>
 			<div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-				<span class="dropdown-header">15 Notifications</span>
+				<span class="dropdown-header" >15 Notifications</span>
 				<div class="dropdown-divider"></div>
 				<a href="#" class="dropdown-item"> <i
 					class="fas fa-envelope mr-2"></i> 4 new messages <span
@@ -33,5 +33,5 @@
 	</ul>
 	<a th:href="@{/logoutPage}"
 		class="btn btn-block btn-primary btn-sm btnLogout"><i
-		class="fas fa-sign-out-alt"></i> Logout</a>
+		class="fas fa-sign-out-alt"></i > <span th:text="#{navigation.salir}">Logout</span></a>
 </nav>
