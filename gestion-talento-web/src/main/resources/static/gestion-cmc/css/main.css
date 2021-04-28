@@ -37,3 +37,7 @@
 .table th, .table td {
     padding: 0.50rem !important;
     }
+
+.btn-group, .btn-group-vertical {
+    float: left;
+}
