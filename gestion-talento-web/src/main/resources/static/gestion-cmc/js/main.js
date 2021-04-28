@@ -97,17 +97,21 @@ Inputmask.extendAliases({
 				{ "data": "valor" },
 				{
 					"data": null, "render": function(data, type, row) {
-						let botonEditar = `<button type="button" data-id='${data.id}' class="btn btn-primary btn-del" >
+						let botonEditar = `<button type="button" data-id='${data.id}' class="btn btn-primary btn-del btn-sm" >
 				                   		<i class="fas fa-trash-alt"></i>
 				                   </button>`;
-						let botonEliminar = `<button type="button" data-id='${data.id}' class="btn btn-primary btn-edit">
-				                   		<i class="fas fa-edit"></i>
+						let botonEliminar = `<button type="button" data-id='${data.id}' class="btn btn-primary float-right btn-edit btn-sm">
+				                   		<i class="fas fa-pen"></i>
 				                    </button>`;
 
 						return botonEditar + botonEliminar;
 					}
 				}
-			]
+			],
+			"columnDefs": [ {
+			 "targets": [ -1 ],
+              "orderable": false
+			} ]
 		}).buttons().container().appendTo('#tablaTarifa_filter .col-md-6:eq(0)');
 
 		$(ctl).on('click', 'button.btn-del', function() {

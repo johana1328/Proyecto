@@ -33,3 +33,7 @@
    background-color: #264985;
    color: #fff;
 } 
+
+.table th, .table td {
+    padding: 0.50rem !important;
+    }
