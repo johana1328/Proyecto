@@ -1,26 +1,19 @@
 /** Datatable */
 
 $(document).ready(function() {
-	 $('#tablaTarifa').DataTable( {
-		"ajax": {
-            "url": "../administracion/tarifa/getAll",
-            "dataSrc": ""
-        },
-		  "columns": [
-			 {"data": "id" },
-			 {"data": "valor" },
-			 {"data":null, "render":function (data,type,row ){
-				let botonEditar =`<button type="button" class="btn btn-primary" >
-				                   		<i class="fas fa-trash-alt"></i>
-				                   </button>`;
-				let botonEliminar =`<button type="button" class="btn btn-primary">
-				                   		<i class="fas fa-edit"></i>
-				                    </button>`;
-				
-				return botonEditar+botonEliminar;
-			}}
-		] 
+	
+	$("#tablaTarifa").crudDataTable({urlAxax:"../administracion/tarifa/getAll"})
+	.on( "crear", function(){
+		$('#modCrear').modal();
+	}).on( "modificar", function(event,id,tabla){
+		//alert(id);
+		$('#modModificar').modal();
+	}).on( "eliminar", function(event,id,tabla){
+		//alert(id);
+		$('#confirmDelete').modal();
 	});
+	
+
 });
 
 

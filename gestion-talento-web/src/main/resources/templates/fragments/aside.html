@@ -33,7 +33,7 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
               <li class="nav-item" sec:authorize="hasAnyAuthority('ANALISTA_RRHH','GERENTE_RRHH')" >
                 <a th:href="@{/tabla}" class="nav-link ">
                  <i class="nav-icon fas fa-users"></i>
-                  <p>Usuarios</p>
+                  <p th:text="#{aside.opcion.usuario}"  >Usuarios</p>
                 </a>
               </li> 
                <li class="nav-item">

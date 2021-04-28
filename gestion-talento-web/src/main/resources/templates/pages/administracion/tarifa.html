@@ -14,8 +14,35 @@
                 <th width="80px">Acciones</th>
             </tr>
         </thead>
-     </table>   
-   
+     </table>  
+     
+      <div layout:replace="~{fragments/modal :: modalDf(titulo='Crear Tarifa' , id='modCrear')}">
+         <div  layout:fragment="modal-content">
+              <h1  th:text="#{administracion.tarifa.saludo}"  >Modal de creacion</h1>
+         </div>
+         <div  layout:fragment="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn btn-primary">Guardar</button>
+         </div>
+      </div>
+      
+      <div layout:replace="~{fragments/modal :: modalDf(titulo='Crear Tarifa' , id='modModificar')}">
+         <div  layout:fragment="modal-content">
+              <h1>Modal de modificacion</h1>
+         </div>
+         <div  layout:fragment="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn btn-primary">Guardar</button>
+         </div>
+      </div>
+      
+      <div layout:replace="~{fragments/modal :: modalConfim(id='confirmDelete')}" >
+      	<div  layout:fragment="modal-footer">
+      		 <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+             <button type="button" class="btn btn-primary">Eliminar</button>
+      	</div>
+      </div>
+      
 </th:block>
 <th:block layout:fragment="body_end">
     <script th:src="@{~/gestion-cmc/resources/gestion-cmc/js/tarifa.js}"></script>
