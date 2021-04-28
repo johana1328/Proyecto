@@ -1,7 +1,9 @@
-function ajaxRequest(urlAction, data) {
+function ajaxRequest(urlAction, data,idForm) {
+	var dataResponse={};
 	$.ajax({
 		type: 'POST',
 		url: urlAction,
+		async:false,
 		contentType: "application/json; charset=utf-8",
 		data: JSON.stringify(data),
 		beforeSend: function() {
@@ -9,12 +11,36 @@ function ajaxRequest(urlAction, data) {
 		},
 		success: function(data, textStatus, jqXHR) {
 			$("#loading-overlay").hide();
+			if(data['typeMessage'] != undefined){
+				let status =data.typeMessage;
+				let mensaje =data.mensaje;
+				if(status=="SHOW_MODAL"){
+					toastr.success(` ${mensaje}.`);
+				}else if(status=="FROM_MESSAGE" && (idForm != 'undefined')){
+					$("#"+idForm+" .msg2").text(mensaje);
+				    $("#"+idForm+" .alert-success").show();
+				}
+			}
+			dataResponse=data;
 		},
 		error: function(jqXHR, textStatus, errorThrown) {
-			$("#loading-overlay").hide();
-			toastr.error('Error al realizar transacción , Consulte al administrador.')
+			if(jqXHR.status == 400 && (idForm != 'undefined')){
+				let objMsg = JSON.parse(jqXHR.responseText);
+				let listaMensajes=objMsg.details;
+				let mensaje= "Error al procesar la información ";
+				if(listaMensajes.length > 0){
+					mensaje=objMsg.details[0];
+				}
+				$("#"+idForm+" .msg").text(mensaje);
+				$("#"+idForm+" .alert-danger").show();
+				$("#loading-overlay").hide();
+			}else{
+				$("#loading-overlay").hide();
+			     toastr.error('Error al realizar transacción , Consulte al administrador.')
+			}
 		}
 	});
+	return dataResponse;
 }
 
 
@@ -102,4 +128,14 @@ Inputmask.extendAliases({
 
 })(jQuery);
 
+function closeAlert(clase){
+	$( "."+clase ).hide();
+}
 
+$( ".modal-form-crud" ).on('hidden.bs.modal', function(){
+	$( ".alert").hide();
+});
+
+function isEmptyObject(value) {
+  return Object.keys(value).length === 0 && value.constructor === Object;
+}

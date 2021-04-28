@@ -14,6 +14,8 @@ import com.cmc.gestion.talento.bussines.facade.TarifaFacade;
 import com.cmc.gestion.talento.jpa.dao.ParametriaDetalleDao;
 import com.cmc.gestion.talento.jpa.entity.ParametriaDetalle;
 import com.cmc.gestion.talento.jpa.type.TipoParametriaDetalle;
+import com.cmc.gestion.talento.web.config.ArqGestionExcepcion;
+import com.cmc.gestion.talento.web.config.ArqGestionExcepcion.ExcepcionType;
 
 @Service
 public class TarifaBussines {
@@ -48,7 +50,7 @@ public class TarifaBussines {
 		return null;
 	}
 	
-	public void crearTarifa(TarifaDto tarifa) {
+	public void crearTarifa(TarifaDto tarifa) throws ArqGestionExcepcion{
 		List<ParametriaDetalle> lisparametria = this.parametriaDetalle.findByValor(tarifa.getValor());
 		if(lisparametria.isEmpty()) {
 			ParametriaDetalle parametria= new ParametriaDetalle();
@@ -56,24 +58,37 @@ public class TarifaBussines {
 			parametria.setDescripcion("Tarifa valor");
 			parametria.setNombre("Tarifa");
 			parametria.setValor(tarifa.getValor());
-			this.parametriaDetalle.save(parametria);
+			ParametriaDetalle p=this.parametriaDetalle.save(parametria);
+			tarifaFacade.getObject(p);
+		}else {
+			throw new ArqGestionExcepcion("La tarifa ya se encuantra creada", ExcepcionType.ERROR_VALIDATION);
 		}
 	}
 	
-	public void actualizarTarifa(TarifaDto tarifa) {
+	public TarifaDto actualizarTarifa(TarifaDto tarifa) {
 		Optional<ParametriaDetalle> parametriaOptional=this.parametriaDetalle.findById(tarifa.getId());
 		if(parametriaOptional.isPresent()) {
 			ParametriaDetalle parametria=parametriaOptional.get();
 			parametria.setValor(tarifa.getValor());
+			parametria=this.parametriaDetalle.save(parametria);
+			return tarifaFacade.getObject(parametria);
 		}
+		return null;
 	}
 	
-	public void eliminarTarifa(long id) {
+	public void eliminarTarifa(long id) throws ArqGestionExcepcion{
 		Optional<ParametriaDetalle> parametriaOptional=this.parametriaDetalle.findById(id);
-		if(parametriaOptional.isPresent()) {
-			ParametriaDetalle parametria=parametriaOptional.get();
-			this.parametriaDetalle.delete(parametria);
+		try {
+			if(parametriaOptional.isPresent()) {
+				ParametriaDetalle parametria=parametriaOptional.get();
+				this.parametriaDetalle.delete(parametria);
+			}
+		}catch (IllegalArgumentException e) {
+			throw new ArqGestionExcepcion("La tarifa se encuantra asociada a una peticion", ExcepcionType.ERROR_VALIDATION);
+		}catch (Exception e) {
+			throw e;
 		}
+		
 	}
 
 }

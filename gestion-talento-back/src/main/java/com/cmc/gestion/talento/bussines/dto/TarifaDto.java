@@ -1,8 +1,14 @@
 package com.cmc.gestion.talento.bussines.dto;
 
-public class TarifaDto {
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 
+public class TarifaDto {
+     
 	private long id;
+	
+	@NotEmpty(message = "Valor no puede ser nulo")
+	@NotBlank(message = "Valor no puede ser nulo")
 	private String valor;
 	
 	public long getId() {
