@@ -21,31 +21,31 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
             <li class="nav-item">
                 <a th:href="@{/tabla}" class="nav-link ">
                   <i class=" nav-icon fas fa-user-circle"></i>
-                  <p>Mi perfil</p>
+                  <p th:text="#{aside.opcion.perfil}" >Mi perfil</p>
                 </a>
               </li>   
               <li class="nav-item">
                 <a th:href="@{/tabla}" class="nav-link ">
                  <i class="nav-icon fas fa-edit"></i>
-                  <p>Evaluaci&oacute;n de desempe&ntilde;o</p>
+                  <p th:text="#{aside.opcion.evaluacion}">Evaluaci&oacute;n de desempe&ntilde;o</p>
                 </a>
               </li> 
               <li class="nav-item" sec:authorize="hasAnyAuthority('ANALISTA_RRHH','GERENTE_RRHH')" >
                 <a th:href="@{/tabla}" class="nav-link ">
                  <i class="nav-icon fas fa-users"></i>
-                  <p th:text="#{aside.opcion.usuario}"  >Usuarios</p>
+                  <p th:text="#{aside.opcion.usuario}">Usuarios</p>
                 </a>
               </li> 
                <li class="nav-item">
                 <a th:href="@{/tabla}" class="nav-link ">
                  <i class="nav-icon fas fa-file-alt"></i>
-                  <p>Documentaci&oacute;n</p>
+                  <p th:text="#{aside.opcion.documentacion}">Documentaci&oacute;n</p>
                 </a>
               </li> 
           <li class="nav-item ">
             <a href="#" class="nav-link ">
               <i class="nav-icon fas fa-envelope-open-text"></i>
-              <p>
+              <p th:text="#{aside.opcion.solicitudes}">
                 Solicitudes
                 <i class="right fas fa-angle-left"></i>
               </p>
@@ -54,31 +54,31 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
               <li class="nav-item">
                 <a th:href="@{/tabla}" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Permisos</p>
+                  <p th:text="#{aside.opcion.solicitudes.permisos}">Permisos</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a th:href="@{/pagina1}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Vacaciones</p>
+                  <p th:text="#{aside.opcion.solicitudes.vacaciones}">Vacaciones</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Certificaciones</p>
+                  <p th:text="#{aside.opcion.solicitudes.certificaciones}">Certificaciones</p>
                 </a>
               </li>
                <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Incapacidades</p>
+                  <p th:text="#{aside.opcion.solicitudes.incapacidades}">Incapacidades</p>
                 </a>
               </li>
                <li class="nav-item" sec:authorize="hasAnyAuthority('ANALISTA_RRHH','GERENTE_RRHH','GERENTE')" >
                 <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Solicitud de personal</p>
+                  <p th:text="#{aside.opcion.solicitudes.personal}">Solicitud de personal</p>
                 </a>
               </li>
             </ul>
@@ -86,7 +86,7 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
            <li class="nav-item " sec:authorize="hasAnyAuthority('ANALISTA_RRHH','GERENTE','GERENTE_RRHH','EVALUADOR')"   >
             <a href="#" class="nav-link ">
               <i class="fas fa-user-check nav-icon"></i>
-              <p>
+              <p th:text="#{aside.option.seleccion}">
                 Selecci&oacute;n
                 <i class="right fas fa-angle-left"></i>
               </p>
@@ -95,31 +95,31 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
               <li class="nav-item">
                 <a th:href="@{/tabla}" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Pruebas t&eacute;cnica</p>
+                  <p th:text="#{aside.option.seleccion.tecnica}">Pruebas t&eacute;cnica</p>
                 </a>
               </li>
               <li class="nav-item" sec:authorize="hasAnyAuthority('ANALISTA_RRHH','GERENTE_RRHH','EVALUADOR')" >
                 <a th:href="@{/pagina1}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Pruebas psicot&eacute;cnica</p>
+                  <p th:text="#{aside.option.seleccion.psico}">Pruebas psicot&eacute;cnica</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Entrevista</p>
+                  <p th:text="#{aside.option.seleccion.entrevista}" >Entrevista</p>
                 </a>
               </li>
                <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Procesos</p>
+                  <p th:text="#{aside.option.seleccion.proceso}">Procesos</p>
                 </a>
               </li>
                <li class="nav-item"  sec:authorize="hasAnyAuthority('ANALISTA_RRHH','GERENTE_RRHH')" >
                 <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Candidatos</p>
+                  <p th:text="#{aside.option.seleccion.candidatos}">Candidatos</p>
                 </a>
               </li>
             </ul>
@@ -127,7 +127,7 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
            <li class="nav-item " sec:authorize="hasAuthority('GERENTE_RRHH')"   >
             <a href="#" class="nav-link ">
              <i class="fas fa-mail-bulk nav-icon"></i>
-              <p>
+              <p th:text="#{aside.option.parametria}">
                 Parametria
                 <i class="right fas fa-angle-left"></i>
               </p>
@@ -136,7 +136,7 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
               <li class="nav-item">
                 <a th:href="@{/tabla}" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Serie</p>
+                  <p >Serie</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -148,25 +148,25 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
               <li class="nav-item">
                 <a th:href="@{/administracion/tarifa}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Tarifas</p>
+                  <p th:text="#{aside.option.parametria.tarifa}">Tarifas</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a th:href="@{/administracion/tipo-perfil}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Tipo perfil</p>
+                  <p th:text="#{aside.option.parametria.tipop}">Tipo perfil</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a th:href="@{/administracion/especialidad}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Especialidad</p>
+                  <p th:text="#{aside.option.parametria.especialidad}">Especialidad</p>
                 </a>
               </li>
                <li class="nav-item">
                 <a th:href="@{/administracion/clase-perfil}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Clase perfil</p>
+                  <p th:text="#{aside.option.parametria.clase}">Clase perfil</p>
                 </a>
               </li>
             </ul>
