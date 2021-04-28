@@ -33,7 +33,7 @@
   background-color: #ebedef;
   --color: #3c4b64;
   display: -ms-flexbox;
-  display: flex;
+  display: grid;
   -ms-flex-direction: row;
   flex-direction: row;
   min-height: 100vh;
