@@ -26,10 +26,11 @@
          </div>
          <div  layout:fragment="modal-footer">
               <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
-              <button type="button" class="btn btn-primary" onclick="crearPeticion()"  >Guardar</button>
+              <button type="button" class="btn btn-primary" onclick="crearTarifa()"  >Guardar</button>
          </div>
       </div>
       
+      <!-- Modificacion de tarifa -->
       <div layout:replace="~{fragments/modal :: modalDf(titulo='Crear Tarifa' , id='modModificar')}">
          <div  layout:fragment="modal-content">
               <div class="form-group">
@@ -43,10 +44,11 @@
          </div>
          <div  layout:fragment="modal-footer">
               <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
-              <button type="button" class="btn btn-primary">Guardar</button>
+              <button type="button" class="btn btn-primary" onclick="modificarTarifa()">Guardar</button>
          </div>
       </div>
       
+      <!-- Eliminacion de tarifa -->
       <div layout:replace="~{fragments/modal :: modalConfim(id='confirmDelete')}" >
       	<div  layout:fragment="modal-footer">
       	     <input type="hidden" id="valorEliminar">

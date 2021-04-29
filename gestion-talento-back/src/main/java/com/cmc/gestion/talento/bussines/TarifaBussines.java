@@ -41,7 +41,7 @@ public class TarifaBussines {
 		return resp;
 	}
 	
-	public TarifaDto getTarifa(long id) {
+	public TarifaDto getTarifa(long id) throws ArqGestionExcepcion{
 		Optional<ParametriaDetalle> parametriaOptional=parametriaDetalle.findById(id);
 		if(parametriaOptional.isPresent()) {
 			TarifaDto tarifa = tarifaFacade.getObject(parametriaOptional.get());

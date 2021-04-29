@@ -72,29 +72,9 @@ Inputmask.extendAliases({
 
 	// ctl is the element, options is the set of defaults + user options
 	$.crudDataTable = function(ctl, options) {
-		let table = $(ctl).DataTable({
-			"responsive": true, "lengthChange": false, "autoWidth": false,
-			"ajax": {
-				"url": options.urlAxax,
-				"dataSrc": ""
-			},
-			"dom": 'Bfrtip',
-			"buttons": [
-				{
-					"text": "Crear",
-					"className": "btn btn-primary",
-					init: function(api, node, config) {
-						$(node).removeClass('btn-secondary')
-					},
-					"action": function(e, dt, node, config) {
-						$(ctl).trigger("crear");
-					}
-				},
-				"excel", "pdf"
-			],
-			"columns": [
-				{ "data": "id" },
-				{ "data": "valor" },
+		$.fn.dataTable.Buttons.defaults.dom.button.className = 'btn btn-primary';
+		let columsOptions=options.colums;
+		let columsBtn=[
 				{
 					"data": null, "render": function(data, type, row) {
 						let botonEditar = `<button type="button" data-id='${data.id}' class="btn btn-primary btn-del btn-sm" >
@@ -107,7 +87,25 @@ Inputmask.extendAliases({
 						return botonEditar + botonEliminar;
 					}
 				}
-			],
+			];
+		let colums = columsOptions.concat(columsBtn);
+		let table = $(ctl).DataTable({
+			"responsive": true, "lengthChange": false, "autoWidth": false,
+			"ajax": {
+				"url": options.urlAxax,
+				"dataSrc": ""
+			},
+			"dom": 'Bfrtip',
+			"buttons": [
+				{
+					"text": "Crear",
+					"action": function(e, dt, node, config) {
+						$(ctl).trigger("crear");
+					}
+				},
+				"excel","pdf"
+				],
+			"columns": colums,
 			"columnDefs": [ {
 			 "targets": [ -1 ],
               "orderable": false
@@ -143,3 +141,4 @@ $( ".modal-form-crud" ).on('hidden.bs.modal', function(){
 function isEmptyObject(value) {
   return Object.keys(value).length === 0 && value.constructor === Object;
 }
+

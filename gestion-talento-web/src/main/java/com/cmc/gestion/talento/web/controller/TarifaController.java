@@ -38,31 +38,43 @@ public class TarifaController {
 		List<TarifaDto> resp = tarifaBussines.getAllTarifa();
 		return new ResponseEntity<List<TarifaDto>>(resp, HttpStatus.OK);
 	}
-
-	@GetMapping(path = "/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
-	public ResponseEntity<TarifaDto> getAllTarifa(@PathVariable(required = true) long id) {
-		TarifaDto resp = tarifaBussines.getTarifa(id);
-		return new ResponseEntity<TarifaDto>(resp, HttpStatus.OK);
-	}
-
-	@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<ModelResponse> crearTarifa(@RequestBody @Valid TarifaDto tarifa) throws ArqGestionExcepcion{
+	
+	
+	@PostMapping(path = "/create", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<ModelResponse> crearTarifa(@RequestBody @Valid TarifaDto tarifa) throws ArqGestionExcepcion {
 		try {
 			tarifaBussines.crearTarifa(tarifa);
 			ModelResponse model = new ModelResponse(null, TypeMessage.FROM_MESSAGE, "Tarifa creada con exito");
 			return new ResponseEntity<ModelResponse>(model, HttpStatus.OK);
 		} catch (ArqGestionExcepcion e) {
 			throw e;
-		}catch (Exception e) {
+		} catch (Exception e) {
 			throw e;
 		}
 	}
 
-	@PostMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<TarifaDto> modificar(@PathVariable(required = true) long id, @RequestBody TarifaDto tarifa) {
+	@PostMapping(path = "/{id}/get", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public ResponseEntity<ModelResponse> getAllTarifa(@PathVariable(required = true) long id)
+			throws ArqGestionExcepcion {
+		TarifaDto resp;
+		try {
+			resp = tarifaBussines.getTarifa(id);
+			ModelResponse model = new ModelResponse(resp, TypeMessage.NO_MESSAGE, null);
+			return new ResponseEntity<ModelResponse>(model, HttpStatus.OK);
+		} catch (ArqGestionExcepcion e) {
+			throw e;
+		}
+
+	}
+
+	
+	@PostMapping(path = "/{id}/update", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<ModelResponse> modificar(@PathVariable(required = true) long id,
+			@RequestBody TarifaDto tarifa) {
 		try {
 			tarifa = tarifaBussines.actualizarTarifa(tarifa);
-			return new ResponseEntity<TarifaDto>(tarifa, HttpStatus.OK);
+			ModelResponse model = new ModelResponse(null, TypeMessage.FROM_MESSAGE, "Tarifa actualizada con exito");
+			return new ResponseEntity<ModelResponse>(model, HttpStatus.OK);
 		} catch (Exception e) {
 			throw e;
 		}
@@ -73,7 +85,7 @@ public class TarifaController {
 		try {
 			tarifaBussines.eliminarTarifa(id);
 			ModelResponse model = new ModelResponse(null, TypeMessage.SHOW_MODAL, "Tarifa eliminada con exito");
-			return new ResponseEntity<ModelResponse>(model,HttpStatus.OK);
+			return new ResponseEntity<ModelResponse>(model, HttpStatus.OK);
 		} catch (Exception e) {
 			throw e;
 		}
