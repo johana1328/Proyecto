@@ -15,9 +15,10 @@ import javax.persistence.Table;
 import com.cmc.gestion.talento.jpa.type.TipoParametriaDetalle;
 
 @Entity
-@Table(name = "parametria_detalle", indexes = { @Index(name = "id_parametria_index", columnList = "id", unique = true) })
-public class ParametriaDetalle implements Serializable{
-	
+@Table(name = "parametria_detalle", indexes = {
+		@Index(name = "id_parametria_index", columnList = "id", unique = true) })
+public class ParametriaDetalle implements Serializable {
+
 	/**
 	 * 
 	 */
@@ -27,17 +28,17 @@ public class ParametriaDetalle implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private long id;
-	
+
 	@Column(name = "grupo", nullable = false)
 	@Enumerated(value = EnumType.STRING)
-	private TipoParametriaDetalle grupo; 
-	
+	private TipoParametriaDetalle grupo;
+
 	@Column(name = "nombre", nullable = false, length = 100)
 	private String nombre;
-	
+
 	@Column(name = "valor", nullable = false, length = 100)
 	private String valor;
-	
+
 	@Column(name = "descripcion", nullable = false, length = 200)
 	private String descripcion;
 
@@ -65,8 +66,6 @@ public class ParametriaDetalle implements Serializable{
 		this.id = id;
 	}
 
-	
-
 	public String getValor() {
 		return valor;
 	}
@@ -82,5 +81,5 @@ public class ParametriaDetalle implements Serializable{
 	public void setGrupo(TipoParametriaDetalle grupo) {
 		this.grupo = grupo;
 	}
-	
+
 }
