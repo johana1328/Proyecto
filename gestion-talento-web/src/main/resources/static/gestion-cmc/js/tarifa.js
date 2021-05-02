@@ -15,7 +15,7 @@ $(document).ready(function() {
 	.on( "crear", function(){
 		$('#modCrear').modal();
 	}).on( "modificar", function(event,id,tabla){
-		  obtenerTarifa(id)
+		  obtenerTarifa(id);
 	}).on( "eliminar", function(event,id,tabla){
 		$("#valorEliminar").val(id);
 		$('#confirmDelete').modal();

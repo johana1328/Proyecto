@@ -58,22 +58,27 @@ public class TarifaBussines {
 			parametria.setDescripcion("Tarifa valor");
 			parametria.setNombre("Tarifa");
 			parametria.setValor(tarifa.getValor());
-			ParametriaDetalle p=this.parametriaDetalle.save(parametria);
-			tarifaFacade.getObject(p);
+			this.parametriaDetalle.save(parametria);
 		}else {
 			throw new ArqGestionExcepcion("La tarifa ya se encuantra creada", ExcepcionType.ERROR_VALIDATION);
 		}
 	}
 	
-	public TarifaDto actualizarTarifa(TarifaDto tarifa) {
-		Optional<ParametriaDetalle> parametriaOptional=this.parametriaDetalle.findById(tarifa.getId());
-		if(parametriaOptional.isPresent()) {
-			ParametriaDetalle parametria=parametriaOptional.get();
-			parametria.setValor(tarifa.getValor());
-			parametria=this.parametriaDetalle.save(parametria);
-			return tarifaFacade.getObject(parametria);
+	public TarifaDto actualizarTarifa(TarifaDto tarifa) throws ArqGestionExcepcion{
+		List<ParametriaDetalle> listParametria= this.parametriaDetalle.findByValor(tarifa.getValor());
+		if(listParametria.isEmpty()){
+			Optional<ParametriaDetalle> parametriaOptional=this.parametriaDetalle.findById(tarifa.getId());
+			if(parametriaOptional.isPresent()) {
+				ParametriaDetalle parametria=parametriaOptional.get();
+				parametria.setValor(tarifa.getValor());
+				parametria=this.parametriaDetalle.save(parametria);
+				return tarifaFacade.getObject(parametria);
+			}else {
+				return null;
+			}
+		}else {
+			throw new ArqGestionExcepcion("el valor tarifa ya se encuantra creada", ExcepcionType.ERROR_VALIDATION);
 		}
-		return null;
 	}
 	
 	public void eliminarTarifa(long id) throws ArqGestionExcepcion{

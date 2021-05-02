@@ -33,7 +33,7 @@ public class TarifaController {
 		return "pages/administracion/tarifa";
 	}
 
-	@GetMapping(path = "/getAll", produces = { MediaType.APPLICATION_JSON_VALUE })
+	@GetMapping(path = "/getAll", produces = MediaType.APPLICATION_JSON_VALUE )
 	public ResponseEntity<List<TarifaDto>> getAllTarifa() {
 		List<TarifaDto> resp = tarifaBussines.getAllTarifa();
 		return new ResponseEntity<List<TarifaDto>>(resp, HttpStatus.OK);
@@ -54,7 +54,7 @@ public class TarifaController {
 	}
 
 	@PostMapping(path = "/{id}/get", produces = { MediaType.APPLICATION_JSON_VALUE })
-	public ResponseEntity<ModelResponse> getAllTarifa(@PathVariable(required = true) long id)
+	public ResponseEntity<ModelResponse> getTarifa(@PathVariable(required = true) long id)
 			throws ArqGestionExcepcion {
 		TarifaDto resp;
 		try {
@@ -70,11 +70,13 @@ public class TarifaController {
 	
 	@PostMapping(path = "/{id}/update", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<ModelResponse> modificar(@PathVariable(required = true) long id,
-			@RequestBody TarifaDto tarifa) {
+			@RequestBody TarifaDto tarifa) throws ArqGestionExcepcion{
 		try {
 			tarifa = tarifaBussines.actualizarTarifa(tarifa);
 			ModelResponse model = new ModelResponse(null, TypeMessage.FROM_MESSAGE, "Tarifa actualizada con exito");
 			return new ResponseEntity<ModelResponse>(model, HttpStatus.OK);
+		}catch (ArqGestionExcepcion e) {
+			throw e;
 		} catch (Exception e) {
 			throw e;
 		}
