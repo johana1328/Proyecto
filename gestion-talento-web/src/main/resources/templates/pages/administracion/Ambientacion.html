@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:with="http://www.thymeleaf.org/extras/with"
+	layout:decorate="~{layout}"
+	th:with="funcionalidad='Administraci&oacuten', evento='ambiente'">
+<th:block layout:fragment="content">
+    
+    <table id="tablaAmbiente" class="table table-bordered table-hover ">
+     	<thead>
+        	<tr>
+            	<th>Id</th>
+                <th>Valor</th>
+                <th width="70px">Acciones</th>
+            </tr>
+        </thead>
+     </table> 
+     
+     <div layout:replace="~{fragments/modal :: modalDf(titulo='Crear Ambiente' , id='modCrear')}">
+         <div  layout:fragment="modal-content">
+              <div class="form-group">
+                  <label for="exampleInputEmail1">Ambiente</label>
+                  <input type="text" class="form-control" id="valorAmbiente" placeholder="Ingrese valor">
+              </div>
+         </div>
+         <div  layout:fragment="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn btn-primary" onclick="crearAmbiente()"  >Guardar</button>
+         </div>
+      </div>
+      
+      <!-- Modificacion de Ambiente -->
+      <div layout:replace="~{fragments/modal :: modalDf(titulo='Crear Ambiente' , id='modModificar')}">
+         <div  layout:fragment="modal-content">
+              <div class="form-group">
+                  <label for="exampleInputEmail1">Id</label>
+                  <input type="text" class="form-control" id="idMod" disabled>
+              </div>
+              <div class="form-group">
+                  <label for="exampleInputEmail1">Valor</label>
+                  <input type="text" class="form-control" id="valorAmbientemod" placeholder="Ingrese valor">
+              </div>
+         </div>
+         <div  layout:fragment="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn btn-primary" onclick="modificarAmbiente()">Guardar</button>
+         </div>
+      </div>
+      <!-- Eliminacion de Ambiente -->
+      <div layout:replace="~{fragments/modal :: modalConfim(id='confirmDelete')}" >
+      	<div  layout:fragment="modal-footer">
+      	     <input type="hidden" id="valorAmbienteEliminar">
+      		 <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+             <button type="button" class="btn btn-primary"  onclick="eliminarAmbiente()" >Eliminar</button>
+      	</div>
+      </div>
+     
+</th:block>
+<th:block layout:fragment="body_end">
+       <script th:src="@{~/gestion-cmc/resources/gestion-cmc/js/ambiente.js}"></script>
+   
+</th:block>
+</html>
