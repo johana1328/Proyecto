@@ -7,6 +7,8 @@ public class PerfilDto {
 	private String grupoPerfil;
 
 	private String nombre;
+	
+	private String estado;
 
 	public String getCodigoPerfil() {
 		return codigoPerfil;
