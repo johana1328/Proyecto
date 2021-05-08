@@ -12,4 +12,7 @@ public interface EmpleadoDao extends JpaRepository<Empleado, String>{
 	
 	@Query(value="SELECT u.* FROM Usuario u LEFT JOIN Empleado e " , nativeQuery = true)
 	public List<Empleado> getAllEmpleados();
+	
+	
+	
 }
