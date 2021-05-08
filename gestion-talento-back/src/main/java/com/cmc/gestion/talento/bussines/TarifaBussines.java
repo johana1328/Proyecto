@@ -28,7 +28,11 @@ public class TarifaBussines {
 	@Autowired
 	private TarifaFacade tarifaFacade;
 	
+	@Autowired
+	EmpleadoBussines EmpleadoBussines;
+	
 	public List<TarifaDto> getAllTarifa(){
+		EmpleadoBussines.getEmpleados();
 		List<TarifaDto> resp= new ArrayList<TarifaDto>();
 		try {
 		List<ParametriaDetalle>	lisparametria=parametriaDetalle.listParametriaTarifa();

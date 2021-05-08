@@ -1,14 +1,20 @@
 package com.cmc.gestion.talento.jpa.dao;
 
-import java.util.Optional;
+import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
-import org.springframework.data.repository.query.Param;
 
 import com.cmc.gestion.talento.jpa.entity.Usuario;
 
 public interface UsuarioDao extends PagingAndSortingRepository<Usuario, String> {
+	
+	@Query(value="SELECT * from usuario u "
+			+ " inner join perfil_usuario pu on pu.id_usuario = u.id_usuario"
+			+ " and pu.perfil != 'CANDIDATO'", nativeQuery = true)
+	public List<Usuario> getUsuariosEmpleados();
+	
+	
    
 	/*public Optional<Usuario>  findByUsuarioAndContrasena(String usuario, String contrasena);
     
