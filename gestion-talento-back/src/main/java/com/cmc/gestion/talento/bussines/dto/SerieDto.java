@@ -10,6 +10,7 @@ public class SerieDto {
 	@NotBlank(message = "Nombre no puede ser nulo")
 	private String nombre;
 	private String descripcion;
+	private String estado;
 	
 	
 	public long getIdSerie() {
@@ -29,6 +30,12 @@ public class SerieDto {
 	}
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+	public String getEstado() {
+		return estado;
+	}
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 	
 	

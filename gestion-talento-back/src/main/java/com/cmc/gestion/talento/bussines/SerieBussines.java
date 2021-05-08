@@ -28,19 +28,19 @@ public class SerieBussines {
 	
 	public List<SerieDto> getAllSerie() {
 		Iterable<Serie> listUserEntity = serieDao.findAll();
-		SerieFacade serieFacade = new SerieFacade();
 		List<SerieDto> resp = serieFacade.getListObjec(listUserEntity);
 		return resp;
 	}
 	
-	public void crearSerie(SerieDto serie) throws ArqGestionExcepcion{
-		List<Serie> lisSerie = this.serieDao.findByNombre(serie.getNombre());
+	public void crearSerie(SerieDto seriedto) throws ArqGestionExcepcion{
+		List<Serie> lisSerie = this.serieDao.findByNombre(seriedto.getNombre());
 		if(lisSerie.isEmpty()) {
-			Serie serie2= new Serie();
-			serie2.setIdSerie(serie.getIdSerie());
-			serie2.setNombre(serie.getNombre());
-			serie2.setDescripcion(serie.getDescripcion());
-			this.serieDao.save(serie2);
+			Serie serie= new Serie();
+			serie.setIdSerie(seriedto.getIdSerie());
+			serie.setNombre(seriedto.getNombre());
+			serie.setDescripcion(seriedto.getDescripcion());
+			serie.setEstado("ACTIVO");
+			this.serieDao.save(serie);
 		}else {
 			throw new ArqGestionExcepcion("La serie  ya se encuentra creada", ExcepcionType.ERROR_VALIDATION);
 		}

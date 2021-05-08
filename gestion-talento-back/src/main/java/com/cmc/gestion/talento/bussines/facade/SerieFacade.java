@@ -14,6 +14,7 @@ public class SerieFacade extends FacadeConvert<SerieDto,Serie> {
 		serieDto.setIdSerie(entidad.getIdSerie());
 		serieDto.setNombre(entidad.getNombre());
 		serieDto.setDescripcion(entidad.getDescripcion());
+		serieDto.setEstado(entidad.getEstado());
 		return serieDto;
 	}
 

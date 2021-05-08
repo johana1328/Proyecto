@@ -6,7 +6,7 @@ $(document).ready(function() {
 	var tableOtions={
 		urlAxax:URL_TARIFA+"/getAllSerie", 
 		colums:[
-				 { "data": "id" },
+				 { "data": "idSerie" },
 			     { "data": "nombre" },
 			     { "data": "descripcion" }
 		       ]
