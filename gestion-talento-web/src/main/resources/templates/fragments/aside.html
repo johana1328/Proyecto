@@ -152,6 +152,12 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
                 </a>
               </li>
               <li class="nav-item">
+                <a th:href="@{/administracion/ambientacion}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p th:text="#{aside.option.parametria.ambiente}">Ambiente</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a th:href="@{/administracion/tipo-perfil}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p th:text="#{aside.option.parametria.tipop}">Tipo perfil</p>
