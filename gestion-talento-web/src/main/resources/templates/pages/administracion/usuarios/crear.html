@@ -90,7 +90,7 @@
 					</div>
 
 
-					<button class="btn btn-primary" type="button" onclick="stepDataosBasicos()">Siguiente</button>
+					<button class="btn btn-primary" type="button" onclick="validacionFormulario()">Siguiente</button>
 				</div>
 				
 				<!-- Paso2 -->
@@ -101,21 +101,21 @@
 							
 							<div class="form-group">
 								<label for="telefono">Telefono</label> <input
-									type="text" class="form-control" id="telefono"
+									type="text" class="form-control" id="telefono" name="telefono"
 									placeholder="Telefono">
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
 								<label for="correo">Correo Electronico</label> <input
-									type="text" class="form-control" id="correo"
+									type="text" class="form-control" id="correo" name="correo"
 									placeholder="Correo Electronico">
 							</div>
 						</div>
 					</div>
 
                     <button class="btn btn-primary" type="button" onclick="stepper.previous()">Anterior</button>
-					<button class="btn btn-primary" type="button" onclick="stepper.next()">Sigiente</button>
+					<button class="btn btn-primary" type="button" onclick="validacionFormulario()">Sigiente</button>
 				</div>
 				
 				<!-- Paso 3 -->
@@ -165,8 +165,8 @@
 							</div>
 						</div>
 					</div>
-					<button class="btn btn-primary" onclick="stepper.previous()">Anterior</button>
-					<button type="submit" class="btn btn-primary">Crear</button>
+					<button class="btn btn-primary" type="button" onclick="stepper.previous()">Anterior</button>
+					<button type="submit"  class="btn btn-primary">Crear</button>
 				</div>
 			</div>
 		</div>

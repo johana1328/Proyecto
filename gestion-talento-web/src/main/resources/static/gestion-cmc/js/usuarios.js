@@ -1,7 +1,7 @@
 /** Validaciones de formulario paso a paso*/
 var form = $("#formCrearUsuario");
 
-function stepDataosBasicos(){
+function validacionFormulario(){
 	form.validate({
 		onclick: false,
 		rules:{
@@ -12,7 +12,17 @@ function stepDataosBasicos(){
 				required: true,
 				alphanumeric: true,
 	            rangelength: [3, 20]
-			}
+			},
+			correo:{
+				required: true,
+				email: true
+			},
+			telefono:{
+				required: true,
+				number: true,
+                minlength:7,
+                maxlength:10
+			},
 		},
 		messages:{
 			nombre1:{
@@ -22,21 +32,32 @@ function stepDataosBasicos(){
 			},
 			tipoDocumento:{
 				required:"Seleccione una opcion valida"
+			},
+			correo:{
+				required:"El campo correo es requerido",
+				email: "Campo correo formato no valido"
+			},
+			telefono:{
+				required:"El campo telefono es requerido",
+				matches:"El campo telefono solo puede contener numeros",
+				minlength:"Campo telefono longitud no permitida",
+				maxlength:"Campo telefono longitud no permitida"
 			}
 		},
 		errorPlacement:function( error, element ){
+			//alert($(error[0]).text());
 			$('.alert').show();
 			$('.msg').text($(error[0]).text());
 		},
 		success: function(label) {
-             $('.alert').hide();
+			//alert("OK");
+          //   $('.alert').hide();
         }
-	});
+	}).settings.ignore = ":disabled,:hidden";
 	
 	if (form.valid() == true){
 		stepper.next();
 	}
 }
 
-function stepContacto(){}
 function stepInformacionLaboral(){}
