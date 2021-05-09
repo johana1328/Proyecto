@@ -37,3 +37,6 @@ function stepDataosBasicos(){
 		stepper.next();
 	}
 }
+
+function stepContacto(){}
+function stepInformacionLaboral(){}
