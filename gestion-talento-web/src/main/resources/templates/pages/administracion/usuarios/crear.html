@@ -2,56 +2,155 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	xmlns:with="http://www.thymeleaf.org/extras/with"
 	layout:decorate="~{layout}"
-	th:with="funcionalidad='Administraci&oacuten', evento='Series'">
+	th:with="funcionalidad='Administraci&oacuten', evento='Crear usuario'">
 <th:block layout:fragment="content">
 	<div class="card-body p-0">
 		<div class="bs-stepper">
 			<div class="bs-stepper-header" role="tablist">
 				<!-- your steps here -->
-				<div class="step" data-target="#logins-part">
+				<div class="step" data-target="#Inf-personal">
 					<button type="button" class="step-trigger" role="tab"
-						aria-controls="logins-part" id="logins-part-trigger">
+						aria-controls="Inf-personal" id="Inf-personal-trigger">
 						<span class="bs-stepper-circle">1</span> <span
-							class="bs-stepper-label">Logins</span>
+							class="bs-stepper-label">Informaci&oacuten b&aacutesica</span>
 					</button>
 				</div>
 				<div class="line"></div>
-				<div class="step" data-target="#information-part">
+				<div class="step" data-target="#contacto">
 					<button type="button" class="step-trigger" role="tab"
-						aria-controls="information-part" id="information-part-trigger">
+						aria-controls="contacto" id="contacto-trigger">
 						<span class="bs-stepper-circle">2</span> <span
-							class="bs-stepper-label">Various information</span>
+							class="bs-stepper-label">Contacto</span>
+					</button>
+				</div>
+				<div class="line"></div>
+				<div class="step" data-target="#inf-lab">
+					<button type="button" class="step-trigger" role="tab"
+						aria-controls="inf-lab" id="inf-lab-trigger">
+						<span class="bs-stepper-circle">3</span> <span
+							class="bs-stepper-label">Informaci&oacuten Laboral</span>
 					</button>
 				</div>
 			</div>
 			<div class="bs-stepper-content">
-				<!-- your steps content here -->
-				<div id="logins-part" class="content" role="tabpanel"
-					aria-labelledby="logins-part-trigger">
-					<div class="form-group">
-						<label for="exampleInputEmail1">Email address</label> <input
-							type="email" class="form-control" id="exampleInputEmail1"
-							placeholder="Enter email">
-					</div>
-					<div class="form-group">
-						<label for="exampleInputPassword1">Password</label> <input
-							type="password" class="form-control" id="exampleInputPassword1"
-							placeholder="Password">
-					</div>
-					<button class="btn btn-primary" onclick="stepper.next()">Next</button>
-				</div>
-				<div id="information-part" class="content" role="tabpanel"
-					aria-labelledby="information-part-trigger">
-					<div class="form-group">
-						<label for="exampleInputFile">File input</label>
-						<div class="input-group">
-							<div class="custom-file">
-								<input type="file" class="custom-file-input"
-									id="exampleInputFile"> <label class="custom-file-label"
-									for="exampleInputFile">Choose file</label>
+				<!-- Paso 1 -->
+				<div id="Inf-personal" class="content" role="tabpanel"
+					aria-labelledby="Inf-personal-trigger">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Tipo Documento</label> <select class="form-control select2"
+									style="width: 100%;">
+									<option selected="selected">Tipo</option>
+									<option>CC</option>
+									<option>TI</option>
+									<option>CE</option>
+								</select>
 							</div>
-							<div class="input-group-append">
-								<span class="input-group-text">Upload</span>
+							<div class="form-group">
+								<label for="nombre1">Primer Nombre</label> <input
+									type="text" class="form-control" id="nombre1"
+									placeholder="Primer nombre">
+							</div>
+							<div class="form-group">
+								<label for="apellido1">Primer Apellido</label> <input
+									type="text" class="form-control" id="apellido1"
+									placeholder="Primer Apellido">
+							</div>
+
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="numDoc">Numero de documento</label> <input
+									type="text" class="form-control" id="numDoc"
+									placeholder="Numero de documento">
+							</div>
+							<div class="form-group">
+								<label for="nombre2">Segundo Nombre</label> <input
+									type="text" class="form-control" id="nombre2"
+									placeholder="Segundo Nombre">
+							</div>
+							<div class="form-group">
+								<label for="apellido2">Segundo Apellido</label> <input
+									type="text" class="form-control" id="apellido2"
+									placeholder="Segundo Apellido">
+							</div>
+						</div>
+					</div>
+
+
+					<button class="btn btn-primary" onclick="stepper.next()">Siguiente</button>
+				</div>
+				
+				<!-- Paso2 -->
+				<div id="contacto" class="content" role="tabpanel"
+					aria-labelledby="contacto-trigger">
+					<div class="row">
+						<div class="col-md-6">
+							
+							<div class="form-group">
+								<label for="telefono">Telefono</label> <input
+									type="text" class="form-control" id="telefono"
+									placeholder="Telefono">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="correo">Correo Electronico</label> <input
+									type="text" class="form-control" id="correo"
+									placeholder="Correo Electronico">
+							</div>
+						</div>
+					</div>
+
+                    <button class="btn btn-primary" onclick="stepper.previous()">Anterior</button>
+					<button class="btn btn-primary" onclick="stepper.next()">Sigiente</button>
+				</div>
+				
+				<!-- Paso 3 -->
+				<div id="inf-lab" class="content" role="tabpanel"
+					aria-labelledby="inf-lab-trigger">
+					<div class="row">
+						<div class="col-md-6">
+							
+							<div class="form-group">
+								<label for="codidoUsario">C&oacute;digo usuario </label> <input
+									type="text" class="form-control" id="codidoUsario"
+									placeholder="C&oacute;digo usuario">
+							</div>
+							<div class="form-group">
+								<label>Jefe</label> <select class="form-control select2"
+									style="width: 100%;">
+									<option selected="selected">Seleccione</option>
+									<option>Jefe1</option>
+									<option>Jefe2</option>
+									<option>Jefe3</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-md-6">
+						    <div class="form-group">
+								<label>Tipo usuario</label> <select class="form-control select2"
+									style="width: 100%;">
+									<option selected="selected">Tipo</option>
+									<option value="EMPLEADO" >Empleado</option>
+									<option value="ANALISTA_RRHH">Analista RRHH</option>
+									<option value="GERENTE" >Gerente</option>
+									<option value="GERENTE_RRHH" >Gerente RRHH</option>
+									<option value="DIRECTOR">Director</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label>&Aacute;rea</label> <select class="form-control select2"
+									style="width: 100%;">
+									<option selected="selected">Seleccione un &aacute;rea</option>
+									<option value="INGENIERIA" >Ingenier&iacute;a</option>
+									<option value="INFRA">Infra estructura </option>
+									<option value="MANTENIMIENTO">Mantenimiento</option>
+									<option value="GERENCIA">Gerencia</option>
+									<option value="RRHH">Recursos humanos</option>
+									<option value="ADMIN">Administrativo</option>
+								</select>
 							</div>
 						</div>
 					</div>
@@ -66,7 +165,8 @@
 <th:block layout:fragment="body_end">
 	<link rel="stylesheet"
 		th:href="@{~/gestion-cmc/plugins/bs-stepper/css/bs-stepper.min.css}">
-	<script th:src="@{~/gestion-cmc/plugins/bs-stepper/js/bs-stepper.min.js}"></script>
+	<script
+		th:src="@{~/gestion-cmc/plugins/bs-stepper/js/bs-stepper.min.js}"></script>
 	<script>
 	   document.addEventListener('DOMContentLoaded', function () {
 	       window.stepper = new Stepper(document.querySelector('.bs-stepper'))
