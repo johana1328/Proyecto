@@ -3,7 +3,9 @@ var form = $("#formCrearUsuario");
 
 function validacionFormulario(){
 	form.validate({
-		onclick: false,
+		 errorContainer: "#messageBox1",
+         errorLabelContainer: "#messageBox1 ul",
+         wrapper: "li",
 		rules:{
 			tipoDocumento:{
 				required: true
@@ -39,20 +41,11 @@ function validacionFormulario(){
 			},
 			telefono:{
 				required:"El campo telefono es requerido",
-				matches:"El campo telefono solo puede contener numeros",
+				number:"El campo telefono solo puede contener numeros",
 				minlength:"Campo telefono longitud no permitida",
 				maxlength:"Campo telefono longitud no permitida"
 			}
-		},
-		errorPlacement:function( error, element ){
-			//alert($(error[0]).text());
-			$('.alert').show();
-			$('.msg').text($(error[0]).text());
-		},
-		success: function(label) {
-			//alert("OK");
-          //   $('.alert').hide();
-        }
+		}
 	}).settings.ignore = ":disabled,:hidden";
 	
 	if (form.valid() == true){

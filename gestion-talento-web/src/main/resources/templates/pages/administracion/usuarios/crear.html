@@ -7,10 +7,11 @@
 <form id="formCrearUsuario" action="" method="POST">
      
 	<div class="card-body p-0">
-	<div class="alert alert-danger alert-dismissible" style="display: none">
+	<div id="messageBox1" class="alert alert-danger alert-dismissible" style="display: none">
 		<button type="button" class="close" onclick="closeAlert('alert-danger')"
 				aria-hidden="true">&times;</button>
-		<i class="icon fas fa-ban"></i> Error! <span class="msg"></span>
+		<i class="icon fas fa-ban"></i> Error! 
+		<ul style="margin-top: 0px; margin-bottom: 0px;"></ul>
 	</div>
 		<div class="bs-stepper">
 			<div class="bs-stepper-header" role="tablist">
