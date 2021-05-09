@@ -1,12 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tipo Perfil</title>
-</head>
-<body>
-   Hola Mundo! 
-</body>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:with="http://www.thymeleaf.org/extras/with"
+	layout:decorate="~{layout}"
+	th:with="funcionalidad='Administraci&oacuten', evento='TipoPerfil'">
+<th:block layout:fragment="content">
+
+	<table id="tablaTipoPerfil" class="table table-bordered table-hover ">
+     	<thead>
+        	<tr>
+            	<th>Id</th>
+                <th>Valor</th>
+                <th width="70px">Acciones</th>
+            </tr>
+        </thead>
+     </table> 
+     
+     <!-- Formulario de creacion -->
+      <div layout:replace="~{fragments/modal :: modalDf(titulo='Crear TipoPefil' , id='modCrear')}">
+         <div  layout:fragment="modal-content">
+              <div class="form-group">
+                  <label for="exampleInputEmail1">Tipo Perfil</label>
+                  <input type="text" class="form-control" id="valorTipoPerfil" placeholder="Ingrese valor">
+              </div>
+         </div>
+         <div  layout:fragment="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn btn-primary" onclick="crearTipoPerfil()"  >Guardar</button>
+         </div>
+      </div> 
+      
+      <!-- Modificacion de tipoPerfil -->
+      <div layout:replace="~{fragments/modal :: modalDf(titulo='Crear TipoPefil' , id='modModificar')}">
+         <div  layout:fragment="modal-content">
+              <div class="form-group">
+                  <label for="exampleInputEmail1">Id</label>
+                  <input type="text" class="form-control" id="idMod" disabled>
+              </div>
+              <div class="form-group">
+                  <label for="exampleInputEmail1">Valor</label>
+                  <input type="text" class="form-control" id="valorTipoPerfilmod" placeholder="Ingrese valor">
+              </div>
+         </div>
+         <div  layout:fragment="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn btn-primary" onclick="modificarTipoPerfil()">Guardar</button>
+         </div>
+      </div>
+      
+      <!-- Eliminacion de tipoPerfil -->
+      <div layout:replace="~{fragments/modal :: modalConfim(id='confirmDelete')}" >
+      	<div  layout:fragment="modal-footer">
+      	     <input type="hidden" id="valorTipoPerfilEliminar">
+      		 <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+             <button type="button" class="btn btn-primary"  onclick="eliminarTipoPerfil()" >Eliminar</button>
+      	</div>
+      </div>
+     
+   
+    
+</th:block>
+<th:block layout:fragment="body_end">
+   <script th:src="@{~/gestion-cmc/resources/gestion-cmc/js/tipoPerfil.js}"></script>
+</th:block>
 </html>
