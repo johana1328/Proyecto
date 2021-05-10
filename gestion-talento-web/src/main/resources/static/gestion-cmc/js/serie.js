@@ -1,14 +1,15 @@
 /**Variables globales */
-const URL_TARIFA="../administracion/serie";
+const URL_SERIE="../administracion/serie";
 
 /** Datatable */
 $(document).ready(function() {
 	var tableOtions={
-		urlAxax:URL_TARIFA+"/getAllSerie", 
+		urlAxax:URL_SERIE+"/getAllSerie", 
 		colums:[
-				 { "data": "idSerie" },
+				 { "data": "id" },
 			     { "data": "nombre" },
-			     { "data": "descripcion" }
+			     { "data": "descripcion" },
+			     { "data": "estado" }
 		       ]
 	    }
 	
@@ -16,55 +17,61 @@ $(document).ready(function() {
 	.on( "crear", function(){
 		$('#modCrear').modal();
 	}).on( "modificar", function(event,id,tabla){
-		  obtenerTarifa(id);
+		  obtenerSerie(id);
 	}).on( "eliminar", function(event,id,tabla){
-		$("#valorEliminar").val(id);
+		$("#idSerie").val(id);
 		$('#confirmDelete').modal();
 	});
 });
 
-/**Creacion de Tarifa*/
-function crearTarifa(){
-	let valorCrear=$("#valorCrear").val();
-	let form={id:0, valor:valorCrear}
-	let dataResp=ajaxRequest(`${URL_TARIFA}/create`, form, "modCrear");
+/**Creacion de Serie*/
+function crearSerie(){
+	let nombreCrear=$("#nombreCrear").val();
+	let descCrear=$("#descCrear").val();
+	let form={id:0, nombre:nombreCrear, descripcion:descCrear}
+	let dataResp=ajaxRequest(`${URL_SERIE}/create`, form, "modCrear");
 	if(!isEmptyObject(dataResp)){
-		$('#tablaTarifa').DataTable().ajax.reload();
-	    $("#valorCrear").val("");
+		$('#tablaSerie').DataTable().ajax.reload();
+	    $("#nombreCrear").val("");
+	    $("#descCrear").val("");
 	}
 }
 
-/**Obtener tarifa */
-function obtenerTarifa(id){
+/**Obtener serie */
+function obtenerSerie(idSerie){
 	let form={};
-	let dataResp=ajaxRequest(`${URL_TARIFA}/${id}/get`, form);
+	let dataResp=ajaxRequest(`${URL_SERIE}/${idSerie}/get`, form);
 	if(!isEmptyObject(dataResp)){
-		let tarifa = dataResp.data;	
-		$('#idMod').val(tarifa.id);
-		$('#valorMod').val(tarifa.valor);
+		let serie = dataResp.data;	
+		$('#idMod').val(serie.idSerie);
+		$('#nomMod').val(serie.nombre);
+		$('#desMod').val(serie.descripcion);
+		$('#estMod').val(serie.estado);
 	}
 	$('#modModificar').modal();
 }
 
-/**Modificar tarifa */
-function modificarTarifa(){
-	let idTarifa=$('#idMod').val();
-	let valorTarifa=$('#valorMod').val();
-	let form={id:idTarifa, valor:valorTarifa}
-	let dataResp=ajaxRequest(`${URL_TARIFA}/${idTarifa}/update`, form, "modModificar");
+/**Modificar serie */
+function modificarSerie(){
+	let idSerie=$('#idMod').val();
+	let nombreSerie=$('#nomMod').val();
+	let descripSerie=$('#descMod').val();
+	let estaSerie=$('#estMod').val();
+	let form={idSerie:idSerie, nombre:nombreSerie, descripcion:descripSerie, estado:estaSerie}
+	let dataResp=ajaxRequest(`${URL_SERIE}/${idSerie}/update`, form, "modModificar");
 	if(!isEmptyObject(dataResp)){
-		$('#tablaTarifa').DataTable().ajax.reload();
+		$('#tablaSerie').DataTable().ajax.reload();
 	}
 }
 
-/**Eliminar tarifa */
-function eliminarTarifa(){
-	let valorEliminar=$("#valorEliminar").val();
+/**Eliminar Serie */
+function eliminarSerie(){
+	let idSerie=$("#idSerie").val();
 	let form={}
-	let dataResp=ajaxRequest(`${URL_TARIFA}/${valorEliminar}/delete`, form);
+	let dataResp=ajaxRequest(`${URL_SERIE}/${idSerie}/delete`, form);
 	if(!isEmptyObject(dataResp)){
-		$('#tablaTarifa').DataTable().ajax.reload();
-	    $("#valorEliminar").val("");
+		$('#tablaSerie').DataTable().ajax.reload();
+	    $("#idSerie").val("");
 	    $('#confirmDelete').modal('hide');
 	}
 }

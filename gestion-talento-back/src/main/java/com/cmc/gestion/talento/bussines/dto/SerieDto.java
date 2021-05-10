@@ -4,7 +4,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
 public class SerieDto {
-
+     
+	private long id;
 	private long idSerie;
 	@NotEmpty(message = "Nombre no puede ser nulo")
 	@NotBlank(message = "Nombre no puede ser nulo")
@@ -17,6 +18,7 @@ public class SerieDto {
 		return idSerie;
 	}
 	public void setIdSerie(long idSerie) {
+		this.id=idSerie;
 		this.idSerie = idSerie;
 	}
 	public String getNombre() {
@@ -36,6 +38,12 @@ public class SerieDto {
 	}
 	public void setEstado(String estado) {
 		this.estado = estado;
+	}
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
 	}
 	
 	
