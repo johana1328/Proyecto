@@ -62,24 +62,24 @@
               </div>
               <div class="form-group">
                     <label for="exampleInputEmail1">Nombre</label>
-                  <input type="text" class="form-control" id="nombreCrear" placeholder="Ingrese nombre">
+                  <input type="text" class="form-control" id="nombreMod" placeholder="Ingrese nombre">
                   <label for="exampleInputEmail1">Proceso</label>
-                  <input type="text" class="form-control" id="procCrear" placeholder="Ingrese proceso">
+                  <input type="text" class="form-control" id="procMod" placeholder="Ingrese proceso">
                   <label for="exampleInputEmail1">Archivo gesti&oacute;n</label>
-                  <input type="number" class="form-control" id="arcgesCrear" placeholder="Ingrese archivo gesti&oacute;n">
+                  <input type="number" class="form-control" id="arcgesMod" placeholder="Ingrese archivo gesti&oacute;n">
                   <label for="exampleInputEmail1">Archivo central</label>
-                  <input type="number" class="form-control" id="arccenCrear" placeholder="Ingrese archivo central">
+                  <input type="number" class="form-control" id="arccenMod" placeholder="Ingrese archivo central">
 			      <label for="exampleInputEmail1">Serie</label>
 			      <div class="form-group">
-			      <select class="form-control" id="seriCrear">
+			      <select class="form-control" id="seriMod">
 			    	<option th:each="serie : ${liataSerire}" th:value="${serie.id}" th:text="${serie.nombre}">
 			    	</option>
 				  </select>
 				  </div>
                   <label for="exampleInputEmail1">Descripci&oacute;n</label>
-                  <textarea class="form-control" id="descCrear" rows="3" placeholder="Escribir ..."></textarea>
+                  <textarea class="form-control" id="descMod" rows="3" placeholder="Escribir ..."></textarea>
                   <label for="exampleInputEmail1">Procedimiento</label>
-                  <textarea class="form-control" id="procediCrear" rows="3" placeholder="Escribir ..."></textarea>
+                  <textarea class="form-control" id="procediMod" rows="3" placeholder="Escribir ..."></textarea>
          </div>
          <div  layout:fragment="modal-footer">
               <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>

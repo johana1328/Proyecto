@@ -24,7 +24,7 @@ $(document).ready(function() {
 	}).on( "modificar", function(event,id,tabla){
 		  obtenerSubserie(id);
 	}).on( "eliminar", function(event,id,tabla){
-		$("#id").val(id);
+		$("#idSubserie").val(id);
 		$('#confirmDelete').modal();
 	});
 	  });
@@ -60,13 +60,13 @@ function obtenerSubserie(id){
 	if(!isEmptyObject(dataResp)){
 		let subserie = dataResp.data;
 		$("#idMod").val(subserie.id);	
-		$("#nombreCrear").val(subserie.nombre);
-	    $("#descCrear").val(subserie.descripcion);
-	    $("#procCrear").val(subserie.proceso);
-	    $("#procediCrear").val(subserie.procedimiento);
-	    $("#arcgesCrear").val(subserie.archivoGestion);
-	    $("#arccenCrear").val(subserie.archivoCentral);
-	    $("#seriCrear").val(subserie.serieDto);
+		$("#nombreMod").val(subserie.nombre);
+	    $("#descMod").val(subserie.descripcion);
+	    $("#procMod").val(subserie.proceso);
+	    $("#procediMod").val(subserie.procedimiento);
+	    $("#arcgesMod").val(subserie.archivoGestion);
+	    $("#arccenMod").val(subserie.archivoCentral);
+	    $("#seriMod").val(subserie.serieDto.id);
 	}
 	$('#modModificar').modal();
 }
@@ -81,9 +81,9 @@ function modificarSubserie(){
 	let seriCrear=$("#seriCrear").val();
 	let descCrear=$("#descCrear").val();
 	let procediCrear=$("#procediCrear").val();
-	let form={id:idSubserie, nombre:nombreCrear,  descripcion:descCrear, proceso:procCrear,procedimiento:procediCrear,
-	archivoGestion:arcgesCrear,archivoCentral:arccenCrear, serieDto:seriCrear }
-	let dataResp=ajaxRequest(`${URL_SUBSERIE}/${id}/update`, form, "modModificar");
+	let form={id:idSubserie, nombre:nombreCrear,  descripcion:descCrear, proceso:proceCrear,procedimiento:procediCrear,
+	archivoGestion:archgesCrear,archivoCentral:archcenCrear, serieDto:{idSerie:seriCrear,nombre:"1"}}
+	let dataResp=ajaxRequest(`${URL_SUBSERIE}/${idSubserie}/update`, form, "modModificar");
 	if(!isEmptyObject(dataResp)){
 		$('#tablaSubserie').DataTable().ajax.reload();
 	}
@@ -93,7 +93,7 @@ function modificarSubserie(){
 function eliminarSubserie(){
 	let idSubserie=$("#idSubserie").val();
 	let form={}
-	let dataResp=ajaxRequest(`${URL_SUBSERIE}/${id}/delete`, form);
+	let dataResp=ajaxRequest(`${URL_SUBSERIE}/${idSubserie}/delete`, form);
 	if(!isEmptyObject(dataResp)){
 		$('#tablaSubserie').DataTable().ajax.reload();
 	    $("#idSubserie").val("");
