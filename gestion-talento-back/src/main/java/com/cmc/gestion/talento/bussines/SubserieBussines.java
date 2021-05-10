@@ -58,7 +58,7 @@ public class SubserieBussines {
 	}
 	
 	public void crearSubserie(SubserieDto subserieDto) throws ArqGestionExcepcion{
-		List<SubSerie> lisSubserie = this.subserieDao.findAll();
+		List<SubSerie> lisSubserie = this.subserieDao.findByNombre(subserieDto.getNombre());
 		if(lisSubserie.isEmpty()) {
 			SubSerie subserie = new SubSerie();
 			subserie.setNombre(subserieDto.getNombre());

@@ -13,7 +13,7 @@ $(document).ready(function() {
 			     { "data": "procedimiento" },
 			     { "data": "archivoGestion" },
 			     { "data": "archivoCentral" },
-			     { "data": "serieDto" }
+			     { "data": "serieDto.nombre" }
 			     
 		       ]
 	    }
@@ -33,13 +33,13 @@ $(document).ready(function() {
 function crearSubserie(){
 	let nombreCrear=$("#nombreCrear").val();
 	let proceCrear=$("#procCrear").val();
-	let archgesCrear=$("#arcgesCrear").val();
-	let archcenCrear=$("#arccenCrear").val();
-	let seriCrear=$("#seriCrear").val();
+	let archgesCrear=parseInt($("#arcgesCrear").val());
+	let archcenCrear=parseInt($("#arccenCrear").val());
+	let seriCrear=parseInt($("#seriCrear").val());
 	let descCrear=$("#descCrear").val();
 	let procediCrear=$("#procediCrear").val();
-	let form={id:0, nombre:nombreCrear,  descripcion:descCrear, proceso:procCrear,procedimiento:procediCrear,
-	archivoGestion:arcgesCrear,archivoCentral:arccenCrear, serieDto:seriCrear  }
+	let form={id:0, nombre:nombreCrear,  descripcion:descCrear, proceso:proceCrear,procedimiento:procediCrear,
+	archivoGestion:archgesCrear,archivoCentral:archcenCrear, serieDto:{idSerie:seriCrear,nombre:"1"}}
 	let dataResp=ajaxRequest(`${URL_SUBSERIE}/create`, form, "modCrear");
 	if(!isEmptyObject(dataResp)){
 		$('#tablaSubserie').DataTable().ajax.reload();
