@@ -1,0 +1,190 @@
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:with="http://www.thymeleaf.org/extras/with"
+	layout:decorate="~{layout}"
+	th:with="funcionalidad='Administraci&oacuten', evento='Crear usuario'">
+<th:block layout:fragment="content">
+<form id="formCrearUsuario" action="" method="POST">
+     
+	<div class="card-body p-0">
+	<div id="messageBox1" class="alert alert-danger alert-dismissible" style="display: none">
+		<button type="button" class="close" onclick="closeAlert('alert-danger')"
+				aria-hidden="true">&times;</button>
+		<i class="icon fas fa-ban"></i> Error! 
+		<ul style="margin-top: 0px; margin-bottom: 0px;"></ul>
+	</div>
+		<div class="bs-stepper">
+			<div class="bs-stepper-header" role="tablist">
+				<!-- Definicion paso1 -->
+				<div class="step" data-target="#Inf-personal">
+					<button type="button" class="step-trigger" role="tab"
+						aria-controls="Inf-personal" id="Inf-personal-trigger">
+						<span class="bs-stepper-circle">1</span> <span
+							class="bs-stepper-label">Informaci&oacuten b&aacutesica</span>
+					</button>
+				</div>
+				<div class="line"></div>
+				
+				<!-- Definicion paso2 -->
+				<div class="step" data-target="#contacto">
+					<button type="button" class="step-trigger" role="tab"
+						aria-controls="contacto" id="contacto-trigger">
+						<span class="bs-stepper-circle">2</span> <span
+							class="bs-stepper-label">Contacto</span>
+					</button>
+				</div>
+				<div class="line"></div>
+				
+				<!-- Definicion paso3 -->
+				<div class="step" data-target="#inf-lab">
+					<button type="button" class="step-trigger" role="tab"
+						aria-controls="inf-lab" id="inf-lab-trigger">
+						<span class="bs-stepper-circle">3</span> <span
+							class="bs-stepper-label">Informaci&oacuten Laboral</span>
+					</button>
+				</div>
+			</div>
+			<div class="bs-stepper-content">
+				<!-- Paso 1 -->
+				<div id="Inf-personal" class="content" role="tabpanel"
+					aria-labelledby="Inf-personal-trigger">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Tipo Documento</label> 
+								<select name="tipoDocumento" class="form-control select2" style="width: 100%;">
+									<option value="" selected="selected">Tipo</option>
+									<option value="CC" >CC</option>
+									<option value="TI" >TI</option>
+									<option value="CE" >CE</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="nombre1">Primer Nombre</label> <input
+									type="text" class="form-control" id="nombre1" name="nombre1"
+									placeholder="Primer nombre">
+							</div>
+							<div class="form-group">
+								<label for="apellido1">Primer Apellido</label> <input
+									type="text" class="form-control" id="apellido1"
+									placeholder="Primer Apellido">
+							</div>
+
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="numDoc">Numero de documento</label> <input
+									type="text" class="form-control" id="numDoc"
+									placeholder="Numero de documento">
+							</div>
+							<div class="form-group">
+								<label for="nombre2">Segundo Nombre</label> <input
+									type="text" class="form-control" id="nombre2"
+									placeholder="Segundo Nombre">
+							</div>
+							<div class="form-group">
+								<label for="apellido2">Segundo Apellido</label> <input
+									type="text" class="form-control" id="apellido2"
+									placeholder="Segundo Apellido">
+							</div>
+						</div>
+					</div>
+
+
+					<button class="btn btn-primary" type="button" onclick="validacionFormulario()">Siguiente</button>
+				</div>
+				
+				<!-- Paso2 -->
+				<div id="contacto" class="content" role="tabpanel"
+					aria-labelledby="contacto-trigger">
+					<div class="row">
+						<div class="col-md-6">
+							
+							<div class="form-group">
+								<label for="telefono">Telefono</label> <input
+									type="text" class="form-control" id="telefono" name="telefono"
+									placeholder="Telefono">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="correo">Correo Electronico</label> <input
+									type="text" class="form-control" id="correo" name="correo"
+									placeholder="Correo Electronico">
+							</div>
+						</div>
+					</div>
+
+                    <button class="btn btn-primary" type="button" onclick="stepper.previous()">Anterior</button>
+					<button class="btn btn-primary" type="button" onclick="validacionFormulario()">Sigiente</button>
+				</div>
+				
+				<!-- Paso 3 -->
+				<div id="inf-lab" class="content" role="tabpanel"
+					aria-labelledby="inf-lab-trigger">
+					<div class="row">
+						<div class="col-md-6">
+							
+							<div class="form-group">
+								<label for="codidoUsario">C&oacute;digo usuario </label> <input
+									type="text" class="form-control" id="codidoUsario"
+									placeholder="C&oacute;digo usuario">
+							</div>
+							<div class="form-group">
+								<label>Jefe</label> <select class="form-control select2"
+									style="width: 100%;">
+									<option selected="selected">Seleccione</option>
+									<option>Jefe1</option>
+									<option>Jefe2</option>
+									<option>Jefe3</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-md-6">
+						    <div class="form-group">
+								<label>Tipo usuario</label> <select class="form-control select2"
+									style="width: 100%;">
+									<option selected="selected">Tipo</option>
+									<option value="EMPLEADO" >Empleado</option>
+									<option value="ANALISTA_RRHH">Analista RRHH</option>
+									<option value="GERENTE" >Gerente</option>
+									<option value="GERENTE_RRHH" >Gerente RRHH</option>
+									<option value="DIRECTOR">Director</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label>&Aacute;rea</label> <select class="form-control select2"
+									style="width: 100%;">
+									<option selected="selected">Seleccione un &aacute;rea</option>
+									<option value="INGENIERIA" >Ingenier&iacute;a</option>
+									<option value="INFRA">Infra estructura </option>
+									<option value="MANTENIMIENTO">Mantenimiento</option>
+									<option value="GERENCIA">Gerencia</option>
+									<option value="RRHH">Recursos humanos</option>
+									<option value="ADMIN">Administrativo</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<button class="btn btn-primary" type="button" onclick="stepper.previous()">Anterior</button>
+					<button type="submit"  class="btn btn-primary">Crear</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+</th:block>
+<th:block layout:fragment="body_end">
+	<link rel="stylesheet"
+		th:href="@{~/gestion-cmc/plugins/bs-stepper/css/bs-stepper.min.css}">
+	<script
+		th:src="@{~/gestion-cmc/plugins/bs-stepper/js/bs-stepper.min.js}"></script>
+		<script
+		th:src="@{~/gestion-cmc/resources/gestion-cmc/js/usuarios.js}"></script>
+	<script>
+	   document.addEventListener('DOMContentLoaded', function () {
+	       window.stepper = new Stepper(document.querySelector('.bs-stepper'))
+	    })
+	</script>
+</th:block>
+</html>
