@@ -25,14 +25,26 @@
       <div layout:replace="~{fragments/modal :: modalDf(titulo='Crear Subserie' , id='modCrear')}">
          <div  layout:fragment="modal-content">
               <div class="form-group">
+              		<div class="row">
+              		<div class="col-sm-6">
                   <label for="exampleInputEmail1">Nombre</label>
                   <input type="text" class="form-control" id="nombreCrear" placeholder="Ingrese nombre">
+                  </div>
+                  <div class="col-sm-6">
                   <label for="exampleInputEmail1">Proceso</label>
                   <input type="text" class="form-control" id="procCrear" placeholder="Ingrese proceso">
+                  </div>
+                  </div>
+                  <div class="row">
+              		<div class="col-sm-6">
                   <label for="exampleInputEmail1">Archivo gesti&oacute;n</label>
                   <input type="number" class="form-control" id="arcgesCrear" placeholder="Ingrese archivo gesti&oacute;n">
+                  </div>
+                  <div class="col-sm-6">
                   <label for="exampleInputEmail1">Archivo central</label>
                   <input type="number" class="form-control" id="arccenCrear" placeholder="Ingrese archivo central">
+                   </div>
+                   </div>
 			      <label for="exampleInputEmail1">Serie</label>
 			      <div class="form-group">
 			      <select class="form-control" id="seriCrear">
@@ -44,8 +56,6 @@
                   <textarea class="form-control" id="descCrear" rows="3" placeholder="Escribir ..."></textarea>
                   <label for="exampleInputEmail1">Procedimiento</label>
                   <textarea class="form-control" id="procediCrear" rows="3" placeholder="Escribir ..."></textarea>
-                  
-                  
               </div>
          </div>
          <div  layout:fragment="modal-footer">
@@ -54,21 +64,33 @@
          </div>
       </div> 
        <!-- Modificacion de Serie -->
-      <div layout:replace="~{fragments/modal :: modalDf(titulo='Modificar Serie' , id='modModificar')}">
+      <div layout:replace="~{fragments/modal :: modalDf(titulo='Modificar Subserie' , id='modModificar')}">
          <div  layout:fragment="modal-content">
               <div class="form-group">
                   <label for="exampleInputEmail1">Id Sub serie</label>
                   <input type="text" class="form-control" id="idMod" disabled>
               </div>
               <div class="form-group">
+              		<div class="row">
+              		<div class="col-sm-6">
                     <label for="exampleInputEmail1">Nombre</label>
                   <input type="text" class="form-control" id="nombreMod" placeholder="Ingrese nombre">
+                  </div>
+                  <div class="col-sm-6">
                   <label for="exampleInputEmail1">Proceso</label>
                   <input type="text" class="form-control" id="procMod" placeholder="Ingrese proceso">
+                  </div>
+                  </div>
+                  <div class="row">
+              	  <div class="col-sm-6">
                   <label for="exampleInputEmail1">Archivo gesti&oacute;n</label>
                   <input type="number" class="form-control" id="arcgesMod" placeholder="Ingrese archivo gesti&oacute;n">
+                  </div>
+                  <div class="col-sm-6">
                   <label for="exampleInputEmail1">Archivo central</label>
                   <input type="number" class="form-control" id="arccenMod" placeholder="Ingrese archivo central">
+                  </div>
+                  </div>
 			      <label for="exampleInputEmail1">Serie</label>
 			      <div class="form-group">
 			      <select class="form-control" id="seriMod">

@@ -74,15 +74,15 @@ function obtenerSubserie(id){
 /**Modificar serie */
 function modificarSubserie(){
 	let idSubserie=$('#idMod').val();
-	let nombreCrear=$("#nombreCrear").val();
-	let proceCrear=$("#procCrear").val();
-	let archgesCrear=$("#arcgesCrear").val();
-	let archcenCrear=$("#arccenCrear").val();
-	let seriCrear=$("#seriCrear").val();
-	let descCrear=$("#descCrear").val();
-	let procediCrear=$("#procediCrear").val();
-	let form={id:idSubserie, nombre:nombreCrear,  descripcion:descCrear, proceso:proceCrear,procedimiento:procediCrear,
-	archivoGestion:archgesCrear,archivoCentral:archcenCrear, serieDto:{idSerie:seriCrear,nombre:"1"}}
+	let nombreMod=$("#nombreMod").val();
+	let proceMod=$("#procMod").val();
+	let archgesMod=$("#arcgesMod").val();
+	let archcenMod=$("#arccenMod").val();
+	let seriMod=$("#seriMod").val();
+	let descMod=$("#descMod").val();
+	let procediMod=$("#procediMod").val();
+	let form={id:idSubserie, nombre:nombreMod,  descripcion:descMod, proceso:proceMod,procedimiento:procediMod,
+	archivoGestion:archgesMod,archivoCentral:archcenMod, serieDto:{idSerie:seriMod,nombre:"1"}}
 	let dataResp=ajaxRequest(`${URL_SUBSERIE}/${idSubserie}/update`, form, "modModificar");
 	if(!isEmptyObject(dataResp)){
 		$('#tablaSubserie').DataTable().ajax.reload();

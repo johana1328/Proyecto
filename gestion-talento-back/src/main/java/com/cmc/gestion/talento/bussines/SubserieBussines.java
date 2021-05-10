@@ -76,7 +76,7 @@ public class SubserieBussines {
 	}
 	
 	public SubserieDto actualizarSubserie(SubserieDto subserieDto) throws ArqGestionExcepcion{
-		List<SubSerie> listSubserie= this.subserieDao.findAll();
+		List<SubSerie> listSubserie= this.subserieDao.findByNombre(subserieDto.getNombre());
 		if(listSubserie.isEmpty()){
 			Optional<SubSerie> subserieOptional=this.subserieDao.findById(subserieDto.getId());
 			if(subserieOptional.isPresent()) {
