@@ -61,7 +61,7 @@ public class TipoPerfilBussines {
 				parametria.setValor(tipoPerfil.getPerfil());
 				this.parametriaDetalle.save(parametria);
 			}else {
-				throw new ArqGestionExcepcion("Tipo perfil ya se encuantra creado", ExcepcionType.ERROR_VALIDATION);
+				throw new ArqGestionExcepcion("Tipo perfil ya se encuentra creado", ExcepcionType.ERROR_VALIDATION);
 			}
 		}
 		
@@ -79,7 +79,7 @@ public class TipoPerfilBussines {
 					return null;
 				}
 			}else {
-				throw new ArqGestionExcepcion("el perfil ya se encuantra creada", ExcepcionType.ERROR_VALIDATION);
+				throw new ArqGestionExcepcion("el perfil ya se encuentra creada", ExcepcionType.ERROR_VALIDATION);
 			}
 		}
 		
@@ -92,7 +92,7 @@ public class TipoPerfilBussines {
 					this.parametriaDetalle.delete(parametria);
 				}
 			}catch (IllegalArgumentException e) {
-				throw new ArqGestionExcepcion("Tipo perfil se encuantra asociado a una peticion", ExcepcionType.ERROR_VALIDATION);
+				throw new ArqGestionExcepcion("Tipo perfil se encuentra asociado a una peticion", ExcepcionType.ERROR_VALIDATION);
 			}catch (Exception e) {
 				throw e;
 			}

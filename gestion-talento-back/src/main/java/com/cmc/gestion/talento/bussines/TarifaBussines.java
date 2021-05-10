@@ -64,7 +64,7 @@ public class TarifaBussines {
 			parametria.setValor(tarifa.getValor());
 			this.parametriaDetalle.save(parametria);
 		}else {
-			throw new ArqGestionExcepcion("La tarifa ya se encuantra creada", ExcepcionType.ERROR_VALIDATION);
+			throw new ArqGestionExcepcion("La tarifa ya se encuentra creada", ExcepcionType.ERROR_VALIDATION);
 		}
 	}
 	
@@ -81,7 +81,7 @@ public class TarifaBussines {
 				return null;
 			}
 		}else {
-			throw new ArqGestionExcepcion("el valor tarifa ya se encuantra creada", ExcepcionType.ERROR_VALIDATION);
+			throw new ArqGestionExcepcion("el valor tarifa ya se encuentra creada", ExcepcionType.ERROR_VALIDATION);
 		}
 	}
 	
@@ -93,7 +93,7 @@ public class TarifaBussines {
 				this.parametriaDetalle.delete(parametria);
 			}
 		}catch (IllegalArgumentException e) {
-			throw new ArqGestionExcepcion("La tarifa se encuantra asociada a una peticion", ExcepcionType.ERROR_VALIDATION);
+			throw new ArqGestionExcepcion("La tarifa se encuentra asociada a una peticion", ExcepcionType.ERROR_VALIDATION);
 		}catch (Exception e) {
 			throw e;
 		}
