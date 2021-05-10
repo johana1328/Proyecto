@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 import com.cmc.gestion.talento.jpa.entity.Usuario;
+import com.cmc.gestion.talento.jpa.type.TipoPerfil;
 
 public interface UsuarioDao extends PagingAndSortingRepository<Usuario, String> {
 	
@@ -13,6 +14,14 @@ public interface UsuarioDao extends PagingAndSortingRepository<Usuario, String> 
 			+ " inner join perfil_usuario pu on pu.id_usuario = u.id_usuario"
 			+ " and pu.perfil != 'CANDIDATO'", nativeQuery = true)
 	public List<Usuario> getUsuariosEmpleados();
+	
+	/*@Query(value="SELECT * from usuario u "
+			+ " inner join perfil_usuario pu on pu.id_usuario = u.id_usuario"
+			+ " and pu.perfil in('GERENTE','GERENTE_RRHH','DIRECTOR')", nativeQuery = true)*/
+	//@Query(value="SELECT u from Usuario u where u.perfilUsuario.perfil in ('GERENTE')")
+	//public List<Usuario> getGefes();
+	
+	public List<Usuario> findByPerfilUsuarioIn(List<TipoPerfil> iipoPerfil);
 	
 	
    

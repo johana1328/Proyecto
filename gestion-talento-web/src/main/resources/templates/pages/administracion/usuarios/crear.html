@@ -54,9 +54,8 @@
 								<label>Tipo Documento</label> 
 								<select name="tipoDocumento" class="form-control select2" style="width: 100%;">
 									<option value="" selected="selected">Tipo</option>
-									<option value="CC" >CC</option>
-									<option value="TI" >TI</option>
-									<option value="CE" >CE</option>
+									 <option th:each="tipoDoc : ${T(com.cmc.gestion.talento.jpa.type.TipoDocumento).values()}" 
+                                             th:value="${tipoDoc}" th:text="${tipoDoc.value}"></option>
 								</select>
 							</div>
 							<div class="form-group">
@@ -66,7 +65,7 @@
 							</div>
 							<div class="form-group">
 								<label for="apellido1">Primer Apellido</label> <input
-									type="text" class="form-control" id="apellido1"
+									type="text" class="form-control" id="apellido1" name="apellido1"
 									placeholder="Primer Apellido">
 							</div>
 
@@ -74,17 +73,17 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label for="numDoc">Numero de documento</label> <input
-									type="text" class="form-control" id="numDoc"
-									placeholder="Numero de documento">
+									type="text" class="form-control" id="numDoc" name="numDoc"
+									placeholder="Numero de documento"> 
 							</div>
 							<div class="form-group">
 								<label for="nombre2">Segundo Nombre</label> <input
-									type="text" class="form-control" id="nombre2"
+									type="text" class="form-control" id="nombre2" name="nombre2"
 									placeholder="Segundo Nombre">
 							</div>
 							<div class="form-group">
 								<label for="apellido2">Segundo Apellido</label> <input
-									type="text" class="form-control" id="apellido2"
+									type="text" class="form-control" id="apellido2" name="apellido2"
 									placeholder="Segundo Apellido">
 							</div>
 						</div>
@@ -127,16 +126,15 @@
 							
 							<div class="form-group">
 								<label for="codidoUsario">C&oacute;digo usuario </label> <input
-									type="text" class="form-control" id="codidoUsario"
+									type="text" class="form-control" id="codidoUsario" name="codidoUsario"
 									placeholder="C&oacute;digo usuario">
 							</div>
 							<div class="form-group">
 								<label>Jefe</label> <select class="form-control select2"
 									style="width: 100%;">
 									<option selected="selected">Seleccione</option>
-									<option>Jefe1</option>
-									<option>Jefe2</option>
-									<option>Jefe3</option>
+									<option th:each="jefe : ${listaJefes}" 
+                                             th:value="${jefe.idUsuario}" th:text="${jefe.primerNombre} + ' '+${jefe.primerApellido}"></option>
 								</select>
 							</div>
 						</div>
@@ -144,24 +142,17 @@
 						    <div class="form-group">
 								<label>Tipo usuario</label> <select class="form-control select2"
 									style="width: 100%;">
-									<option selected="selected">Tipo</option>
-									<option value="EMPLEADO" >Empleado</option>
-									<option value="ANALISTA_RRHH">Analista RRHH</option>
-									<option value="GERENTE" >Gerente</option>
-									<option value="GERENTE_RRHH" >Gerente RRHH</option>
-									<option value="DIRECTOR">Director</option>
+									<option selected="">Tipo</option>
+									<option th:each="tipoDoc : ${T(com.cmc.gestion.talento.jpa.type.TipoPerfil).values()}" 
+                                             th:value="${tipoDoc}" th:text="${tipoDoc.value}"></option>
 								</select>
 							</div>
 							<div class="form-group">
 								<label>&Aacute;rea</label> <select class="form-control select2"
 									style="width: 100%;">
-									<option selected="selected">Seleccione un &aacute;rea</option>
-									<option value="INGENIERIA" >Ingenier&iacute;a</option>
-									<option value="INFRA">Infra estructura </option>
-									<option value="MANTENIMIENTO">Mantenimiento</option>
-									<option value="GERENCIA">Gerencia</option>
-									<option value="RRHH">Recursos humanos</option>
-									<option value="ADMIN">Administrativo</option>
+									<option selected="">Seleccione un &aacute;rea</option>
+									<option th:each="tipoDoc : ${T(com.cmc.gestion.talento.jpa.type.TipoArea).values()}" 
+                                             th:value="${tipoDoc}" th:text="${tipoDoc.value}"></option>
 								</select>
 							</div>
 						</div>

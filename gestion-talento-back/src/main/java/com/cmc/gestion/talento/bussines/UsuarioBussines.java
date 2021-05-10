@@ -1,5 +1,6 @@
 package com.cmc.gestion.talento.bussines;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -11,6 +12,7 @@ import com.cmc.gestion.talento.bussines.facade.UsuarioFacade;
 import com.cmc.gestion.talento.jpa.dao.UsuarioDao;
 import com.cmc.gestion.talento.jpa.entity.Usuario;
 import com.cmc.gestion.talento.jpa.type.TipoEstadoUsuario;
+import com.cmc.gestion.talento.jpa.type.TipoPerfil;
 
 @Service
 public class UsuarioBussines {
@@ -38,6 +40,15 @@ public class UsuarioBussines {
 
 	public List<UsuarioDto> getAllUser() {
 		Iterable<Usuario> listUserEntity = usuariodao.findAll();
+		UsuarioFacade userFacade = new UsuarioFacade();
+		List<UsuarioDto> resp = userFacade.getListObjec(listUserEntity);
+		return resp;
+	}
+	
+	public List<UsuarioDto> getAllJefes(){
+		List<TipoPerfil> listaPerfiles= new ArrayList<TipoPerfil>();
+		listaPerfiles.add(TipoPerfil.GERENTE);
+		List<Usuario> listUserEntity = usuariodao.findByPerfilUsuarioIn(listaPerfiles);
 		UsuarioFacade userFacade = new UsuarioFacade();
 		List<UsuarioDto> resp = userFacade.getListObjec(listUserEntity);
 		return resp;

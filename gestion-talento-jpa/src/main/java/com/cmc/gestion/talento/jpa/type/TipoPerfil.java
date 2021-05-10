@@ -1,5 +1,15 @@
 package com.cmc.gestion.talento.jpa.type;
 
 public enum TipoPerfil {
-	EMPLEADO, GERENTE, GERENTE_RRHH, ANALISTA_RRHH, DIRECTOR, CANDIDATO 
+	EMPLEADO("Empleado"),
+	GERENTE("Gerente"),
+	GERENTE_RRHH("Gerente RRHH"),
+	ANALISTA_RRHH("Analista RRHH"),
+	DIRECTOR("Director"),
+	CANDIDATO("Candidato");
+	
+	private String value;
+	
+	 private TipoPerfil (String value) { this.value = value; }
+	 public String getValue() { return value; }
 }
