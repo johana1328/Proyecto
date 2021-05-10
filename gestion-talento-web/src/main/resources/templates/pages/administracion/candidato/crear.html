@@ -1,0 +1,317 @@
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:with="http://www.thymeleaf.org/extras/with"
+	layout:decorate="~{layout}"
+	th:with="funcionalidad='Administraci&oacuten', evento='Crear candidato'">
+<th:block layout:fragment="content">
+<form id="formCrearCandidato" action="" method="POST">
+	<div class="row">
+    <div class="col-md-12">
+	<div class="card-body p-0">
+	<div id="messageBox1" class="alert alert-danger alert-dismissible" style="display: none">
+		<button type="button" class="close" onclick="closeAlert('alert-danger')"
+				aria-hidden="true">&times;</button>
+		<i class="icon fas fa-ban"></i> Error! 
+		<ul style="margin-top: 0px; margin-bottom: 0px;"></ul>
+	</div>
+		<div class="bs-stepper">
+			<div class="bs-stepper-header" role="tablist">
+				<!-- your steps here -->
+				<div class="step" data-target="#basica">
+					<button type="button" class="step-trigger" role="tab"
+						aria-controls="basica" id="basica-trigger">
+						<span class="bs-stepper-circle">1</span> <span
+							class="bs-stepper-label">Informacion Basica</span>
+					</button>
+				</div>
+				<div class="line"></div>
+				<div class="step" data-target="#pro">
+					<button type="button" class="step-trigger" role="tab"
+						aria-controls="pro" id="pro-trigger">
+						<span class="bs-stepper-circle">2</span> <span
+							class="bs-stepper-label">Informacion Profesional</span>
+					</button>
+				</div>
+				<div class="line"></div>
+				<div class="step" data-target="#laboral">
+					<button type="button" class="step-trigger" role="tab"
+						aria-controls="laboral" id="laboral-trigger">
+						<span class="bs-stepper-circle">3</span> <span
+							class="bs-stepper-label">Informacion Laboral</span>
+					</button>
+				</div>
+				<div class="line"></div>
+				<div class="step" data-target="#propuesta">
+					<button type="button" class="step-trigger" role="tab"
+						aria-controls="propuesta" id="propuesta-trigger">
+						<span class="bs-stepper-circle">4</span> <span
+							class="bs-stepper-label">Informacion de Propuesta</span>
+					</button>
+				</div>
+			</div>
+			<div class="bs-stepper-content">
+				<!-- your steps content here -->
+				
+              </div>
+              <!-- /.card-header -->
+              <div id="basica" class="content" role="tabpanel"
+					aria-labelledby="basica-trigger">
+              <div class="card-body">
+                <form>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>Primer Nombre</label>
+                        <input name="nombre1" type="text" class="form-control" placeholder="Escriba su primer nombre">
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label>Segundo Nombre</label>
+                        <input name="nombre2" id="nombre2" type="text" class="form-control" placeholder="Escriba su segundo nombre" >
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>Primer Apellido</label>
+                        <input name="apellido1" type="text" class="form-control" placeholder="Escriba su primer apellido">
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label>Segundo Apellido</label>
+                        <input name="apellido2" type="text" class="form-control" placeholder="Escriba su segundo apellido" >
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <div class="form-group">
+                    <div class="col-sm-6">
+                      <!-- select -->
+                      <div class="form-group">
+                        <label>Tipo documento</label>
+                        <select name="tipoDocumento" class="form-control">
+                        <option value="" selected="selected">Tipo</option>
+                          <option VALUE="CC">CC</option>
+                          <option VALUE="TI">TI</option>
+                          <option VALUE="CE">CE</option>
+                          
+                          
+                        </select>
+                      </div>
+                    </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label>Documento</label>
+                        <input name="documento" type="text" class="form-control" placeholder="Escriba su segundo nombre" >
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>Telefono</label>
+                        <input name="telefono" type="text" class="form-control" placeholder="Escriba su numero de telefono">
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label>Correo Electronico</label>
+                        <input name="correo" id="correo" type="text" class="form-control" placeholder="Escriba su correo electronico" >
+                      </div>
+                    </div>
+                  </div>
+                  </form>
+                  </div>
+					<button class="btn btn-primary" type="button" onclick="validacionFormulario()">Siguiente</button>
+				</div>
+				<div id="pro" class="content" role="tabpanel"
+					aria-labelledby="pro-trigger">
+					 
+                 
+                    
+                    <div class="row">
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <div class="form-group">
+						<label for="titulo">Titulo Universitario</label> 
+						<input
+							type="text"  name="titulo" class="form-control" id="exampleInputEmail1"
+							placeholder="Ingrese el nombre de sus titulos universitarios">
+					</div> </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <div class="row">
+                    <div class="col-sm-6">
+                      <!-- textarea -->
+                      <div class="form-group">
+                        <label>Objetivos</label>
+                        <textarea  class="form-control" name="objetivo" placeholder="Planes a corto y largo plazo"></textarea>
+                      </div>
+                    </div>
+                    </div></div>
+                    </div>
+                  </div>
+                    
+					<button class="btn btn-primary" type="button" onclick="validacionFormulario()">Siguiente</button>
+                    <button class="btn btn-primary" type="button" onclick="stepper.previous()">Anterior</button>
+                    
+						
+					
+					
+				</div>
+				<div id="laboral" class="content" role="tabpanel"
+					aria-labelledby="laboral-trigger">
+					
+					
+                      
+                     
+                       <div class="row">
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <div class="form-group">
+                         <div class="form-group">
+                        <label>Trabaja actualmente</label>
+                        <select name="trabajo" class="form-control">
+                          <option value="" selected="selected">...</option>
+                          <option value="Si">Si</option>
+                          <option value="No">No</option>
+                          
+                        </select>
+                      </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                       <div class="form-group">
+                        <label>Que tipo de contrato posee</label>
+                        <select name="contrato" class="form-control">
+                          <option value="" selected="selected">...</option>
+                          <option value="indefinido">Indefinido</option>
+                          <option value="fijo">Fijo</option>
+                          <option value="prestacion de servicios">Prestacion de servicios</option>
+                          <option value="otra labor">Otra labor</option>
+                          <option value="otro">Otro</option>
+                          
+					 </select>
+                      </div></div>
+                    </div>
+                  </div>
+                      
+                      <div class="row">
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <div class="form-group">
+                       <div class="form-group">
+                        <label>Origen de la hoja de vida</label>
+                        <select name="origen" class="form-control">
+                          <option value="" selected="selected">...</option>
+                          <option value="el empleo">El empleo</option>
+                          <option value="linkedin">Linkedin</option>
+                          <option value="ticjob">Ticjob</option>
+                          <option value="correo electronico">Correo electronico</option>
+                          <option value="otro">Otro</option>
+                          
+					 </select>
+                      </div></div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label>Sueldo actual</label>
+                        <input type="text" name="sueldoActual"class="form-control" placeholder="Escriba su sueldo actual" >
+                      </div>
+                    </div>
+                  </div>
+                    <button class="btn btn-primary" type="button"  onclick="validacionFormulario()">Siguiente</button>
+					<button class="btn btn-primary" type="button"  onclick="stepper.previous()">Anterior</button>
+                      
+					
+				</div>
+				<div id="propuesta" class="content" role="tabpanel"
+					aria-labelledby="Propuesta-trigger">
+					<div class="row">
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>Aspiracion salarial</label>
+                        <input type="text" name="aspiracion" class="form-control" placeholder="Escriba su aspiracion salarial">
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <div class="form-group">
+                        <label>Disponibilidad</label>
+                        <select name="disponibilidad" class="form-control">
+                          <option value="" selected="selected">...</option>
+                          <option value="1 dia">1 Dia</option>
+                          <option value="3 dias">3 Dias</option>
+                          <option value="5 dias">5 Dias</option>
+                          <option value="7 dias">7 Dias</option>
+                          <option value="mas de 15 dias">Mas de 15 dias</option>
+                          
+					 </select>
+                      </div></div>
+                    </div>
+                  </div>
+					<div class="row">
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <div class="form-group">
+                       <div class="form-group">
+                        <label>Horario flexible</label>
+                        <select name="horario" class="form-control">
+                          <option value="" selected="selected">...</option>
+                          <option value="si">Si</option>
+                          <option value="no">No</option>
+                         
+                          
+					 </select>
+                      </div></div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                      <label>Observaciones generales</label>
+                        <textarea  name="observacion" class="form-control" rows="3" placeholder="Escriba las observaciones que crea que son correspondientes"></textarea>
+                      
+                        </div>
+                    </div>
+                  </div>
+					
+					
+					<button class="btn btn-primary" type="button" onclick="stepper.previous()">Anterior</button>
+					<button type="submit" class="btn btn-primary">Crear</button>
+				</div>
+			</div>
+		</div>
+		</div>
+		</div>
+</form>
+</th:block>
+<th:block layout:fragment="body_end">
+	<link rel="stylesheet"
+		th:href="@{~/gestion-cmc/plugins/bs-stepper/css/bs-stepper.min.css}">
+	<script
+		th:src="@{~/gestion-cmc/plugins/bs-stepper/js/bs-stepper.min.js}"></script>
+		<script
+		th:src="@{~/gestion-cmc/resources/gestion-cmc/js/candidato.js}"></script>
+	
+	<script>
+	
+	   document.addEventListener('DOMContentLoaded', function () {
+	       window.stepper = new Stepper(document.querySelector('.bs-stepper'))
+	    })
+	</script>
+</th:block>
+</html>
+
