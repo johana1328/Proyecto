@@ -1,0 +1,295 @@
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:with="http://www.thymeleaf.org/extras/with"
+	layout:decorate="~{layout}"
+	th:with="funcionalidad='Administraci&oacuten', evento='Crear Solicitud Personal'">
+	
+	<th:block layout:fragment="content">
+	<form id="formCrearPeticion" action="" method="POST">
+	
+	<div class="card-body p-0">
+	<div id="messageBox1" class="alert alert-danger alert-dismissible" style="display: none">
+		<button type="button" class="close" onclick="closeAlert('alert-danger')"
+				aria-hidden="true">&times;</button>
+		<i class="icon fas fa-ban"></i> Error! 
+		<ul style="margin-top: 0px; margin-bottom: 0px;"></ul>
+	</div>
+		<div class="bs-stepper">
+			<div class="bs-stepper-header" role="tablist">
+				<!-- Definicion paso1 -->
+				<div class="step" data-target="#Inf-personal">
+					<button type="button" class="step-trigger" role="tab"
+						aria-controls="Inf-personal" id="Inf-personal-trigger">
+						<span class="bs-stepper-circle">1</span> <span
+							class="bs-stepper-label">Informaci&oacuten b&aacutesica</span>
+					</button>
+				</div>
+				<div class="line"></div>
+				
+				<!-- Definicion paso2 -->
+				<div class="step" data-target="#perfil">
+					<button type="button" class="step-trigger" role="tab"
+						aria-controls="perfil" id="perfil-trigger">
+						<span class="bs-stepper-circle">2</span> <span
+							class="bs-stepper-label">Perfil</span>
+					</button>
+				</div>
+				<div class="line"></div>
+				
+				<!-- Definicion paso3 -->
+				<div class="step" data-target="#inf-cont">
+					<button type="button" class="step-trigger" role="tab"
+						aria-controls="inf-cont" id="inf-cont-trigger">
+						<span class="bs-stepper-circle">3</span> <span
+							class="bs-stepper-label">Informaci&oacuten Contratacion</span>
+					</button>
+				</div>
+			</div>
+			<div class="bs-stepper-content">
+				<!-- Paso 1 -->
+				<div id="Inf-personal" class="content" role="tabpanel"
+					aria-labelledby="Inf-personal-trigger">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Proyecto o area solicitante</label> 
+								<select name="proyecto"
+									class="form-control select2" style="width: 100%;">
+									<option value="" selected="selected">Seleccione...</option>
+									<option value="Fabrica" >Fabrica</option>
+									<option value="ServiciosProfesionales" >Servicios Profesionales</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="cliente">Cliente</label> <input type="text"
+								class="form-control" id="cliente" placeholder="Cliente" name="cliente">
+							</div>
+							<div class="form-group">
+								<label for="resCliente">Responsable en cliente</label> <input
+									type="text" class="form-control" id="responsableCliente" name="responsableCliente"
+									placeholder="Responsable en Cliente">
+							</div>
+							<div class="form-group">
+								<label>Tarifa</label> <select name="tarifa"
+									class="form-control select2" style="width: 100%;">
+									<option value="" selected="selected">Seleccione</option>
+									<option value="$56.150" >$56.150</option>
+									<option value="$40.474" >$40.474</option>
+									<option value="$37.749" >$37.749</option>
+									<option value="$36.968" >$36.968</option>
+									<option value="$35.981" >$35.981</option>
+									<option value="$35.292" >$35.292</option>
+									<option value="$35.239" >$35.239</option>
+									<option value="$34.049" >$34.049</option>
+									<option value="$33.000" >$33.000</option>
+									<option value="N/A" >N/A</option>
+								</select>
+							</div>
+
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="areaTrabajo">Area de trabajo</label> <input
+									type="text" class="form-control" id="areaTrabajo" name="areaTrabajo"
+									placeholder="Area de Trabajo">
+							</div>
+							<div class="form-group">
+								<label for="cantVacante">Cantidad de personal solicitado para la vacante</label> <input type="text"
+									class="form-control" id="cantVacante" name="cantVacante" placeholder="Cantidad Vacante">
+							</div>
+							<div class="form-group">
+								<label for="horasApagar">Numero de horas a pagar a CMC indicadas por el cliente</label> <input
+									type="text" class="form-control" id="horasApagar" name="horasApagar"
+									placeholder="Horas a Pagar">
+							</div>
+						</div>
+					</div>
+
+
+					<button class="btn btn-primary" type="button" onclick="validacionFormularioP()">Siguiente</button>
+				</div>
+				
+				<!-- Paso2 -->
+				<div id="perfil" class="content" role="tabpanel"
+					aria-labelledby="perfil-trigger">
+					<div class="row">
+						<div class="col-md-6">
+							
+							<div class="form-group">
+								<label>Perfil Solicitado</label> <select name="perfilSolicitado"
+									class="form-control select2" style="width: 100%;">
+									<option value="" selected="selected">Seleccione...</option>
+									<option value="Programador">Programador</option>
+									<option value="AnalistaProgramadorSemiSenior">Analista Programador Semi Senior</option>
+									<option value="AnalistaFuncional">Analista Funcional</option>
+									<option value="AnalistaTecnicodeCalidad">Analista Tecnico de Calidad</option>
+									<option value="Lider">Lider</option>
+									<option value="Gerente">Gerente</option>
+									<option value="Director">Director</option>
+									<option value="AnalistaProgramador-Scrum">Analista Programador - Scrum</option>
+									<option value="AnalistaProgramadorSenior">Analista Programador Senior</option>
+									<option value="ProgramadorJunior">Programador Junior</option>
+									<option value="ProgramadorASO">Programador ASO</option>
+									<option value="Arquitecto">Arquitecto</option>
+									<option value="Scrum">Scrum</option>
+									<option value="Soporte">Soporte</option>
+									<option value="AdministradordePlataformas">Administrador de Plataformas</option>
+									<option value="SeguridaddelaInformacion">Seguridad de la Informacion</option>
+									<option value="Aprendiz">Aprendiz</option>
+									
+								</select>
+							</div>
+							<div class="form-group">
+								<label>Especialidad</label> <select name="especialidad"
+									class="form-control select2" style="width: 100%;">
+									<option value="" selected="selected">Seleccione...</option>
+									<option value="Front-end">Front-end</option>
+									<option value="Back-end">Back-end</option>
+									<option value="FullStack">Full Stack</option>
+									<option value="N/A">N/A</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="expMaAnos">Experiencia maxima requerida en anios</label> <input
+									type="text" class="form-control" id="expMaAnos" name="expMaAnos"
+									placeholder="Experiencia">
+							</div>
+							<div class="form-group">
+								<label>El perfil solicitado funcionalmente va a realizar</label> 
+								<select name="pSolicitado"
+									class="form-control select2" style="width: 100%;">
+									<option value="" selected="selected">Seleccione...</option>
+									<option value="Analisis">Analisis</option>
+									<option value="Desarrollo=Programacion">Desarrollo = Programacion</option>
+									<option value="Gestion">Gestion</option>
+									<option value="DesarrolloyGestion">Desarrollo y Gestion</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Ambiente</label> <select name="ambiente"
+									class="form-control select2" style="width: 100%;">
+									<option value="" selected="selected">Seleccione...</option>
+									<option value="CELLS">CELLS</option>
+									<option value="APX">APX</option>
+									<option value="ASO">ASO</option>
+									<option value="HOST">HOST</option>
+									<option value="NETCASH-PIBBE">NETCASH-PIBBE</option>
+									<option value="LANET-ORQUIDEA">LA NET-ORQUIDEA</option>
+									<option value="ORGANIZACIONAL-FUNCIONALIDAD">ORGANIZACIONAL - FUNCIONALIDAD</option>
+									<option value="SANTANDER">SANTANDER</option>
+									<option value="ENEL">ENEL</option>
+									<option value="RRHH">RRHH</option>
+									<option value="INFRAESTRUCTURA">INFRAESTRUCTURA</option>
+									<option value="GERENCIA">GERENCIA</option>
+									<option value="COMERCIAL">COMERCIAL</option>
+									<option value="CALIDADYTEST">CALIDAD Y TEST</option>
+									<option value="APPMOBIL">APP MOBIL</option>
+									<option value="ADMINISTRACION">ADMINISTRACION</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label>Escolaridad minima requeridad</label> <select name="escolaridad"
+									class="form-control select2" style="width: 100%;">
+									<option value="" selected="selected">Seleccione...</option>
+									<option value="Bachiller">Bachiller</option>
+									<option value="Tecnico">Tecnico</option>
+									<option value="Tecnologico">Tecnologico</option>
+									<option value="ProfesionalUniversitario">Profesional Universitario</option>
+									<option value="Especializacion">Especializacion</option>
+									<option value="Maestria">Maestria</option>
+									<option value="Otros">Otros</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="expMiAnos">Experiencia minima requerida en anios</label> <input
+									type="text" class="form-control" id="expMiAnos" name="expMiAnos"
+									placeholder="Experiencia">
+							</div>
+							<div class="form-group">
+								<label for="descripcion">Descripcion detallada del perfil solicitado</label> 
+									<textarea class="form-control" rows="3" name="descripcion" placeholder="Descripcion ..."></textarea>
+							</div>
+							
+						</div>
+					</div>
+
+                    <button class="btn btn-primary mb-3px" type="button" onclick="stepper.previous()">Anterior</button>
+					<button class="btn btn-primary"  type="button" onclick="validacionFormularioP()">Siguiente</button>
+				</div>
+				
+				<!-- Paso 3 -->
+				<div id="inf-cont" class="content" role="tabpanel"
+					aria-labelledby="inf-cont-trigger">
+					<div class="row">
+						<div class="col-md-6">
+							
+							<div class="form-group">
+								<label>Tipo Contracto</label> <select name="tipoContracto"
+								class="form-control select2"
+									style="width: 100%;">
+									<option value="" selected="selected">Tipo</option>
+									<option value="Indefinido">Indefinido</option>
+									<option value="ObraLabor">Obra Labor</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="fecha">Fecha experada de inicio de labores</label> <input
+									type="date" class="form-control" id="fecha" name="fecha"
+									placeholder="Fecha">
+							</div>
+							<div class="form-group">
+								<label for="observaciones">Observaciones generales para tener encuenta</label> 
+									<textarea class="form-control" name="observaciones" rows="3" placeholder="Observaciones ..."></textarea>
+							</div>
+							
+						</div>
+						<div class="col-md-6">
+						    <div class="form-group">
+								<label for="salario">Salario Asignado</label> <input
+									type="text" class="form-control" id="salario" name="salario"
+									placeholder="Salario">
+							</div>
+							<div class="form-group">
+								<label>Requiere equipo de computo</label> <select name="equipoCom" class="form-control select2"
+									style="width: 100%;">
+									<option value="" selected="selected">Tipo</option>
+									<option value="Escritorio">Escritorio</option>
+									<option value="Portatil">Portatil</option>
+									<option value="Ninguno">Ninguno</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="caracteristica">Caracteristica del software Y hadware del equipo</label> 
+									<textarea class="form-control" rows="3" name="caracteristica" placeholder="Caracteristica ..."></textarea>
+							</div>
+							
+						</div>
+					</div>
+					<button class="btn btn-primary" type="button" onclick="stepper.previous()">Anterior</button>
+					<button type="submit" class="btn btn-primary">Crear</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+</th:block>
+<th:block layout:fragment="body_end">
+	
+	
+	
+	
+	<link rel="stylesheet"
+		th:href="@{~/gestion-cmc/plugins/bs-stepper/css/bs-stepper.min.css}">
+	<script
+		th:src="@{~/gestion-cmc/plugins/bs-stepper/js/bs-stepper.min.js}"></script>
+		<script
+		th:src="@{~/gestion-cmc/resources/gestion-cmc/js/peticiones.js}"></script>
+	<script>
+	   document.addEventListener('DOMContentLoaded', function () {
+	       window.stepper = new Stepper(document.querySelector('.bs-stepper'))
+	    })
+	</script>
+</th:block>
+</html>
