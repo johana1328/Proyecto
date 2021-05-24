@@ -76,7 +76,7 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
                 </a>
               </li>
                <li class="nav-item" sec:authorize="hasAnyAuthority('ANALISTA_RRHH','GERENTE_RRHH','GERENTE')" >
-                <a href="#" class="nav-link">
+                <a th:href="@{/administracion/peticiones/crearSP}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p th:text="#{aside.opcion.solicitudes.personal}">Solicitud de personal</p>
                 </a>
