@@ -1,495 +1,170 @@
-<!DOCTYPE html>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
 <html lang="es" xmlns:th="http://www.thymeleaf.org"
-xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	xmlns:with="http://www.thymeleaf.org/extras/with">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Formulario candidato</title>
-
-  
- 
-</head>
-<body class="hold-transition layout-top-nav">
-<div class="wrapper">
-
-  <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
-    <div class="container">
-      <a href="#" class="navbar-brand">
-        <img th:src="@{~/gestion-cmc/resources/gestion-cmc/img/logo.png}" alt="Grupo CMC Logo" class="brand-image img-circle elevation-3" style="opacity: .8">        
-        <span class="brand-text font-weight-light">Grupo CMC</span>
-      </a>
-      
-
-      <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse order-3" id="navbarCollapse">
-        <!-- Left navbar links -->
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a href="#" class="nav-link">Inicio</a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">Contactanos</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Servicios</a>
-            <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-              <li><a href="#" class="dropdown-item">Some action </a></li>
-              <li><a href="#" class="dropdown-item">Some other action</a></li>
-
-              <li class="dropdown-divider"></li>
-
-              <!-- Level two dropdown-->
-              <li class="dropdown-submenu dropdown-hover">
-                <a id="dropdownSubMenu2" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">Hover for action</a>
-                <ul aria-labelledby="dropdownSubMenu2" class="dropdown-menu border-0 shadow">
-                  <li>
-                    <a tabindex="-1" href="#" class="dropdown-item">level 2</a>
-                  </li>
-
-                  
-                </ul>
-              </li>
-              <!-- End Level two -->
-            </ul>
-          </li>
-        </ul>
-
-        <!-- SEARCH FORM -->
-        <form class="form-inline ml-0 ml-md-3">
-          <div class="input-group input-group-sm">
-            <input class="form-control form-control-navbar" type="search" placeholder="Buscar" aria-label="Search">
-            <div class="input-group-append">
-              <button class="btn btn-navbar" type="submit">
-                <i class="fas fa-search"></i>
-              </button>
+   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+   xmlns:with="http://www.thymeleaf.org/extras/with">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" th:href="@{resources/gestion-cmc/css/main.css}">
+      <link rel="stylesheet" th:href="@{resources/gestion-cmc/css/style.css}">
+      <link rel="stylesheet" th:href="@{resources/plugins/fontawesome/css/all.min.css}">
+      <link rel="stylesheet" th:href="@{resources/admin-lte/css/adminlte.min.css}">
+      <link rel="stylesheet" th:href="@{resources/plugins/bs-stepper/css/bs-stepper.min.css}">
+      <script th:src="@{~/gestion-cmc/plugins/bs-stepper/js/bs-stepper.min.js}"></script>
+      <script>
+         document.addEventListener('DOMContentLoaded', function () {
+             window.stepper = new Stepper(document.querySelector('.bs-stepper'))
+          })
+      </script>
+      <script th:src="@{~/gestion-cmc/plugins/jquery/jquery.min.js}"></script>
+      <script th:src="@{~/gestion-cmc/plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
+      <script th:src="@{~/gestion-cmc/admin-lte/js/adminlte.min.js}"></script>
+      <script th:src="@{~/resources/gestion-cmc/js/indexCandidato.js}"></script>
+      <title>Inscripción</title>
+   </head>
+   <body class="hold-transition layout-top-nav">
+      <div class="wrapper" >
+         <!-- Navbar -->
+         <nav  class="main-header navbar navbar-expand-md navbar-light navbar-white">
+            <div class="container" >
+               <a class="navbar-brand">
+               <img th:src="@{~/gestion-cmc/resources/gestion-cmc/img/logocmc.png}" alt="AdminLTE Logo" style="opacity: .8; width: 100px; margin-right: 10px">
+               </a>
             </div>
-          </div>
-        </form>
+         </nav>
+         <div class="card card-primary card-outline" style="width: 94%;margin: auto;margin-top: 25px;">
+            <div class="card-header">
+               <h2 class=" m-0">Trabaja con nosotros</h2>
+               <h6 class="card-title">Registra tus datos y nos comunicamos contigo</h6>
+            </div>
+            <div class="card-body">
+               <form id="formIndexCandidato" method="POST">
+                  <div class="row">
+                     <div class="col-md-12">
+                        <div id="messageBox2" class="alert alert-danger alert-dismissible" style="display: none">
+                           <button type="button" class="close" onclick="closeAlert('alert-danger')"
+                              aria-hidden="true">&times;</button>
+                           <i class="icon fas fa-ban"></i> Error! 
+                           <ul style="margin-top: 0px; margin-bottom: 0px;"></ul>
+                        </div>
+                        <div class="bs-stepper">
+                           <div class="bs-stepper-header" role="tablist">
+                              <!-- your steps here -->
+                              <div class="step" data-target="#basica">
+                                 <button type="button" class="step-trigger" role="tab"
+                                    aria-controls="basica" id="basica-trigger">
+                                 <span class="bs-stepper-circle">1</span> <span
+                                    class="bs-stepper-label">Informaci&oacute;n B&aacute;sica</span>
+                                 </button>
+                              </div>
+                              <div class="line"></div>
+                              <div class="step" data-target="#pro">
+                                 <button type="button" class="step-trigger" role="tab"
+                                    aria-controls="pro" id="pro-trigger">
+                                 <span class="bs-stepper-circle">2</span> <span
+                                    class="bs-stepper-label">Informaci&oacute;n Profesional</span>
+                                 </button>
+                              </div>
+                              <div class="line"></div>
+                              <div class="step" data-target="#laboral">
+                                 <button type="button" class="step-trigger" role="tab"
+                                    aria-controls="laboral" id="laboral-trigger">
+                                 <span class="bs-stepper-circle">3</span> <span
+                                    class="bs-stepper-label">Informaci&oacute;n Laboral</span>
+                                 </button>
+                              </div>
+                              <div class="line"></div>
+                              <div class="step" data-target="#propuesta">
+                                 <button type="button" class="step-trigger" role="tab"
+                                    aria-controls="propuesta" id="propuesta-trigger">
+                                 <span class="bs-stepper-circle">4</span> <span
+                                    class="bs-stepper-label">Informaci&oacute;n de Propuesta</span>
+                                 </button>
+                              </div>
+                           </div>
+                           <div class="bs-stepper-content">
+                              <!-- your steps content here -->
+                              <div class="row">
+                                 <div class="col-sm-6">
+                                    <!-- text input -->
+                                    <div class="form-group">
+                                       <div class="col-sm-10">
+                                          <!-- select -->
+                                          <div class="form-group">
+                                             <label>Tipo documento</label>
+                                             <select name="tipoDocumento" class="form-control">
+                                                <option value="" selected="selected">Tipo</option>
+                                                <option VALUE="CC">CC</option>
+                                                <option VALUE="TI">TI</option>
+                                                <option VALUE="CE">CE</option>
+                                             </select>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="col-sm-6">
+                                    <div class="form-group col-sm-10">
+                                       <label>Documento</label>
+                                       <input name="documento" type="text" class="form-control" 
+                                       		  placeholder="Escriba su documento" >
+                                    </div>
+                                 </div>
+                           
+                              </div>
+                                  <div class="row" >
+                               		<div class="col-sm-6">
+                      					<!-- text input -->
+                      					<div class="form-group col-sm-10">
+	                        				<label>Primer Nombre</label>
+	                        				<input name="nombre1" type="text" class="form-control" placeholder="Escriba su primer nombre">
+                     					</div>
+                    				</div>
+                    				<div class="col-sm-6">
+                      					<div class="form-group col-sm-10">
+                        					<label>Segundo Nombre</label>
+                        					<input name="nombre2" id="nombre2" type="text" class="form-control" placeholder="Escriba su segundo nombre" >
+                      					</div>
+                    				</div>
+                               </div>
+                               <div class="row">
+                   					 <div class="col-sm-6">
+                      					<!-- text input -->
+                      					<div class="form-group col-sm-10">
+                        					<label>Primer Apellido</label>
+                        					<input name="apellido1" type="text" class="form-control" placeholder="Escriba su primer apellido">
+                      					</div>
+                    				</div>
+                    				<div class="col-sm-6">
+                      					<div class="form-group col-sm-10">
+                        					<label>Segundo Apellido</label>
+                        					<input name="apellido2" type="text" class="form-control" placeholder="Escriba su segundo apellido" >
+                      					</div>
+                    				</div>
+                  				</div>
+                  				  <div class="row">
+                   					 <div class="col-sm-6">
+                      					<!-- text input -->
+                      						<div class="form-group col-sm-10">
+                        						<label>Tel&eacute;fono</label>
+                        						<input name="telefono" type="text" class="form-control" placeholder="Escriba su numero de tel&eacute;fono">
+                      						</div>
+                    					</div>
+                   					 <div class="col-sm-6">
+                      					<div class="form-group col-sm-10 ">
+                        					<label>Correo Electronico</label>
+                       						<input name="correo" id="correo" type="text" class="form-control" placeholder="Escriba su correo electronico" >
+                      					</div>
+                    				</div>
+                  				</div>
+                  					<div style="padding-left:30px;">
+										<button class="btn btn-primary" type="button" onclick="validacionFormularios()">Siguiente</button>
+									</div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </form>
+            </div>
+         </div>
       </div>
-
-      <!-- Right navbar links -->
-      <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
-        <!-- Messages Dropdown Menu -->
-        <li class="nav-item dropdown">
-          <a class="nav-link" data-toggle="dropdown" href="#">
-            <i class="fas fa-comments"></i>
-            <span class="badge badge-danger navbar-badge">3</span>
-          </a>
-          
-        </li>
-        <!-- Notifications Dropdown Menu -->
-        <li class="nav-item dropdown">
-          <a class="nav-link" data-toggle="dropdown" href="#">
-            <i class="far fa-bell"></i>
-            <span class="badge badge-warning navbar-badge">15</span>
-          </a>
-          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-            <span class="dropdown-header">15 Notificaciones</span>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-envelope mr-2"></i> 4 nuevos mensajes
-              <span class="float-right text-muted text-sm">3 min</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-users mr-2"></i> 8 respuestas de amigos
-              <span class="float-right text-muted text-sm">12 horas</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-file mr-2"></i> 3 nuevos reportes
-              <span class="float-right text-muted text-sm">2 dias</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item dropdown-footer">ver todas la notificaciones </a>
-          </div>
-        </li>
-        
-      </ul>
-    </div>
-  </nav>
-  <!-- /.navbar -->
-
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0"> Formulario <small>Candidato</small></h1>
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Inicio</a></li>
-              <li class="breadcrumb-item"><a href="#">Contactanos</a></li>
-              <li class="breadcrumb-item active">Formulario </li>
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
-
-    <!-- Main content -->
-    
-   <form id="formIndexCandidato" action="" method="POST">
-	<div class="row">
-    <div class="col-md-12">
-	<div class="card-body p-0">
-	<div id="messageBox2" class="alert alert-danger alert-dismissible" style="display: none">
-		<button type="button" class="close" onclick="closeAlert('alert-danger')"
-				aria-hidden="true">&times;</button>
-		<i class="icon fas fa-ban"></i> Error! 
-		<ul style="margin-top: 0px; margin-bottom: 0px;"></ul>
-	</div>
-		<div class="bs-stepper">
-			<div class="bs-stepper-header" role="tablist">
-				<!-- your steps here -->
-				<div class="step" data-target="#basica">
-					<button type="button" class="step-trigger" role="tab"
-						aria-controls="basica" id="basica-trigger">
-						<span class="bs-stepper-circle">1</span> <span
-							class="bs-stepper-label">Informacion Basica</span>
-					</button>
-				</div>
-				<div class="line"></div>
-				<div class="step" data-target="#pro">
-					<button type="button" class="step-trigger" role="tab"
-						aria-controls="pro" id="pro-trigger">
-						<span class="bs-stepper-circle">2</span> <span
-							class="bs-stepper-label">Informacion Profesional</span>
-					</button>
-				</div>
-				<div class="line"></div>
-				<div class="step" data-target="#laboral">
-					<button type="button" class="step-trigger" role="tab"
-						aria-controls="laboral" id="laboral-trigger">
-						<span class="bs-stepper-circle">3</span> <span
-							class="bs-stepper-label">Informacion Laboral</span>
-					</button>
-				</div>
-				<div class="line"></div>
-				<div class="step" data-target="#propuesta">
-					<button type="button" class="step-trigger" role="tab"
-						aria-controls="propuesta" id="propuesta-trigger">
-						<span class="bs-stepper-circle">4</span> <span
-							class="bs-stepper-label">Informacion de Propuesta</span>
-					</button>
-				</div>
-			</div>
-			<div class="bs-stepper-content">
-				<!-- your steps content here -->
-				
-              </div>
-              <!-- /.card-header -->
-              <div id="basica" class="content" role="tabpanel"
-					aria-labelledby="basica-trigger">
-              <div class="card-body">
-                <div class="row">
-                    <div class="col-sm-6">
-                      <!-- text input -->
-                      <div class="form-group">
-                    <div class="col-sm-6">
-                      <!-- select -->
-                      <div class="form-group">
-                        <label>Tipo documento</label>
-                        <select name="tipoDocumento" class="form-control">
-                        <option value="" selected="selected">Tipo</option>
-                          <option VALUE="CC">CC</option>
-                          <option VALUE="TI">TI</option>
-                          <option VALUE="CE">CE</option>
-                          
-                          
-                        </select>
-                      </div>
-                    </div>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Documento</label>
-                        <input name="documento" type="text" class="form-control" placeholder="Escriba su segundo nombre" >
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <!-- text input -->
-                      <div class="form-group">
-                        <label>Primer Nombre</label>
-                        <input name="nombre1" type="text" class="form-control" placeholder="Escriba su primer nombre">
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Segundo Nombre</label>
-                        <input name="nombre2" id="nombre2" type="text" class="form-control" placeholder="Escriba su segundo nombre" >
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <!-- text input -->
-                      <div class="form-group">
-                        <label>Primer Apellido</label>
-                        <input name="apellido1" type="text" class="form-control" placeholder="Escriba su primer apellido">
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Segundo Apellido</label>
-                        <input name="apellido2" type="text" class="form-control" placeholder="Escriba su segundo apellido" >
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <!-- text input -->
-                      <div class="form-group">
-                        <label>Telefono</label>
-                        <input name="telefono" type="text" class="form-control" placeholder="Escriba su numero de telefono">
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Correo Electronico</label>
-                        <input name="correo" id="correo" type="text" class="form-control" placeholder="Escriba su correo electronico" >
-                      </div>
-                    </div>
-                  </div>
-                  
-                  </div>
-                  <div style="padding-left:30px;">
-					<button class="btn btn-primary" type="button" onclick="validacionFormularios()">Siguiente</button>
-				</div>
-				</div>
-				<div id="pro" class="content" role="tabpanel"
-					aria-labelledby="pro-trigger">
-					 
-                 
-                    
-                    
-                    <div class="col-sm-6">
-                      <!-- text input -->
-                      <div class="form-group">
-                        <div class="form-group">
-						<label for="titulo">Titulo Universitario</label> 
-						<input
-							type="text"  name="titulo" class="form-control" id="exampleInputEmail1"
-							placeholder="Ingrese el nombre de sus titulos universitarios">
-					</div> </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <div class="row">
-                    <div class="col-sm-6">
-                      <!-- textarea -->
-                      <div class="form-group">
-                        <label>Objetivos</label>
-                        <textarea  class="form-control" name="objetivo" placeholder="Planes a corto y largo plazo"></textarea>
-                      </div>
-                    </div>
-                    </div></div>
-                    </div>
-                  
-                    <div style="padding-left:30px;">
-                    <button class="btn btn-primary" type="button" onclick="stepper.previous()">Anterior</button>					
-					<button class="btn btn-primary" type="button" onclick="validacionFormularios()">Siguiente</button>
-                    </div>
-						
-					
-					
-				</div>
-				<div id="laboral" class="content" role="tabpanel"
-					aria-labelledby="laboral-trigger">
-					
-					
-                      
-                     
-                       <div class="row">
-                    <div class="col-sm-6">
-                      <!-- text input -->
-                      <div class="form-group">
-                         <div class="form-group">
-                        <label>Trabaja actualmente</label>
-                        <select name="trabajo" class="form-control">
-                          <option value="" selected="selected">...</option>
-                          <option value="Si">Si</option>
-                          <option value="No">No</option>
-                          
-                        </select>
-                      </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                       <div class="form-group">
-                        <label>Que tipo de contrato posee</label>
-                        <select name="contrato" class="form-control">
-                          <option value="" selected="selected">...</option>
-                          <option value="indefinido">Indefinido</option>
-                          <option value="fijo">Fijo</option>
-                          <option value="prestacion de servicios">Prestacion de servicios</option>
-                          <option value="otra labor">Otra labor</option>
-                          <option value="otro">Otro</option>
-                          
-					 </select>
-                      </div></div>
-                    </div>
-                  </div>
-                      
-                      <div class="row">
-                    <div class="col-sm-6">
-                      <!-- text input -->
-                      <div class="form-group">
-                       <div class="form-group">
-                        <label>Origen de la hoja de vida</label>
-                        <select name="origen" class="form-control">
-                          <option value="" selected="selected">...</option>
-                          <option value="el empleo">El empleo</option>
-                          <option value="linkedin">Linkedin</option>
-                          <option value="ticjob">Ticjob</option>
-                          <option value="correo electronico">Correo electronico</option>
-                          <option value="otro">Otro</option>
-                          
-					 </select>
-                      </div></div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Sueldo actual</label>
-                        <input type="text" name="sueldoActual"class="form-control" placeholder="Escriba su sueldo actual" >
-                      </div>
-                    </div>
-                  </div>
-                  <div style="padding-left:30px;">
-					<button class="btn btn-primary" type="button"  onclick="stepper.previous()">Anterior</button>
-
-                    <button class="btn btn-primary" type="button"  onclick="validacionFormularios()">Siguiente</button>                      
-					</div>
-				</div>
-				<div id="propuesta" class="content" role="tabpanel"
-					aria-labelledby="Propuesta-trigger">
-					<div class="row">
-                    <div class="col-sm-6">
-                      <!-- text input -->
-                      <div class="form-group">
-                        <label>Aspiracion salarial</label>
-                        <input type="text" name="aspiracion" class="form-control" placeholder="Escriba su aspiracion salarial">
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <div class="form-group">
-                        <label>Disponibilidad</label>
-                        <select name="disponibilidad" class="form-control">
-                          <option value="" selected="selected">...</option>
-                          <option value="1 dia">1 Dia</option>
-                          <option value="3 dias">3 Dias</option>
-                          <option value="5 dias">5 Dias</option>
-                          <option value="7 dias">7 Dias</option>
-                          <option value="mas de 15 dias">Mas de 15 dias</option>
-                          
-					 </select>
-                      </div></div>
-                    </div>
-                  </div>
-					<div class="row">
-                    <div class="col-sm-6">
-                      <!-- text input -->
-                      <div class="form-group">
-                       <div class="form-group">
-                        <label>Horario flexible</label>
-                        <select name="horario" class="form-control">
-                          <option value="" selected="selected">...</option>
-                          <option value="si">Si</option>
-                          <option value="no">No</option>
-                         
-                          
-					 </select>
-                      </div></div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                      <label>Observaciones generales</label>
-                        <textarea  name="observacion" class="form-control" rows="3" placeholder="Escriba las observaciones que crea que son correspondientes"></textarea>
-                      
-                        </div>
-                    </div>
-                  </div>
-					
-					<div style="padding-left:30px;">
-					<button class="btn btn-primary" type="button" onclick="stepper.previous()">Anterior</button>
-					<button type="submit" class="btn btn-primary">Crear</button>
-					</div>
-				</div>
-			</div>
-		</div>
-		</div>
-		</div>
-</form>
-    
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
-
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
-
-  <!-- Main Footer -->
-  <footer class="main-footer">
-    <!-- To the right -->
-    
-    <!-- Default to the left -->
-    <strong>Copyright &copy; 2010-2021 <a href="https://adminlte.io">Gestion CMC</a>.</strong> All rights reserved.
-  </footer>
-</div>
-<!-- ./wrapper -->
-
-<!-- REQUIRED SCRIPTS -->
-	<script
-		th:src="@{~/gestion-cmc/plugins/bs-stepper/js/bs-stepper.min.js}"></script>
-			
-	<script>
-	
-	   document.addEventListener('DOMContentLoaded', function () {
-	       window.stepper = new Stepper(document.querySelector('.bs-stepper'))
-	    })
-	</script>
-	
-<!-- jQuery -->
-<script th:src="@{~/gestion-cmc/plugins/jquery/jquery.min.js}"></script>
-<!-- Bootstrap 4 -->
-<script th:src="@{~/gestion-cmc/plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
-<!-- AdminLTE App -->
-<script th:src="@{~/gestion-cmc/admin-lte/js/adminlte.min.js}"></script>
-
-  <script th:src="@{~/resources/gestion-cmc/js/indexCandidato.js}"></script>
-
-	
-
-  
-</body>
-<!-- Font Awesome Icons -->
-  <link rel="stylesheet" th:href="@{~/gestion-cmc/plugins/fontawesome/css/all.min.css}">
-  <!-- Theme style -->
-  <link rel="stylesheet" th:href="@{~/gestion-cmc/admin-lte/css/adminlte.min.css}">
-<!-- Google Font: Source Sans Pro -->
-	<link rel="stylesheet"
-		th:href="@{~/gestion-cmc/plugins/bs-stepper/css/bs-stepper.min.css}">
-  
+   </body  >
 </html>
