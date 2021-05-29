@@ -5,12 +5,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/indexcandidato")
+@RequestMapping("/public/indexcandidato")
 public class indexCandidatoController {
 
 	@GetMapping
 	public String init() {
-		return "pages/administracion/candidato/candidatoindex";
+		return "public/candidato";
 	}
 
 }

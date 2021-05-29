@@ -1,170 +1,54 @@
+<!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org"
    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
    xmlns:with="http://www.thymeleaf.org/extras/with">
-   <head>
+    <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="stylesheet" th:href="@{resources/gestion-cmc/css/main.css}">
-      <link rel="stylesheet" th:href="@{resources/gestion-cmc/css/style.css}">
-      <link rel="stylesheet" th:href="@{resources/plugins/fontawesome/css/all.min.css}">
-      <link rel="stylesheet" th:href="@{resources/admin-lte/css/adminlte.min.css}">
-      <link rel="stylesheet" th:href="@{resources/plugins/bs-stepper/css/bs-stepper.min.css}">
-      <script th:src="@{~/gestion-cmc/plugins/bs-stepper/js/bs-stepper.min.js}"></script>
-      <script>
-         document.addEventListener('DOMContentLoaded', function () {
-             window.stepper = new Stepper(document.querySelector('.bs-stepper'))
-          })
-      </script>
-      <script th:src="@{~/gestion-cmc/plugins/jquery/jquery.min.js}"></script>
-      <script th:src="@{~/gestion-cmc/plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
-      <script th:src="@{~/gestion-cmc/admin-lte/js/adminlte.min.js}"></script>
-      <script th:src="@{~/resources/gestion-cmc/js/indexCandidato.js}"></script>
+      <link rel="stylesheet" th:href="@{/resources/gestion-cmc/css/main.css}">
+      <link rel="stylesheet" th:href="@{/resources/gestion-cmc/css/style.css}">
+      <link rel="stylesheet" th:href="@{/resources/plugins/fontawesome/css/all.min.css}">
+      <link rel="stylesheet" th:href="@{/resources/admin-lte/css/adminlte.min.css}">
+      <link rel="stylesheet" th:href="@{/resources/plugins/bs-stepper/css/bs-stepper.min.css}">
       <title>Inscripción</title>
    </head>
    <body class="hold-transition layout-top-nav">
-      <div class="wrapper" >
-         <!-- Navbar -->
-         <nav  class="main-header navbar navbar-expand-md navbar-light navbar-white">
-            <div class="container" >
-               <a class="navbar-brand">
-               <img th:src="@{~/gestion-cmc/resources/gestion-cmc/img/logocmc.png}" alt="AdminLTE Logo" style="opacity: .8; width: 100px; margin-right: 10px">
+   		<div class="wrapper" >
+   		<nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
+        	 <div class="container">
+        	 	<a class="navbar-brand">
+                  <img th:src="@{~/gestion-cmc/resources/gestion-cmc/img/logocmc.png}" alt="AdminLTE Logo" style="opacity: .8; width: 100px; margin-right: 10px">
                </a>
-            </div>
-         </nav>
-         <div class="card card-primary card-outline" style="width: 94%;margin: auto;margin-top: 25px;">
+        	 </div>
+        </nav>	
+        <div class="card card-primary card-outline" style="width: 94%;margin: auto;margin-top: 25px;">
             <div class="card-header">
                <h2 class=" m-0">Trabaja con nosotros</h2>
                <h6 class="card-title">Registra tus datos y nos comunicamos contigo</h6>
             </div>
             <div class="card-body">
-               <form id="formIndexCandidato" method="POST">
-                  <div class="row">
-                     <div class="col-md-12">
-                        <div id="messageBox2" class="alert alert-danger alert-dismissible" style="display: none">
-                           <button type="button" class="close" onclick="closeAlert('alert-danger')"
-                              aria-hidden="true">&times;</button>
-                           <i class="icon fas fa-ban"></i> Error! 
-                           <ul style="margin-top: 0px; margin-bottom: 0px;"></ul>
-                        </div>
-                        <div class="bs-stepper">
-                           <div class="bs-stepper-header" role="tablist">
-                              <!-- your steps here -->
-                              <div class="step" data-target="#basica">
-                                 <button type="button" class="step-trigger" role="tab"
-                                    aria-controls="basica" id="basica-trigger">
-                                 <span class="bs-stepper-circle">1</span> <span
-                                    class="bs-stepper-label">Informaci&oacute;n B&aacute;sica</span>
-                                 </button>
-                              </div>
-                              <div class="line"></div>
-                              <div class="step" data-target="#pro">
-                                 <button type="button" class="step-trigger" role="tab"
-                                    aria-controls="pro" id="pro-trigger">
-                                 <span class="bs-stepper-circle">2</span> <span
-                                    class="bs-stepper-label">Informaci&oacute;n Profesional</span>
-                                 </button>
-                              </div>
-                              <div class="line"></div>
-                              <div class="step" data-target="#laboral">
-                                 <button type="button" class="step-trigger" role="tab"
-                                    aria-controls="laboral" id="laboral-trigger">
-                                 <span class="bs-stepper-circle">3</span> <span
-                                    class="bs-stepper-label">Informaci&oacute;n Laboral</span>
-                                 </button>
-                              </div>
-                              <div class="line"></div>
-                              <div class="step" data-target="#propuesta">
-                                 <button type="button" class="step-trigger" role="tab"
-                                    aria-controls="propuesta" id="propuesta-trigger">
-                                 <span class="bs-stepper-circle">4</span> <span
-                                    class="bs-stepper-label">Informaci&oacute;n de Propuesta</span>
-                                 </button>
-                              </div>
-                           </div>
-                           <div class="bs-stepper-content">
-                              <!-- your steps content here -->
-                              <div class="row">
-                                 <div class="col-sm-6">
-                                    <!-- text input -->
-                                    <div class="form-group">
-                                       <div class="col-sm-10">
-                                          <!-- select -->
-                                          <div class="form-group">
-                                             <label>Tipo documento</label>
-                                             <select name="tipoDocumento" class="form-control">
-                                                <option value="" selected="selected">Tipo</option>
-                                                <option VALUE="CC">CC</option>
-                                                <option VALUE="TI">TI</option>
-                                                <option VALUE="CE">CE</option>
-                                             </select>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <div class="col-sm-6">
-                                    <div class="form-group col-sm-10">
-                                       <label>Documento</label>
-                                       <input name="documento" type="text" class="form-control" 
-                                       		  placeholder="Escriba su documento" >
-                                    </div>
-                                 </div>
-                           
-                              </div>
-                                  <div class="row" >
-                               		<div class="col-sm-6">
-                      					<!-- text input -->
-                      					<div class="form-group col-sm-10">
-	                        				<label>Primer Nombre</label>
-	                        				<input name="nombre1" type="text" class="form-control" placeholder="Escriba su primer nombre">
-                     					</div>
-                    				</div>
-                    				<div class="col-sm-6">
-                      					<div class="form-group col-sm-10">
-                        					<label>Segundo Nombre</label>
-                        					<input name="nombre2" id="nombre2" type="text" class="form-control" placeholder="Escriba su segundo nombre" >
-                      					</div>
-                    				</div>
-                               </div>
-                               <div class="row">
-                   					 <div class="col-sm-6">
-                      					<!-- text input -->
-                      					<div class="form-group col-sm-10">
-                        					<label>Primer Apellido</label>
-                        					<input name="apellido1" type="text" class="form-control" placeholder="Escriba su primer apellido">
-                      					</div>
-                    				</div>
-                    				<div class="col-sm-6">
-                      					<div class="form-group col-sm-10">
-                        					<label>Segundo Apellido</label>
-                        					<input name="apellido2" type="text" class="form-control" placeholder="Escriba su segundo apellido" >
-                      					</div>
-                    				</div>
-                  				</div>
-                  				  <div class="row">
-                   					 <div class="col-sm-6">
-                      					<!-- text input -->
-                      						<div class="form-group col-sm-10">
-                        						<label>Tel&eacute;fono</label>
-                        						<input name="telefono" type="text" class="form-control" placeholder="Escriba su numero de tel&eacute;fono">
-                      						</div>
-                    					</div>
-                   					 <div class="col-sm-6">
-                      					<div class="form-group col-sm-10 ">
-                        					<label>Correo Electronico</label>
-                       						<input name="correo" id="correo" type="text" class="form-control" placeholder="Escriba su correo electronico" >
-                      					</div>
-                    				</div>
-                  				</div>
-                  					<div style="padding-left:30px;">
-										<button class="btn btn-primary" type="button" onclick="validacionFormularios()">Siguiente</button>
-									</div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </form>
+               <!-- Mensajes de error -->
+                <div id="messageBox2" class="alert alert-danger alert-dismissible" style="display: none">
+                    <button type="button" class="close" onclick="closeAlert('alert-danger')"
+                             aria-hidden="true">&times;</button>
+                    <i class="icon fas fa-ban"></i> Error! 
+                    <ul style="margin-top: 0px; margin-bottom: 0px;"></ul>
+                </div>
             </div>
-         </div>
-      </div>
-   </body  >
-</html>
+           </div>  
+   		</div>
+   	<!-- Scripts -->
+   	  <script th:src="@{/resources/plugins/bs-stepper/js/bs-stepper.min.js}"></script>
+      <script th:src="@{/resources/plugins/jquery/jquery.min.js}"></script>
+      <script th:src="@{/resources/plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
+      <script th:src="@{/resources/admin-lte/js/adminlte.min.js}"></script>
+      <script th:src="@{/resources/gestion-cmc/js/indexCandidato.js}"></script>
+      <script th:src="@{/resources/plugins/jquery-validation/jquery.validate.min.js}"></script>
+	  <script th:src="@{/resources/plugins/jquery-validation/additional-methods.min.js}"></script>
+	   <script>
+         document.addEventListener('DOMContentLoaded', function () {
+             window.stepper = new Stepper(document.querySelector('.bs-stepper'))
+          })
+      </script>
+   </body>
+   </html>
