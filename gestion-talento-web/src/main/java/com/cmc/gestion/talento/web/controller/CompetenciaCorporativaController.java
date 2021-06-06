@@ -15,37 +15,35 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
-import com.cmc.gestion.talento.bussines.TipoPerfilBussines;
-import com.cmc.gestion.talento.bussines.dto.TipoPerfilDto;
+import com.cmc.gestion.talento.bussines.CompetenciaCorporativaBussines;
+import com.cmc.gestion.talento.bussines.dto.CompetenciaCorporativaDto;
 import com.cmc.gestion.talento.web.ModelResponse;
 import com.cmc.gestion.talento.web.TypeMessage;
 import com.cmc.gestion.talento.web.config.ArqGestionExcepcion;
 
+
 @Controller
-@RequestMapping("/administracion/tipo-perfil")
-public class TipoPerfilController {
+@RequestMapping("/administracion/competencia-corporativa")
+public class CompetenciaCorporativaController {
 	@Autowired
-	private TipoPerfilBussines tipoPerfilBussines;
+	private CompetenciaCorporativaBussines competenciaCorporativaBussines;
 
 	@GetMapping
 	public String init() {
-		return "pages/administracion/tipo-perfil";
+		return "pages/administracion/competencia-corporativa";
 	}
-	
 	
 	@GetMapping(path = "/getAll", produces = MediaType.APPLICATION_JSON_VALUE )
-	public ResponseEntity<List<TipoPerfilDto>> getAllTipoPerfil() {
-		List<TipoPerfilDto> resp = tipoPerfilBussines.getAllTipoPerfil();
-		return new ResponseEntity<List<TipoPerfilDto>>(resp, HttpStatus.OK);
+	public ResponseEntity<List<CompetenciaCorporativaDto>> getAllCompetenciaCorporativa() {
+		List<CompetenciaCorporativaDto> resp = competenciaCorporativaBussines.getAllCompetenciaCorporativa();
+		return new ResponseEntity<List<CompetenciaCorporativaDto>>(resp, HttpStatus.OK);
 	}
 	
-	
 	@PostMapping(path = "/create", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<ModelResponse> crearTipoPerfil(@RequestBody @Valid TipoPerfilDto tipoPerfil) throws ArqGestionExcepcion {
+	public ResponseEntity<ModelResponse> crearCompetenciaCorporativa(@RequestBody @Valid CompetenciaCorporativaDto competenciaCorporativa) throws ArqGestionExcepcion {
 		try {
-			tipoPerfilBussines.crearTipoPerfil(tipoPerfil);
-			ModelResponse model = new ModelResponse(null, TypeMessage.FROM_MESSAGE, "Tipo perfil creado con exito");
+			competenciaCorporativaBussines.crearCompetenciaCorporativa(competenciaCorporativa);
+			ModelResponse model = new ModelResponse(null, TypeMessage.FROM_MESSAGE, "Competencia Corporativa creada con exito");
 			return new ResponseEntity<ModelResponse>(model, HttpStatus.OK);
 		} catch (ArqGestionExcepcion e) {
 			throw e;
@@ -54,13 +52,12 @@ public class TipoPerfilController {
 		}
 	}
 	
-	
 	@PostMapping(path = "/{id}/get", produces = { MediaType.APPLICATION_JSON_VALUE })
-	public ResponseEntity<ModelResponse> getTipoPerfil(@PathVariable(required = true) long id)
+	public ResponseEntity<ModelResponse> getCompetenciaCorporativa(@PathVariable(required = true) long id)
 			throws ArqGestionExcepcion {
-		TipoPerfilDto resp;
+		CompetenciaCorporativaDto resp;
 		try {
-			resp = tipoPerfilBussines.getTipoPerfil(id);
+			resp = competenciaCorporativaBussines.getCompetenciaCorporativa(id);
 			ModelResponse model = new ModelResponse(resp, TypeMessage.NO_MESSAGE, null);
 			return new ResponseEntity<ModelResponse>(model, HttpStatus.OK);
 		} catch (ArqGestionExcepcion e) {
@@ -69,13 +66,12 @@ public class TipoPerfilController {
 
 	}
 	
-	
 	@PostMapping(path = "/{id}/update", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<ModelResponse> modificar(@PathVariable(required = true) long id,
-			@RequestBody TipoPerfilDto tipoPerfil) throws ArqGestionExcepcion{
+			@RequestBody CompetenciaCorporativaDto competenciaCorporativa) throws ArqGestionExcepcion{
 		try {
-			tipoPerfil = tipoPerfilBussines.actualizarTipoPerfil(tipoPerfil);
-			ModelResponse model = new ModelResponse(null, TypeMessage.FROM_MESSAGE, "Tipo perfil actualizado con exito");
+			competenciaCorporativa = competenciaCorporativaBussines.actualizarCompetenciaCorporativa(competenciaCorporativa);
+			ModelResponse model = new ModelResponse(null, TypeMessage.FROM_MESSAGE, "Competencia Corporativa actualizada con exito");
 			return new ResponseEntity<ModelResponse>(model, HttpStatus.OK);
 		}catch (ArqGestionExcepcion e) {
 			throw e;
@@ -84,12 +80,11 @@ public class TipoPerfilController {
 		}
 	}
 	
-	
 	@PostMapping(path = "/{id}/delete", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<ModelResponse> eliminar(@PathVariable(required = true) long id) throws ArqGestionExcepcion {
 		try {
-			tipoPerfilBussines.eliminarTipoPerfil(id);
-			ModelResponse model = new ModelResponse(null, TypeMessage.SHOW_MODAL, "Tipo Perfil eliminado con exito");
+			competenciaCorporativaBussines.eliminarCompetenciaCorporativa(id);
+			ModelResponse model = new ModelResponse(null, TypeMessage.SHOW_MODAL, "Competencia Corporativa eliminada con exito");
 			return new ResponseEntity<ModelResponse>(model, HttpStatus.OK);
 		} catch (Exception e) {
 			throw e;
