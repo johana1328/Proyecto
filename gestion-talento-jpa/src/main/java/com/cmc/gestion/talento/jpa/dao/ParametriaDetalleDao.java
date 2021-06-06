@@ -22,7 +22,10 @@ public interface ParametriaDetalleDao extends JpaRepository<ParametriaDetalle, L
 	List<ParametriaDetalle> listParametriaEspecialidad();
 	
 	@Query("select p from ParametriaDetalle p where p.grupo = com.cmc.gestion.talento.jpa.type.TipoParametriaDetalle.CLASE_PERFIL")
-	List<ParametriaDetalle> listParametriaClsePerfil();
+	List<ParametriaDetalle> listParametriaClasePerfil();
+	
+	@Query("select p from ParametriaDetalle p where p.grupo = com.cmc.gestion.talento.jpa.type.TipoParametriaDetalle.COMPETENCIA_CORPORATIVA")
+	List<ParametriaDetalle> listParametriaCompetenciaCorporativa();
 	
 	
 	List<ParametriaDetalle> findByValor(String valor);

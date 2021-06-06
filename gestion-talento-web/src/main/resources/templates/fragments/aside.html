@@ -76,7 +76,7 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
                 </a>
               </li>
                <li class="nav-item" sec:authorize="hasAnyAuthority('ANALISTA_RRHH','GERENTE_RRHH','GERENTE')" >
-                <a th:href="@{/administracion/peticiones/crearSP}" class="nav-link">
+                <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p th:text="#{aside.opcion.solicitudes.personal}">Solicitud de personal</p>
                 </a>
@@ -106,7 +106,7 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
                 </a>
               </li>
                <li class="nav-item">
-                <a href="@{/pagina1}" class="nav-link">
+                <a th:href="@{/administracion/peticiones}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p th:text="#{aside.option.seleccion.proceso}">Procesos</p>
                 </a>
@@ -168,6 +168,12 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
                 <a th:href="@{/administracion/clase-perfil}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p th:text="#{aside.option.parametria.clase}">Clase perfil</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a th:href="@{/administracion/competencia-corporativa}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p th:text="#{aside.option.parametria.competenciaCorporativa}">Competencia Corporativa</p>
                 </a>
               </li>
             </ul>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:with="http://www.thymeleaf.org/extras/with"
+	layout:decorate="~{layout}"
+	th:with="funcionalidad='Administraci&oacuten', evento='CompetenciaCorporativa'">
+<th:block layout:fragment="content">
+
+	<table id="tablaCompetenciaCorporativa" class="table table-bordered table-hover ">
+     	<thead>
+        	<tr>
+            	<th>Id</th>
+                <th th:text="#{administracion.nombre}">Nombre</th>
+                <th th:text="#{administracion.des}">Descripci&oacute;n</th>
+                <th width="70px" th:text="#{administracion.acciones}">Acciones</th>
+            </tr>
+        </thead>
+     </table>
+     
+     <!-- Formulario de creacion -->
+      <div layout:replace="~{fragments/modal :: modalDf(titulo='Crear CompetenciaCorporativa' , id='modCrear')}">
+         <div  layout:fragment="modal-content">
+              <div class="form-group">
+                  <label for="exampleInputEmail1" th:text="#{administracion.nombre}">Nombre</label>
+                  <input type="text" class="form-control" id="nomCompetenciaCorporativa" placeholder="Ingrese nombre">
+                  <label for="exampleInputEmail1" th:text="#{administracion.des}">Descripci&oacute;n</label>
+                  <textarea class="form-control" id="desCompetenciaCorporativa" rows="3" placeholder="Escribir ..."></textarea>
+                  
+              </div>
+         </div>
+         <div  layout:fragment="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal" th:text="#{administracion.btncerrar}">Cerrar</button>
+              <button type="button" class="btn btn-primary" onclick="crearCompetenciaCorporativa()" th:text="#{administracion.btnguardar}">Guardar</button>
+         </div>
+      </div>
+      
+      <!-- Modificacion de CompetenciaCorporativa -->
+      <div layout:replace="~{fragments/modal :: modalDf(titulo='Crear CompetenciaCorporativa' , id='modModificar')}">
+         <div  layout:fragment="modal-content">
+              <div class="form-group">
+                  <label for="exampleInputEmail1">Id</label>
+                  <input type="text" class="form-control" id="idMod" disabled>
+              </div>
+              <div class="form-group">
+                  <label for="exampleInputEmail1" th:text="#{administracion.nombre}">Nombre</label>
+                  <input type="text" class="form-control" id="nomCompetenciaCorporativamod" placeholder="Ingrese valor">
+              </div>
+              <div class="form-group">
+                  <label for="exampleInputEmail1" th:text="#{administracion.des}">Descripcion</label>
+                  <input type="text" class="form-control" id="desCompetenciaCorporativamod" placeholder="Ingrese valor">
+              </div>
+         </div>
+         <div  layout:fragment="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal" th:text="#{administracion.btncerrar}">Cerrar</button>
+              <button type="button" class="btn btn-primary" onclick="modificarCompetenciaCorporativa()" th:text="#{administracion.btnguardar}">Guardar</button>
+         </div>
+      </div>
+      
+      <!-- Eliminacion de CompetenciaCorporativa -->
+      <div layout:replace="~{fragments/modal :: modalConfim(id='confirmDelete')}" >
+      	<div  layout:fragment="modal-footer">
+      	     <input type="hidden" id="valorCompetenciaCorporativaEliminar">
+      		 <button type="button" class="btn btn-primary" data-dismiss="modal" th:text="#{administracion.btncerrar}">Cerrar</button>
+             <button type="button" class="btn btn-primary"  onclick="eliminarCompetenciaCorporativa()" th:text="#{administracion.btneliminar}">Eliminar</button>
+      	</div>
+      </div>
+      
+</th:block>
+<th:block layout:fragment="body_end">
+   <script th:src="@{~/gestion-cmc/resources/gestion-cmc/js/competenciaCorporativa.js}"></script>
+</th:block>
+</html>
