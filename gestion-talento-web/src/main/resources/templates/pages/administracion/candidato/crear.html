@@ -21,7 +21,7 @@
 					<button type="button" class="step-trigger" role="tab"
 						aria-controls="basica" id="basica-trigger">
 						<span class="bs-stepper-circle">1</span> <span
-							class="bs-stepper-label">Informacion Basica</span>
+							class="bs-stepper-label" th:text="#{administracion.candidato.informacionbasica}">Informaci&oacute;n B&aacute;sica</span>
 					</button>
 				</div>
 				<div class="line"></div>
@@ -29,7 +29,7 @@
 					<button type="button" class="step-trigger" role="tab"
 						aria-controls="pro" id="pro-trigger">
 						<span class="bs-stepper-circle">2</span> <span
-							class="bs-stepper-label">Informacion Profesional</span>
+							class="bs-stepper-label"th:text="#{administracion.candidato.informacionprofesional}">Informaci&oacute;n Profesional</span>
 					</button>
 				</div>
 				<div class="line"></div>
@@ -37,7 +37,7 @@
 					<button type="button" class="step-trigger" role="tab"
 						aria-controls="laboral" id="laboral-trigger">
 						<span class="bs-stepper-circle">3</span> <span
-							class="bs-stepper-label">Informacion Laboral</span>
+							class="bs-stepper-label" th:text="#{administracion.candidato.informacionlaboral}">Informaci&oacute;n Laboral</span>
 					</button>
 				</div>
 				<div class="line"></div>
@@ -45,7 +45,7 @@
 					<button type="button" class="step-trigger" role="tab"
 						aria-controls="propuesta" id="propuesta-trigger">
 						<span class="bs-stepper-circle">4</span> <span
-							class="bs-stepper-label">Informacion de Propuesta</span>
+							class="bs-stepper-label"th:text="#{administracion.candidato.informacionpropuesta}">Informaci&oacute;n de Propuesta</span>
 					</button>
 				</div>
 			</div>
@@ -64,9 +64,9 @@
                     <div class="col-sm-6">
                       <!-- select -->
                       <div class="form-group">
-                        <label>Tipo documento</label>
+                        <label th:text="#{administracion.candidato.tipodocumento}">Tipo documento</label>
                         <select name="tipoDocumento" class="form-control">
-                        <option value="" selected="selected">Tipo</option>
+                        <option value="" selected="selected" th:text="#{administracion.candidato.tipodocumento.tipo}">Tipo</option>
                           <option VALUE="CC">CC</option>
                           <option VALUE="TI">TI</option>
                           <option VALUE="CE">CE</option>
@@ -79,8 +79,8 @@
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label>Documento</label>
-                        <input name="documento" type="text" class="form-control" placeholder="Escriba su segundo nombre" >
+                        <label th:text="#{administracion.candidato.documento}">Documento</label>
+                        <input name="documento" type="text" class="form-control" th:placeholder="#{administracion.candidato.edocumento}" >
                       </div>
                     </div>
                   </div>
@@ -88,14 +88,14 @@
                     <div class="col-sm-6">
                       <!-- text input -->
                       <div class="form-group">
-                        <label>Primer Nombre</label>
-                        <input name="nombre1" type="text" class="form-control" placeholder="Escriba su primer nombre">
+                        <label th:text="#{administracion.candidato.primern}">Primer Nombre</label>
+                        <input name="nombre1" type="text" class="form-control" th:placeholder="#{administracion.candidato.epnombre}">
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label>Segundo Nombre</label>
-                        <input name="nombre2" id="nombre2" type="text" class="form-control" placeholder="Escriba su segundo nombre" >
+                        <label th:text="#{administracion.candidato.segundon}">Segundo Nombre</label>
+                        <input name="nombre2" id="nombre2" type="text" class="form-control" th:placeholder="#{administracion.candidato.esnombre}" >
                       </div>
                     </div>
                   </div>
@@ -103,14 +103,14 @@
                     <div class="col-sm-6">
                       <!-- text input -->
                       <div class="form-group">
-                        <label>Primer Apellido</label>
-                        <input name="apellido1" type="text" class="form-control" placeholder="Escriba su primer apellido">
+                        <label th:text="#{administracion.candidato.primera}">Primer Apellido</label>
+                        <input name="apellido1" type="text" class="form-control" th:placeholder="#{administracion.candidato.epapellido}">
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label>Segundo Apellido</label>
-                        <input name="apellido2" type="text" class="form-control" placeholder="Escriba su segundo apellido" >
+                        <label th:text="#{administracion.candidato.segundoa}">Segundo Apellido</label>
+                        <input name="apellido2" type="text" class="form-control" th:placeholder="#{administracion.candidato.esapellido}" >
                       </div>
                     </div>
                   </div>
@@ -119,20 +119,20 @@
                     <div class="col-sm-6">
                       <!-- text input -->
                       <div class="form-group">
-                        <label>Telefono</label>
-                        <input name="telefono" type="text" class="form-control" placeholder="Escriba su numero de telefono">
+                        <label th:text="#{administracion.candidato.telefono}">Tel&eacute;fono</label>
+                        <input name="telefono" type="text" class="form-control" th:placeholder="#{administracion.candidato.etelefono}">
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label>Correo Electronico</label>
-                        <input name="correo" id="correo" type="text" class="form-control" placeholder="Escriba su correo electronico" >
+                        <label th:text="#{administracion.candidato.correoelectronico}">Correo Electr&oacute;nico</label>
+                        <input name="correo" id="correo" type="text" class="form-control" th:placeholder="#{administracion.candidato.ecorreo}" >
                       </div>
                     </div>
                   </div>
                   
                   </div>
-					<button class="btn btn-primary" type="button" onclick="validacionFormulario()">Siguiente</button>
+					<button class="btn btn-primary" type="button" th:text="#{administracion.candidato.siguiente}" onclick="validacionFormulario()">Siguiente</button>
 				</div>
 				<div id="pro" class="content" role="tabpanel"
 					aria-labelledby="pro-trigger">
@@ -144,10 +144,10 @@
                       <!-- text input -->
                       <div class="form-group">
                         <div class="form-group">
-						<label for="titulo">Titulo Universitario</label> 
+						<label th:text="#{administracion.candidato.titulouni}" for="titulo">T&iacute;tulo Universitario</label> 
 						<input
 							type="text"  name="titulo" class="form-control" id="exampleInputEmail1"
-							placeholder="Ingrese el nombre de sus titulos universitarios">
+							th:placeholder="#{administracion.candidato.etitulo}">
 					</div> </div>
                     </div>
                     <div class="col-sm-6">
@@ -156,16 +156,16 @@
                     <div class="col-sm-6">
                       <!-- textarea -->
                       <div class="form-group">
-                        <label>Objetivos</label>
-                        <textarea  class="form-control" name="objetivo" placeholder="Planes a corto y largo plazo"></textarea>
+                        <label th:text="#{administracion.candidato.objetivos}">Objetivos</label>
+                        <textarea  class="form-control" name="objetivo" th:placeholder="#{administracion.candidato.eobjetivos}"></textarea>
                       </div>
                     </div>
                     </div></div>
                     </div>
                   
                     
-                    <button class="btn btn-primary" type="button" onclick="stepper.previous()">Anterior</button>					
-					<button class="btn btn-primary" type="button" onclick="validacionFormulario()">Siguiente</button>
+                    <button class="btn btn-primary" type="button" th:text="#{administracion.candidato.atras}" onclick="stepper.previous()">Anterior</button>					
+					<button class="btn btn-primary" type="button" th:text="#{administracion.candidato.siguiente}" onclick="validacionFormulario()">Siguiente</button>
                     
 						
 					
@@ -182,10 +182,10 @@
                       <!-- text input -->
                       <div class="form-group">
                          <div class="form-group">
-                        <label>Trabaja actualmente</label>
+                        <label th:text="#{administracion.candidato.trabaja}">Trabaja actualmente</label>
                         <select name="trabajo" class="form-control">
-                          <option value="" selected="selected">...</option>
-                          <option value="Si">Si</option>
+                          <option th:text="#{administracion.candidato.seleccione}" value="" selected="selected">...</option>
+                          <option th:text="#{administracion.candidato.si}"  value="Si">Si</option>
                           <option value="No">No</option>
                           
                         </select>
@@ -195,14 +195,14 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                        <div class="form-group">
-                        <label>Que tipo de contrato posee</label>
+                        <label th:text="#{administracion.candidato.tipocontrato}">Que tipo de contrato posee</label>
                         <select name="contrato" class="form-control">
-                          <option value="" selected="selected">...</option>
-                          <option value="indefinido">Indefinido</option>
-                          <option value="fijo">Fijo</option>
-                          <option value="prestacion de servicios">Prestacion de servicios</option>
-                          <option value="otra labor">Otra labor</option>
-                          <option value="otro">Otro</option>
+                          <option value="" th:text="#{administracion.candidato.seleccione}" selected="selected">...</option>
+                          <option th:text="#{administracion.candidato.tipocontrato.indefinido}" value="indefinido">Indefinido</option>
+                          <option th:text="#{administracion.candidato.tipocontrato.fijo}"value="fijo">Fijo</option>
+                          <option th:text="#{administracion.candidato.tipocontrato.prestacions}" value="prestacion de servicios">Prestaci&oacute;n de servicios</option>
+                          <option th:text="#{administracion.candidato.tipocontrato.otralabor}" value="otra labor">Otra labor</option>
+                          <option th:text="#{administracion.candidato.otro}" value="otro">Otro</option>
                           
 					 </select>
                       </div></div>
@@ -214,28 +214,28 @@
                       <!-- text input -->
                       <div class="form-group">
                        <div class="form-group">
-                        <label>Origen de la hoja de vida</label>
+                        <label th:text="#{administracion.candidato.origen}">Origen de la hoja de vida</label>
                         <select name="origen" class="form-control">
-                          <option value="" selected="selected">...</option>
+                          <option th:text="#{administracion.candidato.seleccione}"value="" selected="selected">...</option>
                           <option value="el empleo">El empleo</option>
                           <option value="linkedin">Linkedin</option>
                           <option value="ticjob">Ticjob</option>
-                          <option value="correo electronico">Correo electronico</option>
-                          <option value="otro">Otro</option>
+                          <option th:text="#{administracion.candidato.correoelectronico}" value="correo electronico">Correo electr&oacute;nico</option>
+                          <option th:text="#{administracion.candidato.otro}" value="otro">Otro</option>
                           
 					 </select>
                       </div></div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label>Sueldo actual</label>
-                        <input type="text" name="sueldoActual"class="form-control" placeholder="Escriba su sueldo actual" >
+                        <label th:text="#{administracion.candidato.sueldoactual}">Sueldo actual</label>
+                        <input type="text" name="sueldoActual"class="form-control" th:placeholder="#{administracion.candidato.esueldo}" >
                       </div>
                     </div>
                   </div>
-					<button class="btn btn-primary" type="button"  onclick="stepper.previous()">Anterior</button>
+					<button class="btn btn-primary" type="button" th:text="#{administracion.candidato.atras}" onclick="stepper.previous()">Anterior</button>
 
-                    <button class="btn btn-primary" type="button"  onclick="validacionFormulario()">Siguiente</button>                      
+                    <button class="btn btn-primary" type="button" th:text="#{administracion.candidato.siguiente}" onclick="validacionFormulario()">Siguiente</button>                      
 					
 				</div>
 				<div id="propuesta" class="content" role="tabpanel"
@@ -244,21 +244,21 @@
                     <div class="col-sm-6">
                       <!-- text input -->
                       <div class="form-group">
-                        <label>Aspiracion salarial</label>
-                        <input type="text" name="aspiracion" class="form-control" placeholder="Escriba su aspiracion salarial">
+                        <label th:text="#{administracion.candidato.aspiracion}">Aspiraci&oacute;n salarial</label>
+                        <input type="text" name="aspiracion" class="form-control" th:placeholder="#{administracion.candidato.easpiracion}">
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
                         <div class="form-group">
-                        <label>Disponibilidad</label>
+                        <label th:text="#{administracion.candidato.disponibilidad}">Disponibilidad</label>
                         <select name="disponibilidad" class="form-control">
-                          <option value="" selected="selected">...</option>
-                          <option value="1 dia">1 Dia</option>
-                          <option value="3 dias">3 Dias</option>
-                          <option value="5 dias">5 Dias</option>
-                          <option value="7 dias">7 Dias</option>
-                          <option value="mas de 15 dias">Mas de 15 dias</option>
+                          <option value="" th:text="#{administracion.candidato.seleccione}" selected="selected">...</option>
+                          <option th:text="#{administracion.candidato.disponibilidad.uno}"  value="1 dia">1 D&iacute;a</option>
+                          <option th:text="#{administracion.candidato.disponibilidad.tres}" value="3 dias">3 D&iacute;as</option>
+                          <option th:text="#{administracion.candidato.disponibilidad.cinco}" value="5 dias">5 D&iacute;as</option>
+                          <option th:text="#{administracion.candidato.disponibilidad.siete}" value="7 dias">7 D&iacute;as</option>
+                          <option th:text="#{administracion.candidato.disponibilidad.quince}"value="mas de 15 dias">Mas de 15 d&iacute;as</option>
                           
 					 </select>
                       </div></div>
@@ -269,10 +269,10 @@
                       <!-- text input -->
                       <div class="form-group">
                        <div class="form-group">
-                        <label>Horario flexible</label>
+                        <label th:text="#{administracion.candidato.horario}">Horario flexible</label>
                         <select name="horario" class="form-control">
-                          <option value="" selected="selected">...</option>
-                          <option value="si">Si</option>
+                          <option value="" th:text="#{administracion.candidato.seleccione}"selected="selected">...</option>
+                          <option th:text="#{administracion.candidato.si}"value="si">Si</option>
                           <option value="no">No</option>
                          
                           
@@ -281,16 +281,16 @@
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
-                      <label>Observaciones generales</label>
-                        <textarea  name="observacion" class="form-control" rows="3" placeholder="Escriba las observaciones que crea que son correspondientes"></textarea>
+                      <label th:text="#{administracion.candidato.observaciones}">Observaciones generales</label>
+                        <textarea  name="observacion" class="form-control" rows="3" th:placeholder="#{administracion.candidato.eobservacion}"></textarea>
                       
                         </div>
                     </div>
                   </div>
 					
 					
-					<button class="btn btn-primary" type="button" onclick="stepper.previous()">Anterior</button>
-					<button type="submit" class="btn btn-primary">Crear</button>
+					<button class="btn btn-primary" type="button" th:text="#{administracion.candidato.atras}" onclick="stepper.previous()">Anterior</button>
+					<button type="submit" th:text="#{administracion.candidato.crear}" class="btn btn-primary">Crear</button>
 				</div>
 			</div>
 		</div>
