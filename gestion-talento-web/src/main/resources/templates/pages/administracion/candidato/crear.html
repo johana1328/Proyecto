@@ -57,38 +57,7 @@
               <div id="basica" class="content" role="tabpanel"
 					aria-labelledby="basica-trigger">
               <div class="card-body">
-                <form>
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <!-- text input -->
-                      <div class="form-group">
-                        <label>Primer Nombre</label>
-                        <input name="nombre1" type="text" class="form-control" placeholder="Escriba su primer nombre">
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Segundo Nombre</label>
-                        <input name="nombre2" id="nombre2" type="text" class="form-control" placeholder="Escriba su segundo nombre" >
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <!-- text input -->
-                      <div class="form-group">
-                        <label>Primer Apellido</label>
-                        <input name="apellido1" type="text" class="form-control" placeholder="Escriba su primer apellido">
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Segundo Apellido</label>
-                        <input name="apellido2" type="text" class="form-control" placeholder="Escriba su segundo apellido" >
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
+                <div class="row">
                     <div class="col-sm-6">
                       <!-- text input -->
                       <div class="form-group">
@@ -119,6 +88,37 @@
                     <div class="col-sm-6">
                       <!-- text input -->
                       <div class="form-group">
+                        <label>Primer Nombre</label>
+                        <input name="nombre1" type="text" class="form-control" placeholder="Escriba su primer nombre">
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label>Segundo Nombre</label>
+                        <input name="nombre2" id="nombre2" type="text" class="form-control" placeholder="Escriba su segundo nombre" >
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>Primer Apellido</label>
+                        <input name="apellido1" type="text" class="form-control" placeholder="Escriba su primer apellido">
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label>Segundo Apellido</label>
+                        <input name="apellido2" type="text" class="form-control" placeholder="Escriba su segundo apellido" >
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <div class="form-group">
                         <label>Telefono</label>
                         <input name="telefono" type="text" class="form-control" placeholder="Escriba su numero de telefono">
                       </div>
@@ -130,7 +130,7 @@
                       </div>
                     </div>
                   </div>
-                  </form>
+                  
                   </div>
 					<button class="btn btn-primary" type="button" onclick="validacionFormulario()">Siguiente</button>
 				</div>
@@ -139,7 +139,7 @@
 					 
                  
                     
-                    <div class="row">
+                    
                     <div class="col-sm-6">
                       <!-- text input -->
                       <div class="form-group">
@@ -162,10 +162,10 @@
                     </div>
                     </div></div>
                     </div>
-                  </div>
+                  
                     
+                    <button class="btn btn-primary" type="button" onclick="stepper.previous()">Anterior</button>					
 					<button class="btn btn-primary" type="button" onclick="validacionFormulario()">Siguiente</button>
-                    <button class="btn btn-primary" type="button" onclick="stepper.previous()">Anterior</button>
                     
 						
 					
@@ -233,9 +233,9 @@
                       </div>
                     </div>
                   </div>
-                    <button class="btn btn-primary" type="button"  onclick="validacionFormulario()">Siguiente</button>
 					<button class="btn btn-primary" type="button"  onclick="stepper.previous()">Anterior</button>
-                      
+
+                    <button class="btn btn-primary" type="button"  onclick="validacionFormulario()">Siguiente</button>                      
 					
 				</div>
 				<div id="propuesta" class="content" role="tabpanel"
