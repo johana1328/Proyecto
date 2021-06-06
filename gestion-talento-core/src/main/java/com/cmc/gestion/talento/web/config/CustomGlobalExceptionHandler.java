@@ -72,4 +72,5 @@ public class CustomGlobalExceptionHandler extends ResponseEntityExceptionHandler
 		ErrorResponse error = new ErrorResponse("Validation Failed", details);
 		return new ResponseEntity<Object>(error, HttpStatus.BAD_REQUEST);
 	}
+	
 }

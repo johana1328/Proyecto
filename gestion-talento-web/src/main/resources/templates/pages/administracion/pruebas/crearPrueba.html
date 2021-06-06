@@ -1,0 +1,80 @@
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:with="http://www.thymeleaf.org/extras/with"
+	layout:decorate="~{layout}"
+	th:with="funcionalidad='Administraci&oacuten', evento='Pruebas t&eacute;cnicas y psicot&eacute;cnicas'">
+<th:block layout:fragment="content">
+ <div class="row">
+  <div class="col-sm-6">
+   <div class="form-group col-md-10">
+		<label for="exampleInputEmail1">Nombre</label> 
+		<input type="text" class="form-control " id="nombreCrear" placeholder="Ingrese nombre">
+	</div>
+  </div>
+		 <div class="col-sm-6">
+   <div class="form-group col-md-10">
+		<label for="exampleInputEmail1">Fecha de creaci&oacute;n</label> 
+		<input type="date" class="form-control " id="nombreCrear">
+	</div>
+  </div>
+	</div>
+	 <div class="row">
+  <div class="col-sm-6">
+   <div class="form-group col-md-10">
+		<label for="exampleInputEmail1">Tipo prueba</label> 
+		<select class="form-control" id="tipPrueb">
+					<option>Seleccione</option>
+			      	<option>Prueba T&eacute;cnica</option>
+			    	<option>Prueba Psicot&eacute;cnica</option>
+		</select>
+	</div>
+  </div>
+		 <div class="col-sm-6">
+   <div class="form-group col-md-10">
+		 <label for="exampleInputEmail1">Descripci&oacute;n</label>
+		<textarea class="form-control" id="descCrear" rows="3"
+			placeholder="Escribir ..."></textarea>
+	</div>
+  </div>
+	</div>
+
+		<div layout:fragment="modal-footer">
+			<button type="button" class="btn btn-primary">Guardar</button>
+		</div>
+	<table class="table table-bordered table-hover mt-3">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Nombre</th>
+				<th>Tipo prueba</th>
+				<th>Fecha</th>
+				<th>Descripci&oacute;n</th>
+				<th width="150px">Acciones</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>1</td>
+				<td>1</td>
+				<td>1</td>
+				<td>1</td>
+				<td>1</td>
+				<td>
+					<button type="button" data-id="2"
+						class="btn btn-primary  ">
+						<i class="fas fa-trash-alt"></i>
+					</button>
+					<button type="button"
+						class="btn btn-primary  ">
+						<i class="fas fa-pen"></i>
+					</button>
+					<a type="button" th:href="@{/administracion/preguntas}" class="btn btn-primary  ">
+						<i class="fas fa-eye"></i>
+					</a>`
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+</th:block>
+</html>

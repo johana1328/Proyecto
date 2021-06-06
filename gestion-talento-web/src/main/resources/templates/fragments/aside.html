@@ -93,17 +93,12 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a th:href="@{/tabla}" class="nav-link ">
+                <a th:href="@{/administracion/pruebas}" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
-                  <p th:text="#{aside.option.seleccion.tecnica}">Pruebas t&eacute;cnica</p>
+                  <p th:text="#{aside.option.seleccion.tecnica}">Pruebas</p>
                 </a>
               </li>
-              <li class="nav-item" sec:authorize="hasAnyAuthority('ANALISTA_RRHH','GERENTE_RRHH','EVALUADOR')" >
-                <a th:href="@{/pagina1}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p th:text="#{aside.option.seleccion.psico}">Pruebas psicot&eacute;cnica</p>
-                </a>
-              </li>
+              
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>

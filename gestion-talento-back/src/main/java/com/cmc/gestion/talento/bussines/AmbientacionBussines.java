@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cmc.gestion.talento.bussines.dto.AmbientacionDto;
-import com.cmc.gestion.talento.bussines.dto.TarifaDto;
 import com.cmc.gestion.talento.bussines.facade.AmbientacionFacade;
 import com.cmc.gestion.talento.jpa.dao.ParametriaDetalleDao;
 import com.cmc.gestion.talento.jpa.entity.ParametriaDetalle;
