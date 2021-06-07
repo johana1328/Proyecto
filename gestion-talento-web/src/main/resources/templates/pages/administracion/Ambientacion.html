@@ -10,8 +10,8 @@
      	<thead>
         	<tr>
             	<th>Id</th>
-                <th>Valor</th>
-                <th width="70px">Acciones</th>
+                <th th:text="#{administracion.ambientacion.valor}">Valor</th>
+                <th th:text="#{administracion.ambientacion.accion}"width="70px">Acciones</th>
             </tr>
         </thead>
      </table> 
@@ -19,13 +19,13 @@
      <div layout:replace="~{fragments/modal :: modalDf(titulo='Crear Ambiente' , id='modCrear')}">
          <div  layout:fragment="modal-content">
               <div class="form-group">
-                  <label for="exampleInputEmail1">Ambiente</label>
-                  <input type="text" class="form-control" id="valorAmbiente" placeholder="Ingrese valor">
+                  <label th:text="#{administracion.ambientacion.ambiente}"for="exampleInputEmail1">Ambiente</label>
+                  <input type="text" class="form-control" id="valorAmbiente" th:placeholder="#{administracion.ambientacion.iv}">
               </div>
          </div>
          <div  layout:fragment="modal-footer">
-              <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
-              <button type="button" class="btn btn-primary" onclick="crearAmbiente()"  >Guardar</button>
+              <button th:text="#{administracion.ambientacion.cerrar}"type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+              <button th:text="#{administracion.ambientacion.guardar}"type="button" class="btn btn-primary" onclick="crearAmbiente()"  >Guardar</button>
          </div>
       </div>
       
@@ -37,21 +37,21 @@
                   <input type="text" class="form-control" id="idMod" disabled>
               </div>
               <div class="form-group">
-                  <label for="exampleInputEmail1">Valor</label>
-                  <input type="text" class="form-control" id="valorAmbientemod" placeholder="Ingrese valor">
+                  <label th:text="#{administracion.ambientacion.valor}" for="exampleInputEmail1">Valor</label>
+                  <input type="text" class="form-control" id="valorAmbientemod" th:placeholder="#{administracion.ambientacion.iv}">
               </div>
          </div>
          <div  layout:fragment="modal-footer">
-              <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
-              <button type="button" class="btn btn-primary" onclick="modificarAmbiente()">Guardar</button>
+              <button th:text="#{administracion.ambientacion.cerrar}" type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+              <button th:text="#{administracion.ambientacion.guardar}" type="button" class="btn btn-primary" onclick="modificarAmbiente()">Guardar</button>
          </div>
       </div>
       <!-- Eliminacion de Ambiente -->
       <div layout:replace="~{fragments/modal :: modalConfim(id='confirmDelete')}" >
       	<div  layout:fragment="modal-footer">
       	     <input type="hidden" id="valorAmbienteEliminar">
-      		 <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
-             <button type="button" class="btn btn-primary"  onclick="eliminarAmbiente()" >Eliminar</button>
+      		 <button th:text="#{administracion.ambientacion.cerrar}" type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+             <button th:text="#{administracion.ambientacion.eliminar}" type="button" class="btn btn-primary"  onclick="eliminarAmbiente()" >Eliminar</button>
       	</div>
       </div>
      

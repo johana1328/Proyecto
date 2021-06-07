@@ -10,14 +10,14 @@
      	<thead>
         	<tr>
             	<th>Id</th>
-                <th>nombre</th>
-                <th>Descripci&oacute;n</th>
-                <th>Proceso</th>
-                <th>Procedimiento</th>
-                <th>Archivo gesti&oacute;n</th>
-                <th>Archivo central</th>
-                <th>Serie</th>
-                <th width="70px">Acciones</th>
+                <th th:text="#{administracion.sub.nombre}">nombre</th>
+                <th th:text="#{administracion.sub.descripcion}">Descripci&oacute;n</th>
+                <th th:text="#{administracion.sub.proceso}">Proceso</th>
+                <th th:text="#{administracion.sub.procedimiento}">Procedimiento</th>
+                <th th:text="#{administracion.sub.gestion}">Archivo gesti&oacute;n</th>
+                <th th:text="#{administracion.sub.central}">Archivo central</th>
+                <th >Serie</th>
+                <th  th:text="#{administracion.sub.accion}"width="70px">Acciones</th>
             </tr>
         </thead>
      </table>
@@ -27,22 +27,22 @@
               <div class="form-group">
               		<div class="row">
               		<div class="col-sm-6">
-                  <label for="exampleInputEmail1">Nombre</label>
-                  <input type="text" class="form-control" id="nombreCrear" placeholder="Ingrese nombre">
+                  <label th:text="#{administracion.sub.nombre}"for="exampleInputEmail1">Nombre</label>
+                  <input type="text" class="form-control" id="nombreCrear" th:placeholder="#{administracion.sub.en}">
                   </div>
                   <div class="col-sm-6">
-                  <label for="exampleInputEmail1">Proceso</label>
-                  <input type="text" class="form-control" id="procCrear" placeholder="Ingrese proceso">
+                  <label th:text="#{administracion.sub.proceso}" for="exampleInputEmail1">Proceso</label>
+                  <input type="text" class="form-control" id="procCrear" th:placeholder="#{administracion.sub.pro}">
                   </div>
                   </div>
                   <div class="row">
               		<div class="col-sm-6">
-                  <label for="exampleInputEmail1">Archivo gesti&oacute;n</label>
-                  <input type="number" class="form-control" id="arcgesCrear" placeholder="Ingrese archivo gesti&oacute;n">
+                  <label th:text="#{administracion.sub.gestion}" for="exampleInputEmail1">Archivo gesti&oacute;n</label>
+                  <input type="number" class="form-control" id="arcgesCrear" th:placeholder="#{administracion.sub.ag}">
                   </div>
                   <div class="col-sm-6">
-                  <label for="exampleInputEmail1">Archivo central</label>
-                  <input type="number" class="form-control" id="arccenCrear" placeholder="Ingrese archivo central">
+                  <label th:text="#{administracion.sub.central}" for="exampleInputEmail1">Archivo central</label>
+                  <input type="number" class="form-control" id="arccenCrear" th:placeholder="#{administracion.sub.ac}">
                    </div>
                    </div>
 			      <label for="exampleInputEmail1">Serie</label>
@@ -52,15 +52,15 @@
 			    	</option>
 				  </select>
 				  </div>
-                  <label for="exampleInputEmail1">Descripci&oacute;n</label>
-                  <textarea class="form-control" id="descCrear" rows="3" placeholder="Escribir ..."></textarea>
-                  <label for="exampleInputEmail1">Procedimiento</label>
-                  <textarea class="form-control" id="procediCrear" rows="3" placeholder="Escribir ..."></textarea>
+                  <label th:text="#{administracion.sub.descripcion}"for="exampleInputEmail1">Descripci&oacute;n</label>
+                  <textarea class="form-control" id="descCrear" rows="3" th:placeholder="#{administracion.sub.escribir}"></textarea>
+                  <label th:text="#{administracion.sub.procedimiento}"for="exampleInputEmail1">Procedimiento</label>
+                  <textarea class="form-control" id="procediCrear" rows="3" th:placeholder="#{administracion.sub.escribir}"></textarea>
               </div>
          </div>
          <div  layout:fragment="modal-footer">
-              <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
-              <button type="button" class="btn btn-primary" onclick="crearSubserie()"  >Guardar</button>
+              <button th:text="#{administracion.serie.cerrar}" type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+              <button th:text="#{administracion.serie.guardar}"type="button" class="btn btn-primary" onclick="crearSubserie()"  >Guardar</button>
          </div>
       </div> 
        <!-- Modificacion de Serie -->
@@ -73,22 +73,22 @@
               <div class="form-group">
               		<div class="row">
               		<div class="col-sm-6">
-                    <label for="exampleInputEmail1">Nombre</label>
-                  <input type="text" class="form-control" id="nombreMod" placeholder="Ingrese nombre">
+                    <label th:text="#{administracion.sub.nombre}"for="exampleInputEmail1">Nombre</label>
+                  <input type="text" class="form-control" id="nombreMod" th:placeholder="#{administracion.sub.en}">
                   </div>
                   <div class="col-sm-6">
-                  <label for="exampleInputEmail1">Proceso</label>
-                  <input type="text" class="form-control" id="procMod" placeholder="Ingrese proceso">
+                  <label th:text="#{administracion.sub.proceso}" for="exampleInputEmail1">Proceso</label>
+                  <input type="text" class="form-control" id="procMod" th:placeholder="#{administracion.sub.pro}">
                   </div>
                   </div>
                   <div class="row">
               	  <div class="col-sm-6">
-                  <label for="exampleInputEmail1">Archivo gesti&oacute;n</label>
-                  <input type="number" class="form-control" id="arcgesMod" placeholder="Ingrese archivo gesti&oacute;n">
+                  <label th:text="#{administracion.sub.gestion}" for="exampleInputEmail1">Archivo gesti&oacute;n</label>
+                  <input type="number" class="form-control" id="arcgesMod" th:placeholder="#{administracion.sub.ag}">
                   </div>
                   <div class="col-sm-6">
-                  <label for="exampleInputEmail1">Archivo central</label>
-                  <input type="number" class="form-control" id="arccenMod" placeholder="Ingrese archivo central">
+                  <label  th:text="#{administracion.sub.central}" for="exampleInputEmail1">Archivo central</label>
+                  <input type="number" class="form-control" id="arccenMod" th:placeholder="#{administracion.sub.ac}">
                   </div>
                   </div>
 			      <label for="exampleInputEmail1">Serie</label>
@@ -98,14 +98,14 @@
 			    	</option>
 				  </select>
 				  </div>
-                  <label for="exampleInputEmail1">Descripci&oacute;n</label>
-                  <textarea class="form-control" id="descMod" rows="3" placeholder="Escribir ..."></textarea>
-                  <label for="exampleInputEmail1">Procedimiento</label>
-                  <textarea class="form-control" id="procediMod" rows="3" placeholder="Escribir ..."></textarea>
+                  <label th:text="#{administracion.sub.descripcion}" for="exampleInputEmail1">Descripci&oacute;n</label>
+                  <textarea class="form-control" id="descMod" rows="3" th:placeholder="#{administracion.sub.escribir}"></textarea>
+                  <label th:text="#{administracion.sub.procedimiento}"for="exampleInputEmail1">Procedimiento</label>
+                  <textarea class="form-control" id="procediMod" rows="3" th:placeholder="#{administracion.sub.escribir}"></textarea>
          </div>
          <div  layout:fragment="modal-footer">
-              <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
-              <button type="button" class="btn btn-primary" onclick="modificarSubserie()">Guardar</button>
+              <button th:text="#{administracion.serie.cerrar}" type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+              <button th:text="#{administracion.serie.guardar}"type="button" class="btn btn-primary" onclick="modificarSubserie()">Guardar</button>
          </div>
       </div>
       </div>
@@ -113,8 +113,8 @@
       <div layout:replace="~{fragments/modal :: modalConfim(id='confirmDelete')}" >
       	<div  layout:fragment="modal-footer">
       	     <input type="hidden" id="idSubserie">
-      		 <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
-             <button type="button" class="btn btn-primary"  onclick="eliminarSubserie()" >Eliminar</button>
+      		 <button th:text="#{administracion.serie.cerrar}" type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+             <button th:text="#{administracion.serie.eliminar}"type="button" class="btn btn-primary"  onclick="eliminarSubserie()" >Eliminar</button>
       	</div>
       </div>
      

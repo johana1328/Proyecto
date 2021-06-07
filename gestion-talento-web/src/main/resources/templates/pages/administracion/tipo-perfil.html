@@ -10,8 +10,8 @@
      	<thead>
         	<tr>
             	<th>Id</th>
-                <th>Valor</th>
-                <th width="70px">Acciones</th>
+                <th th:text="#{administracion.tipo.valor}">Valor</th>
+                <th th:text="#{administracion.tipo.valor}" width="70px">Acciones</th>
             </tr>
         </thead>
      </table> 
@@ -20,13 +20,13 @@
       <div layout:replace="~{fragments/modal :: modalDf(titulo='Crear TipoPefil' , id='modCrear')}">
          <div  layout:fragment="modal-content">
               <div class="form-group">
-                  <label for="exampleInputEmail1">Tipo Perfil</label>
-                  <input type="text" class="form-control" id="valorTipoPerfil" placeholder="Ingrese valor">
+                  <label th:text="#{administracion.tipo.tipo}" for="exampleInputEmail1">Tipo Perfil</label>
+                  <input type="text" class="form-control" id="valorTipoPerfil" th:placeholder="#{administracion.tipo.ingrese}">
               </div>
          </div>
          <div  layout:fragment="modal-footer">
-              <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
-              <button type="button" class="btn btn-primary" onclick="crearTipoPerfil()"  >Guardar</button>
+              <button th:text="#{administracion.tipo.cerrar}" type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+              <button th:text="#{administracion.tipo.guardar}"type="button" class="btn btn-primary" onclick="crearTipoPerfil()"  >Guardar</button>
          </div>
       </div> 
       
@@ -38,13 +38,13 @@
                   <input type="text" class="form-control" id="idMod" disabled>
               </div>
               <div class="form-group">
-                  <label for="exampleInputEmail1">Valor</label>
-                  <input type="text" class="form-control" id="valorTipoPerfilmod" placeholder="Ingrese valor">
+                  <label th:text="#{administracion.tipo.valor}" for="exampleInputEmail1">Valor</label>
+                  <input type="text" class="form-control" id="valorTipoPerfilmod" th:placeholder="#{administracion.tipo.ingrese}">
               </div>
          </div>
          <div  layout:fragment="modal-footer">
-              <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
-              <button type="button" class="btn btn-primary" onclick="modificarTipoPerfil()">Guardar</button>
+              <button th:text="#{administracion.tipo.cerrar}"type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+              <button th:text="#{administracion.tipo.guardar}"type="button" class="btn btn-primary" onclick="modificarTipoPerfil()">Guardar</button>
          </div>
       </div>
       
@@ -52,8 +52,8 @@
       <div layout:replace="~{fragments/modal :: modalConfim(id='confirmDelete')}" >
       	<div  layout:fragment="modal-footer">
       	     <input type="hidden" id="valorTipoPerfilEliminar">
-      		 <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
-             <button type="button" class="btn btn-primary"  onclick="eliminarTipoPerfil()" >Eliminar</button>
+      		 <button th:text="#{administracion.tipo.cerrar}"type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+             <button th:text="#{administracion.tipo.eliminar}"type="button" class="btn btn-primary"  onclick="eliminarTipoPerfil()" >Eliminar</button>
       	</div>
       </div>
      
