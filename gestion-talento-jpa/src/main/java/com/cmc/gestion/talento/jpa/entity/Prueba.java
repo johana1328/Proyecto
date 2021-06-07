@@ -10,6 +10,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Index;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -17,7 +18,7 @@ import javax.persistence.TemporalType;
 import com.cmc.gestion.talento.jpa.type.TipoPrueba;
 
 @Entity
-@Table(name="Prueba")
+@Table(name="prueba" , indexes = { @Index(name = "prueba_index", columnList = "id_prueba", unique = true) })
 public class Prueba implements Serializable{
 
 	/**

@@ -2,16 +2,27 @@ package com.cmc.gestion.talento.bussines.dto;
 
 import java.util.Calendar;
 
+import javax.validation.constraints.NotEmpty;
+
 import com.cmc.gestion.talento.jpa.type.TipoPrueba;
+import com.sun.istack.NotNull;
 
 public class PruebaDto {
 
 	private long idPrueba;
+	
+	@NotNull
+	@NotEmpty(message = "Nombre no puede ser nulo")
 	private String nombre;
+	
 	private String descripcion;
+	
 	private Calendar fechaCreacion;
+	
 	private TipoPrueba tipoPrueba;
+	
 	private boolean estado;
+	
 	private String evaluador;
 
 

@@ -52,9 +52,6 @@ function validacionFormulario(){
 			}
 		},
 		messages:{
-			tipoDocumento:{
-				required:"Seleccione una opcion valida"
-			},
 			numDoc:{
 				required: "El camo Numero documento nombre es requerido",
 				alphanumeric:"El campo Numero documento solo puede contener letras o numeros",

@@ -31,4 +31,8 @@
     <script th:src="@{/resources/plugins/toastr/toastr.min.js}"></script>
     
      <script th:src="@{/resources/gestion-cmc/js/main.js}"></script>
+     
+     <script th:src="@{/resources/message/messageEs.js}"  th:if="${#locale.language == 'es'}"></script>
+	<script th:src="@{/resources/message/messageEn.js}"  th:if="${#locale.language == 'us'}"></script>
+	
 </th:block>

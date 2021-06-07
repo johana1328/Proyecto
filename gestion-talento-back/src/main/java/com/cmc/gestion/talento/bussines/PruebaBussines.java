@@ -1,5 +1,6 @@
 package com.cmc.gestion.talento.bussines;
 
+import java.util.Calendar;
 import java.util.List;
 import java.util.Optional;
 
@@ -46,16 +47,16 @@ public class PruebaBussines {
 			Prueba pruebaEntity = new Prueba();
 			pruebaEntity.setNombre(pruebaDto.getNombre());
 			pruebaEntity.setDescripcion(pruebaDto.getDescripcion());
-			pruebaEntity.setFechaCreacion(pruebaDto.getFechaCreacion()); 
-			pruebaEntity.setEstado(pruebaDto.isEstado());
 			pruebaEntity.setTipoPrueba(pruebaDto.getTipoPrueba());
 			pruebaEntity.setEvaluador("SYSTEM");
+			pruebaEntity.setEstado(true);
+			Calendar fechaActual= Calendar.getInstance();
+			pruebaEntity.setFechaCreacion(fechaActual); 
 			this.pruebaDao.save(pruebaEntity);
 			
 		}else{
 			throw new ArqGestionExcepcion("La prueba ya se encuentra creada", ExcepcionType.ERROR_VALIDATION);
 		}
-		 
 	 }
 	
 	 
@@ -68,10 +69,7 @@ public class PruebaBussines {
 					
 					pruebaEntity.setNombre(pruebaDto.getNombre());
 					pruebaEntity.setDescripcion(pruebaDto.getDescripcion());
-					pruebaEntity.setFechaCreacion(pruebaDto.getFechaCreacion()); 
-					pruebaEntity.setEstado(pruebaDto.isEstado());
 					pruebaEntity.setTipoPrueba(pruebaDto.getTipoPrueba());
-					pruebaEntity.setEvaluador("SYSTEM");
 					this.pruebaDao.save(pruebaEntity);
 					return pruebaFacade.getObject(pruebaEntity);
 				}else {

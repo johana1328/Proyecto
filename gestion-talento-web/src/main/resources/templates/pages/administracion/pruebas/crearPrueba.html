@@ -4,77 +4,103 @@
 	layout:decorate="~{layout}"
 	th:with="funcionalidad='Administraci&oacuten', evento='Pruebas t&eacute;cnicas y psicot&eacute;cnicas'">
 <th:block layout:fragment="content">
- <div class="row">
-  <div class="col-sm-6">
-   <div class="form-group col-md-10">
-		<label for="exampleInputEmail1">Nombre</label> 
-		<input type="text" class="form-control " id="nombreCrear" placeholder="Ingrese nombre">
-	</div>
-  </div>
-		 <div class="col-sm-6">
-   <div class="form-group col-md-10">
-		<label for="exampleInputEmail1">Fecha de creaci&oacute;n</label> 
-		<input type="date" class="form-control " id="nombreCrear">
-	</div>
-  </div>
-	</div>
-	 <div class="row">
-  <div class="col-sm-6">
-   <div class="form-group col-md-10">
-		<label for="exampleInputEmail1">Tipo prueba</label> 
-		<select class="form-control" id="tipPrueb">
-					<option>Seleccione</option>
-			      	<option>Prueba T&eacute;cnica</option>
-			    	<option>Prueba Psicot&eacute;cnica</option>
-		</select>
-	</div>
-  </div>
-		 <div class="col-sm-6">
-   <div class="form-group col-md-10">
-		 <label for="exampleInputEmail1">Descripci&oacute;n</label>
-		<textarea class="form-control" id="descCrear" rows="3"
-			placeholder="Escribir ..."></textarea>
-	</div>
-  </div>
-	</div>
-
-		<div layout:fragment="modal-footer">
-			<button type="button" class="btn btn-primary">Guardar</button>
+   
+	<!-- Formulario de creacion -->
+	<form th:object="${prueba}"
+		th:action="${prueba.idPrueba == 0} ? @{/administracion/pruebas/crear} : @{/administracion/pruebas/modificar/{id}(id=${prueba.idPrueba})}" method="post">
+	    <h2 th:text="${#fields.hasErrors('*')}"></h2>
+	    <ul th:if="${#fields.hasErrors('*')}" >
+            <li th:each="error : ${#fields.errors('*')}" th:text="${error}"></li>
+         </ul>
+	
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="form-group col-md-10">
+					<label for="exampleInputEmail1">Nombre</label> 
+					<input type="text" class="form-control " id="nombreCrear"
+						placeholder="Ingrese nombre" th:field="*{nombre}">
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="form-group col-md-10">
+					<label for="exampleInputEmail1">Tipo prueba</label> <select
+						class="form-control" id="tipPrueb" th:field="*{tipoPrueba}"   >
+						<option  value="null" >Seleccione</option>
+						<option th:each="tipoprue : ${T(com.cmc.gestion.talento.jpa.type.TipoPrueba).values()}" 
+                                             th:value="${tipoprue}" th:text="${tipoprue.value}"></option>
+					</select>
+				</div>
+			</div>
 		</div>
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="form-group col-md-12">
+					<label for="exampleInputEmail1">Descripci&oacute;n</label>
+					<textarea class="form-control" id="descCrear" rows="3" th:field="*{descripcion}"
+						placeholder="Escribir ..."></textarea>
+				</div>
+			</div>
+		</div>
+        <div layout:fragment="modal-footer">
+		     <button type="submit" class="btn btn-primary">Guardar</button>
+	   </div>
+	</form>
+
+
+
 	<table class="table table-bordered table-hover mt-3">
 		<thead>
 			<tr>
-				<th>Id</th>
 				<th>Nombre</th>
 				<th>Tipo prueba</th>
-				<th>Fecha</th>
+				<th>Fecha creacion</th>
 				<th>Descripci&oacute;n</th>
 				<th width="150px">Acciones</th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<td>1</td>
-				<td>1</td>
-				<td>1</td>
-				<td>1</td>
-				<td>1</td>
+			<tr  th:each ="prueba : ${listaprueba}" >
+				<td th:utext="${prueba.nombre}" >1</td>
+				<td th:utext="${prueba.tipoPrueba.value}">1</td>
+				<td  th:text="${#dates.format(prueba.fechaCreacion, 'dd-MMM-yyyy')}" >1</td>
+				<td th:utext="${prueba.descripcion}">1</td>
+				
 				<td>
-					<button type="button" data-id="2"
-						class="btn btn-primary  ">
+					<button type="button" data-id="2"  th:onclick="|openModal('${prueba.idPrueba}')|"  class="btn btn-primary  ">
 						<i class="fas fa-trash-alt"></i>
 					</button>
-					<button type="button"
-						class="btn btn-primary  ">
-						<i class="fas fa-pen"></i>
-					</button>
-					<a type="button" th:href="@{/administracion/preguntas}" class="btn btn-primary  ">
-						<i class="fas fa-eye"></i>
-					</a>`
+					
+					<a type="button" th:href="@{/administracion/pruebas/{id}(id=${prueba.idPrueba})}"
+					class="btn btn-primary  "> <i class="fas fa-pen"></i>
+					</a>
+					
+					<a type="button" th:href="@{/administracion/preguntas}"
+					class="btn btn-primary  "> <i class="fas fa-eye"></i>
+				</a>`
 				</td>
 			</tr>
 		</tbody>
 	</table>
-
+      
+       <!-- Eliminacion de Serie -->
+      <div layout:replace="~{fragments/modal :: modalConfim(id='confirmDelete')}" >
+        
+      	<div  layout:fragment="modal-footer">
+      	<form id="eliminar"  action="" method="post"> 
+	      		 <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+	             <button type="submit" class="btn btn-primary" >Eliminar</button>
+      	</form>
+      	</div>
+      	 
+      </div>
+      
+</th:block>
+<th:block layout:fragment="body_end">
+    <script type="text/javascript">
+         function openModal(id){
+        	 $('#confirmDelete').modal('show');
+        	 $("#eliminar").attr("action", '../administracion/pruebas/eliminar/'+id);
+         }
+    </script>
 </th:block>
 </html>
