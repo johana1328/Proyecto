@@ -1,5 +1,4 @@
 
-
 var form = $("#formIndexCandidato");
 
 function validacionFormularios(){

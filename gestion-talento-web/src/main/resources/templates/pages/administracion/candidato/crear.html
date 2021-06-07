@@ -67,20 +67,23 @@
                         <label th:text="#{administracion.candidato.tipodocumento}">Tipo documento</label>
                         <select name="tipoDocumento" class="form-control">
                         <option value="" selected="selected" th:text="#{administracion.candidato.tipodocumento.tipo}">Tipo</option>
+                      <div class="form-group col-sm-10">
+                        <label>Tipo documento</label>
+                        <select name="tipoDocumento" class="form-control ">
+                        <option value="" selected="selected">Tipo</option>
                           <option VALUE="CC">CC</option>
                           <option VALUE="TI">TI</option>
                           <option VALUE="CE">CE</option>
-                          
-                          
                         </select>
-                      </div>
-                    </div>
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label th:text="#{administracion.candidato.documento}">Documento</label>
                         <input name="documento" type="text" class="form-control" th:placeholder="#{administracion.candidato.edocumento}" >
+                      <div class="form-group col-sm-10">
+                        <label>Documento</label>
+                        <input name="documento" type="text" class="form-control" placeholder="Escriba su segundo nombre" >
                       </div>
                     </div>
                   </div>
@@ -96,6 +99,15 @@
                       <div class="form-group">
                         <label th:text="#{administracion.candidato.segundon}">Segundo Nombre</label>
                         <input name="nombre2" id="nombre2" type="text" class="form-control" th:placeholder="#{administracion.candidato.esnombre}" >
+                      <div class="form-group col-sm-10">
+                        <label>Primer Nombre</label>
+                        <input name="nombre1" type="text" class="form-control" placeholder="Escriba su primer nombre">
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group col-sm-10">
+                        <label>Segundo Nombre</label>
+                        <input name="nombre2" id="nombre2" type="text" class="form-control" placeholder="Escriba su segundo nombre" >
                       </div>
                     </div>
                   </div>
@@ -111,6 +123,15 @@
                       <div class="form-group">
                         <label th:text="#{administracion.candidato.segundoa}">Segundo Apellido</label>
                         <input name="apellido2" type="text" class="form-control" th:placeholder="#{administracion.candidato.esapellido}" >
+                      <div class="form-group col-sm-10">
+                        <label>Primer Apellido</label>
+                        <input name="apellido1" type="text" class="form-control" placeholder="Escriba su primer apellido">
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group col-sm-10">
+                        <label>Segundo Apellido</label>
+                        <input name="apellido2" type="text" class="form-control" placeholder="Escriba su segundo apellido" >
                       </div>
                     </div>
                   </div>
@@ -127,6 +148,15 @@
                       <div class="form-group">
                         <label th:text="#{administracion.candidato.correoelectronico}">Correo Electr&oacute;nico</label>
                         <input name="correo" id="correo" type="text" class="form-control" th:placeholder="#{administracion.candidato.ecorreo}" >
+                      <div class="form-group col-sm-10">
+                        <label>Telefono</label>
+                        <input name="telefono" type="text" class="form-control" placeholder="Escriba su numero de telefono">
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group col-sm-10">
+                        <label>Correo Electronico</label>
+                        <input name="correo" id="correo" type="text" class="form-control" placeholder="Escriba su correo electronico" >
                       </div>
                     </div>
                   </div>
@@ -183,6 +213,8 @@
                       <div class="form-group">
                          <div class="form-group">
                         <label th:text="#{administracion.candidato.trabaja}">Trabaja actualmente</label>
+                         <div class="form-group col-sm-10">
+                        <label>Trabaja actualmente</label>
                         <select name="trabajo" class="form-control">
                           <option th:text="#{administracion.candidato.seleccione}" value="" selected="selected">...</option>
                           <option th:text="#{administracion.candidato.si}"  value="Si">Si</option>
@@ -190,12 +222,13 @@
                           
                         </select>
                       </div>
-                        </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
                        <div class="form-group">
                         <label th:text="#{administracion.candidato.tipocontrato}">Que tipo de contrato posee</label>
+                       <div class="form-group col-sm-10">
+                        <label>Que tipo de contrato posee</label>
                         <select name="contrato" class="form-control">
                           <option value="" th:text="#{administracion.candidato.seleccione}" selected="selected">...</option>
                           <option th:text="#{administracion.candidato.tipocontrato.indefinido}" value="indefinido">Indefinido</option>
@@ -205,7 +238,7 @@
                           <option th:text="#{administracion.candidato.otro}" value="otro">Otro</option>
                           
 					 </select>
-                      </div></div>
+                      </div>
                     </div>
                   </div>
                       
@@ -215,6 +248,8 @@
                       <div class="form-group">
                        <div class="form-group">
                         <label th:text="#{administracion.candidato.origen}">Origen de la hoja de vida</label>
+                       <div class="form-group col-sm-10">
+                        <label>Origen de la hoja de vida</label>
                         <select name="origen" class="form-control">
                           <option th:text="#{administracion.candidato.seleccione}"value="" selected="selected">...</option>
                           <option value="el empleo">El empleo</option>
@@ -224,12 +259,15 @@
                           <option th:text="#{administracion.candidato.otro}" value="otro">Otro</option>
                           
 					 </select>
-                      </div></div>
+                      </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label th:text="#{administracion.candidato.sueldoactual}">Sueldo actual</label>
                         <input type="text" name="sueldoActual"class="form-control" th:placeholder="#{administracion.candidato.esueldo}" >
+                      <div class="form-group col-sm-10">
+                        <label>Sueldo actual</label>
+                        <input type="text" name="sueldoActual"class="form-control" placeholder="Escriba su sueldo actual" >
                       </div>
                     </div>
                   </div>
@@ -252,6 +290,14 @@
                       <div class="form-group">
                         <div class="form-group">
                         <label th:text="#{administracion.candidato.disponibilidad}">Disponibilidad</label>
+                      <div class="form-group col-sm-10">
+                        <label>Aspiracion salarial</label>
+                        <input type="text" name="aspiracion" class="form-control" placeholder="Escriba su aspiracion salarial">
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group col-sm-10">
+                        <label>Disponibilidad</label>
                         <select name="disponibilidad" class="form-control">
                           <option value="" th:text="#{administracion.candidato.seleccione}" selected="selected">...</option>
                           <option th:text="#{administracion.candidato.disponibilidad.uno}"  value="1 dia">1 D&iacute;a</option>
@@ -261,7 +307,7 @@
                           <option th:text="#{administracion.candidato.disponibilidad.quince}"value="mas de 15 dias">Mas de 15 d&iacute;as</option>
                           
 					 </select>
-                      </div></div>
+                      </div>
                     </div>
                   </div>
 					<div class="row">
@@ -270,14 +316,14 @@
                       <div class="form-group">
                        <div class="form-group">
                         <label th:text="#{administracion.candidato.horario}">Horario flexible</label>
+                      <div class="form-group col-sm-10">
+                        <label>Horario flexible</label>
                         <select name="horario" class="form-control">
                           <option value="" th:text="#{administracion.candidato.seleccione}"selected="selected">...</option>
                           <option th:text="#{administracion.candidato.si}"value="si">Si</option>
                           <option value="no">No</option>
-                         
-                          
 					 </select>
-                      </div></div>
+                      </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
@@ -291,6 +337,14 @@
 					
 					<button class="btn btn-primary" type="button" th:text="#{administracion.candidato.atras}" onclick="stepper.previous()">Anterior</button>
 					<button type="submit" th:text="#{administracion.candidato.crear}" class="btn btn-primary">Crear</button>
+                      <div class="form-group col-sm-10">
+                      <label>Observaciones generales</label>
+                        <textarea  name="observacion" class="form-control" rows="3" placeholder="Escriba las observaciones que crea que son correspondientes"></textarea>
+                        </div>
+                    </div>
+                  </div>
+					<button class="btn btn-primary" type="button" onclick="stepper.previous()">Anterior</button>
+					<button type="submit" class="btn btn-primary">Crear</button>
 				</div>
 			</div>
 		</div>

@@ -15,37 +15,36 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
-import com.cmc.gestion.talento.bussines.TipoPerfilBussines;
-import com.cmc.gestion.talento.bussines.dto.TipoPerfilDto;
+import com.cmc.gestion.talento.bussines.ClasePerfilBussines;
+import com.cmc.gestion.talento.bussines.dto.ClasePerfilDto;
 import com.cmc.gestion.talento.web.ModelResponse;
 import com.cmc.gestion.talento.web.TypeMessage;
 import com.cmc.gestion.talento.web.config.ArqGestionExcepcion;
 
+
+
 @Controller
-@RequestMapping("/administracion/tipo-perfil")
-public class TipoPerfilController {
+@RequestMapping("/administracion/clase-perfil")
+public class ClasePerfilController {
 	@Autowired
-	private TipoPerfilBussines tipoPerfilBussines;
+	private ClasePerfilBussines clasePerfilBussines;
 
 	@GetMapping
 	public String init() {
-		return "pages/administracion/tipo-perfil";
+		return "pages/administracion/clase-perfil";
 	}
-	
 	
 	@GetMapping(path = "/getAll", produces = MediaType.APPLICATION_JSON_VALUE )
-	public ResponseEntity<List<TipoPerfilDto>> getAllTipoPerfil() {
-		List<TipoPerfilDto> resp = tipoPerfilBussines.getAllTipoPerfil();
-		return new ResponseEntity<List<TipoPerfilDto>>(resp, HttpStatus.OK);
+	public ResponseEntity<List<ClasePerfilDto>> getAllClasePerfil() {
+		List<ClasePerfilDto> resp = clasePerfilBussines.getAllClasePerfil();
+		return new ResponseEntity<List<ClasePerfilDto>>(resp, HttpStatus.OK);
 	}
 	
-	
 	@PostMapping(path = "/create", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<ModelResponse> crearTipoPerfil(@RequestBody @Valid TipoPerfilDto tipoPerfil) throws ArqGestionExcepcion {
+	public ResponseEntity<ModelResponse> crearClasePerfil(@RequestBody @Valid ClasePerfilDto clasePerfil) throws ArqGestionExcepcion {
 		try {
-			tipoPerfilBussines.crearTipoPerfil(tipoPerfil);
-			ModelResponse model = new ModelResponse(null, TypeMessage.FROM_MESSAGE, "Tipo perfil creado con exito");
+			clasePerfilBussines.crearClasePerfil(clasePerfil);
+			ModelResponse model = new ModelResponse(null, TypeMessage.FROM_MESSAGE, "Clase perfil creado con exito");
 			return new ResponseEntity<ModelResponse>(model, HttpStatus.OK);
 		} catch (ArqGestionExcepcion e) {
 			throw e;
@@ -54,13 +53,12 @@ public class TipoPerfilController {
 		}
 	}
 	
-	
 	@PostMapping(path = "/{id}/get", produces = { MediaType.APPLICATION_JSON_VALUE })
-	public ResponseEntity<ModelResponse> getTipoPerfil(@PathVariable(required = true) long id)
+	public ResponseEntity<ModelResponse> getClasePerfil(@PathVariable(required = true) long id)
 			throws ArqGestionExcepcion {
-		TipoPerfilDto resp;
+		ClasePerfilDto resp;
 		try {
-			resp = tipoPerfilBussines.getTipoPerfil(id);
+			resp = clasePerfilBussines.getClasePerfil(id);
 			ModelResponse model = new ModelResponse(resp, TypeMessage.NO_MESSAGE, null);
 			return new ResponseEntity<ModelResponse>(model, HttpStatus.OK);
 		} catch (ArqGestionExcepcion e) {
@@ -69,13 +67,12 @@ public class TipoPerfilController {
 
 	}
 	
-	
 	@PostMapping(path = "/{id}/update", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<ModelResponse> modificar(@PathVariable(required = true) long id,
-			@RequestBody TipoPerfilDto tipoPerfil) throws ArqGestionExcepcion{
+			@RequestBody ClasePerfilDto clasePerfil) throws ArqGestionExcepcion{
 		try {
-			tipoPerfil = tipoPerfilBussines.actualizarTipoPerfil(tipoPerfil);
-			ModelResponse model = new ModelResponse(null, TypeMessage.FROM_MESSAGE, "Tipo perfil actualizado con exito");
+			clasePerfil = clasePerfilBussines.actualizarClasePerfil(clasePerfil);
+			ModelResponse model = new ModelResponse(null, TypeMessage.FROM_MESSAGE, "Clase perfil actualizado con exito");
 			return new ResponseEntity<ModelResponse>(model, HttpStatus.OK);
 		}catch (ArqGestionExcepcion e) {
 			throw e;
@@ -84,12 +81,11 @@ public class TipoPerfilController {
 		}
 	}
 	
-	
 	@PostMapping(path = "/{id}/delete", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<ModelResponse> eliminar(@PathVariable(required = true) long id) throws ArqGestionExcepcion {
 		try {
-			tipoPerfilBussines.eliminarTipoPerfil(id);
-			ModelResponse model = new ModelResponse(null, TypeMessage.SHOW_MODAL, "Tipo Perfil eliminado con exito");
+			clasePerfilBussines.eliminarClasePerfil(id);
+			ModelResponse model = new ModelResponse(null, TypeMessage.SHOW_MODAL, "Clase Perfil eliminado con exito");
 			return new ResponseEntity<ModelResponse>(model, HttpStatus.OK);
 		} catch (Exception e) {
 			throw e;

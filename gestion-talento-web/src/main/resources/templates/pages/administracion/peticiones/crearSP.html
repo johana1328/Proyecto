@@ -21,7 +21,7 @@
 					<button type="button" class="step-trigger" role="tab"
 						aria-controls="Inf-personal" id="Inf-personal-trigger">
 						<span class="bs-stepper-circle">1</span> <span
-							class="bs-stepper-label">Informaci&oacute;n b&aacute;sica</span>
+							class="bs-stepper-label" th:text="#{administracion.peticiones.info}">Informaci&oacute;n b&aacute;sica</span>
 					</button>
 				</div>
 				<div class="line"></div>
@@ -31,7 +31,7 @@
 					<button type="button" class="step-trigger" role="tab"
 						aria-controls="perfil" id="perfil-trigger">
 						<span class="bs-stepper-circle">2</span> <span
-							class="bs-stepper-label">Perfil</span>
+							class="bs-stepper-label" th:text="#{administracion.peticiones.perf}">Perf&iacute;l</span>
 					</button>
 				</div>
 				<div class="line"></div>
@@ -41,7 +41,7 @@
 					<button type="button" class="step-trigger" role="tab"
 						aria-controls="inf-cont" id="inf-cont-trigger">
 						<span class="bs-stepper-circle">3</span> <span
-							class="bs-stepper-label">Informaci&oacute;n Contratacion</span>
+							class="bs-stepper-label" th:text="#{administracion.peticiones.infCon}">Informaci&oacute;n Contratacion</span>
 					</button>
 				</div>
 			</div>
@@ -52,27 +52,27 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Proyecto o area solicitante</label> 
+								<label th:text="#{administracion.peticiones.proArea}">Proyecto o &aacute;rea solicitante</label> 
 								<select name="proyecto"
 									class="form-control select2" style="width: 100%;">
-									<option value="" selected="selected">Seleccione...</option>
-									<option value="Fabrica" >Fabrica</option>
-									<option value="ServiciosProfesionales" >Servicios Profesionales</option>
+									<option value="" selected="selected" th:text="#{administracion.peticiones.selec}">Seleccione...</option>
+									<option value="Fabrica"  th:text="#{administracion.peticiones.fabrica}">F&aacute;brica</option>
+									<option value="ServiciosProfesionales"  th:text="#{administracion.peticiones.serProf}">Servicios Profesionales</option>
 								</select>
 							</div>
 							<div class="form-group">
-								<label for="cliente">Cliente</label> <input type="text"
-								class="form-control" id="cliente" placeholder="Cliente" name="cliente">
+								<label for="cliente" th:text="#{administracion.peticiones.cliente}">Cliente</label> <input type="text"
+								class="form-control" id="cliente" th:placeholder="#{administracion.peticiones.cliente}" name="cliente">
 							</div>
 							<div class="form-group">
-								<label for="resCliente">Responsable en cliente</label> <input
-									type="text" class="form-control" id="responsableCliente" name="responsableCliente"
-									placeholder="Responsable en Cliente">
+								<label for="resCliente" th:text="#{administracion.peticiones.responsable}">Responsable en cliente</label> <input
+									type="text" class="form-control" id="responsableCliente" name="responsableCliente" 
+									th:placeholder="#{administracion.peticiones.responsable}">
 							</div>
 							<div class="form-group">
-								<label>Tarifa</label> <select name="tarifa"
+								<label th:text="#{administracion.peticiones.tarifa}">Tarifa</label> <select name="tarifa"
 									class="form-control select2" style="width: 100%;">
-									<option value="" selected="selected">Seleccione</option>
+									<option value="" selected="selected" th:text="#{administracion.peticiones.selec}">Seleccione</option>
 									<option value="$56.150" >$56.150</option>
 									<option value="$40.474" >$40.474</option>
 									<option value="$37.749" >$37.749</option>
@@ -89,24 +89,24 @@
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
-								<label for="areaTrabajo">Area de trabajo</label> <input
+								<label for="areaTrabajo" th:text="#{administracion.peticiones.areaTra}">&Aacute;rea de trabajo</label> <input
 									type="text" class="form-control" id="areaTrabajo" name="areaTrabajo"
-									placeholder="Area de Trabajo">
+									th:placeholder="#{administracion.peticiones.areaTra}">
 							</div>
 							<div class="form-group">
-								<label for="cantVacante">Cantidad de personal solicitado para la vacante</label> <input type="text"
-									class="form-control" id="cantVacante" name="cantVacante" placeholder="Cantidad Vacante">
+								<label for="cantVacante" th:text="#{administracion.peticiones.canPer}">Cantidad de personal solicitado para la vacante</label> <input type="text"
+									class="form-control" id="cantVacante" name="cantVacante" th:placeholder="#{administracion.peticiones.cant}">
 							</div>
 							<div class="form-group">
-								<label for="horasApagar">Numero de horas a pagar a CMC indicadas por el cliente</label> <input
+								<label for="horasApagar" th:text="#{administracion.peticiones.numHor}">Numero de horas a pagar a CMC indicadas por el cliente</label> <input
 									type="text" class="form-control" id="horasApagar" name="horasApagar"
-									placeholder="Horas a Pagar">
+									th:placeholder="#{administracion.peticiones.horas}">
 							</div>
 						</div>
 					</div>
 
 
-					<button class="btn btn-primary" type="button" onclick="validacionFormularioP()">Siguiente</button>
+					<button class="btn btn-primary" type="button" onclick="validacionFormularioP()" th:text="#{administracion.peticiones.btnSiguiente}">Siguiente</button>
 				</div>
 				
 				<!-- Paso2 -->
@@ -116,33 +116,33 @@
 						<div class="col-md-6">
 							
 							<div class="form-group">
-								<label>Perfil Solicitado</label> <select name="perfilSolicitado"
+								<label th:text="#{administracion.peticiones.perSol}">Perf&iacute;l Solicitado</label> <select name="perfilSolicitado"
 									class="form-control select2" style="width: 100%;">
-									<option value="" selected="selected">Seleccione...</option>
-									<option value="Programador">Programador</option>
-									<option value="AnalistaProgramadorSemiSenior">Analista Programador Semi Senior</option>
-									<option value="AnalistaFuncional">Analista Funcional</option>
-									<option value="AnalistaTecnicodeCalidad">Analista Tecnico de Calidad</option>
-									<option value="Lider">Lider</option>
-									<option value="Gerente">Gerente</option>
-									<option value="Director">Director</option>
-									<option value="AnalistaProgramador-Scrum">Analista Programador - Scrum</option>
-									<option value="AnalistaProgramadorSenior">Analista Programador Senior</option>
-									<option value="ProgramadorJunior">Programador Junior</option>
-									<option value="ProgramadorASO">Programador ASO</option>
-									<option value="Arquitecto">Arquitecto</option>
+									<option value="" selected="selected" th:text="#{administracion.peticiones.selec}">Seleccione...</option>
+									<option value="Programador" th:text="#{administracion.peticiones.programador}">Programador</option>
+									<option value="AnalistaProgramadorSemiSenior" th:text="#{administracion.peticiones.anaProl}">Analista Programador Semi Se&ntilde;or</option>
+									<option value="AnalistaFuncional" th:text="#{administracion.peticiones.anaFun}">Analista Funcional</option>
+									<option value="AnalistaTecnicodeCalidad" th:text="#{administracion.peticiones.anaTec}">Analista T&eacute;cnico de Calidad</option>
+									<option value="Lider" th:text="#{administracion.peticiones.lider}">L&iacute;der</option>
+									<option value="Gerente" th:text="#{administracion.peticiones.gerente}">Gerente</option>
+									<option value="Director" th:text="#{administracion.peticiones.director}">Director</option>
+									<option value="AnalistaProgramador-Scrum" th:text="#{administracion.peticiones.anaProScr}">Analista Programador - Scrum</option>
+									<option value="AnalistaProgramadorSenior" th:text="#{administracion.peticiones.anaProSr}">Analista Programador Se&ntilde;or</option>
+									<option value="ProgramadorJunior" th:text="#{administracion.peticiones.proJu}">Programador Junior</option>
+									<option value="ProgramadorASO" th:text="#{administracion.peticiones.proAso}">Programador ASO</option>
+									<option value="Arquitecto" th:text="#{administracion.peticiones.arqu}">Arquitecto</option>
 									<option value="Scrum">Scrum</option>
-									<option value="Soporte">Soporte</option>
-									<option value="AdministradordePlataformas">Administrador de Plataformas</option>
-									<option value="SeguridaddelaInformacion">Seguridad de la Informacion</option>
-									<option value="Aprendiz">Aprendiz</option>
+									<option value="Soporte" th:text="#{administracion.peticiones.soporte}">Soporte</option>
+									<option value="AdministradordePlataformas" th:text="#{administracion.peticiones.admPla}">Administrador de Plataformas</option>
+									<option value="SeguridaddelaInformacion" th:text="#{administracion.peticiones.segInfo}">Seguridad de la Informaci&oacute;n</option>
+									<option value="Aprendiz" th:text="#{administracion.peticiones.aprendiz}">Aprendiz</option>
 									
 								</select>
 							</div>
 							<div class="form-group">
-								<label>Especialidad</label> <select name="especialidad"
+								<label th:text="#{administracion.peticiones.especialidad}">Especialidad</label> <select name="especialidad"
 									class="form-control select2" style="width: 100%;">
-									<option value="" selected="selected">Seleccione...</option>
+									<option value="" selected="selected" th:text="#{administracion.peticiones.selec}">Seleccione...</option>
 									<option value="Front-end">Front-end</option>
 									<option value="Back-end">Back-end</option>
 									<option value="FullStack">Full Stack</option>
@@ -150,73 +150,73 @@
 								</select>
 							</div>
 							<div class="form-group">
-								<label for="expMaAnos">Experiencia maxima requerida en a&ntilde;os</label> <input
+								<label for="expMaAnos" th:text="#{administracion.peticiones.expMax}" >Experiencia maxima requerida en a&ntilde;os</label> <input
 									type="text" class="form-control" id="expMaAnos" name="expMaAnos"
-									placeholder="Experiencia">
+									th:placeholder="#{administracion.peticiones.exper}">
 							</div>
 							<div class="form-group">
-								<label>El perfil solicitado funcionalmente va a realizar</label> 
+								<label th:text="#{administracion.peticiones.perSoli}">El perfil solicitado funcionalmente va a realizar</label> 
 								<select name="pSolicitado"
 									class="form-control select2" style="width: 100%;">
-									<option value="" selected="selected">Seleccione...</option>
-									<option value="Analisis">Analisis</option>
-									<option value="Desarrollo=Programacion">Desarrollo = Programacion</option>
-									<option value="Gestion">Gestion</option>
-									<option value="DesarrolloyGestion">Desarrollo y Gestion</option>
+									<option value="" selected="selected" th:text="#{administracion.peticiones.selec}">Seleccione...</option>
+									<option value="Analisis" th:text="#{administracion.peticiones.analisis}">An&atilde;lisis</option>
+									<option value="Desarrollo=Programacion" th:text="#{administracion.peticiones.desPro}">Desarrollo = Programacion</option>
+									<option value="Gestion" th:text="#{administracion.peticiones.gestion}">Gesti&otilde;n</option>
+									<option value="DesarrolloyGestion" th:text="#{administracion.peticiones.desGes}">Desarrollo y Gesti&otilde;n</option>
 								</select>
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Ambiente</label> <select name="ambiente"
+								<label th:text="#{administracion.peticiones.ambiente}">Ambiente</label> <select name="ambiente"
 									class="form-control select2" style="width: 100%;">
-									<option value="" selected="selected">Seleccione...</option>
+									<option value="" selected="selected"  th:text="#{administracion.peticiones.selec}">Seleccione...</option>
 									<option value="CELLS">CELLS</option>
 									<option value="APX">APX</option>
 									<option value="ASO">ASO</option>
 									<option value="HOST">HOST</option>
 									<option value="NETCASH-PIBBE">NETCASH-PIBBE</option>
 									<option value="LANET-ORQUIDEA">LA NET-ORQUIDEA</option>
-									<option value="ORGANIZACIONAL-FUNCIONALIDAD">ORGANIZACIONAL - FUNCIONALIDAD</option>
+									<option value="ORGANIZACIONAL-FUNCIONALIDAD"  th:text="#{administracion.peticiones.orgFun}">ORGANIZACIONAL - FUNCIONALIDAD</option>
 									<option value="SANTANDER">SANTANDER</option>
 									<option value="ENEL">ENEL</option>
 									<option value="RRHH">RRHH</option>
-									<option value="INFRAESTRUCTURA">INFRAESTRUCTURA</option>
-									<option value="GERENCIA">GERENCIA</option>
-									<option value="COMERCIAL">COMERCIAL</option>
-									<option value="CALIDADYTEST">CALIDAD Y TEST</option>
+									<option value="INFRAESTRUCTURA"  th:text="#{administracion.peticiones.infraestructura}">INFRAESTRUCTURA</option>
+									<option value="GERENCIA"  th:text="#{administracion.peticiones.gerencia}">GERENCIA</option>
+									<option value="COMERCIAL"  th:text="#{administracion.peticiones.comercial}">COMERCIAL</option>
+									<option value="CALIDADYTEST"  th:text="#{administracion.peticiones.calTes}">CALIDAD Y TEST</option>
 									<option value="APPMOBIL">APP MOBIL</option>
-									<option value="ADMINISTRACION">ADMINISTRACION</option>
+									<option value="ADMINISTRACION"  th:text="#{administracion.peticiones.admin}">ADMINISTRACI&Otilde;N</option>
 								</select>
 							</div>
 							<div class="form-group">
-								<label>Escolaridad minima requeridad</label> <select name="escolaridad"
+								<label th:text="#{administracion.peticiones.escolaridaMin}">Escolaridad m&itilde;nima requeridad</label> <select name="escolaridad"
 									class="form-control select2" style="width: 100%;">
-									<option value="" selected="selected">Seleccione...</option>
-									<option value="Bachiller">Bachiller</option>
-									<option value="Tecnico">Tecnico</option>
-									<option value="Tecnologico">Tecnologico</option>
-									<option value="ProfesionalUniversitario">Profesional Universitario</option>
-									<option value="Especializacion">Especializacion</option>
-									<option value="Maestria">Maestria</option>
-									<option value="Otros">Otros</option>
+									<option value="" selected="selected" th:text="#{administracion.peticiones.selec}">Seleccione...</option>
+									<option value="Bachiller" th:text="#{administracion.peticiones.bachiller}">Bachiller</option>
+									<option value="Tecnico" th:text="#{administracion.peticiones.tecnico}">T&etilde;cnico</option>
+									<option value="Tecnologico" th:text="#{administracion.peticiones.tecnologico}">Tecnologico</option>
+									<option value="ProfesionalUniversitario" th:text="#{administracion.peticiones.profUniver}">Profesional Universitario</option>
+									<option value="Especializacion" th:text="#{administracion.peticiones.especializacion}">Especializacion</option>
+									<option value="Maestria" th:text="#{administracion.peticiones.maestria}">Maestria</option>
+									<option value="Otros" th:text="#{administracion.peticiones.otros}">Otros</option>
 								</select>
 							</div>
 							<div class="form-group">
-								<label for="expMiAnos">Experiencia minima requerida en anios</label> <input
+								<label for="expMiAnos" th:text="#{administracion.peticiones.expMin}">Experiencia minima requerida en anios</label> <input
 									type="text" class="form-control" id="expMiAnos" name="expMiAnos"
-									placeholder="Experiencia">
+									th:placeholder="#{administracion.peticiones.exper}">
 							</div>
 							<div class="form-group">
-								<label for="descripcion">Descripcion detallada del perfil solicitado</label> 
-									<textarea class="form-control" rows="3" name="descripcion" placeholder="Descripcion ..."></textarea>
+								<label for="descripcion" th:text="#{administracion.peticiones.desDetallada}">Descripci&otilde;n detallada del perfil solicitado</label> 
+									<textarea class="form-control" rows="3" name="descripcion" th:placeholder="#{administracion.peticiones.descri}"></textarea>
 							</div>
 							
 						</div>
 					</div>
 
-                    <button class="btn btn-primary mb-3px" type="button" onclick="stepper.previous()">Anterior</button>
-					<button class="btn btn-primary"  type="button" onclick="validacionFormularioP()">Siguiente</button>
+                    <button class="btn btn-primary mb-3px" type="button" onclick="stepper.previous()" th:text="#{administracion.peticiones.btnAnterior}">Anterior</button>
+					<button class="btn btn-primary"  type="button" onclick="validacionFormularioP()" th:text="#{administracion.peticiones.btnSiguiente}">Siguiente</button>
 				</div>
 				
 				<!-- Paso 3 -->
@@ -226,49 +226,49 @@
 						<div class="col-md-6">
 							
 							<div class="form-group">
-								<label>Tipo Contracto</label> <select name="tipoContracto"
+								<label th:text="#{administracion.peticiones.tipoContra}">Tipo Contrato</label> <select name="tipoContrato"
 								class="form-control select2"
 									style="width: 100%;">
-									<option value="" selected="selected">Tipo</option>
-									<option value="Indefinido">Indefinido</option>
-									<option value="ObraLabor">Obra Labor</option>
+									<option value="" selected="selected" th:text="#{administracion.peticiones.selec}">Tipo</option>
+									<option value="Indefinido" th:text="#{administracion.peticiones.indefinido}">Indefinido</option>
+									<option value="ObraLabor" th:text="#{administracion.peticiones.obraLabor}">Obra Labor</option>
 								</select>
 							</div>
 							<div class="form-group">
-								<label for="fecha">Fecha experada de inicio de labores</label> <input
+								<label for="fecha" th:text="#{administracion.peticiones.fechaIni}">Fecha esperada de inicio de labores</label> <input
 									type="date" class="form-control" id="fecha" name="fecha"
-									placeholder="Fecha">
+									th:placeholder="#{administracion.peticiones.fec}">
 							</div>
 							<div class="form-group">
-								<label for="observaciones">Observaciones generales para tener encuenta</label> 
-									<textarea class="form-control" name="observaciones" rows="3" placeholder="Observaciones ..."></textarea>
+								<label for="observaciones" th:text="#{administracion.peticiones.obsGener}">Observaciones generales para tener encuenta</label> 
+									<textarea class="form-control" name="observaciones" rows="3" th:placeholder="#{administracion.peticiones.observaciones}"></textarea>
 							</div>
 							
 						</div>
 						<div class="col-md-6">
 						    <div class="form-group">
-								<label for="salario">Salario Asignado</label> <input
+								<label for="salario" th:text="#{administracion.peticiones.salAsig}">Salario Asignado</label> <input
 									type="text" class="form-control" id="salario" name="salario"
-									placeholder="Salario">
+									th:placeholder="#{administracion.peticiones.salAsig}">
 							</div>
 							<div class="form-group">
-								<label>Requiere equipo de computo</label> <select name="equipoCom" class="form-control select2"
+								<label th:text="#{administracion.peticiones.reqEquipo}">Requiere equipo de computo</label> <select name="equipoCom" class="form-control select2"
 									style="width: 100%;">
-									<option value="" selected="selected">Tipo</option>
-									<option value="Escritorio">Escritorio</option>
-									<option value="Portatil">Portatil</option>
-									<option value="Ninguno">Ninguno</option>
+									<option value="" selected="selected" th:text="#{administracion.peticiones.selec}">Tipo</option>
+									<option value="Escritorio" th:text="#{administracion.peticiones.escritorio}" >Escritorio</option>
+									<option value="Portatil" th:text="#{administracion.peticiones.portatil}">Portatil</option>
+									<option value="Ninguno" th:text="#{administracion.peticiones.ninguno}">Ninguno</option>
 								</select>
 							</div>
 							<div class="form-group">
-								<label for="caracteristica">Caracteristica del software Y hadware del equipo</label> 
-									<textarea class="form-control" rows="3" name="caracteristica" placeholder="Caracteristica ..."></textarea>
+								<label for="caracteristica" th:text="#{administracion.peticiones.carSoft}">Caracteristica del software Y hadware del equipo</label> 
+									<textarea class="form-control" rows="3" name="caracteristica" th:placeholder="#{administracion.peticiones.caracteristicas}"></textarea>
 							</div>
 							
 						</div>
 					</div>
-					<button class="btn btn-primary" type="button" onclick="stepper.previous()">Anterior</button>
-					<button type="submit" class="btn btn-primary">Crear</button>
+					<button class="btn btn-primary" type="button" onclick="stepper.previous()" th:text="#{administracion.peticiones.btnAnterior}">Anterior</button>
+					<button type="submit" class="btn btn-primary" th:text="#{administracion.peticiones.btnCrear}">Crear</button>
 				</div>
 			</div>
 		</div>
@@ -276,9 +276,6 @@
 </form>
 </th:block>
 <th:block layout:fragment="body_end">
-	
-	
-	
 	
 	<link rel="stylesheet"
 		th:href="@{~/gestion-cmc/plugins/bs-stepper/css/bs-stepper.min.css}">

@@ -23,6 +23,7 @@ public class UsuarioDto {
 	private Date fechaCreacion;
 	private Date fechaActualizacion;
 	private List<TipoPerfil> perfilUsuario;
+	
 	public String getIdUsuario() {
 		return idUsuario;
 	}
