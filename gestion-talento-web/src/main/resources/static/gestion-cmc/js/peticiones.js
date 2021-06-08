@@ -30,12 +30,12 @@ function validacionFormularioP(){
 			cantVacante:{
 				required: true,
 				alphanumeric: true,
-	            rangelength: [3, 20]
+	            rangelength: [1, 9]
 			},
 			horasApagar:{
 				required: true,
 				alphanumeric: true,
-	            rangelength: [3, 20]
+	            rangelength: [1,50]
 			},
 			perfilSolicitado:{
 				required: true
@@ -46,7 +46,7 @@ function validacionFormularioP(){
 			expMaAnos:{
 				required: true,
 				alphanumeric: true,
-	            rangelength: [3, 20]
+	            rangelength: [1, 20]
 			},
 			pSolicitado:{
 				required: true
@@ -60,12 +60,12 @@ function validacionFormularioP(){
 			expMiAnos:{
 				required: true,
 				alphanumeric: true,
-	            rangelength: [3, 20]
+	            rangelength: [1, 50]
 			},
 			descripcion:{
 				required: true,
 				alphanumeric: true,
-	            rangelength: [3, 20]
+	            rangelength: [1, 20]
 			},
 			tipoContracto:{
 				required: true
