@@ -3,9 +3,9 @@ package com.cmc.gestion.talento.bussines.dto;
 import java.util.Calendar;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import com.cmc.gestion.talento.jpa.type.TipoPrueba;
-import com.sun.istack.NotNull;
 
 public class PruebaDto {
 
@@ -19,6 +19,7 @@ public class PruebaDto {
 	
 	private Calendar fechaCreacion;
 	
+	@NotNull(message = "tipoPrueba no puede ser nulo")
 	private TipoPrueba tipoPrueba;
 	
 	private boolean estado;
