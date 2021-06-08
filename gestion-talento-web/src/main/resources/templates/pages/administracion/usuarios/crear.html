@@ -51,8 +51,8 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Tipo Documento</label> 
-								<select name="tipoDocumento" class="form-control select2" style="width: 100%;">
+								<label for="tipoDocumento">Tipo Documento</label> 
+								<select id="tipoDocumento" name="tipoDocumento" class="form-control select2" style="width: 100%;">
 									<option value="" selected="selected">Tipo</option>
 									 <option th:each="tipoDoc : ${T(com.cmc.gestion.talento.jpa.type.TipoDocumento).values()}" 
                                              th:value="${tipoDoc}" th:text="${tipoDoc.value}"></option>

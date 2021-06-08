@@ -7,8 +7,8 @@ public class SerieDto {
      
 	private long id;
 	private long idSerie;
-	@NotEmpty(message = "Nombre no puede ser nulo")
-	@NotBlank(message = "Nombre no puede ser nulo")
+	@NotEmpty(message = "{SerieDto.nombre.empy}")
+	@NotBlank(message = "{SerieDto.nombre.empy}")
 	private String nombre;
 	private String descripcion;
 	private String estado;

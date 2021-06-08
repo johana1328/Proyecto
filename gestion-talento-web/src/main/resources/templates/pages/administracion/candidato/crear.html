@@ -4,367 +4,343 @@
 	layout:decorate="~{layout}"
 	th:with="funcionalidad='Administraci&oacuten', evento='Crear candidato'">
 <th:block layout:fragment="content">
-<form id="formCrearCandidato" action="" method="POST">
-	<div class="row">
-    <div class="col-md-12">
-	<div class="card-body p-0">
-	<div id="messageBox1" class="alert alert-danger alert-dismissible" style="display: none">
-		<button type="button" class="close" onclick="closeAlert('alert-danger')"
-				aria-hidden="true">&times;</button>
-		<i class="icon fas fa-ban"></i> Error! 
-		<ul style="margin-top: 0px; margin-bottom: 0px;"></ul>
-	</div>
-		<div class="bs-stepper">
-			<div class="bs-stepper-header" role="tablist">
-				<!-- your steps here -->
-				<div class="step" data-target="#basica">
-					<button type="button" class="step-trigger" role="tab"
-						aria-controls="basica" id="basica-trigger">
-						<span class="bs-stepper-circle">1</span> <span
-							class="bs-stepper-label" th:text="#{administracion.candidato.informacionbasica}">Informaci&oacute;n B&aacute;sica</span>
-					</button>
-				</div>
-				<div class="line"></div>
-				<div class="step" data-target="#pro">
-					<button type="button" class="step-trigger" role="tab"
-						aria-controls="pro" id="pro-trigger">
-						<span class="bs-stepper-circle">2</span> <span
-							class="bs-stepper-label"th:text="#{administracion.candidato.informacionprofesional}">Informaci&oacute;n Profesional</span>
-					</button>
-				</div>
-				<div class="line"></div>
-				<div class="step" data-target="#laboral">
-					<button type="button" class="step-trigger" role="tab"
-						aria-controls="laboral" id="laboral-trigger">
-						<span class="bs-stepper-circle">3</span> <span
-							class="bs-stepper-label" th:text="#{administracion.candidato.informacionlaboral}">Informaci&oacute;n Laboral</span>
-					</button>
-				</div>
-				<div class="line"></div>
-				<div class="step" data-target="#propuesta">
-					<button type="button" class="step-trigger" role="tab"
-						aria-controls="propuesta" id="propuesta-trigger">
-						<span class="bs-stepper-circle">4</span> <span
-							class="bs-stepper-label"th:text="#{administracion.candidato.informacionpropuesta}">Informaci&oacute;n de Propuesta</span>
-					</button>
-				</div>
-			</div>
-			<div class="bs-stepper-content">
-				<!-- your steps content here -->
-				
-              </div>
-              <!-- /.card-header -->
-              <div id="basica" class="content" role="tabpanel"
-					aria-labelledby="basica-trigger">
-              <div class="card-body">
-                <div class="row">
-                    <div class="col-sm-6">
-                      <!-- text input -->
-                      <div class="form-group">
-                    <div class="col-sm-6">
-                      <!-- select -->
-                      <div class="form-group">
-                        <label th:text="#{administracion.candidato.tipodocumento}">Tipo documento</label>
-                        <select name="tipoDocumento" class="form-control">
-                        <option value="" selected="selected" th:text="#{administracion.candidato.tipodocumento.tipo}">Tipo</option>
-                      <div class="form-group col-sm-10">
-                        <label>Tipo documento</label>
-                        <select name="tipoDocumento" class="form-control ">
-                        <option value="" selected="selected">Tipo</option>
-                          <option VALUE="CC">CC</option>
-                          <option VALUE="TI">TI</option>
-                          <option VALUE="CE">CE</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label th:text="#{administracion.candidato.documento}">Documento</label>
-                        <input name="documento" type="text" class="form-control" th:placeholder="#{administracion.candidato.edocumento}" >
-                      <div class="form-group col-sm-10">
-                        <label>Documento</label>
-                        <input name="documento" type="text" class="form-control" placeholder="Escriba su segundo nombre" >
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <!-- text input -->
-                      <div class="form-group">
-                        <label th:text="#{administracion.candidato.primern}">Primer Nombre</label>
-                        <input name="nombre1" type="text" class="form-control" th:placeholder="#{administracion.candidato.epnombre}">
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label th:text="#{administracion.candidato.segundon}">Segundo Nombre</label>
-                        <input name="nombre2" id="nombre2" type="text" class="form-control" th:placeholder="#{administracion.candidato.esnombre}" >
-                      <div class="form-group col-sm-10">
-                        <label>Primer Nombre</label>
-                        <input name="nombre1" type="text" class="form-control" placeholder="Escriba su primer nombre">
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group col-sm-10">
-                        <label>Segundo Nombre</label>
-                        <input name="nombre2" id="nombre2" type="text" class="form-control" placeholder="Escriba su segundo nombre" >
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <!-- text input -->
-                      <div class="form-group">
-                        <label th:text="#{administracion.candidato.primera}">Primer Apellido</label>
-                        <input name="apellido1" type="text" class="form-control" th:placeholder="#{administracion.candidato.epapellido}">
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label th:text="#{administracion.candidato.segundoa}">Segundo Apellido</label>
-                        <input name="apellido2" type="text" class="form-control" th:placeholder="#{administracion.candidato.esapellido}" >
-                      <div class="form-group col-sm-10">
-                        <label>Primer Apellido</label>
-                        <input name="apellido1" type="text" class="form-control" placeholder="Escriba su primer apellido">
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group col-sm-10">
-                        <label>Segundo Apellido</label>
-                        <input name="apellido2" type="text" class="form-control" placeholder="Escriba su segundo apellido" >
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <!-- text input -->
-                      <div class="form-group">
-                        <label th:text="#{administracion.candidato.telefono}">Tel&eacute;fono</label>
-                        <input name="telefono" type="text" class="form-control" th:placeholder="#{administracion.candidato.etelefono}">
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label th:text="#{administracion.candidato.correoelectronico}">Correo Electr&oacute;nico</label>
-                        <input name="correo" id="correo" type="text" class="form-control" th:placeholder="#{administracion.candidato.ecorreo}" >
-                      <div class="form-group col-sm-10">
-                        <label>Telefono</label>
-                        <input name="telefono" type="text" class="form-control" placeholder="Escriba su numero de telefono">
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group col-sm-10">
-                        <label>Correo Electronico</label>
-                        <input name="correo" id="correo" type="text" class="form-control" placeholder="Escriba su correo electronico" >
-                      </div>
-                    </div>
-                  </div>
-                  
-                  </div>
-					<button class="btn btn-primary" type="button" th:text="#{administracion.candidato.siguiente}" onclick="validacionFormulario()">Siguiente</button>
-				</div>
-				<div id="pro" class="content" role="tabpanel"
-					aria-labelledby="pro-trigger">
-					 
-                 
-                    
-                    
-                    <div class="col-sm-6">
-                      <!-- text input -->
-                      <div class="form-group">
-                        <div class="form-group">
-						<label th:text="#{administracion.candidato.titulouni}" for="titulo">T&iacute;tulo Universitario</label> 
-						<input
-							type="text"  name="titulo" class="form-control" id="exampleInputEmail1"
-							th:placeholder="#{administracion.candidato.etitulo}">
-					</div> </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <div class="row">
-                    <div class="col-sm-6">
-                      <!-- textarea -->
-                      <div class="form-group">
-                        <label th:text="#{administracion.candidato.objetivos}">Objetivos</label>
-                        <textarea  class="form-control" name="objetivo" th:placeholder="#{administracion.candidato.eobjetivos}"></textarea>
-                      </div>
-                    </div>
-                    </div></div>
-                    </div>
-                  
-                    
-                    <button class="btn btn-primary" type="button" th:text="#{administracion.candidato.atras}" onclick="stepper.previous()">Anterior</button>					
-					<button class="btn btn-primary" type="button" th:text="#{administracion.candidato.siguiente}" onclick="validacionFormulario()">Siguiente</button>
-                    
-						
-					
-					
-				</div>
-				<div id="laboral" class="content" role="tabpanel"
-					aria-labelledby="laboral-trigger">
-					
-					
-                      
-                     
-                       <div class="row">
-                    <div class="col-sm-6">
-                      <!-- text input -->
-                      <div class="form-group">
-                         <div class="form-group">
-                        <label th:text="#{administracion.candidato.trabaja}">Trabaja actualmente</label>
-                         <div class="form-group col-sm-10">
-                        <label>Trabaja actualmente</label>
-                        <select name="trabajo" class="form-control">
-                          <option th:text="#{administracion.candidato.seleccione}" value="" selected="selected">...</option>
-                          <option th:text="#{administracion.candidato.si}"  value="Si">Si</option>
-                          <option value="No">No</option>
-                          
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                       <div class="form-group">
-                        <label th:text="#{administracion.candidato.tipocontrato}">Que tipo de contrato posee</label>
-                       <div class="form-group col-sm-10">
-                        <label>Que tipo de contrato posee</label>
-                        <select name="contrato" class="form-control">
-                          <option value="" th:text="#{administracion.candidato.seleccione}" selected="selected">...</option>
-                          <option th:text="#{administracion.candidato.tipocontrato.indefinido}" value="indefinido">Indefinido</option>
-                          <option th:text="#{administracion.candidato.tipocontrato.fijo}"value="fijo">Fijo</option>
-                          <option th:text="#{administracion.candidato.tipocontrato.prestacions}" value="prestacion de servicios">Prestaci&oacute;n de servicios</option>
-                          <option th:text="#{administracion.candidato.tipocontrato.otralabor}" value="otra labor">Otra labor</option>
-                          <option th:text="#{administracion.candidato.otro}" value="otro">Otro</option>
-                          
-					 </select>
-                      </div>
-                    </div>
-                  </div>
-                      
-                      <div class="row">
-                    <div class="col-sm-6">
-                      <!-- text input -->
-                      <div class="form-group">
-                       <div class="form-group">
-                        <label th:text="#{administracion.candidato.origen}">Origen de la hoja de vida</label>
-                       <div class="form-group col-sm-10">
-                        <label>Origen de la hoja de vida</label>
-                        <select name="origen" class="form-control">
-                          <option th:text="#{administracion.candidato.seleccione}"value="" selected="selected">...</option>
-                          <option value="el empleo">El empleo</option>
-                          <option value="linkedin">Linkedin</option>
-                          <option value="ticjob">Ticjob</option>
-                          <option th:text="#{administracion.candidato.correoelectronico}" value="correo electronico">Correo electr&oacute;nico</option>
-                          <option th:text="#{administracion.candidato.otro}" value="otro">Otro</option>
-                          
-					 </select>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label th:text="#{administracion.candidato.sueldoactual}">Sueldo actual</label>
-                        <input type="text" name="sueldoActual"class="form-control" th:placeholder="#{administracion.candidato.esueldo}" >
-                      <div class="form-group col-sm-10">
-                        <label>Sueldo actual</label>
-                        <input type="text" name="sueldoActual"class="form-control" placeholder="Escriba su sueldo actual" >
-                      </div>
-                    </div>
-                  </div>
-					<button class="btn btn-primary" type="button" th:text="#{administracion.candidato.atras}" onclick="stepper.previous()">Anterior</button>
+	<form id="formCrearCandidato" action="" method="POST">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card-body p-0">
+					<div id="messageBox1" class="alert alert-danger alert-dismissible"
+						style="display: none">
+						<button type="button" class="close"
+							onclick="closeAlert('alert-danger')" aria-hidden="true">&times;</button>
+						<i class="icon fas fa-ban"></i> Error!
+						<ul style="margin-top: 0px; margin-bottom: 0px;"></ul>
+					</div>
+					<div class="bs-stepper">
+						<div class="bs-stepper-header" role="tablist">
+							<!-- your steps here -->
+							<div class="step" data-target="#basica">
+								<button type="button" class="step-trigger" role="tab"
+									aria-controls="basica" id="basica-trigger">
+									<span class="bs-stepper-circle">1</span> <span
+										class="bs-stepper-label"
+										th:text="#{administracion.candidato.informacionbasica}">Informaci&oacute;n
+										B&aacute;sica</span>
+								</button>
+							</div>
+							<div class="line"></div>
+							<div class="step" data-target="#pro">
+								<button type="button" class="step-trigger" role="tab"
+									aria-controls="pro" id="pro-trigger">
+									<span class="bs-stepper-circle">2</span> <span
+										class="bs-stepper-label"
+										th:text="#{administracion.candidato.informacionprofesional}">Informaci&oacute;n
+										Profesional</span>
+								</button>
+							</div>
+							<div class="line"></div>
+							<div class="step" data-target="#laboral">
+								<button type="button" class="step-trigger" role="tab"
+									aria-controls="laboral" id="laboral-trigger">
+									<span class="bs-stepper-circle">3</span> <span
+										class="bs-stepper-label"
+										th:text="#{administracion.candidato.informacionlaboral}">Informaci&oacute;n
+										Laboral</span>
+								</button>
+							</div>
+							<div class="line"></div>
+							<div class="step" data-target="#propuesta">
+								<button type="button" class="step-trigger" role="tab"
+									aria-controls="propuesta" id="propuesta-trigger">
+									<span class="bs-stepper-circle">4</span> <span
+										class="bs-stepper-label"
+										th:text="#{administracion.candidato.informacionpropuesta}">Informaci&oacute;n
+										de Propuesta</span>
+								</button>
+							</div>
+						</div>
+						<div class="bs-stepper-content"></div>
+						<!-- /.card-header -->
+						<div id="basica" class="content" role="tabpanel"
+							aria-labelledby="basica-trigger">
+							<div class="card-body">
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="form-group col-sm-10">
+											<label th:text="#{administracion.candidato.tipodocumento}">Tipo
+												documento</label> <select name="tipoDocumento" class="form-control">
+												<option value="" selected="selected"
+													th:text="#{administracion.candidato.tipodocumento.tipo}">Tipo</option>
+												<option VALUE="CC">CC</option>
+												<option VALUE="TI">TI</option>
+												<option VALUE="CE">CE</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group col-sm-10">
+											<label th:text="#{administracion.candidato.documento}">Documento</label>
+											<input name="documento" type="text" class="form-control"
+												th:placeholder="#{administracion.candidato.edocumento}">
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-6">
+										<!-- text input -->
+										<div class="form-group col-sm-10">
+											<label th:text="#{administracion.candidato.primern}">Primer
+												Nombre</label> <input name="nombre1" type="text"
+												class="form-control"
+												th:placeholder="#{administracion.candidato.epnombre}">
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group col-sm-10">
+											<label th:text="#{administracion.candidato.segundon}">Segundo
+												Nombre</label> <input name="nombre2" id="nombre2" type="text"
+												class="form-control"
+												th:placeholder="#{administracion.candidato.esnombre}">
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-6">
+										<!-- text input -->
+										<div class="form-group col-sm-10">
+											<label th:text="#{administracion.candidato.primera}">Primer
+												Apellido</label> <input name="apellido1" type="text"
+												class="form-control"
+												th:placeholder="#{administracion.candidato.epapellido}">
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group col-sm-10">
+											<label th:text="#{administracion.candidato.segundoa}">Segundo
+												Apellido</label> <input name="apellido2" type="text"
+												class="form-control"
+												th:placeholder="#{administracion.candidato.esapellido}">
+										</div>
+									</div>
+								</div>
 
-                    <button class="btn btn-primary" type="button" th:text="#{administracion.candidato.siguiente}" onclick="validacionFormulario()">Siguiente</button>                      
-					
+								<div class="row">
+									<div class="col-sm-6">
+										<!-- text input -->
+										<div class="form-group col-sm-10">
+											<label th:text="#{administracion.candidato.telefono}">Tel&eacute;fono</label>
+											<input name="telefono" type="text" class="form-control"
+												th:placeholder="#{administracion.candidato.etelefono}">
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group col-sm-10">
+											<label
+												th:text="#{administracion.candidato.correoelectronico}">Correo
+												Electr&oacute;nico</label> <input name="correo" id="correo"
+												type="text" class="form-control"
+												th:placeholder="#{administracion.candidato.ecorreo}">
+										</div>
+									</div>
+								</div>
+							</div>
+							<button class="btn btn-primary" type="button"
+								th:text="#{administracion.candidato.siguiente}"
+								onclick="validacionFormulario()">Siguiente</button>
+						</div>
+						<!-- Step informacion profecional -->
+						<div id="pro" class="content" role="tabpanel"
+							aria-labelledby="pro-trigger">
+							<div class="col-sm-6">
+								<!-- text input -->
+								<div class="form-group">
+									<div class="form-group">
+										<label th:text="#{administracion.candidato.titulouni}"
+											for="titulo">T&iacute;tulo Universitario</label> <input
+											type="text" name="titulo" class="form-control"
+											id="exampleInputEmail1"
+											th:placeholder="#{administracion.candidato.etitulo}">
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<div class="form-group">
+									<div class="row">
+										<div class="col-sm-6">
+											<!-- textarea -->
+											<div class="form-group">
+												<label th:text="#{administracion.candidato.objetivos}">Objetivos</label>
+												<textarea class="form-control" name="objetivo"
+													th:placeholder="#{administracion.candidato.eobjetivos}"></textarea>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<button class="btn btn-primary" type="button"
+								th:text="#{administracion.candidato.atras}"
+								onclick="stepper.previous()">Anterior</button>
+							<button class="btn btn-primary" type="button"
+								th:text="#{administracion.candidato.siguiente}"
+								onclick="validacionFormulario()">Siguiente</button>
+						</div>
+						<!-- Step informacion laboral -->
+						<div id="laboral" class="content" role="tabpanel"
+							aria-labelledby="laboral-trigger">
+							<div class="row">
+								<div class="col-sm-6">
+									<div class="form-group col-sm-10">
+										<label th:text="#{administracion.candidato.trabaja}">Trabaja
+											actualmente</label> <select name="trabajo" class="form-control">
+											<option th:text="#{administracion.candidato.seleccione}"
+												value="" selected="selected">...</option>
+											<option th:text="#{administracion.candidato.si}" value="Si">Si</option>
+											<option value="No">No</option>
+
+										</select>
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="form-group col-sm-10">
+										<label th:text="#{administracion.candidato.tipocontrato}">Que
+											tipo de contrato posee</label> <select name="contrato"
+											class="form-control">
+											<option value=""
+												th:text="#{administracion.candidato.seleccione}"
+												selected="selected">...</option>
+											<option
+												th:text="#{administracion.candidato.tipocontrato.indefinido}"
+												value="indefinido">Indefinido</option>
+											<option
+												th:text="#{administracion.candidato.tipocontrato.fijo}"
+												value="fijo">Fijo</option>
+											<option
+												th:text="#{administracion.candidato.tipocontrato.prestacions}"
+												value="prestacion de servicios">Prestaci&oacute;n
+												de servicios</option>
+											<option
+												th:text="#{administracion.candidato.tipocontrato.otralabor}"
+												value="otra labor">Otra labor</option>
+											<option th:text="#{administracion.candidato.otro}"
+												value="otro">Otro</option>
+
+										</select>
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-sm-6">
+									<div class="form-group col-sm-10">
+										<label th:text="#{administracion.candidato.origen}">Origen
+											de la hoja de vida</label> <select name="origen" class="form-control">
+											<option th:text="#{administracion.candidato.seleccione}"
+												value="" selected="selected">...</option>
+											<option value="el empleo">El empleo</option>
+											<option value="linkedin">Linkedin</option>
+											<option value="ticjob">Ticjob</option>
+											<option
+												th:text="#{administracion.candidato.correoelectronico}"
+												value="correo electronico">Correo
+												electr&oacute;nico</option>
+											<option th:text="#{administracion.candidato.otro}"
+												value="otro">Otro</option>
+
+										</select>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group col-sm-10">
+											<label th:text="#{administracion.candidato.sueldoactual}">Sueldo
+												actual</label> <input type="text" name="sueldoActual"
+												class="form-control"
+												th:placeholder="#{administracion.candidato.esueldo}">
+										</div>
+									</div>
+								</div>
+							</div>
+							<button class="btn btn-primary" type="button"
+								th:text="#{administracion.candidato.atras}"
+								onclick="stepper.previous()">Anterior</button>
+
+							<button class="btn btn-primary" type="button"
+								th:text="#{administracion.candidato.siguiente}"
+								onclick="validacionFormulario()">Siguiente</button>
+
+						</div>
+						<!-- Step propuesta -->
+						<div id="propuesta" class="content" role="tabpanel"
+							aria-labelledby="Propuesta-trigger">
+							<div class="row">
+								<div class="col-sm-6">
+									<!-- text input -->
+									<div class="form-group  col-sm-10">
+										<label th:text="#{administracion.candidato.aspiracion}">Aspiraci&oacute;n
+											salarial</label> <input type="text" name="aspiracion"
+											class="form-control"
+											th:placeholder="#{administracion.candidato.easpiracion}">
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="form-group col-sm-10">
+										<label>Disponibilidad</label> <select name="disponibilidad"
+											class="form-control">
+											<option value="" selected="selected">...</option>
+											<option value="1 dia">1 Dia</option>
+											<option value="3 dias">3 Dias</option>
+											<option value="5 dias">5 Dias</option>
+											<option value="7 dias">7 Dias</option>
+											<option value="mas de 15 dias">Mas de 15 dias</option>
+
+										</select>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-6">
+									<div class="form-group">
+										<div class="form-group col-sm-10">
+											<label th:text="#{administracion.candidato.horario}">Horario
+												flexible</label> < <select name="horario" class="form-control">
+												<option value=""
+													th:text="#{administracion.candidato.seleccione}"
+													selected="selected">...</option>
+												<option th:text="#{administracion.candidato.si}" value="si">Si</option>
+												<option value="no">No</option>
+											</select>
+										</div>
+										<div class="col-sm-6">
+											<div class="form-group">
+												<label th:text="#{administracion.candidato.observaciones}">Observaciones
+													generales</label>
+												<textarea name="observacion" class="form-control" rows="3"
+													th:placeholder="#{administracion.candidato.eobservacion}"></textarea>
+
+											</div>
+										</div>
+									</div>
+									<button class="btn btn-primary" type="button"
+										th:text="#{administracion.candidato.atras}"
+										onclick="stepper.previous()">Anterior</button>
+									<button type="submit"
+										th:text="#{administracion.candidato.crear}"
+										class="btn btn-primary">Crear</button>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
-				<div id="propuesta" class="content" role="tabpanel"
-					aria-labelledby="Propuesta-trigger">
-					<div class="row">
-                    <div class="col-sm-6">
-                      <!-- text input -->
-                      <div class="form-group">
-                        <label th:text="#{administracion.candidato.aspiracion}">Aspiraci&oacute;n salarial</label>
-                        <input type="text" name="aspiracion" class="form-control" th:placeholder="#{administracion.candidato.easpiracion}">
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <div class="form-group">
-                        <label th:text="#{administracion.candidato.disponibilidad}">Disponibilidad</label>
-                      <div class="form-group col-sm-10">
-                        <label>Aspiracion salarial</label>
-                        <input type="text" name="aspiracion" class="form-control" placeholder="Escriba su aspiracion salarial">
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="form-group col-sm-10">
-                        <label>Disponibilidad</label>
-                        <select name="disponibilidad" class="form-control">
-                          <option value="" th:text="#{administracion.candidato.seleccione}" selected="selected">...</option>
-                          <option th:text="#{administracion.candidato.disponibilidad.uno}"  value="1 dia">1 D&iacute;a</option>
-                          <option th:text="#{administracion.candidato.disponibilidad.tres}" value="3 dias">3 D&iacute;as</option>
-                          <option th:text="#{administracion.candidato.disponibilidad.cinco}" value="5 dias">5 D&iacute;as</option>
-                          <option th:text="#{administracion.candidato.disponibilidad.siete}" value="7 dias">7 D&iacute;as</option>
-                          <option th:text="#{administracion.candidato.disponibilidad.quince}"value="mas de 15 dias">Mas de 15 d&iacute;as</option>
-                          
-					 </select>
-                      </div>
-                    </div>
-                  </div>
-					<div class="row">
-                    <div class="col-sm-6">
-                      <!-- text input -->
-                      <div class="form-group">
-                       <div class="form-group">
-                        <label th:text="#{administracion.candidato.horario}">Horario flexible</label>
-                      <div class="form-group col-sm-10">
-                        <label>Horario flexible</label>
-                        <select name="horario" class="form-control">
-                          <option value="" th:text="#{administracion.candidato.seleccione}"selected="selected">...</option>
-                          <option th:text="#{administracion.candidato.si}"value="si">Si</option>
-                          <option value="no">No</option>
-					 </select>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                      <label th:text="#{administracion.candidato.observaciones}">Observaciones generales</label>
-                        <textarea  name="observacion" class="form-control" rows="3" th:placeholder="#{administracion.candidato.eobservacion}"></textarea>
-                      
-                        </div>
-                    </div>
-                  </div>
-					
-					
-					<button class="btn btn-primary" type="button" th:text="#{administracion.candidato.atras}" onclick="stepper.previous()">Anterior</button>
-					<button type="submit" th:text="#{administracion.candidato.crear}" class="btn btn-primary">Crear</button>
-                      <div class="form-group col-sm-10">
-                      <label>Observaciones generales</label>
-                        <textarea  name="observacion" class="form-control" rows="3" placeholder="Escriba las observaciones que crea que son correspondientes"></textarea>
-                        </div>
-                    </div>
-                  </div>
-					<button class="btn btn-primary" type="button" onclick="stepper.previous()">Anterior</button>
-					<button type="submit" class="btn btn-primary">Crear</button>
-				</div>
-			</div>
-		</div>
-		</div>
-		</div>
-</form>
+	</form>
 </th:block>
 <th:block layout:fragment="body_end">
 	<link rel="stylesheet"
 		th:href="@{~/gestion-cmc/plugins/bs-stepper/css/bs-stepper.min.css}">
 	<script
 		th:src="@{~/gestion-cmc/plugins/bs-stepper/js/bs-stepper.min.js}"></script>
-		<script
-		th:src="@{~/gestion-cmc/resources/gestion-cmc/js/candidato.js}"></script>
-	
+	<script th:src="@{~/gestion-cmc/resources/gestion-cmc/js/candidato.js}"></script>
+
 	<script>
-	
-	   document.addEventListener('DOMContentLoaded', function () {
-	       window.stepper = new Stepper(document.querySelector('.bs-stepper'))
-	    })
+		document.addEventListener('DOMContentLoaded', function() {
+			window.stepper = new Stepper(document.querySelector('.bs-stepper'))
+		})
 	</script>
 </th:block>
 </html>

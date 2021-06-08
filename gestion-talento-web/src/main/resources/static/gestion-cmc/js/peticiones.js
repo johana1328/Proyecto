@@ -94,9 +94,6 @@ function validacionFormularioP(){
 			
 		},
 		messages:{
-			proyecto:{
-				required:"Seleccione una opcion valida"
-			},
 			cliente:{
 				required: "El campo Cliente es requerido",
 				alphanumeric:"El campo Cliente solo puede contener letras o numeros",
@@ -180,16 +177,7 @@ function validacionFormularioP(){
 				rangelength:" Campo caracteristica Longitud no permitida"
 			}
 			
-		},
-		errorPlacement:function( error, element ){
-			//alert($(error[0]).text());
-			$('.alert').show();
-			$('.msg').text($(error[0]).text());
-		},
-		success: function(label) {
-			//alert("OK");
-          //   $('.alert').hide();
-        }
+		}
 	}).settings.ignore = ":disabled,:hidden";
 	
 	if (form.valid() == true){
