@@ -38,6 +38,12 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
               </li> 
                <li class="nav-item">
                 <a th:href="@{/tabla}" class="nav-link ">
+                 <i class="nav-icon far fa-calendar-alt"></i>
+                  <p th:text="#{aside.opcion.calendario}">Calendario</p>
+                </a>
+              </li> 
+              <li class="nav-item">
+                <a th:href="@{/tabla}" class="nav-link ">
                  <i class="nav-icon fas fa-file-alt"></i>
                   <p th:text="#{aside.opcion.documentacion}">Documentaci&oacute;n</p>
                 </a>
