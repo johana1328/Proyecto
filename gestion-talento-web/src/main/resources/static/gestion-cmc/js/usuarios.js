@@ -12,7 +12,7 @@ function validacionFormulario(){
 			},
 			numDoc:{
 				required: true,
-				alphanumeric: true,
+				number: true,
 				rangelength: [3, 20]
 			},
 			nombre1:{
@@ -49,6 +49,16 @@ function validacionFormulario(){
 				required: true,
 				alphanumeric: true,
 	            rangelength: [3, 20]
+			},
+			jefe:{
+			required:true,
+			
+			},
+			tipo:{
+			required:true,
+			},
+			area:{
+			required:true,
 			}
 		}
 		

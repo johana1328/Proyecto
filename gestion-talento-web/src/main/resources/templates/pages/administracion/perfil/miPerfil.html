@@ -1,0 +1,31 @@
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:with="http://www.thymeleaf.org/extras/with"
+	layout:decorate="~{layout}"
+	th:with="funcionalidad='Administraci&oacuten', evento='Crear candidato'">
+<th:block layout:fragment="content">
+
+
+
+
+
+
+
+
+
+</th:block>
+<th:block layout:fragment="body_end">
+	<link rel="stylesheet"
+		th:href="@{~/gestion-cmc/plugins/bs-stepper/css/bs-stepper.min.css}">
+	<script
+		th:src="@{~/gestion-cmc/plugins/bs-stepper/js/bs-stepper.min.js}"></script>
+	<script th:src="@{~/gestion-cmc/resources/gestion-cmc/js/candidato.js}"></script>
+
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			window.stepper = new Stepper(document.querySelector('.bs-stepper'))
+		})
+	</script>
+</th:block>
+</html>
+
