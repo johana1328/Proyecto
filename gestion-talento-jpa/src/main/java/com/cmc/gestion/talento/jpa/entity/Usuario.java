@@ -193,6 +193,12 @@ public class Usuario implements Serializable {
 	}
 
 	public void setPerfilUsuario(List<TipoPerfil> perfilUsuario) {
-		this.perfilUsuario = perfilUsuario;
+		if(this.perfilUsuario == null) {
+			this.perfilUsuario= perfilUsuario;
+		}else {
+			this.perfilUsuario.clear();
+			this.perfilUsuario.addAll(perfilUsuario);
+		}
 	}
+
 }

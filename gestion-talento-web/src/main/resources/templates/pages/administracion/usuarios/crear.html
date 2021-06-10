@@ -4,7 +4,9 @@
 	layout:decorate="~{layout}"
 	th:with="funcionalidad='Administraci&oacuten', evento='Crear usuario'">
 <th:block layout:fragment="content">
-<form id="formCrearUsuario" action="" method="POST">
+<form id="formCrearUsuario" th:object="${empleado}" 
+ th:action="${empleado.idUsuario == null} ? @{/administracion/usuario/crear} : @{/administracion/usuario/modificar/{id}(id=${empleado.idUsuario})}"
+ method="POST">
      
 	<div class="card-body p-0">
 	<div id="messageBox1" class="alert alert-danger alert-dismissible" style="display: none">
@@ -51,9 +53,9 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-								<label for="tipoDocumento" th:text="#{usuario.tipo}">Tipo Documento</label> 
-								<select id="tipoDocumento" name="tipoDocumento" class="form-control select2" style="width: 100%;">
-									<option value="" th:text="#{usuario.tipo}" selected="selected">Tipo</option>
+								<label for="tipoDocumento">Tipo Documento</label> 
+								<select th:field="*{tipoDocumento}" id="tipoDocumento" name="tipoDocumento" class="form-control select2" style="width: 100%;">
+									<option value="" selected="selected">Tipo</option>
 									 <option th:each="tipoDoc : ${T(com.cmc.gestion.talento.jpa.type.TipoDocumento).values()}" 
                                              th:value="${tipoDoc}" th:text="${tipoDoc.value}"></option>
 								</select>
@@ -132,7 +134,7 @@
 							<div class="form-group">
 								<label for="jefe" th:text="#{usuario.jefe}">Jefe</label> <select name="jefe" id="jefe" class="form-control select2"
 									style="width: 100%;">
-									<option selected="selected">Seleccione</option>
+									<option value="" selected="selected">Seleccione</option>
 									<option th:each="jefe : ${listaJefes}" 
                                              th:value="${jefe.idUsuario}" th:text="${jefe.primerNombre} + ' '+${jefe.primerApellido}"></option>
 								</select>
@@ -150,9 +152,9 @@
 							<div class="form-group">
 								<label for="area" th:text="#{usuario.area}">&Aacute;rea</label> <select name="area" id="area" class="form-control select2"
 									style="width: 100%;">
-									<option selected="">Seleccione un &aacute;rea</option>
-									<option th:each="tipoDoc : ${T(com.cmc.gestion.talento.jpa.type.TipoArea).values()}" 
-                                             th:value="${tipoDoc}" th:text="${tipoDoc.value}"></option>
+									<option value="" selected="selected">Seleccione un &aacute;rea</option>
+									<option th:each="area : ${T(com.cmc.gestion.talento.jpa.type.TipoArea).values()}" 
+                                             th:value="${area}" th:text="${area.value}"></option>
 								</select>
 							</div>
 						</div>

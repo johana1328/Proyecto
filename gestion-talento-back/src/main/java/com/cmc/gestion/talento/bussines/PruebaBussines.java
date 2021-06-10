@@ -4,6 +4,8 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +19,7 @@ import com.cmc.gestion.talento.web.config.ArqGestionExcepcion.ExcepcionType;
 @Service
 public class PruebaBussines {
 	 
+	private static final Logger logger = LogManager.getLogger(PruebaBussines.class);
 	 
 	 @Autowired
 	 private PruebaDao pruebaDao;
@@ -55,6 +58,7 @@ public class PruebaBussines {
 			this.pruebaDao.save(pruebaEntity);
 			
 		}else{
+			logger.error("Error al momento de crear la prueba : el nombre ya existe");
 			throw new ArqGestionExcepcion("La prueba ya se encuentra creada", ExcepcionType.ERROR_VALIDATION);
 		}
 	 }
@@ -76,6 +80,7 @@ public class PruebaBussines {
 					return null;
 				}
 				}else {
+					logger.error("Error al momento de modificar la prueba : el nombre ya existe");
 					throw new ArqGestionExcepcion("La prueba ya se encuentra creada", ExcepcionType.ERROR_VALIDATION);
 			}
 	 }
@@ -89,7 +94,10 @@ public class PruebaBussines {
 			
 		}
 		}catch (IllegalArgumentException e) {
+			logger.error("Error al momento de eliminar la prueba : la prueba se encuentra asociada a un elemento");
 			throw new ArqGestionExcepcion("La prueba se encuentra asociada a una peticion", ExcepcionType.ERROR_VALIDATION);
+		}catch (Exception e) {
+			throw new ArqGestionExcepcion("Error al momento de eliminar la prueba", ExcepcionType.ERROR_VALIDATION);
 		}
 	 }
 

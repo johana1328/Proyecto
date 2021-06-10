@@ -3,27 +3,28 @@ package com.cmc.gestion.talento.bussines.dto;
 import java.util.Date;
 import java.util.List;
 
+import com.cmc.gestion.talento.jpa.type.TipoArea;
 import com.cmc.gestion.talento.jpa.type.TipoDocumento;
 import com.cmc.gestion.talento.jpa.type.TipoEstadoUsuario;
 import com.cmc.gestion.talento.jpa.type.TipoPerfil;
 
-public class UsuarioDto {
-
-	protected String idUsuario;
-	protected String documento;
-	protected TipoDocumento tipoDocumento;
-	protected String primerNombre;
-	protected String segundoNombre;
-	protected String primerApellido;
-	protected String segundoApellido;
-	protected String telefono;
-	protected String correoElectronico;
-	protected String contrasena;
-	protected TipoEstadoUsuario estado;
-	protected Date fechaCreacion;
-	protected Date fechaActualizacion;
-	protected List<TipoPerfil> perfilUsuario;
-	protected TipoPerfil perfil;
+public class EmpleadoFormDto {
+	private String idUsuario;
+	private String documento;
+	private TipoDocumento tipoDocumento;
+	private String primerNombre;
+	private String segundoNombre;
+	private String primerApellido;
+	private String segundoApellido;
+	private String telefono;
+	private String correoElectronico;
+	private String contrasena;
+	private TipoEstadoUsuario estado;
+	private Date fechaCreacion;
+	private Date fechaActualizacion;
+	private TipoPerfil perfil;
+	private TipoArea area;
+	private String jefe;
 	
 	public String getIdUsuario() {
 		return idUsuario;
@@ -103,18 +104,23 @@ public class UsuarioDto {
 	public void setFechaActualizacion(Date fechaActualizacion) {
 		this.fechaActualizacion = fechaActualizacion;
 	}
-	public List<TipoPerfil> getPerfilUsuario() {
-		return perfilUsuario;
-	}
-	public void setPerfilUsuario(List<TipoPerfil> perfilUsuario) {
-		this.perfilUsuario = perfilUsuario;
-	}
 	public TipoPerfil getPerfil() {
 		return perfil;
 	}
 	public void setPerfil(TipoPerfil perfil) {
 		this.perfil = perfil;
 	}
-	
+	public TipoArea getArea() {
+		return area;
+	}
+	public void setArea(TipoArea area) {
+		this.area = area;
+	}
+	public String getJefe() {
+		return jefe;
+	}
+	public void setJefe(String jefe) {
+		this.jefe = jefe;
+	}
 
 }
