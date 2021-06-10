@@ -19,7 +19,7 @@ public class PruebaDto {
 	
 	private Calendar fechaCreacion;
 	
-	@NotNull(message = "tipoPrueba no puede ser nulo")
+	@NotNull(message = "Tipo prueba no puede ser nulo")
 	private TipoPrueba tipoPrueba;
 	
 	private boolean estado;

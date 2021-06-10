@@ -75,10 +75,10 @@
 		</thead>
 		<tbody>
 			<tr th:each="prueba : ${listaprueba}">
-				<td th:utext="${prueba.nombre}">1</td>
-				<td th:utext="${prueba.tipoPrueba.value}">1</td>
-				<td th:text="${#dates.format(prueba.fechaCreacion, 'dd-MMM-yyyy')}">1</td>
-				<td th:utext="${prueba.descripcion}">1</td>
+				<td th:utext="${prueba.nombre}"></td>
+				<td th:utext="${prueba.tipoPrueba.value}"></td>
+				<td th:text="${#dates.format(prueba.fechaCreacion, 'dd-MMM-yyyy')}"></td>
+				<td th:utext="${prueba.descripcion}"></td>
 
 				<td>
 					<button type="button" data-id="2"
@@ -96,7 +96,7 @@
 		</tbody>
 	</table>
 
-	<!-- Eliminacion de Serie -->
+	<!-- Eliminacion de Prueba -->
 	<div
 		layout:replace="~{fragments/modal :: modalConfim(id='confirmDelete')}">
 
