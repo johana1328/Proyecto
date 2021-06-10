@@ -94,7 +94,7 @@ public class PruebaBussines {
 			
 		}
 		}catch (IllegalArgumentException e) {
-			logger.error("Error al momento de eliominar la prueba : la prueba se encuantra asociada a un elemento");
+			logger.error("Error al momento de eliminar la prueba : la prueba se encuentra asociada a un elemento");
 			throw new ArqGestionExcepcion("La prueba se encuentra asociada a una peticion", ExcepcionType.ERROR_VALIDATION);
 		}catch (Exception e) {
 			throw new ArqGestionExcepcion("Error al momento de eliminar la prueba", ExcepcionType.ERROR_VALIDATION);
