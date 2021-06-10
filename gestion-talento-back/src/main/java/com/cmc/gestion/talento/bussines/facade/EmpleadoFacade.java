@@ -1,21 +1,20 @@
 package com.cmc.gestion.talento.bussines.facade;
 
-import java.util.Date;
-import java.util.List;
-
 import com.cmc.gestion.talento.bussines.dto.EmpleadoDto;
 import com.cmc.gestion.talento.jpa.entity.Empleado;
-import com.cmc.gestion.talento.jpa.type.TipoArea;
-import com.cmc.gestion.talento.jpa.type.TipoDocumento;
-import com.cmc.gestion.talento.jpa.type.TipoEstadoUsuario;
-import com.cmc.gestion.talento.jpa.type.TipoPerfil;
+import com.cmc.gestion.talento.web.annotation.FacadeService;
 import com.cmc.gestion.talento.web.back.FacadeConvert;
 
+
+@FacadeService
 public class EmpleadoFacade extends FacadeConvert<EmpleadoDto,Empleado>{
 
 	@Override
 	protected EmpleadoDto mapper(Empleado entidad) {
 		EmpleadoDto empleado = new EmpleadoDto();
+		
+		empleado.setArea(entidad.getArea());
+		empleado.setJefe(entidad.getJefe());
 		empleado.setIdUsuario(entidad.getIdUsuario());
 		empleado.setDocumento(entidad.getDocumento());
 		empleado.setTipoDocumento(entidad.getTipoDocumento());
@@ -28,12 +27,9 @@ public class EmpleadoFacade extends FacadeConvert<EmpleadoDto,Empleado>{
 	    empleado.setContrasena(entidad.getContrasena());
 		empleado.setEstado(entidad.getEstado());
 		empleado.setFechaCreacion(entidad.getFechaCreacion().getTime());
-		
-//		private Date fechaActualizacion;
-//		private List<TipoPerfil> perfilUsuario;
-//		private TipoArea area;
-//		private String jefe;
-		return null;
+		empleado.setFechaActualizacion(entidad.getFechaActualizacion().getTime());
+		empleado.setPerfil(entidad.getPerfilUsuario().get(0));
+		return empleado;
 	}
 
 }
