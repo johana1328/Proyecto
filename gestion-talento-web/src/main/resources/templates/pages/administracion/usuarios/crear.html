@@ -4,7 +4,9 @@
 	layout:decorate="~{layout}"
 	th:with="funcionalidad='Administraci&oacuten', evento='Crear usuario'">
 <th:block layout:fragment="content">
-<form id="formCrearUsuario" action="" method="POST">
+<form id="formCrearUsuario" th:object="${empleado}" 
+ th:action="${empleado.idUsuario == null} ? @{/administracion/usuario/crear} : @{/administracion/usuario/modificar/{id}(id=${empleado.idUsuario})}"
+ method="POST">
      
 	<div class="card-body p-0">
 	<div id="messageBox1" class="alert alert-danger alert-dismissible" style="display: none">
@@ -52,7 +54,7 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label for="tipoDocumento">Tipo Documento</label> 
-								<select id="tipoDocumento" name="tipoDocumento" class="form-control select2" style="width: 100%;">
+								<select th:field="*{tipoDocumento}" id="tipoDocumento" name="tipoDocumento" class="form-control select2" style="width: 100%;">
 									<option value="" selected="selected">Tipo</option>
 									 <option th:each="tipoDoc : ${T(com.cmc.gestion.talento.jpa.type.TipoDocumento).values()}" 
                                              th:value="${tipoDoc}" th:text="${tipoDoc.value}"></option>
@@ -60,12 +62,12 @@
 							</div>
 							<div class="form-group">
 								<label for="nombre1">Primer Nombre</label> <input
-									type="text" class="form-control" id="nombre1" name="nombre1"
+									type="text" class="form-control" id="nombre1" name="nombre1"  th:field="*{primerNombre}"
 									placeholder="Primer nombre">
 							</div>
 							<div class="form-group">
 								<label for="apellido1">Primer Apellido</label> <input
-									type="text" class="form-control" id="apellido1" name="apellido1"
+									type="text" class="form-control" id="apellido1" name="apellido1" th:field="*{primerApellido}"
 									placeholder="Primer Apellido">
 							</div>
 
@@ -73,17 +75,17 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label for="numDoc">Numero de documento</label> <input
-									type="text" class="form-control" id="numDoc" name="numDoc"
+									type="text" class="form-control" id="numDoc" name="numDoc" th:field="*{documento}"
 									placeholder="Numero de documento"> 
 							</div>
 							<div class="form-group">
 								<label for="nombre2">Segundo Nombre</label> <input
-									type="text" class="form-control" id="nombre2" name="nombre2"
+									type="text" class="form-control" id="nombre2" name="nombre2" th:field="*{segundoNombre}"
 									placeholder="Segundo Nombre">
 							</div>
 							<div class="form-group">
 								<label for="apellido2">Segundo Apellido</label> <input
-									type="text" class="form-control" id="apellido2" name="apellido2"
+									type="text" class="form-control" id="apellido2" name="apellido2" th:field="*{segundoApellido}"
 									placeholder="Segundo Apellido">
 							</div>
 						</div>
@@ -101,14 +103,14 @@
 							
 							<div class="form-group">
 								<label for="telefono">Telefono</label> <input
-									type="text" class="form-control" id="telefono" name="telefono"
+									type="text" class="form-control" id="telefono" name="telefono" th:field="*{telefono}"
 									placeholder="Telefono">
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
 								<label for="correo">Correo Electronico</label> <input
-									type="text" class="form-control" id="correo" name="correo"
+									type="text" class="form-control" id="correo" name="correo" th:field="*{correoElectronico}"
 									placeholder="Correo Electronico">
 							</div>
 						</div>
@@ -126,13 +128,13 @@
 							
 							<div class="form-group">
 								<label for="codidoUsario">C&oacute;digo usuario </label> <input
-									type="text" class="form-control" id="codidoUsario" name="codidoUsario"
+									type="text" class="form-control" id="codidoUsario" name="codidoUsario" th:field="*{idUsuario}"
 									placeholder="C&oacute;digo usuario">
 							</div>
 							<div class="form-group">
-								<label>Jefe</label> <select class="form-control select2"
+								<label>Jefe</label> <select class="form-control select2"  th:field="*{jefe}"
 									style="width: 100%;">
-									<option selected="selected">Seleccione</option>
+									<option value="" selected="selected">Seleccione</option>
 									<option th:each="jefe : ${listaJefes}" 
                                              th:value="${jefe.idUsuario}" th:text="${jefe.primerNombre} + ' '+${jefe.primerApellido}"></option>
 								</select>
@@ -140,19 +142,18 @@
 						</div>
 						<div class="col-md-6">
 						    <div class="form-group">
-								<label>Tipo usuario</label> <select class="form-control select2"
+								<label>Tipo usuario</label> <select class="form-control select2" th:field="*{perfil}"
 									style="width: 100%;">
-									<option selected="">Tipo</option>
 									<option th:each="tipoDoc : ${T(com.cmc.gestion.talento.jpa.type.TipoPerfil).values()}" 
                                              th:value="${tipoDoc}" th:text="${tipoDoc.value}"></option>
 								</select>
 							</div>
 							<div class="form-group">
-								<label>&Aacute;rea</label> <select class="form-control select2"
+								<label>&Aacute;rea</label> <select class="form-control select2"  th:field="*{area}"
 									style="width: 100%;">
-									<option selected="">Seleccione un &aacute;rea</option>
-									<option th:each="tipoDoc : ${T(com.cmc.gestion.talento.jpa.type.TipoArea).values()}" 
-                                             th:value="${tipoDoc}" th:text="${tipoDoc.value}"></option>
+									<option value="" selected="selected">Seleccione un &aacute;rea</option>
+									<option th:each="area : ${T(com.cmc.gestion.talento.jpa.type.TipoArea).values()}" 
+                                             th:value="${area}" th:text="${area.value}"></option>
 								</select>
 							</div>
 						</div>
