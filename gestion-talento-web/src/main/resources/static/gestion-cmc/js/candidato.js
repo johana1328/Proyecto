@@ -63,63 +63,28 @@ function validacionFormulario(){
 			sueldoActual:{
 				required:true,
 				number:true,
+			},
+			aspiracion:{
+				required:true,
+			},
+			disponibilidad:{
+				required:true,
+			},
+			horario:{
+				required:true,
+			},
+			observacion:{
+				required:true,
 			}
 		},
 		messages:{
-			nombre1:{
-				required: "El campo Primer nombre es requerido",
-				alphanumeric:"El campo Primer nombre solo puede contener letras o numeros",
-				rangelength:" En el campo primer nombre minimo 3 caracteres maximo 20 caracteres "
-			},
-			nombre2:{
-				alphanumeric:"El campo segundo nombre solo puede contener letras o numeros",
-			},
-			apellido1:{
-				required: "El campo primer apellido es requerido",
-				rangelength: "En el campo primer apellido minimo 3 caracteres maximo 20 caracteres "
-			},
-			apellido2:{
-				required: "El campo segundo apellido es requerido",
-				rangelength: "En el campo segundo apellido minimo 3 caracteres maximo 20 caracteres "
 			
-			},
-			tipoDocumento:{
-				required:"Seleccione una opcion valida en el campo tipo documento"
-			},
-			documento:{
-				required:"Escriba su numero de documento",
-				number:"En el campo documento debe digitar solo numeros"
-			},
-			correo:{
-				required:"El campo correo es requerido",
-				email: "Campo correo formato no valido"
-			},
-			telefono:{
-				required:"El campo telefono es requerido",
-				number:"El campo telefono solo puede contener numeros",
-				minlength:"Campo telefono longitud no permitida",
-				maxlength:"Campo telefono longitud no permitida"
-			},
-			titulo:{
-				required:"El campo titulo universitario es requerido",
-			},
-			objetivo:{
-				required:"El campo objetivos es requerido",
-			},
-			trabajo:{
-				required:"El campo trabaja actualmente es requerido"
-			},
-			contrato:{
-				required:"El campo que tipo de contrato es requerido",
-				
-			},
-			origen:{
-				required:"El campo origen de la hoja de vida es requerido",
-			},
-			sueldoActual:{
-				required:"El campo sueldo actual es requerido",
-				number:"En el campo sueldo actual solo admite numeros"
-			},
+			
+			
+			
+			
+			
+			
 		}
 	}).settings.ignore = ":disabled,:hidden";
 	
