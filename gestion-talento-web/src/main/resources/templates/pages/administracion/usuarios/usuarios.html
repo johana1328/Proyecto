@@ -2,18 +2,41 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	xmlns:with="http://www.thymeleaf.org/extras/with"
 	layout:decorate="~{layout}"
-	th:with="funcionalidad='Administraci&oacuten', evento='Series'">
+	th:with="funcionalidad='Administraci&oacuten', evento='Usuarios'">
 <th:block layout:fragment="content">
 
- <table id="tablaSerie" class="table table-bordered table-hover ">
+<a type="button"
+	th:href="@{/administracion/usuario/crear}" class="btn btn-primary  ">  Crear Empleado
+	</a>
+
+ <table id="tablaUsuario" class="table table-bordered table-hover ">
      	<thead>
         	<tr>
-            	<th>Id</th>
-                <th>nombre</th>
-                <th>Descripci&oacute;n</th>
+            	<th>Codigo</th>
+            	<th>Documento</th>
+                <th>Nombres</th>
+                <th>Apellidos</th>
+                <th>Correo</th>
+                <th>Telefono</th>
                 <th width="70px">Acciones</th>
             </tr>
         </thead>
+        <tbody>
+         	<tr th:each="empleado : ${listaEmpleados}">
+         		<td th:utext="${empleado.idUsuario}">id</td>
+         		<td th:utext="${empleado.documento}">documento</td>
+         		<td th:utext="${empleado.primerNombre} +' '+ ${empleado.segundoNombre}">nombres</td>
+         		<td th:utext="${empleado.primerApellido} +' ' +${empleado.segundoApellido}">allellidos</td>
+         		<td th:utext="${empleado.correoElectronico}">correo</td>
+         		<td th:utext="${empleado.telefono}">telefono</td>
+         		<td>
+         			<a type="button"
+					th:href="@{/administracion/usuario/modificar/{id}(id=${empleado.idUsuario})}"
+					class="btn btn-primary  "> <i class="fas fa-pen"></i>
+				</a>
+         		</td>
+         	</tr>
+        </tbody>
      </table> 
      
  </th:block>

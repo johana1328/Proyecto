@@ -37,6 +37,16 @@ public class UsuarioBussines {
 		}
 		return res;
 	}
+	
+	public UsuarioDto getUsuario(String usuario) {
+		UsuarioDto res = null;
+		Optional<Usuario> useuarioOptional = usuariodao.findById(usuario);
+		if (useuarioOptional.isPresent()) {
+			UsuarioFacade userFacade = new UsuarioFacade();
+			return userFacade.getObject(useuarioOptional.get());
+		}
+		return res;
+	}
 
 	public List<UsuarioDto> getAllUser() {
 		Iterable<Usuario> listUserEntity = usuariodao.findAll();

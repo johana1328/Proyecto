@@ -42,7 +42,4 @@ public class Empleado extends Usuario {
 		this.jefe = jefe;
 	}
 
-
-
-
 }

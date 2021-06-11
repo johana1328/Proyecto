@@ -5,11 +5,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/administracion/preguntas")
-public class PruebaPregunta {
-
+@RequestMapping("/public/confirmacionContrasena")
+public class ConfirmacionContraController {
+	
 	@GetMapping
 	public String init() {
-		return "pages/administracion/pruebas/pruebaPregunta";
+		return "public/confirmacionContrasena";
 	}
+
 }
