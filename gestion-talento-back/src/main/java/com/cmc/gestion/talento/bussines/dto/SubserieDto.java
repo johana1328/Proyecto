@@ -3,12 +3,6 @@ package com.cmc.gestion.talento.bussines.dto;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
-
-
-
-
-
-
 public class SubserieDto {
 
 	private long id;
