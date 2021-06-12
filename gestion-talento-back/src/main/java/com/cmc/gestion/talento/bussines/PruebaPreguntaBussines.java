@@ -55,6 +55,7 @@ public class PruebaPreguntaBussines {
 			preguntaEntity.setEnunciado(pruebaPreguntaDto.getEnunciado());
 			preguntaEntity.setArchivoAdjunto(pruebaPreguntaDto.getArchivoAdjuto());
 			
+			
 			this.pruebaPreguntaDao.save(preguntaEntity);
 			
 		}else {

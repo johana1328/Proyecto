@@ -9,22 +9,22 @@ jQuery.extend(jQuery.validator.messages, {
 	},
 	rangelength:  function(_, el) {
 		let nombre = $('.form-group label[for="'+ el.id+'"]').text();
-		return ` Campo ${nombre} Longitud no permitida`;
+		return ` Length field ${nombre} not allowed `;
 	},
 	email:function(_, el) {
 		let nombre = $('.form-group label[for="'+ el.id+'"]').text();
-		return `Campo ${nombre} formato no valido`;
+		return ` ${nombre} field invalid format`;
 	},
 	number:function(_, el) {
 		let nombre = $('.form-group label[for="'+ el.id+'"]').text();
-		return `El campo ${nombre} solo puede contener numeros`;
+		return `The ${nombre} field can only contain numbers`;
 	},
 	minlength:function(_, el) {
 		let nombre = $('.form-group label[for="'+ el.id+'"]').text();
-		return `Campo ${nombre} longitud no permitida`;
+		return ` ${nombre} field length not allowed`;
 	},
 	maxlength:function(_, el) {
 		let nombre = $('.form-group label[for="'+ el.id+'"]').text();
-		return `Campo ${nombre} longitud no permitida`;
+		return ` ${nombre} field length not allowed`;
 	}
 });

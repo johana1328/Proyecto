@@ -10,6 +10,10 @@ public class PruebaPreguntaDto {
 	private String enunciado;
 	
 	private String archivoAdjuto;
+	
+	private PruebaDto pruebaDto;
+	
+	
 
 	public long getIdPregunta() {
 		return idPregunta;
@@ -33,6 +37,14 @@ public class PruebaPreguntaDto {
 
 	public void setArchivoAdjuto(String archivoAdjuto) {
 		this.archivoAdjuto = archivoAdjuto;
+	}
+
+	public PruebaDto getPruebaDto() {
+		return pruebaDto;
+	}
+
+	public void setPruebaDto(PruebaDto pruebaDto) {
+		this.pruebaDto = pruebaDto;
 	}
 	
 	
