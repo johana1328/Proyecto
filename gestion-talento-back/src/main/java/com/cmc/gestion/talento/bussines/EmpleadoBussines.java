@@ -89,6 +89,16 @@ public class EmpleadoBussines {
 		return this.empleadoFacade.getListObject(listaempleados);
 	}
 	
+	public void cambiarEstado(String idEmpleado, TipoEstadoUsuario estado) {
+		Optional<Empleado>  empleadoOp= empleadoDao.findById(idEmpleado);
+		if(empleadoOp.isPresent()) {
+			Empleado empleado=empleadoOp.get();
+			empleado.setEstado(estado);
+			empleadoDao.save(empleado);
+		}
+		
+	}
+	
 	
 	
 	public void getEmpleados() {
