@@ -19,7 +19,7 @@ public class EmpleadoFacade extends FacadeConvert<EmpleadoDto,Empleado>{
 		empleado.setDocumento(entidad.getDocumento());
 		empleado.setTipoDocumento(entidad.getTipoDocumento());
 		empleado.setPrimerNombre(entidad.getPrimerNombre());
-		empleado.setSegundoNombre(entidad.getSegundoNombre());
+		empleado.setSegundoNombre(entidad.getSegundoNombre()); 
 	    empleado.setPrimerApellido(entidad.getPrimerApellido());
 	    empleado.setSegundoApellido(entidad.getSegundoApellido());
 	    empleado.setTelefono(entidad.getTelefono());

@@ -19,6 +19,7 @@ import com.cmc.gestion.talento.bussines.EmpleadoBussines;
 import com.cmc.gestion.talento.bussines.UsuarioBussines;
 import com.cmc.gestion.talento.bussines.dto.EmpleadoDto;
 import com.cmc.gestion.talento.bussines.dto.UsuarioDto;
+import com.cmc.gestion.talento.jpa.type.TipoEstadoUsuario;
 
 
 @Controller
@@ -62,11 +63,11 @@ public class UsuarioController {
 		return "redirect:/administracion/usuario?action=create";
 	}
 	
-	@PostMapping("/modificar/{id}")
+	@PostMapping("/modificar/{id}/{action}")
 	public String modifocarEmpleado(@PathVariable(name = "id", required = true) Optional<String> id,
-			@ModelAttribute("empleado") EmpleadoDto empleado) {
-		empleado.setIdUsuario(id.get());
-		this.empleadoBussines.modificarEmpleado(empleado);
+			@PathVariable(name = "action", required = true) Optional<TipoEstadoUsuario> action) {
+		empleadoBussines.cambiarEstado(id.get(), action.get());
+		
 		return "redirect:/administracion/usuario?action=update";
 	}
 

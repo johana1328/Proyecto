@@ -18,6 +18,7 @@
                 <th>Apellidos</th>
                 <th>Correo</th>
                 <th>Telefono</th>
+                <th>Activacaion</th>
                 <th width="70px">Acciones</th>
             </tr>
         </thead>
@@ -30,6 +31,19 @@
          		<td th:utext="${empleado.correoElectronico}">correo</td>
          		<td th:utext="${empleado.telefono}">telefono</td>
          		<td>
+         			<div class="btn-group">
+                    <button type="button" class="btn btn-primary" th:text="${empleado.estado.getValue()}"  >Action</button>
+                    <button type="button" class="btn btn-primary dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                      <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <div class="dropdown-menu" role="menu">
+                      <a class="dropdown-item linkChangeState" th:data-action="ACTIVO" th:data-user="${empleado.idUsuario}" href="#">Activar</a>
+                      <a class="dropdown-item linkChangeState" th:data-action="BLOQUEADO" th:data-user="${empleado.idUsuario}" href="#">Bloquear</a>
+                      <a class="dropdown-item linkChangeState" th:data-action="RESET" th:data-user="${empleado.idUsuario}" href="#">Reset Password</a>
+                    </div>
+                  </div>
+         		</td>
+         		<td>
          			<a type="button"
 					th:href="@{/administracion/usuario/modificar/{id}(id=${empleado.idUsuario})}"
 					class="btn btn-primary  "> <i class="fas fa-pen"></i>
@@ -38,9 +52,18 @@
          	</tr>
         </tbody>
      </table> 
-     
+     <form id="changeStade" th:action="@{/administracion/usuario/modificar}" method="post" >
+     </form>
  </th:block>
  <th:block layout:fragment="body_end">
-    <script th:src="@{~/gestion-cmc/resources/gestion-cmc/js/serie.js}"></script>
+    <script type="text/javascript">
+    $(".linkChangeState").click(function(){
+    	  var accion = $(this).attr('data-action');
+    	  var idUsuario = $(this).attr('data-user');
+    	  var formAction = $("#changeStade").attr('action')+"/"+idUsuario+"/"+accion;
+    	  $("#changeStade").attr('action', formAction)
+    	  $("#changeStade").submit();
+    	});
+    </script>
 </th:block>
  </html> 
