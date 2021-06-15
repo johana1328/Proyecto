@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:with="http://www.thymeleaf.org/extras/with"
+	layout:decorate="~{layout}"
+	th:with="funcionalidad='Administraci&oacuten', evento='Curriculun vitae'">
+<th:block layout:fragment="content">
+
+
+
+
+
+
+
+
+
+<div class="p-2 mb-1 bg-primary text-white  text-center">
+Informacion Personal
+</div>
+
+
+
+
+<div class="row">
+ <div class="col-sm-4">
+<div class="card" style="width: 18rem;">
+  <div class="card-header">
+    <a class="text-center" th:href="@{/administracion/curriculum/datosbasicos}">Datos basica</a>
+  </div>
+  <i class="text-center nav-icon fas fa-user-circle"></i>
+   <p class="text-center" >Ingresa los datos basico</p>               
+</div>
+</div>
+ <div class="col-sm-4">
+<div class="card" style="width: 18rem;">
+  <div class="card-header">
+    <a class="text-center" th:href="@{/administracion/curriculum/perfil}" >Perfil profesional y experiencia profesional</a>
+  </div>
+  <i class="text-center fas fa-user-tie"></i>
+     <p class="text-center">Ingresa los datos de perfil profesional y experiencia profesional</p>               
+  
+   </div>               
+</div>
+ <div class="col-sm-3">
+<div class="card" style="width: 18rem;">
+  <div class="card-header">
+    <a class="text-center" th:href="@{/administracion/curriculum/academica}">Formacion academica</a>
+  </div>
+  <i class="text-center fa fa-graduation-cap" aria-hidden="true"></i>
+  
+    <p class="text-center">Ingresa los datos de la informacion academica</p>               
+  
+</div>              
+</div>
+</div>
+<div class="row">
+ <div class="col-sm-4">
+
+<div class="card" style="width: 18rem;">
+  <div class="card-header">
+    <a class="text-center" th:href="@{/administracion/curriculum/conocimiento}">Conocimientos y habilidades</a>
+  </div>
+  <i class="text-center nav-icon fas fa-book-open"></i>
+  <p class="text-center">Ingresa los datos de conocimientos y habilidades</p>               
+  
+    </div>              
+</div>
+ <div class="col-sm-4">
+
+<div class="card" style="width: 18rem;">
+  <div class="card-header">
+    <a class="text-center" th:href="@{/administracion/curriculum/tecnicas}">Competencias tecnicas</a>
+  </div>
+  <i class=" text-center fas fa-clipboard-list"></i>
+  <p class="text-center">Ingresa los datos de las competencias tecnicas</p>               
+  
+   </div>               
+</div>
+ <div class="col-sm-3">
+
+<div class="card" style="width: 18rem;">
+  <div class="card-header">
+    <a class="text-center" th:href="@{/administracion/curriculum/experiencia}">Experiencia laboral</a>
+  </div>
+  <i class=" text-center fas fa-briefcase"></i>
+       <p class="text-center">Ingresa los datos de experiencia laboral</p>               
+  
+     </div>             
+</div>
+</div>
+</th:block>
+<th:block layout:fragment="body_end">
+      
+   
+</th:block>
+</html>

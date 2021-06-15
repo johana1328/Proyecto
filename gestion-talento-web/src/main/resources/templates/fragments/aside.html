@@ -19,11 +19,17 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
             <li class="nav-item">
-                <a th:href="@{/tabla}" class="nav-link ">
+                <a th:href="@{/administracion/miperfil}" class="nav-link ">
                   <i class=" nav-icon fas fa-user-circle"></i>
-                  <p th:text="#{aside.opcion.perfil}" >Mi perfil</p>
+                  <p th:text="#{aside.opcion.perfil}">Mi perfil</p>
                 </a>
               </li>   
+              <li class="nav-item">
+                <a th:href="@{/administracion/curriculum}" class="nav-link ">
+                  <i class=" nav-icon fas fa-user-circle"></i>
+                  <p>Curriculum vitae</p>
+                </a>
+              </li> 
               <li class="nav-item">
                 <a th:href="@{/tabla}" class="nav-link ">
                  <i class="nav-icon fas fa-edit"></i>
