@@ -33,6 +33,10 @@ public class PruebaPreguntaBussines {
 		return resp;
 	}
 	
+	public  List<PruebaPreguntaDto>  getListPreguntaPrueba(long idPregunta) {
+		return null;
+	}
+	
 	public PruebaPreguntaDto getPregunta(long idPregunta) {
 		Optional<PruebaPregunta> optionPregunt = this.pruebaPreguntaDao.findById(idPregunta);
 		if (optionPregunt.isPresent()) {
@@ -50,6 +54,7 @@ public class PruebaPreguntaBussines {
 			
 			preguntaEntity.setEnunciado(pruebaPreguntaDto.getEnunciado());
 			preguntaEntity.setArchivoAdjunto(pruebaPreguntaDto.getArchivoAdjuto());
+			
 			
 			this.pruebaPreguntaDao.save(preguntaEntity);
 			

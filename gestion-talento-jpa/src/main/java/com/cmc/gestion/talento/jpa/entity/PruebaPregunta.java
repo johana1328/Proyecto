@@ -2,12 +2,18 @@ package com.cmc.gestion.talento.jpa.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.ConstraintMode;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Index;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -30,6 +36,10 @@ public class PruebaPregunta implements Serializable {
 
 	@Column(name = "archivoAdjunto")
 	private String archivoAdjunto;
+	
+	@JoinColumn(name = "id_prueba", nullable = false,foreignKey = @ForeignKey(name = "prueba_fk", value = ConstraintMode.CONSTRAINT))
+	@ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private Prueba prueba;
 
 	public long getIdPregunta() {
 		return idPregunta;
@@ -53,6 +63,14 @@ public class PruebaPregunta implements Serializable {
 
 	public void setArchivoAdjunto(String archivoAdjunto) {
 		this.archivoAdjunto = archivoAdjunto;
+	}
+
+	public Prueba getPrueba() {
+		return prueba;
+	}
+
+	public void setPrueba(Prueba prueba) {
+		this.prueba = prueba;
 	}
 
 }

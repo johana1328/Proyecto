@@ -30,12 +30,12 @@ public class PruebaPreguntaController {
 	
 	
 
-	@GetMapping
-	public String init(@PathVariable(name = "id", required = false) Optional<Long> id,
+	@GetMapping("/{idPrueba}")
+	public String init(@PathVariable(name = "idPrueba", required = true) Optional<Long> idPrueba,
 			@RequestParam(name = "action", defaultValue = "NOK") String action, Model model) {
 		PruebaPreguntaDto pregunta = new PruebaPreguntaDto();
-		if(id.isPresent()) {
-			pregunta = pruebaPreguntaBussines.getPregunta(id.get());
+		if(idPrueba.isPresent()) {
+			pregunta = pruebaPreguntaBussines.getPregunta(idPrueba.get());
 		}
 		initOperation(model, pregunta,action);
 		return "pages/administracion/pruebas/pruebaPregunta";
