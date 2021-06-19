@@ -6,45 +6,20 @@
 	th:with="funcionalidad='Administraci&oacuten', evento='Curriculun vitae'">
 <th:block layout:fragment="content">
 
-	<div class="row">
-          <div class="col-md-12">
-            <div class="card card-default">
-              <div class="card-header">
-                <h3 class="card-title">Experiencia laboral</h3>
-              </div>
-              <div class="card-body p-0">
-                <div class="bs-stepper">
-                  <div class="bs-stepper-header" role="tablist">
-                    <!-- your steps here -->
-                    <div class="step" data-target="#basico">
-                      <button type="button" class="step-trigger" role="tab" aria-controls="basico" id="basico-trigger">
-                        <span class="bs-stepper-circle">1</span>
-                        <span class="bs-stepper-label">Experiencia laboral</span>
-                      </button>
-                    </div>
-                    <div class="line"></div>
-                    <div class="step" data-target="#information-part">
-                      <button type="button" class="step-trigger" role="tab" aria-controls="information-part" id="information-part-trigger">
-                        <span class="bs-stepper-circle">2</span>
-                        <span class="bs-stepper-label">Otros </span>
-                      </button>
-                    </div>
-                  </div>
-                  <div class="bs-stepper-content">
-                    <!-- your steps content here -->
-                    <div id="basico" class="content" role="tabpanel" aria-labelledby="basico-trigger">
+	<!--formulario -->
+                    <form id="formExperiencia" action="" method="POST">
                     <div class="row">
                     <div class="col-sm-6">
                       <!-- textarea -->
                       <div class="form-group">
-                        <label>Empresa</label>
-                        <input class="form-control" type="text" placeholder="Ingrese el nombre de la empresa"></input>
+                        <label th:text="#{curriculum.exp.empresa}">Empresa</label>
+                        <input class="form-control" type="text" th:placeholder="#{curriculum.exp.iempresa}"></input>
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label>Rol</label>
-                        <input type="text" class="form-control"  placeholder="Enter ..." ></input>
+                        <label th:text="#{curriculum.exp.rol}">Rol</label>
+                        <input type="text" class="form-control"  th:placeholder="#{curriculum.exp.irol}" ></input>
                       </div>
                     </div>
                   </div>
@@ -52,158 +27,56 @@
                     <div class="col-sm-6">
                       <!-- textarea -->
                       <div class="form-group">
-                        <label>Duracion</label>
-                        <input class="form-control" type="text" placeholder="Enter ..."></input>
+                        <label th:text="#{curriculum.exp.duracion}">Duracion</label>
+                        <input class="form-control" type="text" th:placeholder="#{curriculum.exp.iduracion}"></input>
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label>Funciones</label>
-                        <input type="text" class="form-control"  placeholder="Enter ..." ></input>
+                        <label th:text="#{curriculum.exp.funcion}">Funciones</label>
+                        <input type="text" class="form-control"  th:placeholder="#{curriculum.exp.ifuncion}" ></input>
                       </div>
                     </div>
                   </div>
                   <hr>
-                  <h5><b>Entorno/Herramientas/Tecnologias</b></h5>
+                  <h5 th:text="#{curriculum.exp.entorno}"><b>Entorno/Herramientas/Tecnologias</b></h5>
                   <br>
                     <div class="row">
                     <div class="col-sm-6">
                       <!-- textarea -->
                       <div class="form-group">
-                        <label>Lenguajes</label>
-                        <input class="form-control" type="text" placeholder="Enter ..."></input>
+                        <label th:text="#{curriculum.exp.lenguajes}">Lenguajes</label>
+                        <textarea class="form-control"  th:placeholder="#{curriculum.exp.ilenguajes}"></textarea>
                       </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Sistemas operativos</label>
-                        <input type="text" class="form-control"  placeholder="Enter ..." ></input>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <!-- textarea -->
-                      <div class="form-group">
-                        <label>Bases de datos</label>
-                        <input class="form-control" type="text" placeholder="Enter ..."></input>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Herramientas</label>
-                        <input type="text" class="form-control"  placeholder="Enter ..." ></input>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <!-- textarea -->
-                      <div class="form-group">
-                        <label>Otros</label>
-                        <input class="form-control" type="text" placeholder="Enter ..."></input>
-                      </div>
-                    </div>
+                    
+                 
                    
                   </div>
-                  
-                      
-                      <button class="btn btn-primary" onclick="stepper.next()">Next</button>
-                    </div>
-                    <div id="information-part" class="content" role="tabpanel" aria-labelledby="information-part-trigger">
-                      
-                      <div class="row">
-                    <div class="col-sm-6">
-                      <!-- textarea -->
-                      <div class="form-group">
-                        <label>Nombre  del curso, certificación o capacitación que realizo</label>
-                        <input class="form-control" type="text" placeholder="Enter ..."></input>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Universidad</label>
-                        <input type="text" class="form-control"  placeholder="Enter ..." ></input>
-                      </div>
-                    </div>
                   </div>
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <!-- textarea -->
-                      <div class="form-group">
-                        <label>Ciudad</label>
-                        <input class="form-control" type="date" placeholder="Enter ..."></input>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Pais donde se realizo</label>
-                        <input type="text" class="form-control"  placeholder="Enter ..." ></input>
-                      </div>
-                    </div>
-                  </div>
-                    <div class="row">
-                    <div class="col-sm-6">
-                      <!-- textarea -->
-                      <div class="form-group">
-                        <label>A&ntildeo de finalizacion</label>
-                        <input class="form-control" type="text" placeholder="Enter ..."></input>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Nombre de especializacion</label>
-                        <input type="text" class="form-control"  placeholder="Enter ..." ></input>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <!-- textarea -->
-                      <div class="form-group">
-                        <label>Lugar donde realizo el estudio</label>
-                        <input class="form-control" type="text" placeholder="Enter ..."></input>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Ciudad</label>
-                        <input type="text" class="form-control"  placeholder="Enter ..." ></input>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <!-- textarea -->
-                      <div class="form-group">
-                        <label>pais</label>
-                        <input class="form-control" type="text" placeholder="Enter ..."></input>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>A&ntildeo</label>
-                        <input type="date" class="form-control"  placeholder="Enter ..." ></input>
-                      </div>
-                    </div>
-                  </div>   
-                      
-                      
-                      <button class="btn btn-primary" onclick="stepper.previous()">Previous</button>
-                     <button type="submit" class="btn btn-primary">Submit</button>
-
-                    </div>
+                  <button type="submit" th:text="#{curriculum.exp.guardar}" class="btn btn-primary">Submit</button>
                     
-                  </div>
-                </div>
-              </div>
+                      </form>
+                     <br></br>
+                     
+                     <!-- Tabla -->
+                    
+              <table id="tablaExperiencia" class="table table-bordered table-hover ">
+     	<thead>
+        	<tr>
+            	<th th:text="#{curriculum.exp.empresa}">Empresa</th>
+            	<th th:text="#{curriculum.exp.rol}">Rol</th>
+            	<th th:text="#{curriculum.exp.duracion}">Duracion</th>
+                <th th:text="#{curriculum.exp.funcion}">Funciones</th>
+                <th th:text="#{curriculum.exp.lenguajes}">Lenguajes</th>
+                <th th:text="#{administracion.ambientacion.accion}"width="70px">Acciones</th>
+            </tr>
+        </thead>
+     </table> 
+     
+     
               <!-- /.card-body -->
               
-            </div>
-            <!-- /.card -->
-          </div>
-        </div>
- 		
+            
 
 
 

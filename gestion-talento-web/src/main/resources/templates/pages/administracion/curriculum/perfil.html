@@ -13,17 +13,17 @@
                     <div class="col-sm-6">
                       <!-- textarea -->
                       <div class="form-group">
-                        <label>Perfil profesional</label>
-                        <textarea class="form-control"  placeholder="Enter ..."></textarea>
+                        <label th:text="#{curriculum.perfil.perfil}">Perfil profesional</label>
+                        <textarea class="form-control"  th:placeholder="#{curriculum.perfil.iperfil}"></textarea>
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label>Experiencia profesional</label>
-                        <textarea  class="form-control"  placeholder="Enter ..." ></textarea>
+                        <label th:text="#{curriculum.perfil.experiencia}">Experiencia profesional</label>
+                        <textarea  class="form-control"  th:placeholder="#{curriculum.perfil.iexperiencia}" ></textarea>
                       </div>
                     </div>
-                      <button type="submit" class="btn btn-primary">Submit</button>
+                      <button type="submit" th:text="#{curriculum.perfil.guardar}" class="btn btn-primary">Submit</button>
                     
                   </div>
               

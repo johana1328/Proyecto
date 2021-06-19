@@ -6,128 +6,187 @@
 	th:with="funcionalidad='Administraci&oacuten', evento='Curriculun vitae'">
 <th:block layout:fragment="content">
 
-	<form>
-	
-	<h1>Lenguajes</h1>
-	<br>
-	<label>Java:   </label>
-	<br>
-	<div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-  <label class="form-check-label" for="inlineCheckbox1">20%</label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-  <label class="form-check-label" for="inlineCheckbox2">40%</label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" >
-  <label class="form-check-label" for="inlineCheckbox3">60% </label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" >
-  <label class="form-check-label" for="inlineCheckbox3">80% </label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" >
-  <label class="form-check-label" for="inlineCheckbox3">100% </label>
-</div>
-<br>
-<br>
-	<label>Java:   </label>
-	<br>
-	<div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-  <label class="form-check-label" for="inlineCheckbox1">20%</label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-  <label class="form-check-label" for="inlineCheckbox2">40%</label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" >
-  <label class="form-check-label" for="inlineCheckbox3">60% </label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" >
-  <label class="form-check-label" for="inlineCheckbox3">80% </label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" >
-  <label class="form-check-label" for="inlineCheckbox3">100% </label>
-</div>
-<br>
-<br>
-<label>Java:   </label>
-	<br>
-	<div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-  <label class="form-check-label" for="inlineCheckbox1">20%</label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-  <label class="form-check-label" for="inlineCheckbox2">40%</label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" >
-  <label class="form-check-label" for="inlineCheckbox3">60% </label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" >
-  <label class="form-check-label" for="inlineCheckbox3">80% </label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" >
-  <label class="form-check-label" for="inlineCheckbox3">100% </label>
-</div>
-<br>
-<br>
-<label>Java:   </label>
-	<br>
-	<div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-  <label class="form-check-label" for="inlineCheckbox1">20%</label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-  <label class="form-check-label" for="inlineCheckbox2">40%</label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" >
-  <label class="form-check-label" for="inlineCheckbox3">60% </label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" >
-  <label class="form-check-label" for="inlineCheckbox3">80% </label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" >
-  <label class="form-check-label" for="inlineCheckbox3">100% </label>
-</div>
-<br>
-<br>
+	<form id="Lenguajes" action="" method="POST">
 
-	
-	
+		<h1 th:text="#{curriculum.tecnica.lenguaje}">Lenguajes</h1>
+		<br> <input type="text"></input> <br>
+		<div class="form-check form-check-inline">
+			<input class="form-check-input" type="radio"
+				name="inlineRadioOptions" id="inlineRadio1" value="option1">
+			<label class="form-check-label" for="inlineRadio1">20%</label>
+		</div>
+		<div class="form-check form-check-inline">
+			<input class="form-check-input" type="radio"
+				name="inlineRadioOptions" id="inlineRadio2" value="option2">
+			<label class="form-check-label" for="inlineRadio2">40%</label>
+		</div>
+		<div class="form-check form-check-inline">
+			<input class="form-check-input" type="radio"
+				name="inlineRadioOptions" id="inlineRadio3" value="option3" >
+			<label class="form-check-label" for="inlineRadio3">60%
+				</label>
+		</div>
+		<div class="form-check form-check-inline">
+			<input class="form-check-input" type="radio"
+				name="inlineRadioOptions" id="inlineRadio3" value="option3" >
+			<label class="form-check-label" for="inlineRadio3">80%
+				</label>
+		</div>
+		<div class="form-check form-check-inline">
+			<input class="form-check-input" type="radio"
+				name="inlineRadioOptions" id="inlineRadio3" value="option3" >
+			<label class="form-check-label" for="inlineRadio3">100%
+				</label>
+		</div>
+		<br>
+		<br> <input type="text"></input> <br>
+		<div class="form-check form-check-inline">
+			<input class="form-check-input" type="radio"
+				name="inlineRadioOptions" id="inlineRadio1" value="option1">
+			<label class="form-check-label" for="inlineRadio1">20%</label>
+		</div>
+		<div class="form-check form-check-inline">
+			<input class="form-check-input" type="radio"
+				name="inlineRadioOptions" id="inlineRadio2" value="option2">
+			<label class="form-check-label" for="inlineRadio2">40%</label>
+		</div>
+		<div class="form-check form-check-inline">
+			<input class="form-check-input" type="radio"
+				name="inlineRadioOptions" id="inlineRadio3" value="option3" >
+			<label class="form-check-label" for="inlineRadio3">60%
+				</label>
+		</div>
+		<div class="form-check form-check-inline">
+			<input class="form-check-input" type="radio"
+				name="inlineRadioOptions" id="inlineRadio3" value="option3" >
+			<label class="form-check-label" for="inlineRadio3">80%
+				</label>
+		</div>
+		<div class="form-check form-check-inline">
+			<input class="form-check-input" type="radio"
+				name="inlineRadioOptions" id="inlineRadio3" value="option3" >
+			<label class="form-check-label" for="inlineRadio3">100%
+				</label>
+		</div><br><br> <input type="text"></input> <br>
+		<div class="form-check form-check-inline">
+			<input class="form-check-input" type="radio"
+				name="inlineRadioOptions" id="inlineRadio1" value="option1">
+			<label class="form-check-label" for="inlineRadio1">20%</label>
+		</div>
+		<div class="form-check form-check-inline">
+			<input class="form-check-input" type="radio"
+				name="inlineRadioOptions" id="inlineRadio2" value="option2">
+			<label class="form-check-label" for="inlineRadio2">40%</label>
+		</div>
+		<div class="form-check form-check-inline">
+			<input class="form-check-input" type="radio"
+				name="inlineRadioOptions" id="inlineRadio3" value="option3" >
+			<label class="form-check-label" for="inlineRadio3">60%
+				</label>
+		</div>
+		<div class="form-check form-check-inline">
+			<input class="form-check-input" type="radio"
+				name="inlineRadioOptions" id="inlineRadio3" value="option3" >
+			<label class="form-check-label" for="inlineRadio3">80%
+				</label>
+		</div>
+		<div class="form-check form-check-inline">
+			<input class="form-check-input" type="radio"
+				name="inlineRadioOptions" id="inlineRadio3" value="option3" >
+			<label class="form-check-label" for="inlineRadio3">100%
+				</label>
+		</div><br><br> <input type="text"></input> <br>
+		<div class="form-check form-check-inline">
+			<input class="form-check-input" type="radio"
+				name="inlineRadioOptions" id="inlineRadio1" value="option1">
+			<label class="form-check-label" for="inlineRadio1">20%</label>
+		</div>
+		<div class="form-check form-check-inline">
+			<input class="form-check-input" type="radio"
+				name="inlineRadioOptions" id="inlineRadio2" value="option2">
+			<label class="form-check-label" for="inlineRadio2">40%</label>
+		</div>
+		<div class="form-check form-check-inline">
+			<input class="form-check-input" type="radio"
+				name="inlineRadioOptions" id="inlineRadio3" value="option3" >
+			<label class="form-check-label" for="inlineRadio3">60%
+				</label>
+		</div>
+		<div class="form-check form-check-inline">
+			<input class="form-check-input" type="radio"
+				name="inlineRadioOptions" id="inlineRadio3" value="option3" >
+			<label class="form-check-label" for="inlineRadio3">80%
+				</label>
+		</div>
+		<div class="form-check form-check-inline">
+			<input class="form-check-input" type="radio"
+				name="inlineRadioOptions" id="inlineRadio3" value="option3" >
+			<label class="form-check-label" for="inlineRadio3">100%
+				</label>
+		</div><br><br> <input type="text"></input> <br>
+		<div class="form-check form-check-inline">
+			<input class="form-check-input" type="radio"
+				name="inlineRadioOptions" id="inlineRadio1" value="option1">
+			<label class="form-check-label" for="inlineRadio1">20%</label>
+		</div>
+		<div class="form-check form-check-inline">
+			<input class="form-check-input" type="radio"
+				name="inlineRadioOptions" id="inlineRadio2" value="option2">
+			<label class="form-check-label" for="inlineRadio2">40%</label>
+		</div>
+		<div class="form-check form-check-inline">
+			<input class="form-check-input" type="radio"
+				name="inlineRadioOptions" id="inlineRadio3" value="option3" >
+			<label class="form-check-label" for="inlineRadio3">60%
+				</label>
+		</div>
+		<div class="form-check form-check-inline">
+			<input class="form-check-input" type="radio"
+				name="inlineRadioOptions" id="inlineRadio3" value="option3" >
+			<label class="form-check-label" for="inlineRadio3">80%
+				</label>
+		</div>
+		<div class="form-check form-check-inline">
+			<input class="form-check-input" type="radio"
+				name="inlineRadioOptions" id="inlineRadio3" value="option3" >
+			<label class="form-check-label" for="inlineRadio3">100%
+				</label>
+		</div>
+		
+		
+		
+		
+		<br> <br> <input class="btn btn-primary" th:texte="#{curriculum.tecnica.guardar}" type="submit"
+			value="Guardar"></input>
+
 	</form>
-
+	<table id="tablaExperiencia" class="table table-bordered table-hover ">
+     	<thead>
+        	<tr>
+            	<th th:text="#{curriculum.tecnica.lenguaje}">lenguajes</th>
+            	<th th:text="#{curriculum.tecnica.porcentaje}">porcentaje</th>
+            	
+                <th th:text="#{curriculum.tecnica.accion}"width="70px">Acciones</th>
+            </tr>
+        </thead>
+     </table> 
 
 
 
 
 </th:block>
 <th:block layout:fragment="body_end">
-      
-        
-	
-	<!-- Font Awesome -->
-  <link rel="stylesheet"
-   href="@{~/gestion-cmc/plugins/fontawesome/css/all.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet"
-   href="@{~/gestion-cmc/adminl-lte/css/adminlte.min.css">
-	
 
-   
+
+
+	<!-- Font Awesome -->
+	<link rel="stylesheet"
+		href="@{~/gestion-cmc/plugins/fontawesome/css/all.min.css">
+	<!-- Theme style -->
+	<link rel="stylesheet"
+		href="@{~/gestion-cmc/adminl-lte/css/adminlte.min.css">
+
+
+
 </th:block>
 </html>

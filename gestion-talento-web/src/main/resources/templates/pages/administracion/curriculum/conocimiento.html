@@ -15,16 +15,16 @@
                       <!-- textarea -->
                       <div class="form-group">
                         <label>Front End</label>
-                        <textarea class="form-control"  placeholder="Enter ..."></textarea>
+                        <textarea class="form-control"  th:placeholder="#{curriculun.conocimiento.ifront}"></textarea>
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label>Back End</label>
-                        <textarea  class="form-control"  placeholder="Enter ..." ></textarea>
+                        <textarea  class="form-control"  th:placeholder="#{curriculun.conocimiento.iback}" ></textarea>
                       </div>
                     </div>
-                      <button type="submit" class="btn btn-primary">Submit</button>
+                      <button type="submit" th:text="#{curriculum.guardar}"class="btn btn-primary">Submit</button>
                     
                   </div>
               
