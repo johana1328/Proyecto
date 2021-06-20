@@ -24,6 +24,9 @@ public class EmpleadoBussines {
 	@Autowired
 	private EmpleadoFacade empleadoFacade;
 	
+	@Autowired
+	private NotificationBussines notificationClinet;
+	
 	
 	public void crearEmpleado(EmpleadoDto empleado) {
 		Empleado empleadoEntity = new Empleado();
@@ -45,6 +48,7 @@ public class EmpleadoBussines {
 		empleadoEntity.setPerfilUsuario(perfilUsuario);
 		empleadoEntity.setContrasena("1234");
 		empleadoDao.save(empleadoEntity);
+		this.notificationClinet.notificacionCreacion(empleadoEntity.getCorreoElectronico());
 	}
 	
 	
@@ -107,5 +111,7 @@ public class EmpleadoBussines {
 			System.out.println(in.getPrimerNombre());
 		}
 	}
+	
+
 
 }
