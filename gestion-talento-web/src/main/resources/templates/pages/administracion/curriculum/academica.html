@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:with="http://www.thymeleaf.org/extras/with"
+	layout:decorate="~{layout}"
+	th:with="funcionalidad='Administraci&oacuten', evento='Curriculun vitae'">
+<th:block layout:fragment="content">
+		
+		<div class="row">
+          <div class="col-md-12">
+            <div class="card card-default">
+              <div class="card-header">
+                <h3 class="card-title" th:text="#{curriculum.academico.datos}">Datos academicos</h3>
+              </div>
+              <div class="card-body p-0">
+                <div class="bs-stepper">
+                  <div class="bs-stepper-header" role="tablist">
+                    <!-- your steps here -->
+                    <div class="step" data-target="#basico">
+                      <button type="button" class="step-trigger" role="tab" aria-controls="basico" id="basico-trigger">
+                        <span class="bs-stepper-circle">1</span>
+                        <span class="bs-stepper-label" th:text="#{curriculum.academico.formacion}">Formacion academica</span>
+                      </button>
+                    </div>
+                    <div class="line"></div>
+                    <div class="step" data-target="#information-part">
+                      <button type="button" class="step-trigger" role="tab" aria-controls="information-part" id="information-part-trigger">
+                        <span class="bs-stepper-circle">2</span>
+                        <span class="bs-stepper-label" th:text="#{curriculum.academico.otro}">Otros estudios</span>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="bs-stepper-content">
+                    <!-- your steps content here -->
+                    <div id="basico" class="content" role="tabpanel" aria-labelledby="basico-trigger">
+                    <div class="row">
+                    <div class="col-sm-6">
+                      <!-- textarea -->
+                      <div class="form-group">
+                        <label th:text="#{curriculum.academico.carrera}">Nombre de la carrera</label>
+                        <input class="form-control" type="text" th:placeholder="#{curriculum.academico.icarrera}"></input>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label th:text="#{curriculum.academico.lugar}">Lugar donde realizo el estudio</label>
+                        <input type="text" class="form-control"  th:placeholder="#{curriculum.academico.ilugar}" ></input>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <!-- textarea -->
+                      <div class="form-group">
+                        <label th:text="#{curriculum.academico.ciudad}">Ciudad</label>
+                        <input class="form-control" type="date" th:placeholder="#{curriculum.academico.iciudad}"></input>
+                      </div>
+                    </div>
+                    
+                  </div>
+                    
+                      
+                      <button class="btn btn-primary" th:text="#{curriculum.academico.siguiente}" onclick="stepper.next()">Siguiente</button>
+                    </div>
+                    <div id="information-part" class="content" role="tabpanel" aria-labelledby="information-part-trigger">
+                      
+                      <div class="row">
+                    <div class="col-sm-6">
+                      <!-- textarea -->
+                      <div class="form-group">
+                        <label th:text="#{curriculum.academico.finalizacion}">Año de finalizacion</label>
+                        <input class="form-control" type="text" th:placeholder="#{curriculum.academico.ifinalizacion}"></input>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label th:text="#{curriculum.academico.certificado}">Certificados</label>
+                        <input type="file" class="form-control"  placeholder="Enter ..." ></input>
+                      </div>
+                    </div>
+                 	</div>
+                 	<div class="col-sm-6">
+                      <div class="form-group">
+                        <label th:text="#{curriculum.academico.pais}">Pais donde se realizo</label>
+                        <input type="text" class="form-control"  th:placeholder="#{curriculum.academico.ipais}" ></input>
+                      </div>
+                    </div> 
+                      
+                      
+                      <button class="btn btn-primary" th:text="#{curriculum.academico.atras}" onclick="stepper.previous()">Atras</button>
+                     <button type="submit" th:text="#{curriculum.academico.guardar}" class="btn btn-primary">Guardar</button>
+
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+              <!-- /.card-body -->
+              
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+        
+ 		<table id="tabla" class="table table-bordered table-hover ">
+     	<thead>
+        	<tr>
+            	<th th:text="#{curriculum.academico.carrera}">Nombre de la carrera</th>
+            	<th th:text="#{curriculum.lugar}">Lugar</th>
+            	<th th:text="#{curriculum.academico.ciudad}">Ciudad</th>
+                <th th:text="#{curriculum.pais}">Pais</th>
+                <th th:text="#{curriculum.academico.finalizacion}">Año de finalizacion</th>
+                <th th:text="#{curriculum.certificaion}">Certificacion</th>
+                <th th:text="#{curriculum.acciones}"width="70px">Acciones</th>
+            </tr>
+        </thead>
+     </table> 
+
+
+
+
+
+
+
+
+
+
+
+</th:block>
+<th:block layout:fragment="body_end">
+      <script th:src="@{~/gestion-cmc/resources/gestion-cmc/js/ambiente.js}"></script>
+   	<link rel="stylesheet"
+		th:href="@{~/gestion-cmc/plugins/bs-stepper/css/bs-stepper.min.css}">
+	<script
+		th:src="@{~/gestion-cmc/plugins/bs-stepper/js/bs-stepper.min.js}"></script>
+        
+	
+	<!-- Font Awesome -->
+  <link rel="stylesheet"
+   href="@{~/gestion-cmc/plugins/fontawesome/css/all.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet"
+   href="@{~/gestion-cmc/adminl-lte/css/adminlte.min.css">
+	
+<!-- jQuery -->	
+<script src="@{~/gestion-cmc/plugins/bs-stepper/js/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="@{~/gestion-cmc/plugins/bs-stepper/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="@{~/gestion-cmc/plugins/bs-stepper/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="@{~/gestion-cmc/plugins/bs-stepper/js/demo.js"></script>
+
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			window.stepper = new Stepper(document.querySelector('.bs-stepper'))
+		})
+	</script>
+   
+</th:block>
+</html>

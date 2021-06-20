@@ -37,7 +37,7 @@ public class CustomGlobalExceptionHandler extends ResponseEntityExceptionHandler
 		List<String> details = new ArrayList<>();
 		details.add("Error Al procesar la petición");
 		ErrorResponse error = new ErrorResponse("Error Server", details);
-		return new ResponseEntity<Object>(error, HttpStatus.INTERNAL_SERVER_ERROR);
+		return new ResponseEntity<Object>(error, HttpStatus.INTERNAL_SERVER_ERROR); 
 	}
 
 	@ExceptionHandler(Exception.class)
