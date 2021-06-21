@@ -42,7 +42,7 @@ public class EmpleadoBussines {
 		Optional<Empleado> empleadoOpt = this.empleadoDao.findById(empleado.getIdUsuario());
 		if (!empleadoOpt.isPresent()) {
 			List<Empleado> listaEmpleados = this.empleadoDao.findByDocumento(empleado.getDocumento());
-			if (!listaEmpleados.isEmpty()) {
+			if (listaEmpleados.isEmpty()) {
 				Empleado empleadoEntity = new Empleado();
 				empleadoEntity.setArea(empleado.getArea());
 				empleadoEntity.setJefe(empleado.getJefe());

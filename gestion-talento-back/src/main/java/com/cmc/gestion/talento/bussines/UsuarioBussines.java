@@ -1,18 +1,23 @@
 package com.cmc.gestion.talento.bussines;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cmc.gestion.talento.bussines.dto.ResetPasswordDto;
 import com.cmc.gestion.talento.bussines.dto.UsuarioDto;
 import com.cmc.gestion.talento.bussines.facade.UsuarioFacade;
 import com.cmc.gestion.talento.jpa.dao.UsuarioDao;
 import com.cmc.gestion.talento.jpa.entity.Usuario;
 import com.cmc.gestion.talento.jpa.type.TipoEstadoUsuario;
 import com.cmc.gestion.talento.jpa.type.TipoPerfil;
+import com.cmc.gestion.talento.web.config.ArqGestionExcepcion;
+import com.cmc.gestion.talento.web.config.ArqGestionExcepcion.ExcepcionType;
 
 @Service
 public class UsuarioBussines {
@@ -46,6 +51,39 @@ public class UsuarioBussines {
 			return userFacade.getObject(useuarioOptional.get());
 		}
 		return res;
+	}
+	
+	public void cambiarPassword(ResetPasswordDto usuario) throws ArqGestionExcepcion{
+		Optional<Usuario> useuarioOptional = usuariodao.findById(usuario.getUsuario());
+		if (useuarioOptional.isPresent()) {
+			Usuario usuarioEntity=useuarioOptional.get();
+			TipoEstadoUsuario estado=usuarioEntity.getEstado();
+			if(estado==TipoEstadoUsuario.RESET || estado==TipoEstadoUsuario.CREADO) {
+				Date ultimefechaActu=usuarioEntity.getFechaActualizacion().getTime();
+				Date fechaHoy= new Date();
+				int diferenciaDia=fechaHoy.compareTo(ultimefechaActu);
+				if(diferenciaDia <= 2) {
+					if(usuarioEntity.getContrasena().equals(usuario.getOldPassword())) {
+						if(usuario.getNewPassword().equals(usuario.getConfirmNewPassword())) {
+							usuarioEntity.setContrasena(usuario.getNewPassword());
+							usuarioEntity.setFechaActualizacion(Calendar.getInstance());
+							usuarioEntity.setEstado(TipoEstadoUsuario.ACTIVO);
+							usuariodao.save(usuarioEntity);
+						}else { 
+							throw new ArqGestionExcepcion("Las nuevas contraseñas no coinciden", ExcepcionType.ERROR_VALIDATION);
+						}
+					}else {
+						throw new ArqGestionExcepcion("Contraseña no valida", ExcepcionType.ERROR_VALIDATION);
+					}
+				}else {
+					throw new ArqGestionExcepcion("Ha superado el tiempo máximo de habilitación del usuario", ExcepcionType.ERROR_VALIDATION);
+				}
+			}else {
+				throw new ArqGestionExcepcion("Operación no permitida por el usuario", ExcepcionType.ERROR_VALIDATION);
+			}
+		}else {
+			throw new ArqGestionExcepcion("Código de usuario no existe", ExcepcionType.ERROR_VALIDATION);
+		}
 	}
 
 	public List<UsuarioDto> getAllUser() {
