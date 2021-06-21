@@ -1,0 +1,33 @@
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:with="http://www.thymeleaf.org/extras/with"
+	layout:decorate="~{layout}"
+	th:with="funcionalidad='Administraci&oacuten', evento='Carga masiva de datos'">
+<th:block layout:fragment="content">
+<div class="card-body">
+                <blockquote>
+                  <p>Mediante el siguiente espacio podra descargar el excel con los campos correspondientes,<br> para registrar los datos  y realizar la carga masiva de datos.</p>
+                  <a class="btn btn-app">
+                 <i class="far fa-file-excel"></i> Descargar
+                </a>
+                 <a class="btn btn-app bg-danger" >
+                 <i class="fas fa-exclamation-circle"></i> Error
+                </a>
+					<br>
+                   <div class="form-group col-6">
+                        <label for="exampleInputFile">Carga de datos</label>
+                        <div class="input-group">
+                          <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="exampleInputFile">
+                            <label class="custom-file-label" for="exampleInputFile">Elige archivo</label>
+                          </div>
+                          <div class="btn-group-append">
+                            <span class="btn btn-primary">Subir</span>
+                          </div>
+                        </div>
+                      </div>
+                </blockquote>
+              </div>
+
+	</th:block>
+</html> 

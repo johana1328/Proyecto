@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/administracion/miperfil")
-public class miperfilController {
+public class MiperfilController {
 
 		@GetMapping
 		public String init() {
