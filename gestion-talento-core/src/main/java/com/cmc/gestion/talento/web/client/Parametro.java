@@ -7,10 +7,17 @@ import javax.annotation.Generated;
 
 @Generated("jsonschema2pojo")
 public class Parametro {
+	
+	
 
     private String key;
     private String value;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    
+    public Parametro(String key, String value) {
+    	this.key=key;
+    	this.value=value;
+    }
 
     public String getKey() {
         return key;

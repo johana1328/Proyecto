@@ -36,53 +36,53 @@ public class Usuario implements Serializable {
 
 	@Id
 	@Column(name = "id_usuario", nullable = false, length = 100)
-	private String idUsuario;
+	protected String idUsuario;
 
 	@Column(name = "documento", nullable = false, length = 100)
-	private String documento;
+	protected String documento;
 
 	@Column(name = "tipo_documento", nullable = false, length = 2)
 	@Enumerated(value = EnumType.STRING)
-	private TipoDocumento tipoDocumento;
+	protected TipoDocumento tipoDocumento;
 
 	@Column(name = "primer_nombre", nullable = false, length = 100)
-	private String primerNombre;
+	protected String primerNombre;
 
 	@Column(name = "segundo_nombre", length = 100)
-	private String segundoNombre;
+	protected String segundoNombre;
 
 	@Column(name = "primer_apellido", nullable = false, length = 100)
-	private String primerApellido;
+	protected String primerApellido;
 
 	@Column(name = "segundo_apellido", length = 100)
-	private String segundoApellido;
+	protected String segundoApellido;
 
 	@Column(name = "telefono", nullable = false, length = 100)
-	private String telefono;
+	protected String telefono;
 
 	@Column(name = "correo_electronico", nullable = false, length = 100)
-	private String correoElectronico;
+	protected String correoElectronico;
 
 	@Column(name = "contrasena", length = 100)
-	private String contrasena;
+	protected String contrasena;
 
 	@Enumerated(value = EnumType.STRING)
 	@Column(name = "estado")
-	private TipoEstadoUsuario estado;
+	protected TipoEstadoUsuario estado;
 
 	@Column(name = "fecha_creacion", updatable = false, nullable = false)
 	@Temporal(TemporalType.DATE)
-	private Calendar fechaCreacion;
+	protected Calendar fechaCreacion;
 
 	@Column(name = "fecha_actualizacion")
 	@Temporal(TemporalType.DATE)
-	private Calendar fechaActualizacion;
+	protected Calendar fechaActualizacion;
 	
 	@ElementCollection(targetClass  = TipoPerfil.class, fetch = FetchType.EAGER)
 	@CollectionTable(name = "perfil_usuario",joinColumns = @JoinColumn(name = "id_usuario"))
 	@Column(name = "perfil", nullable = false)
 	@Enumerated(EnumType.STRING)
-	private List<TipoPerfil> perfilUsuario;
+	protected List<TipoPerfil> perfilUsuario;
 
 	public String getIdUsuario() {
 		return idUsuario;
