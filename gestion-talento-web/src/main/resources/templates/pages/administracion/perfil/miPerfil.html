@@ -7,682 +7,266 @@
 
 
 
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            
-          </div>
-          <div class="col-sm-6">
-            
-          </div>
-        </div>
-      </div><!-- /.container-fluid -->
-    </section>
+	<!-- Content Header (Page header) -->
+	<section class="content-header">
+		<div class="container-fluid">
+			<div class="row mb-2">
+				<div class="col-sm-6"></div>
+				<div class="col-sm-6"></div>
+			</div>
+		</div>
+		<!-- /.container-fluid -->
+	</section>
 
-    <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-3">
+	<!-- Main content -->
+	<section class="content">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-3">
 
-            <!-- Profile Image -->
-            <div class="card card-primary card-outline">
-              <div class="card-body box-profile">
-                <div class="text-center">
-                  <img class="profile-user-img img-fluid img-circle"
-                       th:src="@{~/gestion-cmc/resources/gestion-cmc/img/logo.png}"
-                       alt="User profile picture">
-                </div>
+					<!-- Profile Image -->
+					<div class="card card-primary card-outline">
+						<div class="card-body box-profile">
+							<div class="text-center">
+								<img class="profile-user-img img-fluid img-circle"
+									th:src="@{~/gestion-cmc/resources/gestion-cmc/img/logo.png}"
+									alt="User profile picture">
+							</div>
 
-                <h3 class="profile-username text-center">Mario Mendez</h3>
+							<h3 class="profile-username text-center">Mario Mendez</h3>
 
-                <p class="text-muted text-center">Ingeniero de sistemas</p>
+							<p class="text-muted text-center">Ingeniero de sistemas</p>
 
-                <ul class="list-group list-group-unbordered mb-3">
-                  
-                  <li class="list-group-item">
-                    <b>Telefono</b> <a class="float-right">2312131</a>
-                  </li>
-                  <li class="list-group-item">
-                    <b>Correo</b> <a class="float-right">jj@gmail.com</a>
-                  </li>
-                  <li class="list-group-item">
-                    <b>Direccion</b> <a class="float-right">cll2131</a>
-                  </li>
-                  <li class="list-group-item">
-                    <b>Estado civil</b> <a class="float-right">soltero</a>
-                  </li>
-                  <li class="list-group-item">
-                    <b>Nivel de estudios</b> <a class="float-right">2basico</a>
-                  </li>
-                  
-                  
-                </ul>
+							<ul class="list-group list-group-unbordered mb-3">
 
-                
-              
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
+								<li class="list-group-item"><b>Telefono</b> <a
+									class="float-right">2312131</a></li>
+								<li class="list-group-item"><b>Correo</b> <a
+									class="float-right">jj@gmail.com</a></li>
+								<li class="list-group-item"><b>Direccion</b> <a
+									class="float-right">cll2131</a></li>
+								<li class="list-group-item"><b>Estado civil</b> <a
+									class="float-right">soltero</a></li>
+								<li class="list-group-item"><b>Nivel de estudios</b> <a
+									class="float-right">2basico</a></li>
 
-            </div>
-            <!-- /.card -->
-            
-          </div>
-          <!-- /.col -->
-          
-           <div class="col-md-9">
-            <div class="card">
-              <div class="card-header p-2">
-                <ul class="nav nav-pills">
-                  <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Datos Basicos</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#pro" data-toggle="tab">Informacion Profesional</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#academica" data-toggle="tab">Formacion Academica</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#conocimiento" data-toggle="tab">Conocimientos y habilidades</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#tecnica" data-toggle="tab">Competencias Tecnicas</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#laboral" data-toggle="tab">Experiencia laboral</a></li>
 
-                </ul>
-              </div><!-- /.card-header -->
-              <div class="card-body">
-                <div class="tab-content">
-                  <div class="active tab-pane" id="activity">
-                    <!-- Post -->
-                    <div class="row">
-                    <div class="col-sm-6">
-                      <!-- textarea -->
-                      <div class="form-group">
-                        <label>Tipo documento</label>
-                        <input class="form-control" type="text" placeholder="Enter ..."></input>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Documento</label>
-                        <input type="text" class="form-control"  placeholder="Enter ..." ></input>
-                      </div>
-                    </div>
-                  </div>
-                    <div class="row">
-                    <div class="col-sm-6">
-                      <!-- textarea -->
-                      <div class="form-group">
-                        <label>Primer nombre</label>
-                        <input class="form-control" type="text" placeholder="Enter ..."></input>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Segundo nombre</label>
-                        <input type="text" class="form-control"  placeholder="Enter ..." ></input>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <!-- textarea -->
-                      <div class="form-group">
-                        <label>Primer apellido</label>
-                        <input class="form-control" type="text" placeholder="Enter ..."></input>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Segundo apellido</label>
-                        <input type="text" class="form-control"  placeholder="Enter ..." ></input>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <!-- textarea -->
-                      <div class="form-group">
-                        <label>Telefono</label>
-                        <input class="form-control" type="text" placeholder="Enter ..."></input>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Correo Electronico</label>
-                        <input type="text" class="form-control"  placeholder="Enter ..." ></input>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <!-- textarea -->
-                      <div class="form-group">
-                        <label>Direccion</label>
-                        <input class="form-control" type="text" placeholder="Enter ..."></input>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Estado civil</label>
-                        <input type="text" class="form-control"  placeholder="Enter ..." ></input>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Nivel de estudios</label>
-                        <input type="text" class="form-control"  placeholder="Enter ..." ></input>
-                      </div>
-                    </div>
-                      
-                    <!-- /.post -->
-                  </div>
-                  <!-- /.tab-pane -->
-                  <div class="tab-pane" id="pro">
-                    <div class="form-group">
-                        <label for="exampleInputFile">File input</label>
-                        <textarea class="form-control" rows="3" ></textarea>
-                      </div>
-                    
-                  </div>
-                  <!-- /.tab-pane -->
+							</ul>
 
-                  <div class="tab-pane" id="academica">
-                    <div class="row">
-                    <div class="col-sm-6">
-                      <!-- textarea -->
-                      <div class="form-group">
-                        <label>Nombre del curso</label>
-                        <input class="form-control" type="text" placeholder="Enter ..."></input>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Ciudad</label>
-                        <input type="text" class="form-control"  placeholder="Enter ..." ></input>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <!-- textarea -->
-                      <div class="form-group">
-                        <label>Lugar</label>
-                        <input class="form-control" type="text" placeholder="Enter ..."></input>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Fecha</label>
-                        <input type="text" class="form-control"  placeholder="Enter ..." ></input>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                        <label for="exampleInputFile">Certificacion</label>
-                        <div class="input-group">
-                          <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="exampleInputFile">
-                            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                          </div>
-                          
-                        </div>
-                      </div>
-                  </div>
-                  <!-- /.tab-pane -->
-                 <div class="tab-pane" id="conocimiento">
-                 <div class="row">
-                    <div class="col-sm-6">
-                      <!-- textarea -->
-                      <div class="form-group">
-                        <label>Front end</label>
-                        <textarea class="form-control" col="2" rows="3" placeholder="Enter ..."></textarea>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Back end</label>
-                        <textarea class="form-control" rows="3" placeholder="Enter ..." ></textarea>
-                      </div>
-                    </div>
-                  </div>
-                 </div> 
-                 <div class="tab-pane" id="tecnica">
-                 <div class="row">
-                    <div class="col-sm-6">
-                      <!-- textarea -->
-                      <div class="form-group">
-                        <label>Herramientas</label>
-                        <textarea class="form-control" col="2" rows="3" placeholder="Enter ..."></textarea>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Tecnicas</label>
-                        <textarea class="form-control" rows="3" placeholder="Enter ..." ></textarea>
-                      </div>
-                    </div>
-                  </div>
-                  <div>
-                  <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Plataformas</label>
-                        <textarea class="form-control" rows="3" placeholder="Enter ..." ></textarea>
-                      </div>
-                    </div>
-                  <div>
+
+
+							<!-- /.card-body -->
+						</div>
+						<!-- /.card -->
+
 					</div>
-                  </div>
-                  </div>
-                  <div class="tab-pane" id="laboral">
-					<div class="row">
-                    <div class="col-sm-6">
-                      <!-- textarea -->
-                      <div class="form-group">
-                        <label>Empresa</label>
-                        <input class="form-control" type="text" placeholder="Enter ..."></input>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Rol</label>
-                        <input type="text" class="form-control"  placeholder="Enter ..." ></input>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <!-- textarea -->
-                      <div class="form-group">
-                        <label>Duracion</label>
-                        <input class="form-control" type="text" placeholder="Enter ..."></input>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Funcion</label>
-                        <input type="text" class="form-control"  placeholder="Enter ..." ></input>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <!-- textarea -->
-                      <div class="form-group">
-                        <label>Entornos</label>
-                        <input class="form-control" type="text" placeholder="Enter ..."></input>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Lenguajes</label>
-                        <input type="text" class="form-control"  placeholder="Enter ..." ></input>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <!-- textarea -->
-                      <div class="form-group">
-                        <label>Sistemas operativos</label>
-                        <input class="form-control" type="text" placeholder="Enter ..."></input>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Bases de datos</label>
-                        <input type="text" class="form-control"  placeholder="Enter ..." ></input>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Otros</label>
-                        <input type="text" class="form-control"  placeholder="Enter ..." ></input>
-                      </div>
-                    </div>
-                    </div>
-                    
-                 
-                 </div> 
-                 </div> 
-                 
-                 
-                </div>
-                <!-- /.tab-content -->
-              </div><!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-          </div>
-          <!-- /.col -->
-        </div>
-        <!-- /.row -->
-          
-       <div class="row">
-          <div class="col-md-12">
-            <div class="card card-default">
+					<!-- /.card -->
+					<div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">bs-stepper</h3>
+                <h3 class="card-title"><i class="fas fa-book mr-1"></i> Estudio</h3>
               </div>
-              <div class="card-body p-0">
-                <div class="bs-stepper">
-                  <div class="bs-stepper-header" role="tablist">
-                    <!-- your steps here -->
-                    <div class="step" data-target="#basico">
-                      <button type="button" class="step-trigger" role="tab" aria-controls="basico" id="basico-trigger">
-                        <span class="bs-stepper-circle">1</span>
-                        <span class="bs-stepper-label">Datos basicos</span>
-                      </button>
-                    </div>
-                    <div class="line"></div>
-                    <div class="step" data-target="#information-part">
-                      <button type="button" class="step-trigger" role="tab" aria-controls="information-part" id="information-part-trigger">
-                        <span class="bs-stepper-circle">2</span>
-                        <span class="bs-stepper-label">Informacion Profesional</span>
-                      </button>
-                    </div>
-                    <div class="line"></div>
-                    <div class="step" data-target="#academica">
-                      <button type="button" class="step-trigger" role="tab" aria-controls="academica" id="academica-trigger">
-                        <span class="bs-stepper-circle">3</span>
-                        <span class="bs-stepper-label">Formacion academica</span>
-                      </button>
-                    </div>
-                    <div class="line"></div>
-                    <div class="step" data-target="#conocimiento">
-                      <button type="button" class="step-trigger" role="tab" aria-controls="conocimiento" id="conocimiento-trigger">
-                        <span class="bs-stepper-circle">4</span>
-                        <span class="bs-stepper-label">Conocimientos y habilidades</span>
-                      </button>
-                    </div>
-                    <div class="line"></div>
-                    <div class="step" data-target="#tecnica">
-                      <button type="button" class="step-trigger" role="tab" aria-controls="tecnica" id="tecnica-trigger">
-                        <span class="bs-stepper-circle">5</span>
-                        <span class="bs-stepper-label">Competencias tecnicas</span>
-                      </button>
-                    </div>
-                    <div class="line"></div>
-                    <div class="step" data-target="#experiencia">
-                      <button type="button" class="step-trigger" role="tab" aria-controls="experiencia" id="experiencia-trigger">
-                        <span class="bs-stepper-circle">6</span>
-                        <span class="bs-stepper-label">Experiencia laboral</span>
-                      </button>
-                    </div>
-                  </div>
-                  <div class="bs-stepper-content">
-                    <!-- your steps content here -->
-                    <div id="basico" class="content" role="tabpanel" aria-labelledby="basico-trigger">
-                    <div class="row">
-                    <div class="col-sm-6">
-                      <!-- textarea -->
-                      <div class="form-group">
-                        <label>Tipo documento</label>
-                        <input class="form-control" type="text" placeholder="Enter ..."></input>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Documento</label>
-                        <input type="text" class="form-control"  placeholder="Enter ..." ></input>
-                      </div>
-                    </div>
-                  </div>
-                    <div class="row">
-                    <div class="col-sm-6">
-                      <!-- textarea -->
-                      <div class="form-group">
-                        <label>Primer nombre</label>
-                        <input class="form-control" type="text" placeholder="Enter ..."></input>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Segundo nombre</label>
-                        <input type="text" class="form-control"  placeholder="Enter ..." ></input>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <!-- textarea -->
-                      <div class="form-group">
-                        <label>Primer apellido</label>
-                        <input class="form-control" type="text" placeholder="Enter ..."></input>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Segundo apellido</label>
-                        <input type="text" class="form-control"  placeholder="Enter ..." ></input>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <!-- textarea -->
-                      <div class="form-group">
-                        <label>Telefono</label>
-                        <input class="form-control" type="text" placeholder="Enter ..."></input>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Correo Electronico</label>
-                        <input type="text" class="form-control"  placeholder="Enter ..." ></input>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <!-- textarea -->
-                      <div class="form-group">
-                        <label>Direccion</label>
-                        <input class="form-control" type="text" placeholder="Enter ..."></input>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Estado civil</label>
-                        <input type="text" class="form-control"  placeholder="Enter ..." ></input>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Nivel de estudios</label>
-                        <input type="text" class="form-control"  placeholder="Enter ..." ></input>
-                      </div>
-                    </div>
-                      
-                      <button class="btn btn-primary" onclick="stepper.next()">Next</button>
-                    </div>
-                    <div id="information-part" class="content" role="tabpanel" aria-labelledby="information-part-trigger">
-                      <div class="form-group">
-                        <label for="exampleInputFile">File input</label>
-                        <textarea class="form-control" rows="3" ></textarea>
-                      </div>
-                      <button class="btn btn-primary" onclick="stepper.previous()">Previous</button>
-                      <button class="btn btn-primary" onclick="stepper.next()">Next</button>
-                    </div>
-                    <div id="academica" class="content" role="tabpanel" aria-labelledby="academica-trigger">
-                      <div class="row">
-                    <div class="col-sm-6">
-                      <!-- textarea -->
-                      <div class="form-group">
-                        <label>Nombre del curso</label>
-                        <input class="form-control" type="text" placeholder="Enter ..."></input>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Ciudad</label>
-                        <input type="text" class="form-control"  placeholder="Enter ..." ></input>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <!-- textarea -->
-                      <div class="form-group">
-                        <label>Lugar</label>
-                        <input class="form-control" type="text" placeholder="Enter ..."></input>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Fecha</label>
-                        <input type="text" class="form-control"  placeholder="Enter ..." ></input>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                        <label for="exampleInputFile">Certificacion</label>
-                        <div class="input-group">
-                          <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="exampleInputFile">
-                            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                          </div>
-                          
-                        </div>
-                      </div>
-                      <button class="btn btn-primary" onclick="stepper.previous()">Previous</button>
-                      <button class="btn btn-primary" onclick="stepper.next()">Next</button>
-                    </div>
-                    <div id="conocimiento" class="content" role="tabpanel" aria-labelledby="conocimiento-trigger">
-					
-                      <!-- text input -->
-                      <div class="row">
-                    <div class="col-sm-6">
-                      <!-- textarea -->
-                      <div class="form-group">
-                        <label>Front end</label>
-                        <textarea class="form-control" col="2" rows="3" placeholder="Enter ..."></textarea>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Back end</label>
-                        <textarea class="form-control" rows="3" placeholder="Enter ..." ></textarea>
-                      </div>
-                    </div>
-                  </div>
-                  <button class="btn btn-primary" onclick="stepper.previous()">Previous</button>
-                      <button class="btn btn-primary" onclick="stepper.next()">Next</button>
-                      
-					</div>
-					<div id="tecnica" class="content" role="tabpanel" aria-labelledby="tecnica-trigger">
-					<div class="row">
-                    <div class="col-sm-6">
-                      <!-- textarea -->
-                      <div class="form-group">
-                        <label>Herramientas</label>
-                        <textarea class="form-control" col="2" rows="3" placeholder="Enter ..."></textarea>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Tecnicas</label>
-                        <textarea class="form-control" rows="3" placeholder="Enter ..." ></textarea>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Plataformas</label>
-                        <textarea class="form-control" rows="3" placeholder="Enter ..." ></textarea>
-                      </div>
-                    </div>
-                  <button class="btn btn-primary" onclick="stepper.previous()">Previous</button>
-                      <button class="btn btn-primary" onclick="stepper.next()">Next</button>
-                      
-					</div>
-					<div id="experiencia" class="content" role="tabpanel" aria-labelledby="experiencia-trigger">
-					<div class="row">
-                    <div class="col-sm-6">
-                      <!-- textarea -->
-                      <div class="form-group">
-                        <label>Empresa</label>
-                        <input class="form-control" type="text" placeholder="Enter ..."></input>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Rol</label>
-                        <input type="text" class="form-control"  placeholder="Enter ..." ></input>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <!-- textarea -->
-                      <div class="form-group">
-                        <label>Duracion</label>
-                        <input class="form-control" type="text" placeholder="Enter ..."></input>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Funcion</label>
-                        <input type="text" class="form-control"  placeholder="Enter ..." ></input>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <!-- textarea -->
-                      <div class="form-group">
-                        <label>Entornos</label>
-                        <input class="form-control" type="text" placeholder="Enter ..."></input>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Lenguajes</label>
-                        <input type="text" class="form-control"  placeholder="Enter ..." ></input>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <!-- textarea -->
-                      <div class="form-group">
-                        <label>Sistemas operativos</label>
-                        <input class="form-control" type="text" placeholder="Enter ..."></input>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Bases de datos</label>
-                        <input type="text" class="form-control"  placeholder="Enter ..." ></input>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Otros</label>
-                        <input type="text" class="form-control"  placeholder="Enter ..." ></input>
-                      </div>
-                    </div>
-                  
-                  <button class="btn btn-primary" onclick="stepper.previous()">Previous</button>
-                      <button type="submit" class="btn btn-primary">Submit</button>
-                    
-					</div>
-                  </div>
-                </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <strong> Nombre de carrera</strong>
+
+                <p class="text-muted">
+                  nombre
+                </p>
+
+                <hr>
+
+                <strong> Lugar donde estudio</strong>
+
+                <p class="text-muted">Lugar</p>
+
+                <hr>
+
+                <strong> Ciudad</strong>
+
+                <p class="text-muted">ciudad</p>
+
+                <hr>
+
+                <strong> Pais</strong>
+
+                <p class="text-muted">pais</p>
+                
+                <hr>
+
+                <strong> Año de finalizacion</strong>
+
+                <p class="text-muted">Año de finalizacion</p>
               </div>
               <!-- /.card-body -->
-              <div class="card-footer">
-                Visit <a href="https://github.com/Johann-S/bs-stepper/#how-to-use-it">bs-stepper documentation</a> for more examples and information about the plugin.
-              </div>
             </div>
             <!-- /.card -->
           </div>
-        </div>
-        
-	</div>
-        <!-- /.row -->
-     <!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
+
+				
+				<!-- /.col -->
+				
+				<div class="col-md-9">
+					<div class="card">
+						<div class="card-header p-2">
+							<ul class="nav nav-pills">
+
+								<li class="nav-item"><a class="nav-link active" href="#pro"
+									data-toggle="tab">Informacion Profesional</a></li>
+								<li class="nav-item"><a class="nav-link" href="#academica"
+									data-toggle="tab">Formacion Academica</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="#conocimiento" data-toggle="tab">Conocimientos y
+										habilidades</a></li>
+								<li class="nav-item"><br><a class="nav-link" href="#tecnica"
+									data-toggle="tab">Competencias Tecnicas</a></li>
+								<li class="nav-item"><br><a class="nav-link" href="#laboral"
+									data-toggle="tab">Experiencia laboral</a></li>
+
+							</ul>
+						</div>
+						<!-- /.card-header -->
+						<div class="card-body">
+							<div class="tab-content">
+								<!-- /.tab-pane -->
+								<div class="active tab-pane" id="pro">
+									<div class="card w-75">
+										<div class="card-body">
+											<h5 class="card-title">Perfil profesional</h5>
+											<p class="card-text">Informacion</p>
+
+										</div>
+									</div>
+									<br></br>
+									<div class="card w-75">
+										<div class="card-body">
+											<h5 class="card-title">Experiencia profesional</h5>
+											<p class="card-text">Informacion</p>
+
+										</div>
+									</div>
+
+								</div>
+								<!-- /.tab-pane -->
+								<div class=" tab-pane" id="academica">
+								<div class="card" style="width: 18rem;">
+									<div class="card-header">Estudio</div>
+									<ul class="list-group list-group-flush">
+										<li class="list-group-item">Lugar </li>
+										<li class="list-group-item">Ciudad</li>
+										<li class="list-group-item">Pais</li>
+										<li class="list-group-item">Año finalizacion</li>
+									</ul>
+								</div>
+							
+								<br></br>
+								<div class="card" style="width: 18rem;">
+									<div class="card-header">Estudio</div>
+									<ul class="list-group list-group-flush">
+										<li class="list-group-item">Lugar </li>
+										<li class="list-group-item">Ciudad</li>
+										<li class="list-group-item">Pais</li>
+										<li class="list-group-item">Año finalizacion</li>
+									</ul>
+								</div>
+							</div>
+							
+						
+							<!-- /.tab-pane -->
+							<div class="tab-pane" id="conocimiento">
+								<div class="card w-75">
+										<div class="card-body">
+											<h5 class="card-title">Front End</h5>
+											<p class="card-text">Informacion</p>
+
+										</div>
+									</div>
+									<br></br>
+									<div class="card w-75">
+										<div class="card-body">
+											<h5 class="card-title">Back End</h5>
+											<p class="card-text">Informacion</p>
+
+										</div>
+									</div>
+								
+								
+								
+							</div>
+							<div class="tab-pane" id="tecnica">
+								
+								<div class="card w-75">
+										<div class="card-body">
+											<h5 class="card-title">Entorno/Herramienta/Plataforma</h5>
+											<p class="card-text">Informacion</p>
+
+										</div>
+									</div>
+									<br></br>
+									<div class="card w-75">
+										<div class="card-body">
+											<h5 class="card-title">Entorno/Herramienta/Plataforma</h5>
+											<p class="card-text">Informacion</p>
+
+										</div>
+									</div>
+							</div>
+							
+							<div class="tab-pane" id="laboral">
+							<div class="row">
+								<div class="card" style="width: 18rem;">
+									<div class="card-header">Empresa</div>
+									<ul class="list-group list-group-flush">
+										<li class="list-group-item">Rol </li>
+										<li class="list-group-item">Duracion</li>
+										<li class="list-group-item">Funcion</li>
+										<li class="list-group-item">Entornos</li>
+										<li class="list-group-item">Lenguajes</li>
+										<li class="list-group-item">Sistemas operativos</li>
+										<li class="list-group-item">Bases de datos</li>
+										<li class="list-group-item">Otros</li>
+									</ul>
+								</div>
+								<br></br><hr></hr>
+								<div class="card" style="width: 18rem;">
+									<div class="card-header">Empresa</div>
+									<ul class="list-group list-group-flush">
+										<li class="list-group-item">Rol </li>
+										<li class="list-group-item">Duracion</li>
+										<li class="list-group-item">Funcion</li>
+										<li class="list-group-item">Entornos</li>
+										<li class="list-group-item">Lenguajes</li>
+										<li class="list-group-item">Sistemas operativos</li>
+										<li class="list-group-item">Bases de datos</li>
+										<li class="list-group-item">Otros</li>
+									</ul>
+								</div>
+							
+								
+							</div>
+
+
+						</div>
+					</div>
+
+
+				</div>
+				<!-- /.tab-content -->
+			</div>
+			<!-- /.card-body -->
+		</div>
+		<!-- /.card -->
+		</div>
+		<!-- /.col -->
+		</div>
+		<!-- /.row -->
+
+
+
+		</div>
+		<!-- /.row -->
+		<!-- /.container-fluid -->
+	</section>
+	<!-- /.content -->
 
 
 
@@ -693,27 +277,28 @@
 
 </th:block>
 <th:block layout:fragment="body_end">
-<link rel="stylesheet"
+	<link rel="stylesheet"
 		th:href="@{~/gestion-cmc/plugins/bs-stepper/css/bs-stepper.min.css}">
 	<script
 		th:src="@{~/gestion-cmc/plugins/bs-stepper/js/bs-stepper.min.js}"></script>
-        
-	
+
+
 	<!-- Font Awesome -->
-  <link rel="stylesheet"
-   href="@{~/gestion-cmc/plugins/fontawesome/css/all.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet"
-   href="@{~/gestion-cmc/adminl-lte/css/adminlte.min.css">
-	
-<!-- jQuery -->	
-<script src="@{~/gestion-cmc/plugins/bs-stepper/js/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="@{~/gestion-cmc/plugins/bs-stepper/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="@{~/gestion-cmc/plugins/bs-stepper/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="@{~/gestion-cmc/plugins/bs-stepper/js/demo.js"></script>
+	<link rel="stylesheet"
+		href="@{~/gestion-cmc/plugins/fontawesome/css/all.min.css">
+	<!-- Theme style -->
+	<link rel="stylesheet"
+		href="@{~/gestion-cmc/adminl-lte/css/adminlte.min.css">
+
+	<!-- jQuery -->
+	<script src="@{~/gestion-cmc/plugins/bs-stepper/js/jquery.min.js"></script>
+	<!-- Bootstrap 4 -->
+	<script
+		src="@{~/gestion-cmc/plugins/bs-stepper/js/bootstrap.bundle.min.js"></script>
+	<!-- AdminLTE App -->
+	<script src="@{~/gestion-cmc/plugins/bs-stepper/js/adminlte.min.js"></script>
+	<!-- AdminLTE for demo purposes -->
+	<script src="@{~/gestion-cmc/plugins/bs-stepper/js/demo.js"></script>
 
 	<script>
 		document.addEventListener('DOMContentLoaded', function() {
