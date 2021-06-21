@@ -5,7 +5,7 @@
 	th:with="funcionalidad='Administraci&oacuten', evento='Crear usuario'">
 <th:block layout:fragment="content">
 	<form id="formCrearUsuario" th:object="${empleado}"
-		th:action="${empleado.idUsuario == null} ? @{/administracion/usuario/crear} : @{/administracion/usuario/modificar/{id}(id=${empleado.idUsuario})}"
+		th:action="${accion == 'crear'} ? @{/administracion/usuario/crear} : @{/administracion/usuario/modificar/{id}(id=${empleado.idUsuario})}"
 		method="POST">
 
 		<div class="card-body p-0">
@@ -154,7 +154,7 @@
 								<div class="form-group">
 									<label for="codidoUsario" th:text="#{usuario.codigo}">C&oacute;digo
 										usuario </label> <input type="text" class="form-control"
-										id="codidoUsario" name="codidoUsario" th:field="*{idUsuario}" th:readonly="${empleado.idUsuario != null}"
+										id="codidoUsario" name="codidoUsario" th:field="*{idUsuario}" th:readonly="${accion == 'modificar'}"
 										th:placeholder="#{usuario.ecode}">
 								</div>
 								<div class="form-group">

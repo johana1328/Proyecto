@@ -53,7 +53,11 @@ public class UsuarioController {
 		this.empleado = new EmpleadoDto();
 		if (id.isPresent()) {
 			this.empleado = this.empleadoBussines.getEmpleado(id.get());
+			model.addAttribute("accion","modificar");
+		}else {
+			model.addAttribute("accion","crear");
 		}
+		
 		List<UsuarioDto> listaJefes = usuarioBussines.getAllJefes();
 		model.addAttribute("listaJefes", listaJefes);
 		model.addAttribute("empleado", this.empleado);
@@ -64,6 +68,7 @@ public class UsuarioController {
 	public String crearEmpleado(@Valid @ModelAttribute("empleado") EmpleadoDto empleado, BindingResult result,
 			Model model) {
 		if (result.hasErrors()) {
+			model.addAttribute("accion","crear");
 			return "pages/administracion/usuarios/crear";
 		}
 		try {
@@ -71,6 +76,7 @@ public class UsuarioController {
 		} catch (ArqGestionExcepcion e) {
 			result.addError(new FieldError("prueba", "nombre", e.getMessage()));
 			List<UsuarioDto> listaJefes = usuarioBussines.getAllJefes();
+			model.addAttribute("accion","crear");
 			model.addAttribute("listaJefes", listaJefes);
 			return "pages/administracion/usuarios/crear";
 		}
