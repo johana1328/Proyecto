@@ -5,19 +5,6 @@
 	th:with="funcionalidad='Administraci&oacuten', evento='Mi perfil'">
 <th:block layout:fragment="content">
 
-
-
-	<!-- Content Header (Page header) -->
-	<section class="content-header">
-		<div class="container-fluid">
-			<div class="row mb-2">
-				<div class="col-sm-6"></div>
-				<div class="col-sm-6"></div>
-			</div>
-		</div>
-		<!-- /.container-fluid -->
-	</section>
-
 	<!-- Main content -->
 	<section class="content">
 		<div class="container-fluid">
@@ -28,7 +15,7 @@
 					<div class="card card-primary card-outline">
 						<div class="card-body box-profile">
 							<div class="text-center">
-								<img class="profile-user-img img-fluid img-circle"
+								<img class="profile-user-img  img-circle"
 									th:src="@{~/gestion-cmc/resources/gestion-cmc/img/logo.png}"
 									alt="User profile picture">
 							</div>
@@ -260,21 +247,8 @@
 		</div>
 		<!-- /.row -->
 
-
-
 		</div>
-		<!-- /.row -->
-		<!-- /.container-fluid -->
 	</section>
-	<!-- /.content -->
-
-
-
-
-
-
-
-
 </th:block>
 <th:block layout:fragment="body_end">
 	<link rel="stylesheet"
