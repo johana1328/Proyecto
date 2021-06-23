@@ -2,9 +2,9 @@
 xmlns:th="http://www.thymeleaf.org" 
 xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a th:href="@{/home}" class="brand-link">
       <img th:src="@{~/gestion-cmc/resources/gestion-cmc/img/logo.png}" alt="" class="brand-image img-circle">
-      <span class="brand-text font-weight-light">Gestion CMC</span>
+      <span class="brand-text font-weight-light">Gesti&oacute;n Talento CMC</span>
     </a>
 <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
@@ -26,7 +26,7 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
               </li>   
               <li class="nav-item">
                 <a th:href="@{/administracion/curriculum}" class="nav-link ">
-                  <i class="fas fa-file-invoice"></i>
+                  <i class=" nav-icon fas fa-file-invoice"></i>
                   <p>Curriculum vitae</p>
                 </a>
               </li> 
