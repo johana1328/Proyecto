@@ -1,10 +1,10 @@
 <div class="row mb-2" xmlns:th="http://www.thymeleaf.org">
 	<div class="col-sm-6">
-		<h1 class="m-0"  th:text="${funcionalidad}" >funcionalidad</h1>
+<!-- 		<h1 class="m-0"  th:text="${funcionalidad}" >funcionalidad</h1> -->
 	</div>
 	<div class="col-sm-6">
 		<ol class="breadcrumb float-sm-right">
-			<li class="breadcrumb-item"><a href="#" th:text="${funcionalidad}" >funcionalidad</a></li>
+			<li class="breadcrumb-item"><a th:href="@{/home}" >Inicio</a></li>
 			<li class="breadcrumb-item active"  th:text="${evento}">evento</li>
 		</ol>
 	</div>

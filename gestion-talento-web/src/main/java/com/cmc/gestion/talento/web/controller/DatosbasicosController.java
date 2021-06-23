@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/administracion/curriculum/datosbasicos")
-public class datosbasicosController {
+public class DatosbasicosController {
 
 	@GetMapping
 	public String init() {
