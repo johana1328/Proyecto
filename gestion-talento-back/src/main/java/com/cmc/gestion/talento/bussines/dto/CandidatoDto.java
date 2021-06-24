@@ -24,4 +24,5 @@ public class CandidatoDto {
 	private double aspiracionSalarial;
 	private String origenHoja;
 	
+	
 }

@@ -3,10 +3,10 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	xmlns:with="http://www.thymeleaf.org/extras/with"
 	layout:decorate="~{layout}"
-	th:with="funcionalidad='Administraci&oacuten', evento='Evaluacion de desempeño'">
+	th:with="funcionalidad='Administraci&oacuten', evento='Evaluacion de desempe&ntilde;o'">
 <th:block layout:fragment="content">
 	
-	<table id="tablaCandidato" class="table table-bordered table-hover ">
+	<table id="tablaEvaluacion" class="table table-bordered table-hover ">
      	<thead>
         	<tr>
             	
@@ -41,8 +41,23 @@
         </tbody>
      </table> 
 </th:block>
-<th:block layout:fragment="body_end">
-
-
-</th:block>
+ <script type="text/javascript">
+    $(".linkChangeState").click(function(){
+    	  var accion = $(this).attr('data-action');
+    	  var idUsuario = $(this).attr('data-user');
+    	  var formAction = $("#changeStade").attr('action')+"/"+idUsuario+"/"+accion;
+    	  $("#changeStade").attr('action', formAction)
+    	  $("#changeStade").submit();
+    	});
+    
+    $('tablaEvaluacion').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": false,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+      });
+    </script>
 </html>
