@@ -1,16 +1,18 @@
 package com.cmc.gestion.talento.web.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/administracion/peticiones")
-public class PeticionesController {
+@RequestMapping("/administracion/solicitud")
+public class solicitudController {
 	
 	@GetMapping
-	public String init() {
-		return "pages/administracion/peticiones/crearSP";
+	public String init(Model model) {
+		model.addAttribute("Errror", "NOK");
+		return "pages/administracion/peticiones/solicitud";
 	}
 
 }

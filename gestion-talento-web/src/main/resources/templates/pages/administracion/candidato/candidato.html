@@ -2,7 +2,7 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	xmlns:with="http://www.thymeleaf.org/extras/with"
 	layout:decorate="~{layout}"
-	th:with="funcionalidad='Administraci&oacuten', evento='Usuarios'">
+	th:with="funcionalidad='Administraci&oacuten', evento='Candidatos'">
 <th:block layout:fragment="content">
 
 <!-- Mensajes -->
@@ -16,53 +16,41 @@
 
 
 <a type="button"
-	th:href="@{/administracion/usuario/crear}" class="btn btn-primary  ">  Crear Empleado
+	 th:href="@{/administracion/candidato/crearcandidato}" class="btn btn-primary  ">  Crear Candidato
 	</a>
-	<a type="button"
-	th:href="@{/administracion/cargadatos}" class="btn btn-secondary ">  Carga masiva de datos
-	</a>
+	
 
- <table id="tablaUsuario" class="table table-bordered table-hover ">
+ <table id="tablaCandidato" class="table table-bordered table-hover ">
      	<thead>
         	<tr>
-            	<th>Codigo</th>
+            	
             	<th>Documento</th>
                 <th>Nombres</th>
                 <th>Apellidos</th>
                 <th>Correo</th>
                 <th>Tel&eacute;fono</th>
-                <th>Activaci&oacute;n</th>
+                
                 <th width="70px">Acciones</th>
             </tr>
         </thead>
         <tbody>
          	<tr th:each="empleado : ${listaEmpleados}">
-         		<td th:utext="${empleado.idUsuario}">id</td>
+         		
          		<td th:utext="${empleado.documento}">documento</td>
          		<td th:utext="${empleado.primerNombre} +' '+ ${empleado.segundoNombre}">nombres</td>
          		<td th:utext="${empleado.primerApellido} +' ' +${empleado.segundoApellido}">apellidos</td>
          		<td th:utext="${empleado.correoElectronico}">correo</td>
          		<td th:utext="${empleado.telefono}">telefono</td>
-         		<td>
-         			<div class="btn-group">
-                    <button type="button" class="btn btn-primary" th:text="${empleado.estado.getValue()}"  >Action</button>
-                    <button type="button" class="btn btn-primary dropdown-toggle dropdown-icon" data-toggle="dropdown">
-                      <span class="sr-only">Toggle Dropdown</span>
-                    </button>
-                    <div class="dropdown-menu" role="menu">
-                      <a class="dropdown-item linkChangeState" th:data-action="ACTIVO" th:data-user="${empleado.idUsuario}" href="#">Activar</a>
-                      <a class="dropdown-item linkChangeState" th:data-action="BLOQUEADO" th:data-user="${empleado.idUsuario}" href="#">Bloquear</a>
-                      <a class="dropdown-item linkChangeState" th:data-action="RESET" th:data-user="${empleado.idUsuario}" href="#">Reset Password</a>
-                    </div>
-                  </div>
-         		</td>
+         		
          		<td>
          			<a type="button"
 					th:href="@{/administracion/usuario/modificar/{id}(id=${empleado.idUsuario})}"
 					class="btn btn-primary  "> <i class="fas fa-pen"></i>
 				</a>
-				
-				
+				<a type="button"
+					th:href="@{/administracion/usuario/modificar/{id}(id=${empleado.idUsuario})}"
+					class="btn btn-primary  "> <i class="fas fa-trash"></i>
+				</a>
          		</td>
          	</tr>
         </tbody>
@@ -72,13 +60,7 @@
  </th:block>
  <th:block layout:fragment="body_end">
     <script type="text/javascript">
-    $(".linkChangeState").click(function(){
-    	  var accion = $(this).attr('data-action');
-    	  var idUsuario = $(this).attr('data-user');
-    	  var formAction = $("#changeStade").attr('action')+"/"+idUsuario+"/"+accion;
-    	  $("#changeStade").attr('action', formAction)
-    	  $("#changeStade").submit();
-    	});
+
     
     $('#tablaUsuario').DataTable({
         "paging": true,
