@@ -6,13 +6,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/administracion/candidato")
-public class CandidatoController {
-
+@RequestMapping("/administracion/evaluacion")
+public class EvaluacionDesempeñoController {
+	
 	@GetMapping
 	public String init(Model model) {
 		model.addAttribute("Errror", "NOK");
-		return "pages/administracion/candidato/candidato";
+		return "pages/administracion/evaluacion/evaluacion";
 	}
 
 }

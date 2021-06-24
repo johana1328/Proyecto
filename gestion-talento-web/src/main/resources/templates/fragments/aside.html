@@ -2,9 +2,9 @@
 xmlns:th="http://www.thymeleaf.org" 
 xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a th:href="@{/home}" class="brand-link">
       <img th:src="@{~/gestion-cmc/resources/gestion-cmc/img/logo.png}" alt="" class="brand-image img-circle">
-      <span class="brand-text font-weight-light">Gestion CMC</span>
+      <span class="brand-text font-weight-light">Gesti&oacute;n Talento CMC</span>
     </a>
 <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
@@ -26,12 +26,12 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
               </li>   
               <li class="nav-item">
                 <a th:href="@{/administracion/curriculum}" class="nav-link ">
-                  <i class="fas fa-file-invoice"></i>
+                  <i class=" nav-icon fas fa-file-invoice"></i>
                   <p>Curriculum vitae</p>
                 </a>
               </li> 
               <li class="nav-item">
-                <a th:href="@{/tabla}" class="nav-link ">
+                <a th:href="@{/administracion/evaluacion}" class="nav-link ">
                  <i class="nav-icon fas fa-edit"></i>
                   <p th:text="#{aside.opcion.evaluacion}">Evaluaci&oacute;n de desempe&ntilde;o</p>
                 </a>
@@ -88,7 +88,7 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
                 </a>
               </li>
                <li class="nav-item" sec:authorize="hasAnyAuthority('ANALISTA_RRHH','GERENTE_RRHH','GERENTE')" >
-                <a th:href="@{/administracion/peticiones}" class="nav-link">
+                <a th:href="@{/administracion/solicitud}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p th:text="#{aside.opcion.solicitudes.personal}">Solicitud de personal</p>
                 </a>
