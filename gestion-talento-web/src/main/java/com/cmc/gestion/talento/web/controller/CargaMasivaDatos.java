@@ -1,5 +1,8 @@
 package com.cmc.gestion.talento.web.controller;
 
+import java.util.UUID;
+
+import org.apache.commons.compress.compressors.FileNameUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,9 +30,14 @@ public class CargaMasivaDatos {
 	}
 	
 	@PostMapping
-	public void upload(@RequestParam("file") MultipartFile file) {
-		filesStorageService.save(file);
-		carga.guardarArchivo(file.getOriginalFilename());
+	public String upload(@RequestParam("file") MultipartFile file) {
+		UUID uuidName=UUID.randomUUID();
+		String nameFile= uuidName.toString()
+				.concat(".")
+				.concat(file.getOriginalFilename().split("\\.")[1]);
+		filesStorageService.save(file,nameFile);
+		carga.guardarArchivo(nameFile);
+		return "redirect:/administracion/cargadatos";
 	}
 
 }

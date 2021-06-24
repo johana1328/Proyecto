@@ -50,18 +50,27 @@ public class CargaMasivaUsuarioBussines {
 		XSSFWorkbook workBook = new XSSFWorkbook(fileInStream);
 		XSSFSheet selSheet = workBook.getSheetAt(0);
 		Iterator<Row> rowIterator = selSheet.iterator();
+		int contLinea=0;
 		while (rowIterator.hasNext()) {
 		        Row row = rowIterator.next();
-		        Iterator<Cell> cellIterator = row.cellIterator();
-		        StringBuffer stringBuffer = new StringBuffer();
-		        while (cellIterator.hasNext()) {
-		        Cell cell = cellIterator.next();
-		        if (stringBuffer.length() != 0) {
-		                stringBuffer.append(";");
+		        if(contLinea!=0) {
+		        	Iterator<Cell> cellIterator = row.cellIterator();
+			        StringBuffer stringBuffer = new StringBuffer();
+			        while (cellIterator.hasNext()) {
+			        Cell cell = cellIterator.next();
+			        if (stringBuffer.length() != 0) {
+			                stringBuffer.append(";");
+			        }
+			        stringBuffer.append(getValue(cell));
+			        }
+			        try {
+			        	MapEmpleadoDto(stringBuffer.toString());
+			        }catch (ArqGestionExcepcion e) {
+						// TODO: handle exception
+					}
+			        
 		        }
-		        stringBuffer.append(cell.getStringCellValue());
-		        }
-		        System.out.println(stringBuffer.toString());
+		        contLinea++;
 		}
 		workBook.close();
 	}
@@ -89,5 +98,18 @@ public class CargaMasivaUsuarioBussines {
 					ExcepcionType.ERROR_VALIDATION);
 		}
 		return empleado;
+	}
+	
+	private String getValue(Cell cell) {
+		switch (cell.getCellType()) {
+		case NUMERIC:
+			return   String.format ("%.0f", cell.getNumericCellValue());  
+		case STRING:
+			return cell.getStringCellValue();
+		case BOOLEAN:
+			return  Boolean.toString(cell.getBooleanCellValue());
+		default:
+			return null;
+		}
 	}
 }

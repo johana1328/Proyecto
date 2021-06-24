@@ -14,24 +14,23 @@ import com.cmc.gestion.talento.jpa.type.TipoPerfil;
 
 public class UsuarioDto {
 
-	@NotBlank(message = "Campo Codigo usuario es requerido")
+	
 	@NotNull(message = "Campo Codigo usuario es requerido")
 	protected String idUsuario;
 	
 	@Pattern(regexp="[0-9]+",message="Numero de documento solo numeros")  
 	protected String documento;
 	
-	@NotBlank(message = "Campo Tipo de documento es requerido")
 	@NotNull(message = "Campo Tipo de documento es requerido")
 	protected TipoDocumento tipoDocumento;
 	
-	@NotBlank(message = "Campo Primer nombre es requerido")
+	
 	@NotNull(message = "Campo Primer nombre es requerido")
 	protected String primerNombre;
 	
 	protected String segundoNombre;
 	
-	@NotBlank(message = "Campo Primer Apellido es requerido")
+	
 	@NotNull(message = "Campo Primer Apellido es requerido")
 	protected String primerApellido;
 	
@@ -49,7 +48,7 @@ public class UsuarioDto {
 	protected Date fechaActualizacion;
 	protected List<TipoPerfil> perfilUsuario;
 	
-	@NotBlank(message = "Campo Tipo de perfil es requerido")
+	
 	@NotNull(message = "Campo Tipo de perfil es requerido")
 	protected TipoPerfil perfil;
 	
