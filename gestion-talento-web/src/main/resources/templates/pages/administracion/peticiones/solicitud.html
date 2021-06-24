@@ -6,13 +6,6 @@
 <th:block layout:fragment="content">
 
 <!-- Mensajes -->
-	<div th:if="${mensaje != 'NOK'}"
-		class="alert alert-success alert-dismissible">
-		<button type="button" class="close"
-			onclick="closeAlert('alert-success')" aria-hidden="true">x</button>
-		<i class="icon fas fa-check"></i> Ok! <span class="msg2"
-			th:text="${mensaje}"></span>
-	</div>
 
 
 <a type="button"
@@ -58,7 +51,7 @@
     <script type="text/javascript">
     
     
-    $('#tablaUsuario').DataTable({
+    $('#tablaSolicitud').DataTable({
         "paging": true,
         "lengthChange": false,
         "searching": false,

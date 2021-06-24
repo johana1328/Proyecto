@@ -46,7 +46,7 @@ public class ProcesoSeleccion implements Serializable{
 	
 	@Enumerated(value = EnumType.STRING)
 	@Column(name = "estado", nullable = false)
-	private TipoEstadoSeleccion stado;
+	private TipoEstadoSeleccion estado;
 
 	public ProcesoSeleccionPk getProcesoSeleccionPk() {
 		return procesoSeleccionPk;
@@ -80,12 +80,12 @@ public class ProcesoSeleccion implements Serializable{
 		this.fechaAsociacion = fechaAsociacion;
 	}
 
-	public TipoEstadoSeleccion getStado() {
-		return stado;
+	public TipoEstadoSeleccion getEstado() {
+		return estado;
 	}
 
-	public void setStado(TipoEstadoSeleccion stado) {
-		this.stado = stado;
+	public void setEstado(TipoEstadoSeleccion stado) {
+		this.estado = stado;
 	}
 
 	public static long getSerialversionuid() {

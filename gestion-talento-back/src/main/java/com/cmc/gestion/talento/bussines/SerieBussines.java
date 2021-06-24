@@ -70,8 +70,6 @@ public class SerieBussines {
 	}
 	
 	public SerieDto actualizarSerie(SerieDto serieDto) throws ArqGestionExcepcion{
-		List<Serie> listSerie= this.serieDao.findByNombre(serieDto.getNombre());
-		if(listSerie.isEmpty()){
 			Optional<Serie> serieOptional=this.serieDao.findById(serieDto.getIdSerie());
 			if(serieOptional.isPresent()) {
 				Serie serie =serieOptional.get();
@@ -83,10 +81,8 @@ public class SerieBussines {
 			}else {
 				return null;
 			}
-		}else {
-			throw new ArqGestionExcepcion("La serie ya se encuentra creada", ExcepcionType.ERROR_VALIDATION);
 		}
-	}
+	
 	
 	
 	public void eliminarSerie(long idSerie) throws ArqGestionExcepcion{
