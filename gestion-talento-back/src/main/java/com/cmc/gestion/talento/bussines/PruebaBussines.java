@@ -65,9 +65,7 @@ public class PruebaBussines {
 	
 	 
 	 public PruebaDto actualizarPrueba(PruebaDto  pruebaDto) throws ArqGestionExcepcion {
-		 List<Prueba> lisPrueba = pruebaDao.findByNombre(pruebaDto.getNombre());
-			if (lisPrueba.isEmpty()) {
-				Optional<Prueba> optionalPrue = this.pruebaDao.findById(pruebaDto.getIdPrueba());
+			Optional<Prueba> optionalPrue = this.pruebaDao.findById(pruebaDto.getIdPrueba());
 				if (optionalPrue.isPresent()) {
 					Prueba pruebaEntity = optionalPrue.get();
 					
@@ -79,11 +77,8 @@ public class PruebaBussines {
 				}else {
 					return null;
 				}
-				}else {
-					logger.error("Error al momento de modificar la prueba : el nombre ya existe");
-					throw new ArqGestionExcepcion("La prueba ya se encuentra creada", ExcepcionType.ERROR_VALIDATION);
-			}
-	 }
+				}
+	 
 	 
 	 public void eliminarPrueba(long idPrueba) throws ArqGestionExcepcion {
 		 Optional<Prueba>  optionalPrueba =  this.pruebaDao.findById(idPrueba);

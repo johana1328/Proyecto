@@ -63,30 +63,30 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a th:href="@{/tabla}" class="nav-link ">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p th:text="#{aside.opcion.solicitudes.permisos}">Permisos</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a th:href="@{/pagina1}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p th:text="#{aside.opcion.solicitudes.vacaciones}">Vacaciones</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p th:text="#{aside.opcion.solicitudes.certificaciones}">Certificaciones</p>
-                </a>
-              </li>
-               <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p th:text="#{aside.opcion.solicitudes.incapacidades}">Incapacidades</p>
-                </a>
-              </li>
+<!--               <li class="nav-item"> -->
+<!--                 <a th:href="@{/tabla}" class="nav-link "> -->
+<!--                   <i class="far fa-circle nav-icon"></i> -->
+<!--                   <p th:text="#{aside.opcion.solicitudes.permisos}">Permisos</p> -->
+<!--                 </a> -->
+<!--               </li> -->
+<!--               <li class="nav-item"> -->
+<!--                 <a th:href="@{/pagina1}" class="nav-link"> -->
+<!--                   <i class="far fa-circle nav-icon"></i> -->
+<!--                   <p th:text="#{aside.opcion.solicitudes.vacaciones}">Vacaciones</p> -->
+<!--                 </a> -->
+<!--               </li> -->
+<!--               <li class="nav-item"> -->
+<!--                 <a href="#" class="nav-link"> -->
+<!--                   <i class="far fa-circle nav-icon"></i> -->
+<!--                   <p th:text="#{aside.opcion.solicitudes.certificaciones}">Certificaciones</p> -->
+<!--                 </a> -->
+<!--               </li> -->
+<!--                <li class="nav-item"> -->
+<!--                 <a href="#" class="nav-link"> -->
+<!--                   <i class="far fa-circle nav-icon"></i> -->
+<!--                   <p th:text="#{aside.opcion.solicitudes.incapacidades}">Incapacidades</p> -->
+<!--                 </a> -->
+<!--               </li> -->
                <li class="nav-item" sec:authorize="hasAnyAuthority('ANALISTA_RRHH','GERENTE_RRHH','GERENTE')" >
                 <a th:href="@{/administracion/peticiones}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -105,18 +105,24 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a th:href="@{/administracion/pruebas}" class="nav-link ">
+                <a  class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
-                  <p th:text="#{aside.option.seleccion.tecnica}">Pruebas</p>
+                  <p th:text="#{aside.option.seleccion.tecnica}">Pruebas tecnicas</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a  class="nav-link ">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p th:text="#{aside.option.seleccion.psico}">Pruebas Psicotecnicas</p>
                 </a>
               </li>
               
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p th:text="#{aside.option.seleccion.entrevista}" >Entrevista</p>
-                </a>
-              </li>
+<!--               <li class="nav-item"> -->
+<!--                 <a href="#" class="nav-link"> -->
+<!--                   <i class="far fa-circle nav-icon"></i> -->
+<!--                   <p th:text="#{aside.option.seleccion.entrevista}" >Entrevista</p> -->
+<!--                 </a> -->
+<!--               </li> -->
                <li class="nav-item">
                 <a th:href="@{/administracion/peticiones}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -152,12 +158,19 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
                   <p>Subserie</p>
                 </a>
               </li>
+               <li class="nav-item">
+                <a th:href="@{/administracion/pruebas}" class="nav-link ">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p th:text="#{aside.option.parametria.prueba}">Pruebas</p>
+                </a>
+              </li>
               <li class="nav-item">
                 <a th:href="@{/administracion/tarifa}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p th:text="#{aside.option.parametria.tarifa}">Tarifas</p>
                 </a>
               </li>
+      
               <li class="nav-item">
                 <a th:href="@{/administracion/ambientacion}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -176,6 +189,7 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
                   <p th:text="#{aside.option.parametria.especialidad}">Especialidad</p>
                 </a>
               </li>
+              
                <li class="nav-item">
                 <a th:href="@{/administracion/clase-perfil}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
