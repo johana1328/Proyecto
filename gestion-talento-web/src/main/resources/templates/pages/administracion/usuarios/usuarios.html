@@ -40,7 +40,7 @@
          		<td th:utext="${empleado.idUsuario}">id</td>
          		<td th:utext="${empleado.documento}">documento</td>
          		<td th:utext="${empleado.primerNombre} +' '+ ${empleado.segundoNombre}">nombres</td>
-         		<td th:utext="${empleado.primerApellido} +' ' +${empleado.segundoApellido}">allellidos</td>
+         		<td th:utext="${empleado.primerApellido} +' ' +${empleado.segundoApellido}">apellidos</td>
          		<td th:utext="${empleado.correoElectronico}">correo</td>
          		<td th:utext="${empleado.telefono}">telefono</td>
          		<td>
@@ -61,6 +61,8 @@
 					th:href="@{/administracion/usuario/modificar/{id}(id=${empleado.idUsuario})}"
 					class="btn btn-primary  "> <i class="fas fa-pen"></i>
 				</a>
+				
+				
          		</td>
          	</tr>
         </tbody>

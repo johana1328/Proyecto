@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/administracion/peticiones")
-public class PeticionesController {
+@RequestMapping("/administracion/solicitudes/crear")
+public class CrearSolicitudesController {
 	
 	@GetMapping
 	public String init() {

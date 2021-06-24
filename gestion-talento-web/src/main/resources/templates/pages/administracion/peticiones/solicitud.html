@@ -2,7 +2,7 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	xmlns:with="http://www.thymeleaf.org/extras/with"
 	layout:decorate="~{layout}"
-	th:with="funcionalidad='Administraci&oacuten', evento='Candidatos'">
+	th:with="funcionalidad='Administraci&oacuten', evento='Solicitud de personal'">
 <th:block layout:fragment="content">
 
 <!-- Mensajes -->
@@ -16,41 +16,37 @@
 
 
 <a type="button"
-	 th:href="@{/administracion/candidato/crearcandidato}" class="btn btn-primary  ">  Crear Candidato
+	th:href="@{/administracion/solicitudes/crear}" class="btn btn-primary  ">  Crear Solicitud de personal
 	</a>
 	
 
- <table id="tablaCandidato" class="table table-bordered table-hover ">
+ <table id="tablaSolicitud" class="table table-bordered table-hover ">
      	<thead>
         	<tr>
-            	
-            	<th>Documento</th>
-                <th>Nombres</th>
-                <th>Apellidos</th>
+            	<th>Perfil solicitado</th>
+            	<th>Especialidad</th>
+                <th>Cantidad</th>
+                <th>Encargado</th>
                 <th>Correo</th>
-                <th>Tel&eacute;fono</th>
                 
                 <th width="70px">Acciones</th>
             </tr>
         </thead>
         <tbody>
          	<tr th:each="empleado : ${listaEmpleados}">
-         		
-         		<td th:utext="${empleado.documento}">documento</td>
-         		<td th:utext="${empleado.primerNombre} +' '+ ${empleado.segundoNombre}">nombres</td>
-         		<td th:utext="${empleado.primerApellido} +' ' +${empleado.segundoApellido}">apellidos</td>
-         		<td th:utext="${empleado.correoElectronico}">correo</td>
-         		<td th:utext="${empleado.telefono}">telefono</td>
-         		
+         		<td th:utext="${empleado.idUsuario}">Perfil solicitado</td>
+         		<td th:utext="${empleado.documento}">Especialidad</td>
+         		<td th:utext="${empleado.primerNombre} +' '+ ${empleado.segundoNombre}">Cantidad</td>
+         		<td th:utext="${empleado.primerApellido} +' ' +${empleado.segundoApellido}">Encargado</td>
+         		<td th:utext="${empleado.correoElectronico}">Correo</td>
+        	
          		<td>
+         		
          			<a type="button"
 					th:href="@{/administracion/usuario/modificar/{id}(id=${empleado.idUsuario})}"
 					class="btn btn-primary  "> <i class="fas fa-pen"></i>
 				</a>
-				<a type="button"
-					th:href="@{/administracion/usuario/modificar/{id}(id=${empleado.idUsuario})}"
-					class="btn btn-primary  "> <i class="fas fa-trash"></i>
-				</a>
+				
          		</td>
          	</tr>
         </tbody>
@@ -60,7 +56,7 @@
  </th:block>
  <th:block layout:fragment="body_end">
     <script type="text/javascript">
-
+    
     
     $('#tablaUsuario').DataTable({
         "paging": true,
