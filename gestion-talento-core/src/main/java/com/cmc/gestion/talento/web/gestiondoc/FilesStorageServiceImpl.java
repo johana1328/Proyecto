@@ -102,4 +102,18 @@ public class FilesStorageServiceImpl implements FilesStorageService {
 		
 	}
 
+	@Override
+	public Resource createSimpleFile(String name) {
+		  try {
+			 Path pathFile= getPathRoot().resolve(name);
+			if(Files.exists(pathFile)) {
+				Files.delete(pathFile);
+			}
+			Files.createFile(pathFile);
+			return load(name);
+		} catch (IOException e) {
+			throw new RuntimeException("Could not store the file. Error: " + e.getMessage());
+		}
+	}
+
 }
