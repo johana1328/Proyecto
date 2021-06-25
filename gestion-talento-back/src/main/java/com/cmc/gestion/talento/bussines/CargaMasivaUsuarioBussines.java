@@ -42,8 +42,11 @@ public class CargaMasivaUsuarioBussines {
 			List<String> registros=lector.convertXlsToObject(filesStorageService.load(file).getFile());
 			for(int i=0;i<registros.size();i++) {
 				try {
-					EmpleadoDto empleado= MapEmpleadoDto(registros.get(0));
-					listaEmpleado.add(empleado);
+					String registro=registros.get(i);
+					if(registro.length() > 20) {
+						EmpleadoDto empleado= MapEmpleadoDto(registros.get(i));
+						listaEmpleado.add(empleado);
+					}
 				}catch (ArqGestionExcepcion e) {
 					listaError.add(i+1+";"+e.getMessage());
 				}
@@ -63,7 +66,7 @@ public class CargaMasivaUsuarioBussines {
 			try {
 				FileWriter errorWriter = new FileWriter(fileResource.getFile());
 				for(String in : listaError) {
-					errorWriter.write(in);
+					errorWriter.write(in +"\n");
 				}
 				errorWriter.close();
 				throw new ArqGestionExcepcion("Error al procesar informacion del archivo", ExcepcionType.ERROR_VALIDATION);
@@ -87,11 +90,23 @@ public class CargaMasivaUsuarioBussines {
 			empleado.setSegundoApellido(empleadoRow[5]);
 			empleado.setCorreoElectronico(empleadoRow[6]);
 			empleado.setTelefono(empleadoRow[7]);
-			empleado.setArea(TipoArea.valueOf(empleadoRow[8]));
+			try {
+				empleado.setArea(TipoArea.valueOf(empleadoRow[8]));
+			}catch (Exception e) {
+				throw new ArqGestionExcepcion("Error campo Area no valido", ExcepcionType.ERROR_VALIDATION);
+			}
+			
 			empleado.setJefe(empleadoRow[9]);
 			empleado.setIdUsuario(empleadoRow[10]);
-			empleado.setPerfil(TipoPerfil.valueOf(empleadoRow[11]));
-		} catch (Exception e) {
+			try {
+				empleado.setPerfil(TipoPerfil.valueOf(empleadoRow[11]));
+			}catch (Exception e) {
+				throw new ArqGestionExcepcion("Error campo Tipo Usuario no valido", ExcepcionType.ERROR_VALIDATION);
+			}
+			
+		} catch (ArqGestionExcepcion e) {
+			throw e;
+		}catch (Exception e) {
 			throw new ArqGestionExcepcion("Error En el formato del registro", ExcepcionType.ERROR_VALIDATION);
 		}
 
