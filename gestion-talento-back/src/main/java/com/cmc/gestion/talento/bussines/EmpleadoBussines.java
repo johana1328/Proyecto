@@ -72,6 +72,21 @@ public class EmpleadoBussines {
 			throw new ArqGestionExcepcion("Codigo de usuario ya existe", ExcepcionType.ERROR_VALIDATION);
 		}
 	}
+	
+	public boolean validarEmpleado(EmpleadoDto empleado) throws ArqGestionExcepcion{
+		Optional<Empleado> empleadoOpt = this.empleadoDao.findById(empleado.getIdUsuario());
+		if (!empleadoOpt.isPresent()) {
+			List<Empleado> listaEmpleados = this.empleadoDao.findByDocumento(empleado.getDocumento());
+			if (listaEmpleados.isEmpty()) {
+				return true;
+			} else {
+				throw new ArqGestionExcepcion("Existe un documento con el mismo numero",
+						ExcepcionType.ERROR_VALIDATION);
+			}
+		} else {
+			throw new ArqGestionExcepcion("Codigo de usuario ya existe", ExcepcionType.ERROR_VALIDATION);
+		}
+	}
 
 	public EmpleadoDto getEmpleado(String documento) {
 		Optional<Empleado> empleadoOP = this.empleadoDao.findById(documento);
