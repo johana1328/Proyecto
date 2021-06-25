@@ -16,21 +16,21 @@
 									th:src="@{~/gestion-cmc/resources/gestion-cmc/img/usuario.jpg}"
 									alt="User profile picture">
 							</div>
-							<h3 class="profile-username text-center">Mario Mendez</h3>
-							<p class="text-muted text-center">Gerente RRHH</p>
+							<h3 class="profile-username text-center" th:text="${#authentication.name}" >Mario Mendez</h3>
+<!-- 							<p class="text-muted text-center">Gerente RRHH</p> -->
 
 							<ul class="list-group list-group-unbordered mb-3">
 
 								<li class="list-group-item"><b>Telefono</b> <a
 									class="float-right">2312131</a></li>
 								<li class="list-group-item"><b>Correo</b> <a
-									class="float-right">jj@gmail.com</a></li>
+									class="float-right">prueba@gmail.com</a></li>
 								<li class="list-group-item"><b>Direccion</b> <a
 									class="float-right">cll2131</a></li>
 								<li class="list-group-item"><b>Estado civil</b> <a
 									class="float-right">soltero</a></li>
 								<li class="list-group-item"><b>Nivel de estudios</b> <a
-									class="float-right">2basico</a></li>
+									class="float-right">basico</a></li>
 
 
 							</ul>

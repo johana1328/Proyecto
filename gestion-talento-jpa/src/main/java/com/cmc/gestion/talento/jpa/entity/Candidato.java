@@ -47,7 +47,10 @@ public class Candidato extends Usuario {
 
 	@Column(name = "objetivos", length = 500)
 	private String objetivos;
-
+	
+	@Column(name = "origen_hoja", length = 500)
+	private String origenHoja;
+	
 	public String getTituloProfesional() {
 		return tituloProfesional;
 	}
@@ -118,6 +121,14 @@ public class Candidato extends Usuario {
 
 	public void setAspiracionSalarial(double aspiracionSalarial) {
 		this.aspiracionSalarial = aspiracionSalarial;
+	}
+
+	public String getOrigenHoja() {
+		return origenHoja;
+	}
+
+	public void setOrigenHoja(String origenHoja) {
+		this.origenHoja = origenHoja;
 	}
 
 }
