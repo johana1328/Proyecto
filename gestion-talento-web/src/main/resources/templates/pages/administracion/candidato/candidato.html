@@ -1,0 +1,86 @@
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:with="http://www.thymeleaf.org/extras/with"
+	layout:decorate="~{layout}"
+	th:with="funcionalidad='Administraci&oacuten', evento='Candidatos'">
+<th:block layout:fragment="content">
+
+<!-- Mensajes -->
+	<div th:if="${mensaje != 'NOK'}"
+		class="alert alert-success alert-dismissible">
+		<button type="button" class="close"
+			onclick="closeAlert('alert-success')" aria-hidden="true">x</button>
+		<i class="icon fas fa-check"></i> Ok! <span class="msg2"
+			th:text="${mensaje}"></span>
+	</div>
+
+<a type="button"
+	 th:href="@{/administracion/candidato/crear}" class="btn btn-primary  ">  Crear Candidato
+	</a>
+	
+ <table id="tablaCandidato" class="table table-bordered table-hover ">
+     	<thead>
+        	<tr>
+            	
+            	<th>Documento</th>
+                <th>Nombres</th>
+                <th>Apellidos</th>
+                <th>Correo</th>
+                <th>Tel&eacute;fono</th>
+                <th>Activacion</th>
+                <th width="100px">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+         	<tr th:each="candidato : ${listaCandidatos}">
+         		
+         		<td th:utext="${candidato.documento}">documento</td>
+         		<td th:utext="${candidato.primerNombre} +' '+ ${candidato.segundoNombre}">nombres</td>
+         		<td th:utext="${candidato.primerApellido} +' ' +${candidato.segundoApellido}">apellidos</td>
+         		<td th:utext="${candidato.correoElectronico}">correo</td>
+         		<td th:utext="${candidato.telefono}">telefono</td>
+         		<td>
+         			<div class="btn-group">
+                    <button type="button" class="btn btn-primary" th:text="${candidato.estado.getValue()}"  >Action</button>
+                    <button type="button" class="btn btn-primary dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                      <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <div class="dropdown-menu" role="menu">
+                      <a class="dropdown-item linkChangeState" th:data-action="ACTIVO" th:data-user="${candidato.idUsuario}" href="#">Activar</a>
+                      <a class="dropdown-item linkChangeState" th:data-action="BLOQUEADO" th:data-user="${candidato.idUsuario}" href="#">Bloquear</a>
+                      <a class="dropdown-item linkChangeState" th:data-action="RESET" th:data-user="${candidato.idUsuario}" href="#">Reset Password</a>
+                    </div>
+                  </div>
+         		</td>
+         		<td>
+         			<a type="button" class="btn btn-primary"> <i class="fas fa-pen"></i></a>
+         				<a type="button" class="btn btn-primary"> <i class="fas fa-eye"></i></a>
+         		</td>
+         	</tr>
+        </tbody>
+     </table>
+     <form id="changeStade" th:action="@{/administracion/candidato/modificar}" method="post" >
+     </form> 
+ </th:block>
+ <th:block layout:fragment="body_end">
+    <script type="text/javascript">
+    $(".linkChangeState").click(function(){
+  	  var accion = $(this).attr('data-action');
+  	  var idUsuario = $(this).attr('data-user');
+  	  var formAction = $("#changeStade").attr('action')+"/"+idUsuario+"/"+accion;
+  	  $("#changeStade").attr('action', formAction)
+  	  $("#changeStade").submit();
+  	});
+  
+    $('#tablaCandidato').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": false,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+      });
+    </script>
+</th:block>
+ </html> 

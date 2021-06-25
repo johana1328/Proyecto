@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:with="http://www.thymeleaf.org/extras/with"
+	layout:decorate="~{layout}"
+	th:with="funcionalidad='Administraci&oacuten', evento='Evaluacion de desempe&ntilde;o'">
+<th:block layout:fragment="content">
+	
+	<table id="tablaEvaluacion" class="table table-bordered table-hover ">
+     	<thead>
+        	<tr>
+            	
+            	<th>Nombre prueba</th>
+                <th>Empleado</th>
+                <th>Jefe</th>
+                <th>Puntuacion</th>
+                
+                <th width="70px">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+         	<tr th:each="empleado : ${listaEmpleados}">
+         		
+         		<td th:utext="${empleado.documento}">Nombre de prueba</td>
+         		<td th:utext="${empleado.primerNombre} +' '+ ${empleado.segundoNombre}">Empleado</td>
+         		<td th:utext="${empleado.primerApellido} +' ' +${empleado.segundoApellido}">Jefe</td>
+         		<td th:utext="${empleado.correoElectronico}">Puntuacion</td>
+         		
+         		
+         		<td>
+         			<a type="button"
+					th:href="@{/administracion/usuario/modificar/{id}(id=${empleado.idUsuario})}"
+					class="btn btn-primary  "> <i class="fas fa-pen"></i>
+				</a>
+				<a type="button"
+					th:href="@{/administracion/usuario/modificar/{id}(id=${empleado.idUsuario})}"
+					class="btn btn-primary  "> <i class="fas fa-trash"></i>
+				</a>
+         		</td>
+         	</tr>
+        </tbody>
+     </table> 
+</th:block>
+ <script type="text/javascript">
+    $(".linkChangeState").click(function(){
+    	  var accion = $(this).attr('data-action');
+    	  var idUsuario = $(this).attr('data-user');
+    	  var formAction = $("#changeStade").attr('action')+"/"+idUsuario+"/"+accion;
+    	  $("#changeStade").attr('action', formAction)
+    	  $("#changeStade").submit();
+    	});
+    
+    $('tablaEvaluacion').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": false,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+      });
+    </script>
+</html>

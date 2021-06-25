@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:with="http://www.thymeleaf.org/extras/with"
+	layout:decorate="~{layout}" th:with="funcionalidad='Inicio', evento='Inicio'">
+<th:block layout:fragment="content">
+	 <section class="content">
+	 <h2 th:text="#{index.bienvenido}">Bienvenido </h2>
+	 <div class="container-fluid">
+	 <div class="row">
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-primary">
+              <div class="inner">
+                <h3 th:text="#{index.perfil}">Mi Perfil</h3>
+
+                <p th:text="#{index.consultar}">Consultar</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-bag"></i>
+              </div>
+              <a th:href="@{/administracion/miperfil}" class="small-box-footer" th:text="#{index.informacion}">Mas informacion <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-primary">
+              <div class="inner">
+                <h3 th:text="#{index.usuario}">Usuario Nuevo<sup style="font-size: 20px"></sup></h3>
+
+                <p th:text="#{index.crear}">Crear</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+              </div>
+              <a th:href="@{/administracion/usuario/crear}" class="small-box-footer" th:text="#{index.informacion}">Mas informacion <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-primary">
+              <div class="inner">
+                <h3 th:text="#{index.calendario}">Calendario</h3>
+
+                <p th:text="#{index.consultar}">Consultar</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-person-add"></i>
+              </div>
+              <a th:href="@{/administracion/calendario}" class="small-box-footer" th:text="#{index.informacion}">Mas informacion <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-primary">
+              <div class="inner">
+                <h3 th:text="#{index.curriculum}">Curriculum</h3>
+
+                <p th:text="#{index.consultar}">Consultar</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-pie-graph"></i>
+              </div>
+              <a th:href="@{/administracion/curriculum}" class="small-box-footer" th:text="#{index.informacion}">Mas informacion <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+        </div>
+        </div>
+        </section>
+</th:block>
+<th:block layout:fragment="body_end">
+		<link rel="stylesheet"
+		th:href="@{~/gestion-cmc/plugins/bs-stepper/css/bs-stepper.min.css}">
+		<script
+		th:src="@{~/gestion-cmc/plugins/bs-stepper/js/bs-stepper.min.js}"></script>
+
+	<script
+		th:src="@{~/gestion-cmc/plugins/bs-stepper/js/bs-stepper.min.js}"></script>
+		<script
+		th:src="@{~/gestion-cmc/plugins2/jquery-ui/jquery-ui.min.js}"></script>
+		<script
+		th:src="@{~/gestion-cmc/dist/js/adminlte.min.js}"></script>
+		<script
+		th:src="@{~/gestion-cmc/plugins2/moment/moment.min.js}"></script>
+		<script
+		th:src="@{~/gestion-cmc/plugins2/fullcalendar/main.js}"></script>
+		<script
+		th:src="@{~/gestion-cmc/dist2/js/demo.js}"></script>
+	<script>
+	   document.addEventListener('DOMContentLoaded', function () {
+	       window.stepper = new Stepper(document.querySelector('.bs-stepper'))
+	    })
+	</script>
+</th:block>
+</html>

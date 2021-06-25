@@ -1,0 +1,64 @@
+<div layout:fragment="modalDf(titulo, id)"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	<div class="modal fade modal-form-crud" th:id="${id}">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" th:text="${titulo}">titulo</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="alert alert-danger alert-dismissible"
+						style="display: none">
+						<button type="button" class="close" onclick="closeAlert('alert-danger')"
+							aria-hidden="true">&times;</button>
+							<i class="icon fas fa-ban"></i> Error! <span class="msg"></span>
+					</div>
+					<div class="alert alert-success alert-dismissible" style="display: none">
+						<button type="button" class="close"  onclick="closeAlert('alert-success')"
+							aria-hidden="true">&times;</button>
+							<i class="icon fas fa-check"></i> Ok!
+						    <span class="msg2"></span>
+					</div>
+					<div layout:fragment="modal-content">
+						<p>contenido</p>
+					</div>
+				</div>
+				<div class="modal-footer justify-content-between"
+					layout:fragment="modal-footer">
+					<p>acciones</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Modal de confirmacion -->
+<div layout:fragment="modalConfim(id)"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	<div class="modal fade" th:id="${id}">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 th:text="#{fragment.eliminarregistro}" class="modal-title">Eliminar Registro</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<p th:text="#{fragment.validacioneliminar}">Est&aacute;s seguro de eliminar este registr&oacute;?</p>
+				</div>
+				<div class="modal-footer justify-content-between"
+					layout:fragment="modal-footer">
+					<p>acciones</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

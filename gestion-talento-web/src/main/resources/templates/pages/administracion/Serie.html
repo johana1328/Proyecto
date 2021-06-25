@@ -1,0 +1,75 @@
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:with="http://www.thymeleaf.org/extras/with"
+	layout:decorate="~{layout}"
+	th:with="funcionalidad='Administraci&oacuten', evento='Series'">
+<th:block layout:fragment="content">
+<!-- <div th:text="${#locale}"></div> -->
+ <table id="tablaSerie" class="table table-bordered table-hover ">
+     	<thead>
+        	<tr>
+            	<th>Id</th>
+                <th th:text="#{administracion.serie.nombre}" >Nombre</th>
+                <th th:text="#{administracion.serie.descripcion}">Descripci&oacute;n</th>
+                <th th:text="#{administracion.serie.estado}">Estado</th>
+                <th th:text="#{administracion.serie.accion}" width="70px">Acciones</th>
+            </tr>
+        </thead>
+     </table> 
+       <!-- Formulario de creacion -->
+      <div layout:replace="~{fragments/modal :: modalDf(titulo='Crear Serie' , id='modCrear')}">
+         <div  layout:fragment="modal-content">
+              <div class="form-group">
+                  <label th:text="#{administracion.serie.nombre}" for="exampleInputEmail1">Nombre</label>
+                  <input type="text" class="form-control" id="nombreCrear" th:placeholder="#{administracion.serie.ingrese}">
+                  <label  th:text="#{administracion.serie.descripcion}"for="exampleInputEmail1">Descripci&oacute;n</label>
+                  <textarea class="form-control" id="descCrear" rows="3" th:placeholder="#{administracion.serie.escribir}"></textarea>
+                  
+              </div>
+         </div>
+         <div  layout:fragment="modal-footer">
+              <button th:text="#{administracion.serie.cerrar}" type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+              <button th:text="#{administracion.serie.guardar}" type="button" class="btn btn-primary" onclick="crearSerie()"  >Guardar</button>
+         </div>
+      </div>
+       <!-- Modificacion de Serie -->
+      <div layout:replace="~{fragments/modal :: modalDf(titulo='Modificar Serie' , id='modModificar')}">
+         <div  layout:fragment="modal-content">
+              <div class="form-group">
+                  <label for="exampleInputEmail1">Id Serie</label>
+                  <input type="text" class="form-control" id="idMod" disabled>
+              </div>
+              <div class="form-group">
+                  <label th:text="#{administracion.serie.nombre}"for="exampleInputEmail1">Nombre</label>
+                  <input type="text" class="form-control" id="nomMod" th:placeholder="#{administracion.serie.ingrese}">
+                   <div class="form-group">
+                   <label th:text="#{administracion.serie.estado}">Estado</label>
+                        <select class="form-control" id="estMod">
+                          <option th:text="#{administracion.serie.activo}" value="ACTIVO">Activo</option>
+                          <option th:text="#{administracion.serie.desactivado}" value="DESACTIVO">Desactivo</option>
+                        </select>
+                        </div>
+                   <label th:text="#{administracion.serie.descripcion}" for="exampleInputEmail1">Descripci&oacute;n</label>
+                  <textarea class="form-control" id="descMod" rows="3" th:placeholder="#{administracion.serie.escribir}"></textarea>
+              </div>
+         </div>
+         <div  layout:fragment="modal-footer">
+              <button th:text="#{administracion.serie.cerrar}" type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+              <button th:text="#{administracion.serie.guardar}" type="button" class="btn btn-primary" onclick="modificarSerie()">Guardar</button>
+         </div>
+      </div>
+      
+      <!-- Eliminacion de Serie -->
+      <div layout:replace="~{fragments/modal :: modalConfim(id='confirmDelete')}" >
+      	<div  layout:fragment="modal-footer">
+      	     <input type="hidden" id="idSerie">
+      		 <button th:text="#{administracion.serie.cerrar}" type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+             <button th:text="#{administracion.serie.eliminar}" type="button" class="btn btn-primary"  onclick="eliminarSerie()" >Eliminar</button>
+      	</div>
+      </div>
+     
+ </th:block>
+ <th:block layout:fragment="body_end">
+    <script th:src="@{~/gestion-cmc/resources/gestion-cmc/js/serie.js}"></script>
+</th:block>
+ </html>     

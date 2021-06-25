@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:with="http://www.thymeleaf.org/extras/with"
+	layout:decorate="~{layout}"
+	th:with="funcionalidad='Administraci&oacuten', evento='Curriculun vitae'">
+<th:block layout:fragment="content">
+
+<form action="" method="POST">
+	<div class="row">
+          <div class="col-md-12">
+            
+                    <div class="row">
+                    <div class="col-sm-6">
+                      <!-- textarea -->
+                      <div class="form-group">
+                        <label>Front End</label>
+                        <textarea class="form-control"  th:placeholder="#{curriculun.conocimiento.ifront}"></textarea>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label>Back End</label>
+                        <textarea  class="form-control"  th:placeholder="#{curriculun.conocimiento.iback}" ></textarea>
+                      </div>
+                    </div>
+                      <button type="submit" th:text="#{curriculum.guardar}"class="btn btn-primary">Submit</button>
+                    
+                  </div>
+              
+                </div>
+              </div>
+              <!-- /.card-body -->
+              </form>
+
+
+
+
+</th:block>
+<th:block layout:fragment="body_end">
+      
+        
+	
+	<!-- Font Awesome -->
+  <link rel="stylesheet"
+   href="@{~/gestion-cmc/plugins/fontawesome/css/all.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet"
+   href="@{~/gestion-cmc/adminl-lte/css/adminlte.min.css">
+	
+
+   
+</th:block>
+</html>

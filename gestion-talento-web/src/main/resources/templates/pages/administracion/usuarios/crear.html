@@ -1,0 +1,217 @@
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:with="http://www.thymeleaf.org/extras/with"
+	layout:decorate="~{layout}"
+	th:with="funcionalidad='Administraci&oacuten', evento='Crear usuario'">
+<th:block layout:fragment="content">
+	<form id="formCrearUsuario" th:object="${empleado}"
+		th:action="${accion == 'crear'} ? @{/administracion/usuario/crear} : @{/administracion/usuario/modificar/{id}(id=${empleado.idUsuario})}"
+		method="POST">
+
+		<div class="card-body p-0">
+			<div th:if="${#fields.hasErrors('*')}"
+				class="alert alert-danger alert-dismissible">
+				<button type="button" class="close"
+					onclick="closeAlert('alert-danger')" aria-hidden="true">&times;</button>
+				<i class="icon fas fa-ban"></i> Error!
+				<ul style="margin-top: 0px; margin-bottom: 0px;">
+					<li th:each="error : ${#fields.errors('*')}" th:text="${error}"></li>
+				</ul>
+			</div>
+			<div id="messageBox1" class="alert alert-danger alert-dismissible"
+				style="display: none">
+				<button type="button" class="close"
+					onclick="closeAlert('alert-danger')" aria-hidden="true">&times;</button>
+				<i class="icon fas fa-ban"></i> Error!
+				<ul style="margin-top: 0px; margin-bottom: 0px;"></ul>
+			</div>
+			<div class="bs-stepper">
+				<div class="bs-stepper-header" role="tablist">
+					<!-- Definicion paso1 -->
+					<div class="step" data-target="#Inf-personal">
+						<button type="button" class="step-trigger" role="tab"
+							aria-controls="Inf-personal" id="Inf-personal-trigger">
+							<span class="bs-stepper-circle">1</span> <span
+								class="bs-stepper-label" th:text="#{usuario.informacion}">Informaci&oacuten
+								b&aacutesica</span>
+						</button>
+					</div>
+					<div class="line"></div>
+
+					<!-- Definicion paso2 -->
+					<div class="step" data-target="#contacto">
+						<button type="button" class="step-trigger" role="tab"
+							aria-controls="contacto" id="contacto-trigger">
+							<span class="bs-stepper-circle">2</span> <span
+								class="bs-stepper-label" th:text="#{usuario.contacto}">Contacto</span>
+						</button>
+					</div>
+					<div class="line"></div>
+
+					<!-- Definicion paso3 -->
+					<div class="step" data-target="#inf-lab">
+						<button type="button" class="step-trigger" role="tab"
+							aria-controls="inf-lab" id="inf-lab-trigger">
+							<span class="bs-stepper-circle">3</span> <span
+								class="bs-stepper-label" th:text="#{usuario.laboral}">Informaci&oacuten
+								Laboral</span>
+						</button>
+					</div>
+				</div>
+				<div class="bs-stepper-content">
+					<!-- Paso 1 -->
+					<div id="Inf-personal" class="content" role="tabpanel"
+						aria-labelledby="Inf-personal-trigger">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="tipoDocumento">Tipo Documento</label> <select
+										th:field="*{tipoDocumento}"  id="tipoDocumento"
+										name="tipoDocumento" class="form-control select2"
+										style="width: 100%;">
+										<option value="" selected="selected">Tipo</option>
+										<option
+											th:each="tipoDoc : ${T(com.cmc.gestion.talento.jpa.type.TipoDocumento).values()}"
+											th:value="${tipoDoc}" th:text="${tipoDoc.value}"></option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="nombre1" th:text="#{usuario.nombreu}">Primer
+										Nombre</label> <input type="text" class="form-control" id="nombre1"
+										name="nombre1" th:field="*{primerNombre}"
+										th:placeholder="#{usuario.epnombre}">
+								</div>
+								<div class="form-group">
+									<label for="apellido1" th:text="#{usuario.apellidou}">Primer
+										Apellido</label> <input type="text" class="form-control"
+										id="apellido1" name="apellido1" th:field="*{primerApellido}"
+										th:placeholder="#{usuario.epapellido}">
+								</div>
+
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="numDoc" th:text="#{usuario.documento}">Numero
+										de documento</label> <input type="text" class="form-control"
+										id="numDoc" name="numDoc" th:field="*{documento}"
+										th:placeholder="#{usuario.edocumento}">
+								</div>
+								<div class="form-group">
+									<label for="nombre2" th:text="#{usuario.nombres}">Segundo
+										Nombre</label> <input type="text" class="form-control" id="nombre2"
+										name="nombre2" th:field="*{segundoNombre}"
+										th:placeholder="#{usuario.esnombre}">
+								</div>
+								<div class="form-group">
+									<label for="apellido2" th:text="#{usuario.apellidod}">Segundo
+										Apellido</label> <input type="text" class="form-control"
+										id="apellido2" name="apellido2" th:field="*{segundoApellido}"
+										th:placeholder="#{usuario.esapellido}">
+								</div>
+							</div>
+						</div>
+
+
+						<button class="btn btn-primary" type="button"
+							onclick="validacionFormulario()">Siguiente</button>
+					</div>
+
+					<!-- Paso2 -->
+					<div id="contacto" class="content" role="tabpanel"
+						aria-labelledby="contacto-trigger">
+						<div class="row">
+							<div class="col-md-6">
+
+								<div class="form-group">
+									<label for="telefono" th:text="#{usuario.telefono}">Telefono</label>
+									<input type="text" class="form-control" id="telefono"
+										name="telefono" th:field="*{telefono}"
+										th:placeholder="#{usuario.etelefono}">
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="correo" th:text="#{usuario.correo}">Correo
+										Electronico</label> <input type="text" class="form-control"
+										id="correo" name="correo" th:field="*{correoElectronico}"
+										th:placeholder="#{usuario.ecorreo}">
+								</div>
+							</div>
+						</div>
+
+						<button class="btn btn-primary" type="button"
+							onclick="stepper.previous()">Anterior</button>
+						<button class="btn btn-primary" type="button"
+							onclick="validacionFormulario()">Siguiente</button>
+					</div>
+
+					<!-- Paso 3 -->
+					<div id="inf-lab" class="content" role="tabpanel"
+						aria-labelledby="inf-lab-trigger">
+						<div class="row">
+							<div class="col-md-6">
+
+								<div class="form-group">
+									<label for="codidoUsario" th:text="#{usuario.codigo}">C&oacute;digo
+										usuario </label> <input type="text" class="form-control"
+										id="codidoUsario" name="codidoUsario" th:field="*{idUsuario}" th:readonly="${accion == 'modificar'}"
+										th:placeholder="#{usuario.ecode}">
+								</div>
+								<div class="form-group">
+									<label for="jefe" th:text="#{usuario.jefe}">Jefe</label> <select
+										name="jefe" id="jefe" class="form-control select2"
+										style="width: 100%;" th:field="*{jefe}">
+										<option value="" selected="selected">Seleccione</option>
+										<option th:each="jefe : ${listaJefes}"
+											th:value="${jefe.idUsuario}"
+											th:text="${jefe.primerNombre} + ' '+${jefe.primerApellido}"></option>
+									</select>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="tipo" th:text="#{usuario.tipo}">Tipo
+										usuario</label> <select name="tipo" id="tipo"
+										class="form-control select2" style="width: 100%;"
+										th:field="*{perfil}">
+										<option value="">Tipo</option>
+										<option
+											th:each="tipoDoc : ${T(com.cmc.gestion.talento.jpa.type.TipoPerfil).values()}"
+											th:value="${tipoDoc}" th:text="${tipoDoc.value}"></option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="area" th:text="#{usuario.area}">&Aacute;rea</label>
+									<select name="area" id="area" class="form-control select2"
+										style="width: 100%;" th:field="*{area}">
+										<option value="" selected="selected">Seleccione un
+											&aacute;rea</option>
+										<option
+											th:each="area : ${T(com.cmc.gestion.talento.jpa.type.TipoArea).values()}"
+											th:value="${area}" th:text="${area.value}"></option>
+									</select>
+								</div>
+							</div>
+						</div>
+						<button class="btn btn-primary" type="button"
+							onclick="stepper.previous()">Anterior</button>
+						<button type="submit" class="btn btn-primary">Crear</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</th:block>
+<th:block layout:fragment="body_end">
+	<link rel="stylesheet"
+		th:href="@{~/gestion-cmc/plugins/bs-stepper/css/bs-stepper.min.css}">
+	<script
+		th:src="@{~/gestion-cmc/plugins/bs-stepper/js/bs-stepper.min.js}"></script>
+	<script th:src="@{~/gestion-cmc/resources/gestion-cmc/js/usuarios.js}"></script>
+	<script>
+	   document.addEventListener('DOMContentLoaded', function () {
+	       window.stepper = new Stepper(document.querySelector('.bs-stepper'))
+	    })
+	</script>
+</th:block>
+</html>

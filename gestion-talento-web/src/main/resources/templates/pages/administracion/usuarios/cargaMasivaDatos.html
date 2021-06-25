@@ -1,0 +1,63 @@
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:with="http://www.thymeleaf.org/extras/with"
+	layout:decorate="~{layout}"
+	th:with="funcionalidad='Administraci&oacuten', evento='Carga masiva de datos'">
+<th:block layout:fragment="content">
+	<div id="messageBox1" class="alert alert-danger alert-dismissible" th:if="${mensaje != 'NOK'}">
+		<button type="button" class="close"
+			onclick="closeAlert('alert-danger')" aria-hidden="true">&times;</button>
+		<i class="icon fas fa-ban"></i> Error! Al Procesar el archivo de carga, para mas informacion descargue el archivo de reporte errores
+	</div>
+	<div class="card-body">
+		<blockquote>
+			<p>
+				Mediante el siguiente espacio podra descargar el excel con los
+				campos correspondientes,<br> para registrar los datos y
+				realizar la carga masiva de datos.
+			</p>
+			<a class="btn btn-app"
+				th:href="@{/resources/files/ReglasCargaMasiva.xlsx}" target="_blank"
+				style="max-width: 5px; min-height: 75px"> <i
+				class="far fa-file-excel"></i> Descargar Estructura
+			</a> <a class="btn btn-app"
+				th:href="@{/resources/files/PlantillaCargaMasiva.xlsx}"
+				style="max-width: 5px; min-height: 75px" download> <i
+				class="far fa-file-excel"></i> Descargar Plantilla
+			</a> <a class="btn btn-app bg-danger" th:if="${mensaje != 'NOK'}"
+			     th:href="@{/administracion/cargadatos/errors}"
+				style="max-width: 5px; min-height: 75px"> <i
+				class="fas fa-exclamation-circle"></i> Reporte de errores
+			</a> <br>
+			<form id="formUpload" method="post"
+				th:action="@{/administracion/cargadatos}"
+				enctype="multipart/form-data">
+				<div class="form-group col-6">
+					<label for="exampleInputFile">Carga de datos</label>
+					<div class="input-group">
+						<div class="custom-file">
+							<input type="file" class="custom-file-input" id="file"
+								name="file"> <label class="custom-file-label"
+								for="exampleInputFile">Choose file</label>
+						</div>
+						<div class="input-group-append">
+							<span id="upload" class="input-group-text">Upload</span>
+						</div>
+					</div>
+				</div>
+			</form>
+		</blockquote>
+	</div>
+
+</th:block>
+<th:block layout:fragment="body_end">
+	<script type="text/javascript">
+    $(function () {
+    	  bsCustomFileInput.init();
+    	});
+    $("#upload").click(function(){
+    	  $("#formUpload").submit();
+    	});
+    </script>
+</th:block>
+</html>

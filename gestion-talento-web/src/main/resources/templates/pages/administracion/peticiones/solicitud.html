@@ -1,0 +1,65 @@
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:with="http://www.thymeleaf.org/extras/with"
+	layout:decorate="~{layout}"
+	th:with="funcionalidad='Administraci&oacuten', evento='Solicitud de personal'">
+<th:block layout:fragment="content">
+
+<!-- Mensajes -->
+
+
+<a type="button"
+	th:href="@{/administracion/solicitudes/crear}" class="btn btn-primary  ">  Crear Solicitud de personal
+	</a>
+	
+
+ <table id="tablaSolicitud" class="table table-bordered table-hover ">
+     	<thead>
+        	<tr>
+            	<th>Perfil solicitado</th>
+            	<th>Especialidad</th>
+                <th>Cantidad</th>
+                <th>Encargado</th>
+                <th>Correo</th>
+                
+                <th width="70px">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+         	<tr th:each="empleado : ${listaEmpleados}">
+         		<td th:utext="${empleado.idUsuario}">Perfil solicitado</td>
+         		<td th:utext="${empleado.documento}">Especialidad</td>
+         		<td th:utext="${empleado.primerNombre} +' '+ ${empleado.segundoNombre}">Cantidad</td>
+         		<td th:utext="${empleado.primerApellido} +' ' +${empleado.segundoApellido}">Encargado</td>
+         		<td th:utext="${empleado.correoElectronico}">Correo</td>
+        	
+         		<td>
+         		
+         			<a type="button"
+					th:href="@{/administracion/usuario/modificar/{id}(id=${empleado.idUsuario})}"
+					class="btn btn-primary  "> <i class="fas fa-pen"></i>
+				</a>
+				
+         		</td>
+         	</tr>
+        </tbody>
+     </table> 
+     <form id="changeStade" th:action="@{/administracion/usuario/modificar}" method="post" >
+     </form>
+ </th:block>
+ <th:block layout:fragment="body_end">
+    <script type="text/javascript">
+    
+    
+    $('#tablaSolicitud').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": false,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+      });
+    </script>
+</th:block>
+ </html> 

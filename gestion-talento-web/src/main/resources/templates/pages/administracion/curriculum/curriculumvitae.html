@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:with="http://www.thymeleaf.org/extras/with"
+	layout:decorate="~{layout}"
+	th:with="funcionalidad='Administraci&oacuten', evento='Curriculun vitae'">
+<th:block layout:fragment="content">
+
+<div> 
+
+</div>
+
+
+<div class="p-2 mb-1 bg-primary text-white  text-center" th:text="#{curriculum.informacion}">
+Informacion Personal
+</div>
+<br>
+<div class="row">
+ <div class="col-sm-4">
+<div class="card" style="width: 18rem;">
+  <div class="card-header">
+    <a class="text-center" th:text="#{curriculum.datos}" th:href="@{/administracion/curriculum/datosbasicos}">Datos basicos</a>
+  </div>
+  <br>
+  <i class="text-center nav-icon fas fa-user-circle"></i>
+   <p class="text-center" th:text="#{curriculum.idatos}" >Ingresa los datos basico</p>               
+</div>
+</div>
+ <div class="col-sm-4">
+<div class="card" style="width: 18rem;">
+  <div class="card-header">
+    <a class="text-center" th:text="#{curriculum.perfil}" th:href="@{/administracion/curriculum/perfil}" >Perfil profesional y experiencia profesional</a>
+  </div><br> 
+  <i class="text-center fas fa-user-tie"></i>
+     <p class="text-center" th:text="#{curriculum.iperfil}">Ingresa los datos de perfil profesional y experiencia profesional</p>               
+  
+   </div>               
+</div>
+ <div class="col-sm-3">
+<div class="card" style="width: 18rem;">
+  <div class="card-header">
+    <a class="text-center" th:text="#{curriculum.academica}" th:href="@{/administracion/curriculum/academica}">Formacion academica</a>
+  </div><br> 
+  <i class="text-center fa fa-graduation-cap" aria-hidden="true"></i>
+  
+    <p class="text-center" th:text="#{curriculum.iacademica}">Ingresa los datos de la informacion academica</p>               
+  
+</div>              
+</div>
+</div>
+<div class="row">
+ <div class="col-sm-4">
+
+<div class="card" style="width: 18rem;">
+  <div class="card-header">
+    <a class="text-center" th:text="#{curriculum.conocimientos}" th:href="@{/administracion/curriculum/conocimiento}">Conocimientos y habilidades</a>
+  </div><br> 
+  <i class="text-center nav-icon fas fa-book-open"></i>
+  <p class="text-center" th:text="#{curriculum.iconocimiento}">Ingresa los datos de conocimientos y habilidades</p>               
+  
+    </div>              
+</div>
+ <div class="col-sm-4">
+
+<div class="card" style="width: 18rem;">
+  <div class="card-header">
+    <a class="text-center" th:text="#{curriculum.tecnica}" th:href="@{/administracion/curriculum/tecnicas}">Competencias tecnicas</a>
+  </div><br> 
+  <i class=" text-center fas fa-clipboard-list"></i>
+  <p class="text-center" th:text="#{curriculum.itecnica}">Ingresa los datos de las competencias tecnicas</p>               
+  
+   </div>               
+</div>
+ <div class="col-sm-3">
+
+<div class="card" style="width: 18rem;">
+  <div class="card-header">
+    <a class="text-center" th:text="#{curriculum.laboral}" th:href="@{/administracion/curriculum/experiencia}">Experiencia laboral</a>
+  </div><br> 
+  <i class=" text-center fas fa-briefcase"></i>
+       <p class="text-center" th:text="#{curriculum.ilaboral}">Ingresa los datos de experiencia laboral</p>               
+  
+     </div>             
+</div>
+</div>
+</th:block>
+<th:block layout:fragment="body_end">
+	<link rel="stylesheet"
+		th:href="@{~/gestion-cmc/plugins/bs-stepper/css/bs-stepper.min.css}">
+	
+      <script src="@{~/gestion-cmc/plugins2/jquery-knob/jquery.knob.min.js"></script>
+      <script src="@{~/gestion-cmc/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="@{~/gestion-cmc/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="@{~/gestion-cmc/admin-lte/js/adminlte.min.js"></script>
+<!-- jQuery Knob -->
+<script src="@{~/gestion-cmc/plugins/jquery-knob/jquery.knob.min.js"></script>
+<!-- Sparkline -->
+<script src="@{~/gestion-cmc/plugins/sparklines/sparkline.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="@{~/gestion-cmc/admin-lte/js/demo.js"></script>
+   
+</th:block>
+</html>

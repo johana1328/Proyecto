@@ -1,0 +1,125 @@
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:with="http://www.thymeleaf.org/extras/with"
+	layout:decorate="~{layout}"
+	th:with="funcionalidad='Administraci&oacuten', evento='Subseries'">
+<th:block layout:fragment="content">
+
+
+ <table id="tablaSubserie" class="table table-bordered table-hover ">
+     	<thead>
+        	<tr>
+            	<th>Id</th>
+                <th th:text="#{administracion.sub.nombre}">nombre</th>
+                <th th:text="#{administracion.sub.descripcion}">Descripci&oacute;n</th>
+                <th th:text="#{administracion.sub.proceso}">Proceso</th>
+                <th th:text="#{administracion.sub.procedimiento}">Procedimiento</th>
+                <th th:text="#{administracion.sub.gestion}">Archivo gesti&oacute;n</th>
+                <th th:text="#{administracion.sub.central}">Archivo central</th>
+                <th >Serie</th>
+                <th  th:text="#{administracion.sub.accion}"width="70px">Acciones</th>
+            </tr>
+        </thead>
+     </table>
+      <!-- Formulario de creacion -->
+      <div layout:replace="~{fragments/modal :: modalDf(titulo='Crear Subserie' , id='modCrear')}">
+         <div  layout:fragment="modal-content">
+              <div class="form-group">
+              		<div class="row">
+              		<div class="col-sm-6">
+                  <label th:text="#{administracion.sub.nombre}"for="exampleInputEmail1">Nombre</label>
+                  <input type="text" class="form-control" id="nombreCrear" th:placeholder="#{administracion.sub.en}">
+                  </div>
+                  <div class="col-sm-6">
+                  <label th:text="#{administracion.sub.proceso}" for="exampleInputEmail1">Proceso</label>
+                  <input type="text" class="form-control" id="procCrear" th:placeholder="#{administracion.sub.pro}">
+                  </div>
+                  </div>
+                  <div class="row">
+              		<div class="col-sm-6">
+                  <label th:text="#{administracion.sub.gestion}" for="exampleInputEmail1">Archivo gesti&oacute;n</label>
+                  <input type="number" class="form-control" id="arcgesCrear" th:placeholder="#{administracion.sub.ag}">
+                  </div>
+                  <div class="col-sm-6">
+                  <label th:text="#{administracion.sub.central}" for="exampleInputEmail1">Archivo central</label>
+                  <input type="number" class="form-control" id="arccenCrear" th:placeholder="#{administracion.sub.ac}">
+                   </div>
+                   </div>
+			      <label for="exampleInputEmail1">Serie</label>
+			      <div class="form-group">
+			      <select class="form-control" id="seriCrear">
+			    	<option th:each="serie : ${liataSerire}" th:value="${serie.id}" th:text="${serie.nombre}">
+			    	</option>
+				  </select>
+				  </div>
+                  <label th:text="#{administracion.sub.descripcion}"for="exampleInputEmail1">Descripci&oacute;n</label>
+                  <textarea class="form-control" id="descCrear" rows="3" th:placeholder="#{administracion.sub.escribir}"></textarea>
+                  <label th:text="#{administracion.sub.procedimiento}"for="exampleInputEmail1">Procedimiento</label>
+                  <textarea class="form-control" id="procediCrear" rows="3" th:placeholder="#{administracion.sub.escribir}"></textarea>
+              </div>
+         </div>
+         <div  layout:fragment="modal-footer">
+              <button th:text="#{administracion.serie.cerrar}" type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+              <button th:text="#{administracion.serie.guardar}"type="button" class="btn btn-primary" onclick="crearSubserie()"  >Guardar</button>
+         </div>
+      </div> 
+       <!-- Modificacion de Serie -->
+      <div layout:replace="~{fragments/modal :: modalDf(titulo='Modificar Subserie' , id='modModificar')}">
+         <div  layout:fragment="modal-content">
+              <div class="form-group">
+                  <label for="exampleInputEmail1">Id Sub serie</label>
+                  <input type="text" class="form-control" id="idMod" disabled>
+              </div>
+              <div class="form-group">
+              		<div class="row">
+              		<div class="col-sm-6">
+                    <label th:text="#{administracion.sub.nombre}"for="exampleInputEmail1">Nombre</label>
+                  <input type="text" class="form-control" id="nombreMod" th:placeholder="#{administracion.sub.en}">
+                  </div>
+                  <div class="col-sm-6">
+                  <label th:text="#{administracion.sub.proceso}" for="exampleInputEmail1">Proceso</label>
+                  <input type="text" class="form-control" id="procMod" th:placeholder="#{administracion.sub.pro}">
+                  </div>
+                  </div>
+                  <div class="row">
+              	  <div class="col-sm-6">
+                  <label th:text="#{administracion.sub.gestion}" for="exampleInputEmail1">Archivo gesti&oacute;n</label>
+                  <input type="number" class="form-control" id="arcgesMod" th:placeholder="#{administracion.sub.ag}">
+                  </div>
+                  <div class="col-sm-6">
+                  <label  th:text="#{administracion.sub.central}" for="exampleInputEmail1">Archivo central</label>
+                  <input type="number" class="form-control" id="arccenMod" th:placeholder="#{administracion.sub.ac}">
+                  </div>
+                  </div>
+			      <label for="exampleInputEmail1">Serie</label>
+			      <div class="form-group">
+			      <select class="form-control" id="seriMod">
+			    	<option th:each="serie : ${liataSerire}" th:value="${serie.id}" th:text="${serie.nombre}">
+			    	</option>
+				  </select>
+				  </div>
+                  <label th:text="#{administracion.sub.descripcion}" for="exampleInputEmail1">Descripci&oacute;n</label>
+                  <textarea class="form-control" id="descMod" rows="3" th:placeholder="#{administracion.sub.escribir}"></textarea>
+                  <label th:text="#{administracion.sub.procedimiento}"for="exampleInputEmail1">Procedimiento</label>
+                  <textarea class="form-control" id="procediMod" rows="3" th:placeholder="#{administracion.sub.escribir}"></textarea>
+         </div>
+         <div  layout:fragment="modal-footer">
+              <button th:text="#{administracion.serie.cerrar}" type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+              <button th:text="#{administracion.serie.guardar}"type="button" class="btn btn-primary" onclick="modificarSubserie()">Guardar</button>
+         </div>
+      </div>
+      </div>
+       <!-- Eliminacion de SubSerie -->
+      <div layout:replace="~{fragments/modal :: modalConfim(id='confirmDelete')}" >
+      	<div  layout:fragment="modal-footer">
+      	     <input type="hidden" id="idSubserie">
+      		 <button th:text="#{administracion.serie.cerrar}" type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+             <button th:text="#{administracion.serie.eliminar}"type="button" class="btn btn-primary"  onclick="eliminarSubserie()" >Eliminar</button>
+      	</div>
+      </div>
+     
+</th:block>
+ <th:block layout:fragment="body_end">
+    <script th:src="@{~/gestion-cmc/resources/gestion-cmc/js/subserie.js}"></script>
+</th:block>
+ </html>    

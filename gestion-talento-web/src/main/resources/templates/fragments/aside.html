@@ -1,0 +1,211 @@
+<aside class="main-sidebar sidebar-dark-primary elevation-4" 
+xmlns:th="http://www.thymeleaf.org" 
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
+    <!-- Brand Logo -->
+    <a th:href="@{/home}" class="brand-link">
+      <img th:src="@{~/gestion-cmc/resources/gestion-cmc/img/logo.png}" alt="" class="brand-image img-circle">
+      <span class="brand-text font-weight-light">Gesti&oacute;n Talento CMC</span>
+    </a>
+<div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="info center-element">
+          <a th:href="@{/administracion/miperfil}" class="d-block" th:text="${#authentication.name}" > Usuario</a>
+        </div>
+      </div>
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+            <li class="nav-item">
+                <a th:href="@{/administracion/miperfil}" class="nav-link ">
+                  <i class=" nav-icon fas fa-user-circle"></i>
+                  <p th:text="#{aside.opcion.perfil}">Mi perfil</p>
+                </a>
+              </li>   
+              <li class="nav-item">
+                <a th:href="@{/administracion/curriculum}" class="nav-link ">
+                  <i class=" nav-icon fas fa-file-invoice"></i>
+                  <p>Curriculum vitae</p>
+                </a>
+              </li> 
+              <li class="nav-item">
+                <a th:href="@{/administracion/evaluacion}" class="nav-link " sec:authorize="hasAnyAuthority('ANALISTA_RRHH','GERENTE_RRHH','GERENTE','EMPLEADO')">
+                 <i class="nav-icon fas fa-edit"></i>
+                  <p th:text="#{aside.opcion.evaluacion}">Evaluaci&oacute;n de desempe&ntilde;o</p>
+                </a>
+              </li> 
+              <li class="nav-item" sec:authorize="hasAnyAuthority('ANALISTA_RRHH','GERENTE_RRHH')" >
+                <a th:href="@{/administracion/usuario}" class="nav-link ">
+                 <i class="nav-icon fas fa-users"></i>
+                  <p th:text="#{aside.opcion.usuario}">Usuarios</p>
+                </a>
+              </li> 
+               <li class="nav-item">
+                <a th:href="@{/administracion/calendario}" class="nav-link ">
+                 <i class="nav-icon far fa-calendar-alt"></i>
+                  <p th:text="#{aside.opcion.calendario}">Calendario</p>
+                </a>
+              </li> 
+<!--               <li class="nav-item"> -->
+<!--                 <a th:href="@{/tabla}" class="nav-link "> -->
+<!--                  <i class="nav-icon fas fa-file-alt"></i> -->
+<!--                   <p th:text="#{aside.opcion.documentacion}">Documentaci&oacute;n</p> -->
+<!--                 </a> -->
+<!--               </li>  -->
+          <li class="nav-item " sec:authorize="hasAnyAuthority('ANALISTA_RRHH','GERENTE_RRHH','GERENTE')">
+            <a href="#" class="nav-link ">
+              <i class="nav-icon fas fa-envelope-open-text"></i>
+              <p th:text="#{aside.opcion.solicitudes}">  Solicitudes
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+<!--               <li class="nav-item"> -->
+<!--                 <a th:href="@{/tabla}" class="nav-link "> -->
+<!--                   <i class="far fa-circle nav-icon"></i> -->
+<!--                   <p th:text="#{aside.opcion.solicitudes.permisos}">Permisos</p> -->
+<!--                 </a> -->
+<!--               </li> -->
+<!--               <li class="nav-item"> -->
+<!--                 <a th:href="@{/pagina1}" class="nav-link"> -->
+<!--                   <i class="far fa-circle nav-icon"></i> -->
+<!--                   <p th:text="#{aside.opcion.solicitudes.vacaciones}">Vacaciones</p> -->
+<!--                 </a> -->
+<!--               </li> -->
+<!--               <li class="nav-item"> -->
+<!--                 <a href="#" class="nav-link"> -->
+<!--                   <i class="far fa-circle nav-icon"></i> -->
+<!--                   <p th:text="#{aside.opcion.solicitudes.certificaciones}">Certificaciones</p> -->
+<!--                 </a> -->
+<!--               </li> -->
+<!--                <li class="nav-item"> -->
+<!--                 <a href="#" class="nav-link"> -->
+<!--                   <i class="far fa-circle nav-icon"></i> -->
+<!--                   <p th:text="#{aside.opcion.solicitudes.incapacidades}">Incapacidades</p> -->
+<!--                 </a> -->
+<!--               </li> -->
+               <li class="nav-item" sec:authorize="hasAnyAuthority('ANALISTA_RRHH','GERENTE_RRHH','GERENTE')" >
+                <a th:href="@{/administracion/solicitud}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p th:text="#{aside.opcion.solicitudes.personal}">Solicitud de personal</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+           <li class="nav-item " sec:authorize="hasAnyAuthority('ANALISTA_RRHH','GERENTE','GERENTE_RRHH','EVALUADOR','CANDIDATO')"   >
+            <a href="#" class="nav-link ">
+              <i class="fas fa-user-check nav-icon"></i>
+              <p th:text="#{aside.option.seleccion}">
+                Selecci&oacute;n
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a  class="nav-link ">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p th:text="#{aside.option.seleccion.tecnica}">Pruebas tecnicas</p>
+                </a>
+              </li>
+              <li class="nav-item"  sec:authorize="hasAnyAuthority('ANALISTA_RRHH','GERENTE_RRHH','CANDIDATO')">
+                <a  class="nav-link ">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p th:text="#{aside.option.seleccion.psico}">Pruebas Psicotecnicas</p>
+                </a>
+              </li>
+              
+<!--               <li class="nav-item"> -->
+<!--                 <a href="#" class="nav-link"> -->
+<!--                   <i class="far fa-circle nav-icon"></i> -->
+<!--                   <p th:text="#{aside.option.seleccion.entrevista}" >Entrevista</p> -->
+<!--                 </a> -->
+<!--               </li> -->
+<!--                <li class="nav-item"> -->
+<!--                 <a th:href="@{/administracion/peticiones}" class="nav-link"> -->
+<!--                   <i class="far fa-circle nav-icon"></i> -->
+<!--                   <p th:text="#{aside.option.seleccion.proceso}">Procesos</p> -->
+<!--                 </a> -->
+<!--               </li> -->
+               <li class="nav-item"  sec:authorize="hasAnyAuthority('ANALISTA_RRHH','GERENTE_RRHH')" >
+                <a th:href="@{/administracion/candidato}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p th:text="#{aside.option.seleccion.candidatos}">Candidatos</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+           <li class="nav-item " sec:authorize="hasAuthority('GERENTE_RRHH')"   >
+            <a href="#" class="nav-link ">
+             <i class="fas fa-mail-bulk nav-icon"></i>
+              <p th:text="#{aside.option.parametria}">
+                Parametria
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a th:href="@{/administracion/serie}" class="nav-link ">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p >Serie</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a th:href="@{/administracion/subserie}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Subserie</p>
+                </a>
+              </li>
+               <li class="nav-item">
+                <a th:href="@{/administracion/pruebas}" class="nav-link ">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p th:text="#{aside.option.parametria.prueba}">Pruebas</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a th:href="@{/administracion/tarifa}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p th:text="#{aside.option.parametria.tarifa}">Tarifas</p>
+                </a>
+              </li>
+      
+              <li class="nav-item">
+                <a th:href="@{/administracion/ambientacion}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p th:text="#{aside.option.parametria.ambiente}">Ambiente</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a th:href="@{/administracion/tipo-perfil}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p th:text="#{aside.option.parametria.tipop}">Tipo perfil</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a th:href="@{/administracion/especialidad}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p th:text="#{aside.option.parametria.especialidad}">Especialidad</p>
+                </a>
+              </li>
+              
+               <li class="nav-item">
+                <a th:href="@{/administracion/clase-perfil}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p th:text="#{aside.option.parametria.clase}">Clase perfil</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a th:href="@{/administracion/competencia-corporativa}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p th:text="#{aside.option.parametria.competenciaCorporativa}">Competencia Corporativa</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>

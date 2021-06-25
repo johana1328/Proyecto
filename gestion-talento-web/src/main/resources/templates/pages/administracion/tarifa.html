@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:with="http://www.thymeleaf.org/extras/with"
+	layout:decorate="~{layout}"
+	th:with="funcionalidad='Administraci&oacuten', evento='Tarifas'">
+<th:block layout:fragment="content">
+     
+     <table id="tablaTarifa" class="table table-bordered table-hover ">
+     	<thead>
+        	<tr>
+            	<th>Id</th>
+                <th th:text="#{administracion.tarifa.valor}">Valor</th>
+                <th th:text="#{administracion.tarifa.accion}" width="70px">Acciones</th>
+            </tr>
+        </thead>
+     </table>  
+     
+     <!-- Formulario de creacion -->
+      <div layout:replace="~{fragments/modal :: modalDf(titulo='Crear Tarifa' , id='modCrear')}">
+         <div  layout:fragment="modal-content">
+              <div class="form-group">
+                  <label th:text="#{administracion.tarifa.valor}" for="exampleInputEmail1">Valor</label>
+                  <input type="text" class="form-control" id="valorCrear" th:placeholder="#{administracion.tarifa.iv}">
+              </div>
+         </div>
+         <div  layout:fragment="modal-footer">
+              <button th:text="#{administracion.tarifa.cerrar}"type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+              <button th:text="#{administracion.tarifa.guardar}"type="button" class="btn btn-primary" onclick="crearTarifa()" >Guardar</button>
+         </div>
+      </div>
+      
+      <!-- Modificacion de tarifa -->
+      <div layout:replace="~{fragments/modal :: modalDf(titulo='Crear Tarifa' , id='modModificar')}">
+         <div  layout:fragment="modal-content">
+              <div class="form-group">
+                  <label for="exampleInputEmail1">Id</label>
+                  <input type="text" class="form-control" id="idMod" disabled>
+              </div>
+              <div class="form-group">
+                  <label th:text="#{administracion.tarifa.valor}" for="exampleInputEmail1">Valor</label>
+                  <input type="text" class="form-control" id="valorMod" th:placeholder="#{administracion.tarifa.iv}">
+              </div>
+         </div>
+         <div  layout:fragment="modal-footer">
+              <button th:text="#{administracion.tarifa.cerrar}"type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+              <button th:text="#{administracion.tarifa.guardar}"type="button" class="btn btn-primary" onclick="modificarTarifa()">Guardar</button>
+         </div>
+      </div>
+      
+      <!-- Eliminacion de tarifa -->
+      <div layout:replace="~{fragments/modal :: modalConfim(id='confirmDelete')}" >
+      	<div  layout:fragment="modal-footer">
+      	     <input type="hidden" id="valorEliminar">
+      		 <button th:text="#{administracion.tarifa.cerrar}" type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+             <button th:text="#{administracion.tarifa.eliminar}"type="button" class="btn btn-primary"  onclick="eliminarTarifa()" >Eliminar</button>
+      	</div>
+      </div>
+      
+</th:block>
+<th:block layout:fragment="body_end">
+    <script th:src="@{~/gestion-cmc/resources/gestion-cmc/js/tarifa.js}"></script>
+</th:block>
+</html>

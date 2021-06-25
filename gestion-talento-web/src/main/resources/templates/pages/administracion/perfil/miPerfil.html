@@ -1,0 +1,191 @@
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:with="http://www.thymeleaf.org/extras/with"
+	layout:decorate="~{layout}"
+	th:with="funcionalidad='Administraci&oacuten', evento='Mi perfil'">
+<th:block layout:fragment="content">
+	<section class="content">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-3">
+					<!--  card datos basicos  -->
+					<div class="card card-primary card-outline">
+						<div class="card-body box-profile">
+							<div class="text-center">
+								<img class="profile-user-img  img-circle"
+									th:src="@{~/gestion-cmc/resources/gestion-cmc/img/usuario.jpg}"
+									alt="User profile picture">
+							</div>
+							<h3 class="profile-username text-center" th:text="${#authentication.name}" >Mario Mendez</h3>
+<!-- 							<p class="text-muted text-center">Gerente RRHH</p> -->
+
+							<ul class="list-group list-group-unbordered mb-3">
+
+								<li class="list-group-item"><b>Telefono</b> <a
+									class="float-right">2312131</a></li>
+								<li class="list-group-item"><b>Correo</b> <a
+									class="float-right">prueba@gmail.com</a></li>
+								<li class="list-group-item"><b>Direccion</b> <a
+									class="float-right">cll2131</a></li>
+								<li class="list-group-item"><b>Estado civil</b> <a
+									class="float-right">soltero</a></li>
+								<li class="list-group-item"><b>Nivel de estudios</b> <a
+									class="float-right">basico</a></li>
+
+
+							</ul>
+						</div>
+					</div>
+
+				</div>
+				<!--  card informacion  -->
+				<div class="col-md-9">
+					<div class="card">
+						<div class="card-header ">
+							<ul class="nav nav-pills">
+								<li class="nav-item"><a class="nav-link active" href="#pro"
+									data-toggle="tab">Informacion Profesional</a></li>
+								<li class="nav-item"><a class="nav-link" href="#academica"
+									data-toggle="tab">Estudios</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="#conocimiento" data-toggle="tab">Conocimientos y
+										habilidades</a></li>
+								<li class="nav-item"><a class="nav-link " href="#tecnica"
+									data-toggle="tab">Competencias Tecnicas</a></li>
+								<li class="nav-item"><a class="nav-link " href="#laboral"
+									data-toggle="tab">Experiencia laboral</a></li>
+							</ul>
+						</div>
+						<div class="card-body">
+							<div class="tab-content">
+								<!-- /.tab-pane informacion profesional -->
+								<div class="active tab-pane" id="pro">
+									<div class="card w-75">
+										<blockquote  class="quote-navy">
+											<h5>Perfil profesional.</h5>
+											<p class="card-text">Informacion</p>
+										</blockquote>
+									</div>
+
+									<br></br>
+									<div class="card w-75">
+										<blockquote class="quote-navy">
+											<h5>Experiencia profesional.</h5>
+											<p class="card-text">Informacion</p>
+										</blockquote>
+									</div>
+								</div>
+								<!-- /.tab-pane estudios -->
+								<div class=" tab-pane" id="academica">
+									<div class="row">
+										<div class="card w-50">
+										<div class="col-6">
+											<blockquote  class="quote-navy">
+												<h6 class="card-title">Estudio</h6> <br>
+												<p>Sena</p>
+												<h6 class="card-title">Lugar</h6><br>
+												<p>Sena</p>
+												<h6 class="card-title">Ciudad</h6> <br>
+												<p>Bogota</p>
+												<h6 class="card-title">Pais</h6> <br>
+												<p>Colombia</p>
+												<h6 class="card-title">A&ntilde;o finalizacion </h6> <br>
+												<p>2018</p>
+											</blockquote>
+											</div>
+										</div>
+										
+									</div>
+								</div>
+									<!-- /.tab-pane concimientos -->
+								<div class=" tab-pane" id="conocimiento">
+									<div class="card w-75">
+										<blockquote  class="quote-navy">
+											<h5>Front End</h5>
+											<p class="card-text">Informacion</p>
+										</blockquote>
+									</div>
+
+									<br></br>
+									<div class="card w-75">
+										<blockquote class="quote-navy">
+											<h5>Back End</h5>
+											<p class="card-text">Informacion</p>
+										</blockquote>
+									</div>
+								</div>
+								<!-- /.tab-pane competencias tecnicas -->
+								<div class=" tab-pane" id="tecnica">
+									<div class="row">
+									<div class="card w-50">
+										<div class="col-6">
+											<blockquote  class="quote-navy">
+												<h6 class="card-title">Entorno/Herramienta/Plataforma</h6> <br>
+												<p>Sena</p>
+												<h6 class="card-title">Nivel</h6><br>
+												<p>10%</p>
+												
+											</blockquote>
+										</div>
+									</div>
+									</div>
+								</div>
+								<!-- /.tab-pane competencias expernecia -->
+								<div class=" tab-pane" id="laboral">
+									<div class="row">
+									<div class="card w-50">
+										<div class="col-6">
+											<blockquote  class="quote-navy">
+												<h6 class="card-title">Empresa</h6> <br>
+												<p>Sena</p>
+												<h6 class="card-title">Rol</h6><br>
+												<p>Sena</p>
+												<h6 class="card-title">Duracion</h6> <br>
+												<p>Bogota</p>
+												<h6 class="card-title">Funcion</h6> <br>
+												<p>Colombia</p>
+											</blockquote>
+										</div>
+										</div>
+										
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</th:block>
+<th:block layout:fragment="body_end">
+	<link rel="stylesheet"
+		th:href="@{~/gestion-cmc/plugins/bs-stepper/css/bs-stepper.min.css}">
+	<script
+		th:src="@{~/gestion-cmc/plugins/bs-stepper/js/bs-stepper.min.js}"></script>
+
+
+	<!-- Font Awesome -->
+	<link rel="stylesheet"
+		href="@{~/gestion-cmc/plugins/fontawesome/css/all.min.css">
+	<!-- Theme style -->
+	<link rel="stylesheet"
+		href="@{~/gestion-cmc/adminl-lte/css/adminlte.min.css">
+
+	<!-- jQuery -->
+	<script src="@{~/gestion-cmc/plugins/bs-stepper/js/jquery.min.js"></script>
+	<!-- Bootstrap 4 -->
+	<script
+		src="@{~/gestion-cmc/plugins/bs-stepper/js/bootstrap.bundle.min.js"></script>
+	<!-- AdminLTE App -->
+	<script src="@{~/gestion-cmc/plugins/bs-stepper/js/adminlte.min.js"></script>
+	<!-- AdminLTE for demo purposes -->
+	<script src="@{~/gestion-cmc/plugins/bs-stepper/js/demo.js"></script>
+
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			window.stepper = new Stepper(document.querySelector('.bs-stepper'))
+		})
+	</script>
+</th:block>
+</html>
