@@ -48,7 +48,7 @@ public class SubserieController {
 	}
 	
 	@PostMapping(path = "/create", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<ModelResponse> crearSubserie(@RequestBody @Valid SubserieDto subserieDto) throws ArqGestionExcepcion {
+	public ResponseEntity<ModelResponse> crearSubserie(@RequestBody SubserieDto subserieDto) throws ArqGestionExcepcion {
 		try {
 			subserieBussines.crearSubserie(subserieDto);
 			ModelResponse model = new ModelResponse(null, TypeMessage.FROM_MESSAGE, "Subserie creada con exito");
