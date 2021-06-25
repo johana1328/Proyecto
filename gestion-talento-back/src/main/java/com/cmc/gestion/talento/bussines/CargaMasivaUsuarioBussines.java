@@ -45,7 +45,7 @@ public class CargaMasivaUsuarioBussines {
 					EmpleadoDto empleado= MapEmpleadoDto(registros.get(0));
 					listaEmpleado.add(empleado);
 				}catch (ArqGestionExcepcion e) {
-					listaError.add(i+";Error Al leer el archivo");
+					listaError.add(i+1+";"+e.getMessage());
 				}
 			}
 		} catch (IOException e) {
@@ -66,6 +66,7 @@ public class CargaMasivaUsuarioBussines {
 					errorWriter.write(in);
 				}
 				errorWriter.close();
+				throw new ArqGestionExcepcion("Error al procesar informacion del archivo", ExcepcionType.ERROR_VALIDATION);
 			} catch (IOException e) {
 				throw new ArqGestionExcepcion("Error al procesar informacion del archivo", ExcepcionType.ERROR_VALIDATION);
 			}
