@@ -10,7 +10,7 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="info center-element">
-          <a href="#" class="d-block" th:text="${#authentication.name}" > Usuario</a>
+          <a th:href="@{/administracion/miperfil}" class="d-block" th:text="${#authentication.name}" > Usuario</a>
         </div>
       </div>
       <!-- Sidebar Menu -->
@@ -31,7 +31,7 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
                 </a>
               </li> 
               <li class="nav-item">
-                <a th:href="@{/administracion/evaluacion}" class="nav-link ">
+                <a th:href="@{/administracion/evaluacion}" class="nav-link " sec:authorize="hasAnyAuthority('ANALISTA_RRHH','GERENTE_RRHH','GERENTE','EMPLEADO')">
                  <i class="nav-icon fas fa-edit"></i>
                   <p th:text="#{aside.opcion.evaluacion}">Evaluaci&oacute;n de desempe&ntilde;o</p>
                 </a>
@@ -48,17 +48,16 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
                   <p th:text="#{aside.opcion.calendario}">Calendario</p>
                 </a>
               </li> 
-              <li class="nav-item">
-                <a th:href="@{/tabla}" class="nav-link ">
-                 <i class="nav-icon fas fa-file-alt"></i>
-                  <p th:text="#{aside.opcion.documentacion}">Documentaci&oacute;n</p>
-                </a>
-              </li> 
-          <li class="nav-item ">
+<!--               <li class="nav-item"> -->
+<!--                 <a th:href="@{/tabla}" class="nav-link "> -->
+<!--                  <i class="nav-icon fas fa-file-alt"></i> -->
+<!--                   <p th:text="#{aside.opcion.documentacion}">Documentaci&oacute;n</p> -->
+<!--                 </a> -->
+<!--               </li>  -->
+          <li class="nav-item " sec:authorize="hasAnyAuthority('ANALISTA_RRHH','GERENTE_RRHH','GERENTE')">
             <a href="#" class="nav-link ">
               <i class="nav-icon fas fa-envelope-open-text"></i>
-              <p th:text="#{aside.opcion.solicitudes}">
-                Solicitudes
+              <p th:text="#{aside.opcion.solicitudes}">  Solicitudes
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -95,7 +94,7 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
               </li>
             </ul>
           </li>
-           <li class="nav-item " sec:authorize="hasAnyAuthority('ANALISTA_RRHH','GERENTE','GERENTE_RRHH','EVALUADOR')"   >
+           <li class="nav-item " sec:authorize="hasAnyAuthority('ANALISTA_RRHH','GERENTE','GERENTE_RRHH','EVALUADOR','CANDIDATO')"   >
             <a href="#" class="nav-link ">
               <i class="fas fa-user-check nav-icon"></i>
               <p th:text="#{aside.option.seleccion}">
@@ -110,7 +109,7 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
                   <p th:text="#{aside.option.seleccion.tecnica}">Pruebas tecnicas</p>
                 </a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item"  sec:authorize="hasAnyAuthority('ANALISTA_RRHH','GERENTE_RRHH','CANDIDATO')">
                 <a  class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p th:text="#{aside.option.seleccion.psico}">Pruebas Psicotecnicas</p>
@@ -123,12 +122,12 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
 <!--                   <p th:text="#{aside.option.seleccion.entrevista}" >Entrevista</p> -->
 <!--                 </a> -->
 <!--               </li> -->
-               <li class="nav-item">
-                <a th:href="@{/administracion/peticiones}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p th:text="#{aside.option.seleccion.proceso}">Procesos</p>
-                </a>
-              </li>
+<!--                <li class="nav-item"> -->
+<!--                 <a th:href="@{/administracion/peticiones}" class="nav-link"> -->
+<!--                   <i class="far fa-circle nav-icon"></i> -->
+<!--                   <p th:text="#{aside.option.seleccion.proceso}">Procesos</p> -->
+<!--                 </a> -->
+<!--               </li> -->
                <li class="nav-item"  sec:authorize="hasAnyAuthority('ANALISTA_RRHH','GERENTE_RRHH')" >
                 <a th:href="@{/administracion/candidato}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>

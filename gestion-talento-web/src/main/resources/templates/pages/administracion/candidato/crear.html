@@ -1,13 +1,22 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	xmlns:with="http://www.thymeleaf.org/extras/with"
-	layout:decorate="~{layout}"
-	th:with="evento='Crear candidato'">
+	layout:decorate="~{layout}" th:with="evento='Crear candidato'">
 <th:block layout:fragment="content">
-	<form id="formCrearCandidato" action="" method="POST">
+	<form id="formCrearCandidato" th:object="${candidato}"
+		th:action="@{/administracion/candidato/crear}" method="POST">
 		<div class="row">
 			<div class="col-md-12">
 				<div class="card-body p-0">
+					<div th:if="${#fields.hasErrors('*')}"
+						class="alert alert-danger alert-dismissible">
+						<button type="button" class="close"
+							onclick="closeAlert('alert-danger')" aria-hidden="true">&times;</button>
+						<i class="icon fas fa-ban"></i> Error!
+						<ul style="margin-top: 0px; margin-bottom: 0px;">
+							<li th:each="error : ${#fields.errors('*')}" th:text="${error}"></li>
+						</ul>
+					</div>
 					<div id="messageBox1" class="alert alert-danger alert-dismissible"
 						style="display: none">
 						<button type="button" class="close"
@@ -60,26 +69,30 @@
 						</div>
 						<div class="bs-stepper-content"></div>
 						<!-- /.card-header -->
+
 						<div id="basica" class="content" role="tabpanel"
 							aria-labelledby="basica-trigger">
 							<div class="card-body">
 								<div class="row">
 									<div class="col-sm-6">
 										<div class="form-group col-sm-10">
-											<label for="tipoDocumento"th:text="#{administracion.candidato.tipodocumento}">Tipo
-												documento</label> <select id="tipoDocumento" name="tipoDocumento" class="form-control">
-												<option value="" selected="selected"
-													th:text="#{administracion.candidato.tipodocumento.tipo}">Tipo</option>
-												<option VALUE="CC">CC</option>
-												<option VALUE="TI">TI</option>
-												<option VALUE="CE">CE</option>
+											<label for="tipoDocumento"
+												th:text="#{administracion.candidato.tipodocumento}">Tipo
+												documento</label> <select th:field="*{tipoDocumento}"
+												id="tipoDocumento" name="tipoDocumento" class="form-control">
+												<option value="" selected="selected">Tipo</option>
+												<option
+													th:each="tipoDoc : ${T(com.cmc.gestion.talento.jpa.type.TipoDocumento).values()}"
+													th:value="${tipoDoc}" th:text="${tipoDoc.value}"></option>
 											</select>
 										</div>
 									</div>
 									<div class="col-sm-6">
 										<div class="form-group col-sm-10">
-											<label for="documento"th:text="#{administracion.candidato.documento}">Documento</label>
-											<input id="documento" name="documento" type="text" class="form-control"
+											<label for="documento"
+												th:text="#{administracion.candidato.documento}">Documento</label>
+											<input id="documento" name="documento"
+												th:field="*{documento}" type="text" class="form-control"
 												th:placeholder="#{administracion.candidato.edocumento}">
 										</div>
 									</div>
@@ -88,17 +101,19 @@
 									<div class="col-sm-6">
 										<!-- text input -->
 										<div class="form-group col-sm-10">
-											<label for="primerNombre"th:text="#{administracion.candidato.primern}">Primer
-												Nombre</label> <input id="primerNombre" name="nombre1" type="text"
-												class="form-control"
+											<label for="primerNombre"
+												th:text="#{administracion.candidato.primern}">Primer
+												Nombre</label> <input id="primerNombre" name="nombre1"
+												th:field="*{primerNombre}" type="text" class="form-control"
 												th:placeholder="#{administracion.candidato.epnombre}">
 										</div>
 									</div>
 									<div class="col-sm-6">
 										<div class="form-group col-sm-10">
-											<label for="nombre2" th:text="#{administracion.candidato.segundon}">Segundo
-												Nombre</label> <input name="nombre2" id="nombre2" type="text"
-												class="form-control"
+											<label for="nombre2"
+												th:text="#{administracion.candidato.segundon}">Segundo
+												Nombre</label> <input name="nombre2" id="nombre2"
+												th:field="*{segundoNombre}" type="text" class="form-control"
 												th:placeholder="#{administracion.candidato.esnombre}">
 										</div>
 									</div>
@@ -107,16 +122,20 @@
 									<div class="col-sm-6">
 										<!-- text input -->
 										<div class="form-group col-sm-10">
-											<label for="apellido1" th:text="#{administracion.candidato.primera}">Primer
-												Apellido</label> <input id="apellido1" name="apellido1" type="text"
+											<label for="apellido1"
+												th:text="#{administracion.candidato.primera}">Primer
+												Apellido</label> <input id="apellido1" name="apellido1"
+												th:field="*{primerApellido}" type="text"
 												class="form-control"
 												th:placeholder="#{administracion.candidato.epapellido}">
 										</div>
 									</div>
 									<div class="col-sm-6">
 										<div class="form-group col-sm-10">
-											<label for="apellido2" th:text="#{administracion.candidato.segundoa}">Segundo
-												Apellido</label> <input id="apellido2" name="apellido2" type="text"
+											<label for="apellido2"
+												th:text="#{administracion.candidato.segundoa}">Segundo
+												Apellido</label> <input id="apellido2" name="apellido2"
+												th:field="*{segundoApellido}" type="text"
 												class="form-control"
 												th:placeholder="#{administracion.candidato.esapellido}">
 										</div>
@@ -127,8 +146,10 @@
 									<div class="col-sm-6">
 										<!-- text input -->
 										<div class="form-group col-sm-10">
-											<label for="telefono" th:text="#{administracion.candidato.telefono}">Tel&eacute;fono</label>
-											<input id="telefono" name="telefono" type="text" class="form-control"
+											<label for="telefono"
+												th:text="#{administracion.candidato.telefono}">Tel&eacute;fono</label>
+											<input id="telefono" name="telefono" th:field="*{telefono}"
+												type="text" class="form-control"
 												th:placeholder="#{administracion.candidato.etelefono}">
 										</div>
 									</div>
@@ -137,7 +158,8 @@
 											<label for="correo"
 												th:text="#{administracion.candidato.correoelectronico}">Correo
 												Electr&oacute;nico</label> <input name="correo" id="correo"
-												type="text" class="form-control"
+												type="text" th:field="*{correoElectronico}"
+												class="form-control"
 												th:placeholder="#{administracion.candidato.ecorreo}">
 										</div>
 									</div>
@@ -156,26 +178,21 @@
 									<div class="form-group">
 										<label th:text="#{administracion.candidato.titulouni}"
 											for="titulo">T&iacute;tulo Universitario</label> <input
-											type="text" name="titulo" class="form-control"
-											id="titulo"
+											type="text" name="titulo" th:field="*{tituloProfesional}"
+											class="form-control" id="titulo"
 											th:placeholder="#{administracion.candidato.etitulo}">
 									</div>
 								</div>
 							</div>
-							<div class="col-sm-6">
-								<div class="form-group">
-									<div class="row">
-										<div class="col-sm-6">
-											<!-- textarea -->
-											<div class="form-group">
-												<label for="objetivo" th:text="#{administracion.candidato.objetivos}">Objetivos</label>
-												<textarea id="objetivo" class="form-control" name="objetivo"
-													th:placeholder="#{administracion.candidato.eobjetivos}"></textarea>
-											</div>
-										</div>
-									</div>
-								</div>
+							<!-- textarea -->
+							<div class="form-group">
+								<label for="objetivo"
+									th:text="#{administracion.candidato.objetivos}">Objetivos</label>
+								<textarea id="objetivo" class="form-control" name="objetivo"
+									th:field="*{objetivos}"
+									th:placeholder="#{administracion.candidato.eobjetivos}"></textarea>
 							</div>
+
 							<button class="btn btn-primary" type="button"
 								th:text="#{administracion.candidato.atras}"
 								onclick="stepper.previous()">Anterior</button>
@@ -189,39 +206,26 @@
 							<div class="row">
 								<div class="col-sm-6">
 									<div class="form-group col-sm-10">
-										<label for="trabajo" th:text="#{administracion.candidato.trabaja}">Trabaja
-											actualmente</label> <select id="trabajo" name="trabajo" class="form-control">
-											<option th:text="#{administracion.candidato.seleccione}"
-												value="" selected="selected">...</option>
-											<option th:text="#{administracion.candidato.si}" value="Si">Si</option>
-											<option value="No">No</option>
+										<label for="trabajo">Trabaja actualmente</label> <select
+											id="trabajo" name="trabajoActual" th:field="*{trabajoActual}"
+											class="form-control">
+											<option value="null" selected="selected">...</option>
+											<option value="si">Si</option>
+											<option value="no">No</option>
 
 										</select>
 									</div>
 								</div>
 								<div class="col-sm-6">
 									<div class="form-group col-sm-10">
-										<label for="contrato" th:text="#{administracion.candidato.tipocontrato}">Que
-											tipo de contrato posee</label> <select id="contrato" name="contrato"
+										<label for="contrato"
+											th:text="#{administracion.candidato.tipocontrato}">Que
+											tipo de contrato posee</label> <select id="contrato" name="contrato" th:field="*{tipoContrato}"
 											class="form-control">
-											<option value=""
-												th:text="#{administracion.candidato.seleccione}"
-												selected="selected">...</option>
+											<option value="" selected="selected">Tipo</option>
 											<option
-												th:text="#{administracion.candidato.tipocontrato.indefinido}"
-												value="indefinido">Indefinido</option>
-											<option
-												th:text="#{administracion.candidato.tipocontrato.fijo}"
-												value="fijo">Fijo</option>
-											<option
-												th:text="#{administracion.candidato.tipocontrato.prestacions}"
-												value="prestacion de servicios">Prestaci&oacute;n
-												de servicios</option>
-											<option
-												th:text="#{administracion.candidato.tipocontrato.otralabor}"
-												value="otra labor">Otra labor</option>
-											<option th:text="#{administracion.candidato.otro}"
-												value="otro">Otro</option>
+												th:each="tipoContr : ${T(com.cmc.gestion.talento.jpa.type.TipoContrato).values()}"
+												th:value="${tipoContr}" th:text="${tipoContr.value}"></option>
 
 										</select>
 									</div>
@@ -231,8 +235,10 @@
 							<div class="row">
 								<div class="col-sm-6">
 									<div class="form-group col-sm-10">
-										<label for="origen" th:text="#{administracion.candidato.origen}">Origen
-											de la hoja de vida</label> <select id="origen" name="origen" class="form-control">
+										<label for="origen"
+											th:text="#{administracion.candidato.origen}">Origen
+											de la hoja de vida</label> <select id="origen" name="origen"
+											th:field="*{origenHoja}" class="form-control">
 											<option th:text="#{administracion.candidato.seleccione}"
 												value="" selected="selected">...</option>
 											<option value="el empleo">El empleo</option>
@@ -247,13 +253,14 @@
 
 										</select>
 									</div>
-									<div class="col-sm-6">
-										<div class="form-group col-sm-10">
-											<label for="sueldo" th:text="#{administracion.candidato.sueldoactual}">Sueldo
-												actual</label> <input id="sueldo" type="text" name="sueldoActual"
-												class="form-control"
-												th:placeholder="#{administracion.candidato.esueldo}">
-										</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="form-group col-sm-10">
+										<label for="sueldo"
+											th:text="#{administracion.candidato.sueldoactual}">Sueldo
+											actual</label> <input id="sueldo" type="text" name="sueldoActual"
+											th:field="*{salarioActual}" class="form-control"
+											th:placeholder="#{administracion.candidato.esueldo}">
 									</div>
 								</div>
 							</div>
@@ -273,22 +280,24 @@
 								<div class="col-sm-6">
 									<!-- text input -->
 									<div class="form-group  col-sm-10">
-										<label for="aspiracion" th:text="#{administracion.candidato.aspiracion}">Aspiraci&oacute;n
+										<label for="aspiracion"
+											th:text="#{administracion.candidato.aspiracion}">Aspiraci&oacute;n
 											salarial</label> <input id="aspiracion" type="text" name="aspiracion"
-											class="form-control"
+											th:field="*{aspiracionSalarial}" class="form-control"
 											th:placeholder="#{administracion.candidato.easpiracion}">
 									</div>
 								</div>
 								<div class="col-sm-6">
 									<div class="form-group col-sm-10">
-										<label for="disponibilidad">Disponibilidad</label> <select id="disponibilidad" name="disponibilidad"
-											class="form-control">
-											<option value="" selected="selected">...</option>
-											<option value="1 dia">1 Dia</option>
-											<option value="3 dias">3 Dias</option>
-											<option value="5 dias">5 Dias</option>
-											<option value="7 dias">7 Dias</option>
-											<option value="mas de 15 dias">Mas de 15 dias</option>
+										<label for="disponibilidad">Disponibilidad</label> <select
+											id="disponibilidad" name="disponibilidad"
+											th:field="*{disponibilidad}" class="form-control">
+											<option value=selected="selected">...</option>
+											<option value="1">1 Dia</option>
+											<option value="3">3 Dias</option>
+											<option value="5">5 Dias</option>
+											<option value="7">7 Dias</option>
+											<option value="15">Mas de 15 dias</option>
 
 										</select>
 									</div>
@@ -296,40 +305,43 @@
 							</div>
 							<div class="row">
 								<div class="col-sm-6">
-									<div class="form-group">
-										<div class="form-group col-sm-10">
-											<label for="horario" th:text="#{administracion.candidato.horario}">Horario
-												flexible</label>  <select id="horario" name="horario" class="form-control">
-												<option value=""
-													th:text="#{administracion.candidato.seleccione}"
-													selected="selected">...</option>
-												<option th:text="#{administracion.candidato.si}" value="si">Si</option>
-												<option value="no">No</option>
-											</select>
-										</div>
-										<div class="col-sm-6">
-											<div class="form-group">
-												<label for="observacion" th:text="#{administracion.candidato.observaciones}">Observaciones
-													generales</label>
-												<textarea id="observacion" name="observacion" class="form-control" rows="3"
-													th:placeholder="#{administracion.candidato.eobservacion}"></textarea>
-
-											</div>
-										</div>
+									<div class="form-group col-sm-10">
+										<label for="horario"
+											th:text="#{administracion.candidato.horario}">Horario
+											flexible</label> <select id="horario" name="horario"
+											th:field="*{salarioFlexible}" class="form-control">
+											<option value=""
+												th:text="#{administracion.candidato.seleccione}"
+												selected="selected">...</option>
+											<option th:text="#{administracion.candidato.si}" value="si">Si</option>
+											<option value="no">No</option>
+										</select>
 									</div>
-									<button class="btn btn-primary" type="button"
-										th:text="#{administracion.candidato.atras}"
-										onclick="stepper.previous()">Anterior</button>
-									<button type="submit"
-										th:text="#{administracion.candidato.crear}"
-										class="btn btn-primary">Crear</button>
+								</div>
+								<div class="col-sm-6">
+									<div class="form-group col-sm-10">
+										<label for="observacion"
+											th:text="#{administracion.candidato.observaciones}">Observaciones
+											generales</label>
+										<textarea id="observacion" name="observacion"
+											th:field="*{observaciones}" class="form-control" rows="3"
+											th:placeholder="#{administracion.candidato.eobservacion}"></textarea>
+
+									</div>
 								</div>
 							</div>
+							<button class="btn btn-primary" type="button"
+								th:text="#{administracion.candidato.atras}"
+								onclick="stepper.previous()">Anterior</button>
+							<button type="submit" th:text="#{administracion.candidato.crear}"
+								class="btn btn-primary">Crear</button>
 						</div>
 					</div>
 				</div>
-				</div>
-				</div>
+			</div>
+		</div>
+		</div>
+		</div>
 	</form>
 </th:block>
 <th:block layout:fragment="body_end">
