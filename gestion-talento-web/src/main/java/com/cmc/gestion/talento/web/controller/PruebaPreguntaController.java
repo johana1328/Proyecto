@@ -1,5 +1,6 @@
 package com.cmc.gestion.talento.web.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,19 +33,25 @@ public class PruebaPreguntaController {
 
 	@GetMapping("/{idPrueba}")
 	public String init(@PathVariable(name = "idPrueba", required = true) Optional<Long> idPrueba,
-			@RequestParam(name = "action", defaultValue = "NOK") String action, Model model) {
-		PruebaPreguntaDto pregunta = new PruebaPreguntaDto();
+			@RequestParam(name = "action", defaultValue = "OK") String action, Model model) {
+		List<PruebaPreguntaDto> listaPregunta = new ArrayList<PruebaPreguntaDto>();
 		if(idPrueba.isPresent()) {
-			pregunta = pruebaPreguntaBussines.getPregunta(idPrueba.get());
+			listaPregunta = pruebaPreguntaBussines.getPreguntaByPrueba(idPrueba.get());
 		}
-		initOperation(model, pregunta,action);
+	
+		model.addAttribute("pregunta" , new PruebaPreguntaDto());
+		model.addAttribute("listaPregunta", listaPregunta);
+		model.addAttribute("mensaje", getMensaje(action));
+		
+		
+		
 		return "pages/administracion/pruebas/pruebaPregunta";
 	}
 	
 	@PostMapping("/crear")
 	public String crearPregunta(@Valid @ModelAttribute("pregunta")PruebaPreguntaDto pregunta,BindingResult result, Model model) {
 		if (result.hasErrors()) {
-			initOperation(model, pregunta, "NOK");
+//			initOperation(model, pregunta, "NOK");
 			return "pages/administracion/pruebas/pruebaPregunta";
 			
 		}
@@ -52,7 +59,7 @@ public class PruebaPreguntaController {
 			pruebaPreguntaBussines.crearPregunta(pregunta);
 		} catch (ArqGestionExcepcion e) {
 			result.addError(new FieldError("pregunta", "enunciado", "El enunciado de la pregunta ya existe."));
-			initOperation(model, pregunta, "NOK");
+//			initOperation(model, pregunta, "NOK");
 			return "pages/administracion/pruebas/pruebaPregunta";
 		}
 		return "redirect:/administracion/pruebas?action=create";
@@ -62,7 +69,7 @@ public class PruebaPreguntaController {
 	public String modificarPregunta(@PathVariable(name = "id", required = true) Optional<Long> id,
 			@Valid @ModelAttribute("pregunta") PruebaPreguntaDto pregunta, BindingResult result, Model model) {
 		if (result.hasErrors()) {
-			initOperation(model, pregunta, "NOK");
+//			initOperation(model, pregunta, "NOK");
 			return "pages/administracion/pruebas/pruebaPregunta";
 			
 		}
@@ -72,7 +79,7 @@ public class PruebaPreguntaController {
 			
 		} catch (ArqGestionExcepcion e) {
 			result.addError(new FieldError("pregunta", "enunciado", "El enunciado de la pregunta ya existe."));
-			initOperation(model, pregunta, "NOK");
+//			initOperation(model, pregunta, "NOK");
 			return "pages/administracion/pruebas/pruebaPregunta";
 		}
 		return "redirect:/administracion/pruebas?action=update";
@@ -100,13 +107,13 @@ public class PruebaPreguntaController {
 		return msg;
 	}
 	
-	private void initOperation(Model model,PruebaPreguntaDto pregunta, String action) {
-		model.addAttribute("pregunta" ,pregunta);
-		List<PruebaPreguntaDto> lisPreguntaDto = pruebaPreguntaBussines.getallPregunta();
-		model.addAttribute("listaPregunta", lisPreguntaDto);
-		model.addAttribute("mensaje", getMensaje(action));
-		
-	}
+//	private void initOperation(Model model,List<PruebaPreguntaDto> pregunta, String action) {
+//		model.addAttribute("pregunta" ,pregunta);
+//		List<PruebaPreguntaDto> lisPreguntaDto = pruebaPreguntaBussines.getallPregunta();
+//		model.addAttribute("listaPregunta", lisPreguntaDto);
+//		model.addAttribute("mensaje", getMensaje(action));
+//		
+//	}
 	
 	
 }
