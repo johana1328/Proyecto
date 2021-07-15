@@ -35,7 +35,7 @@ public class PreguntaOpcion implements Serializable {
 	private String opcion;
 	
 	@Column(name = "valor", nullable = false)
-	private String valor;
+	private int valor;
 
 	@Column(name = "archivoAdjunto")
 	private String archivoAdjunto;
@@ -60,6 +60,8 @@ public class PreguntaOpcion implements Serializable {
 		this.opcion = opcion;
 	}
 
+	
+
 	public String getArchivoAdjunto() {
 		return archivoAdjunto;
 	}
@@ -76,4 +78,13 @@ public class PreguntaOpcion implements Serializable {
 		this.pruebaPregunta = pruebaPregunta;
 	}
 
+	public int getValor() {
+		return valor;
+	}
+
+	public void setValor(int valor) {
+		this.valor = valor;
+	}
+
+	
 }

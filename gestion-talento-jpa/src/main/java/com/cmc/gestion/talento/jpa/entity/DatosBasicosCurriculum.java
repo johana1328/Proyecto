@@ -6,14 +6,12 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 import com.cmc.gestion.talento.jpa.type.EstadoCivil;
 import com.cmc.gestion.talento.jpa.type.NivelEstudios;
+
 @Entity
 @Table(name="datos_basicos")
 @PrimaryKeyJoinColumn(name = "id_usuario")
@@ -24,24 +22,20 @@ public class DatosBasicosCurriculum extends Usuario {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	@Id
-	@Column(name = "id_datos_basicos")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long idDatosBasicos;
 
 	@Column(name = "fecha_expedicion", updatable = false, nullable = false)
 	private Calendar fechaExpedicion;
 	
-	@Column(name = "lugar_expedicion", length = 100)
+	@Column(name = "lugar_expedicion", length = 100, nullable = false)
 	private String lugarExpedicion;
 	
-	@Column(name = "lugar_nacimiento", length = 100)
+	@Column(name = "lugar_nacimiento", length = 100,nullable = false)
 	private String lugarNacimiento;
 	
 	@Column(name = "fecha_nacimiento", nullable = false)
 	private Calendar fechaNacimiento;
 	
-	@Column(name = "direccion", length = 100)
+	@Column(name = "direccion", length = 100,nullable = false)
 	private String direccion;
 	
 	@Column(name = "barrio", length = 100)
@@ -70,16 +64,9 @@ public class DatosBasicosCurriculum extends Usuario {
 	@Column(name = "pensiones", length = 100)
 	private String pensiones;
 	
-	@Column(name = "rh", length = 100)
+	@Column(name = "rh", length = 100,nullable = false)
 	private String rh;
 
-	public long getIdDatosBasicos() {
-		return idDatosBasicos;
-	}
-
-	public void setIdDatosBasicos(long idDatosBasicos) {
-		this.idDatosBasicos = idDatosBasicos;
-	}
 
 	public Calendar getFechaExpedicion() {
 		return fechaExpedicion;

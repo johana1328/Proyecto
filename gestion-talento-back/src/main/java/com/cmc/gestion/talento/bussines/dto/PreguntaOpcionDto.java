@@ -9,6 +9,7 @@ public class PreguntaOpcionDto {
 	private String opcion;
 	private int valor;
 	private String archivoAdjuto;
+	private PruebaPreguntaDto preguntaDto;
 	
 	public long getIdOpcion() {
 		return idOpcion;
@@ -33,6 +34,12 @@ public class PreguntaOpcionDto {
 	}
 	public void setArchivoAdjuto(String archivoAdjuto) {
 		this.archivoAdjuto = archivoAdjuto;
+	}
+	public PruebaPreguntaDto getPreguntaDto() {
+		return preguntaDto;
+	}
+	public void setPreguntaDto(PruebaPreguntaDto preguntaDto) {
+		this.preguntaDto = preguntaDto;
 	}
 	
 	
