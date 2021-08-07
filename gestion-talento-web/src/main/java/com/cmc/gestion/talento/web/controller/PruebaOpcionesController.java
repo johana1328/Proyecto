@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/administracion/opciones")
-public class PruebaOpciones {
+public class PruebaOpcionesController {
 
 	@GetMapping
 	public String init() {

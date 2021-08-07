@@ -55,7 +55,8 @@ public class NotificationBussines {
 		attachment.setType("INLINE");
 		listAttachment.add(attachment);
 		notificacion.setAttachment(listAttachment);
-		sendNotification(notificacion);   
+		sendNotification(notificacion);
+		
 	} 
 	
 	
