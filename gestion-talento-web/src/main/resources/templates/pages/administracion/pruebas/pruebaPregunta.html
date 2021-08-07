@@ -5,13 +5,13 @@
 	th:with="funcionalidad='Administraci&oacuten', evento='Preguntas'">
 <th:block layout:fragment="content">
 	<!-- Mensajes -->
-	<div th:if="${mensaje != 'NOK'}"
-		class="alert alert-success alert-dismissible">
-		<button type="button" class="close"
-			onclick="closeAlert('alert-success')" aria-hidden="true">x</button>
-		<i class="icon fas fa-check"></i> Ok! <span class="msg2"
-			th:text="${mensaje}"></span>
-	</div>
+<!-- 	<div th:if="${mensaje != 'NOK'}" -->
+<!-- 		class="alert alert-success alert-dismissible"> -->
+<!-- 		<button type="button" class="close" -->
+<!-- 			onclick="closeAlert('alert-success')" aria-hidden="true">x</button> -->
+<!-- 		<i class="icon fas fa-check"></i> Ok! <span class="msg2" -->
+<!-- 			th:text="${mensaje}"></span> -->
+<!-- 	</div> -->
 	<!-- Formulario de creacion -->
 	<form th:object="${pregunta}" th:action="${pregunta.idPregunta == 0} ? @{/administracion/preguntas/crear} : @{/administracion/preguntas/modificar/{id}(id=${pregunta.idPregunta})}"
 		method="post">

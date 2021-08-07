@@ -50,6 +50,8 @@ public class Prueba implements Serializable{
 	
 	@Column(name = "evaluador", length = 100, nullable = false)
 	private String evaluador;
+	
+	
 
 	public long getIdPrueba() {
 		return idPrueba;

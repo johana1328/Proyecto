@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.cmc.gestion.talento.bussines.dto.PruebaPreguntaDto;
 import com.cmc.gestion.talento.bussines.facade.PruebaPreguntaFacade;
 import com.cmc.gestion.talento.jpa.dao.PruebaPreguntaDao;
+import com.cmc.gestion.talento.jpa.entity.Prueba;
 import com.cmc.gestion.talento.jpa.entity.PruebaPregunta;
 import com.cmc.gestion.talento.web.config.ArqGestionExcepcion;
 import com.cmc.gestion.talento.web.config.ArqGestionExcepcion.ExcepcionType;
@@ -45,6 +46,18 @@ public class PruebaPreguntaBussines {
 	     }
 		return null;
      }
+	
+	public List<PruebaPreguntaDto> getPreguntaByPrueba(long idPrueba){
+		Prueba prueba = new Prueba();
+		prueba.setIdPrueba(idPrueba);
+		
+		List<PruebaPregunta> listPrueba =  pruebaPreguntaDao.findByPrueba(prueba);
+		if (!listPrueba.isEmpty()) {
+			return pruebaPreguntaFacade.getListObjec(listPrueba);
+		}
+		return null;
+		
+	}
 	
 	public void crearPregunta(PruebaPreguntaDto pruebaPreguntaDto) throws ArqGestionExcepcion {
 		List<PruebaPregunta> lisPregu = pruebaPreguntaDao.findByEnunciado(pruebaPreguntaDto.getEnunciado());
