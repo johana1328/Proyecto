@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cmc.gestion.talento.bussines.CandidatoBussines;
-import com.cmc.gestion.talento.bussines.UsuarioBussines;
 import com.cmc.gestion.talento.bussines.dto.CandidatoDto;
 import com.cmc.gestion.talento.jpa.type.TipoEstadoUsuario;
 import com.cmc.gestion.talento.web.config.ArqGestionExcepcion;
@@ -27,9 +26,6 @@ import com.cmc.gestion.talento.web.config.ArqGestionExcepcion;
 public class CandidatoController {
 	
 	private  CandidatoDto candidato;
-	
-	@Autowired
-	private UsuarioBussines usuarioBussines;
 	
 	@Autowired
 	private CandidatoBussines candidatoBussines;

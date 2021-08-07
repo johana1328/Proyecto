@@ -10,14 +10,14 @@
       <link rel="stylesheet" th:href="@{/resources/plugins/fontawesome/css/all.min.css}">
       <link rel="stylesheet" th:href="@{/resources/admin-lte/css/adminlte.min.css}">
       <link rel="stylesheet" th:href="@{/resources/plugins/bs-stepper/css/bs-stepper.min.css}">
-      <title>Inscripción</title>
+      <title>Trabaja con nosotros</title>
    </head>
    <body class="hold-transition layout-top-nav">
    		<div class="wrapper" >
    		<nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
         	 <div class="container">
         	 	<a class="navbar-brand">
-                  <img th:src="@{~/gestion-cmc/resources/gestion-cmc/img/logocmc.png}" alt="AdminLTE Logo" style="opacity: .8; width: 100px; margin-right: 10px">
+                  <img th:src="@{~/gestion-cmc/resources/gestion-cmc/img/logocmc.png}" alt="AdminLTE Logo" style="opacity: .8; width: 100px;">
                </a>
         	 </div>
         </nav>	
@@ -26,6 +26,7 @@
                <h2 class=" m-0">Trabaja con nosotros</h2>
                <h6 class="card-title">Registra tus datos y nos comunicamos contigo</h6>
             </div>
+           
             <div class="card-body">
                <!-- Mensajes de error -->
                 <div id="messageBox2" class="alert alert-danger alert-dismissible" style="display: none">
@@ -81,21 +82,22 @@
                 	 
                 	 <!-- Step Body -->
                 	 <div class="bs-stepper-content">
-                	 <form id="formIndexCandidato" method="POST">
+                	  <form id="formCrearCandidato" th:object="${candidato}"
+						th:action="@{/public/candidato}" method="POST">
                 	 <!-- Step informacion basica -->
                 	 <div id="basica" class="content" role="tabpanel" aria-labelledby="basica-trigger">
                 	 	 <div class="row">
                             <div class="col-sm-6">
-                                 <div class="form-group col-sm-10">
-                                             <label>Tipo documento</label>
-                                             <select name="tipoDocumento" class="form-control">
-                                                <option value="" selected="selected">Tipo</option>
-                                                <option VALUE="CC">CC</option>
-                                                <option VALUE="TI">TI</option>
-                                                <option VALUE="CE">CE</option>
-                                             </select>
-                                    </div>
-                                 </div>
+										<div class="form-group col-sm-10">
+											<label for="tipoDocumento">Tipo documento</label> <select 
+												id="tipoDocumento" name="tipoDocumento" class="form-control">
+												<option value="" selected="selected">Tipo</option>
+												<option
+													th:each="tipoDoc : ${T(com.cmc.gestion.talento.jpa.type.TipoDocumento).values()}"
+													th:value="${tipoDoc}" th:text="${tipoDoc.value}"></option>
+											</select>
+										</div>
+									</div>
                                  <div class="col-sm-6">
                                     <div class="form-group col-sm-10">
                                        <label>Documento</label>
