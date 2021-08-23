@@ -4,26 +4,12 @@
 	layout:decorate="~{layout}"
 	th:with="funcionalidad='Administraci&oacuten', evento='Preguntas'">
 <th:block layout:fragment="content">
-	<!-- Mensajes -->
-<!-- 	<div th:if="${mensaje != 'NOK'}" -->
-<!-- 		class="alert alert-success alert-dismissible"> -->
-<!-- 		<button type="button" class="close" -->
-<!-- 			onclick="closeAlert('alert-success')" aria-hidden="true">x</button> -->
-<!-- 		<i class="icon fas fa-check"></i> Ok! <span class="msg2" -->
-<!-- 			th:text="${mensaje}"></span> -->
-<!-- 	</div> -->
 	<!-- Formulario de creacion -->
-	<form th:object="${pregunta}" th:action="${pregunta.idPregunta == 0} ? @{/administracion/preguntas/crear} : @{/administracion/preguntas/modificar/{id}(id=${pregunta.idPregunta})}"
+	<form th:object="${pregunta}" th:action="${pregunta.idPregunta == 0} ? @{/administracion/pruebas/{idPrueba}/preguntas/crear(idPrueba=${idPrueba})} : @{/administracion/pruebas/{idPrueba}/preguntas/{idPregunta}/modificar(idPrueba=${idPrueba},idPregunta=${pregunta.idPregunta})}"
 		method="post">
- <div th:if="${#fields.hasErrors('*')}"
-		class="alert alert-danger alert-dismissible">
-		<button type="button" class="close"
-			onclick="closeAlert('alert-danger')" aria-hidden="true">&times;</button>
-		<i class="icon fas fa-ban"></i> Error!
-		<ul style="margin-top: 0px; margin-bottom: 0px;">
-			<li th:each="error : ${#fields.errors('*')}" th:text="${error}"></li>
-		</ul>
-	</div>
+   <!-- Mensajes -->
+		<div layout:replace="~{fragments/formFragment :: mensages}"></div>
+		
    <div class="form-group col-md-8">
 		 <label for="exampleInputEmail1">Enunciado</label>
 		<textarea class="form-control" id="descCrear" rows="3"
@@ -34,10 +20,9 @@
 		<label for="exampleInputEmail1">Archivo adjunto</label> <br>
 		<input type="file"  id="file" >
 	</div>
-
-		<div layout:fragment="modal-footer">
-			<button type="submit" class="btn btn-primary">Guardar</button>
-		</div>
+		    <a th:if="${pregunta.idPregunta == 0}" th:href="@{/administracion/pruebas}" class="btn btn-primary" > Retornar</a>
+		    <a th:if="${pregunta.idPregunta != 0}" th:href="@{/administracion/pruebas/{idPrueba}/preguntas(idPrueba=${idPrueba})}" class="btn btn-primary" > Cancelar</a>
+			<button type="submit" class="btn btn-primary"   th:text="${pregunta.idPregunta != 0} ? 'Modificar' : 'Guardar'" >Guardar</button>
 		</form>
 		<!-- Tabla de datos -->
 	<table id="tablaPregunta" class="table table-bordered table-hover mt-3">
@@ -54,21 +39,53 @@
 				<td th:utext="${pregunta.enunciado}"></td>
 				<td ></td>
 				<td>
-					<button type="button" data-id="2"
-						class="btn btn-primary  ">
-						<i class="fas fa-trash-alt"></i>
+					<button type="button" th:data-id="${pregunta.idPregunta}" 
+					th:onclick="|openModal('${pregunta.pruebaDto.idPrueba}','${pregunta.idPregunta}')|"
+					class="btn btn-primary">
+						<i class="fas fa-trash-alt" ></i>
 					</button>
 					<a type="button"
-					th:href="@{/administracion/preguntas/{id}(id=${pregunta.idPregunta})}"
+					th:href="@{/administracion/pruebas/{idPrueba}/preguntas/{idPregunta}(idPregunta=${pregunta.idPregunta}, idPrueba=${pregunta.pruebaDto.idPrueba})}"
 					class="btn btn-primary  "> <i class="fas fa-pen"></i>
 				</a>
-					<a type="button" th:href="@{/administracion/opciones}" class="btn btn-primary  ">
+					<a type="button" th:href="@{/administracion/opciones}" class="btn btn-primary">
 						<i class="fas fa-eye"></i>
-					</a>`
+					</a>
 				</td>
 			</tr>
 		</tbody>
 	</table>
+	
+	<!-- Eliminacion de Prueba -->
+	<div
+		layout:replace="~{fragments/modal :: modalConfim(id='confirmDelete')}">
 
+		<div layout:fragment="modal-footer">
+			<form id="eliminar" action="" method="post">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+					<button type="submit" class="btn btn-primary">Eliminar</button>
+			</form>
+		</div>
+
+	</div>
+
+</th:block>
+<th:block layout:fragment="body_end">
+	<script type="text/javascript">
+         function openModal(idprueba, idPregunta){
+        	 $('#confirmDelete').modal('show');
+        	 $("#eliminar").attr("action", '../'+idprueba+'/preguntas/'+idPregunta+'/eliminar');
+         }
+         
+         $('#tablaPregunta').DataTable({
+             "paging": true,
+             "lengthChange": false,
+             "searching": false,
+             "ordering": true,
+             "info": true,
+             "autoWidth": false,
+             "responsive": true,
+           });
+    </script>
 </th:block>
 </html>

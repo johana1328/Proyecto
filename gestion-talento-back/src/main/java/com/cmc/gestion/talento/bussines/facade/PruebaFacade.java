@@ -18,6 +18,7 @@ public class PruebaFacade extends FacadeConvert<PruebaDto, Prueba> {
 		pruebaDto.setTipoPrueba(entidad.getTipoPrueba());
 		pruebaDto.setEstado(entidad.isEstado());
 		pruebaDto.setEvaluador(entidad.getEvaluador());
+		pruebaDto.setNumeroPregunta(entidad.getPreguntas().size());
 		return pruebaDto;
 	}
 

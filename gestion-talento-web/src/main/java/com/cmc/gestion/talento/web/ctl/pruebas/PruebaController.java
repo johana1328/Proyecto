@@ -1,4 +1,4 @@
-package com.cmc.gestion.talento.web.controller;
+package com.cmc.gestion.talento.web.ctl.pruebas;
 
 import java.util.List;
 import java.util.Optional;
@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.cmc.gestion.talento.bussines.PruebaBussines;
 import com.cmc.gestion.talento.bussines.dto.PruebaDto;
 import com.cmc.gestion.talento.web.config.ArqGestionExcepcion;
+import com.cmc.gestion.talento.web.controller.LoginController;
 
 @Controller
 @RequestMapping("/administracion/pruebas")
