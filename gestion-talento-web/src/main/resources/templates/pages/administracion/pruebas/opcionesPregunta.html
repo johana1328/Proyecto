@@ -4,27 +4,29 @@
 	layout:decorate="~{layout}"
 	th:with="funcionalidad='Administraci&oacuten', evento='Opciones'">
 <th:block layout:fragment="content">
-	
- 
-   <div class="form-group col-md-8">
-		 <label for="exampleInputEmail1">Opci&oacute;n</label>
+	<form th:object="${opcion}"
+		th:action="${opcion.idOpcion == 0} ? @{/administracion/pruebas/preguntas/{idPregunta}/opciones/crear(idPregunta=${opcion.preguntaDto.idPregunta})} : @{/administracion/pruebas/preguntas/{idPregunta}/opciones/{idOpcion}/modificar(idOpcion=${opcion.idOpcion},idPregunta=${opcion.preguntaDto.idPregunta})}"
+		method="post"></form>
+
+	<div class="form-group col-md-8">
+		<label for="exampleInputEmail1">Opci&oacute;n</label>
 		<textarea class="form-control" id="descCrear" rows="3"
 			placeholder="Escribir ..."></textarea>
 	</div>
 	<div class="form-group col-md-6">
-		 <label for="exampleInputEmail1">Valor</label>
-		<input class="form-control" id="descCrear" >
+		<label for="exampleInputEmail1">Valor</label> <input
+			class="form-control" id="descCrear">
 	</div>
-		 <div class="col-sm-6">
-   <div class="form-group col-md-10">
-		<label for="exampleInputEmail1">Archivo adjunto</label> <br>
-		<input type="file"  id="file">
-	</div>
-  </div>
-
-		<div layout:fragment="modal-footer">
-			<button type="button" class="btn btn-primary">Guardar</button>
+	<div class="col-sm-6">
+		<div class="form-group col-md-10">
+			<label for="exampleInputEmail1">Archivo adjunto</label> <br> <input
+				type="file" id="file">
 		</div>
+	</div>
+
+	<div layout:fragment="modal-footer">
+		<button type="button" class="btn btn-primary">Guardar</button>
+	</div>
 	<table class="table table-bordered table-hover mt-3">
 		<thead>
 			<tr>
@@ -42,12 +44,10 @@
 				<td>1</td>
 				<td>1</td>
 				<td>
-					<button type="button" data-id="2"
-						class="btn btn-primary  ">
+					<button type="button" data-id="2" class="btn btn-primary  ">
 						<i class="fas fa-trash-alt"></i>
 					</button>
-					<button type="button"
-						class="btn btn-primary  ">
+					<button type="button" class="btn btn-primary  ">
 						<i class="fas fa-pen"></i>
 					</button>
 				</td>

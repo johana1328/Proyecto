@@ -38,7 +38,7 @@ public class PruebaPregunta implements Serializable {
 	private String archivoAdjunto;
 	
 	@JoinColumn(name = "id_prueba", nullable = false,foreignKey = @ForeignKey(name = "prueba_fk", value = ConstraintMode.CONSTRAINT))
-	@ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToOne(optional = false, fetch = FetchType.EAGER)
 	private Prueba prueba;
 
 	public long getIdPregunta() {

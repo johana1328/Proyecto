@@ -41,3 +41,7 @@
 .btn-group, .btn-group-vertical {
     float: left;
 }
+
+.float-right {
+    float: right!important;
+}

@@ -1,0 +1,22 @@
+<div xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:fragment="mensages">
+   
+    <div th:if="${mensaje != 'NOK'}" 
+		class="alert alert-success alert-dismissible">
+		<button type="button" class="close"
+			onclick="closeAlert('alert-success')" aria-hidden="true">x</button>
+		<i class="icon fas fa-check"></i> Ok! <span class="msg2"
+			th:text="${mensaje}"></span>
+	</div>
+
+     <div th:if="${#fields.hasErrors('*')}"
+		class="alert alert-danger alert-dismissible">
+		<button type="button" class="close"
+			onclick="closeAlert('alert-danger')" aria-hidden="true">&times;</button>
+		<i class="icon fas fa-ban"></i> Error!
+		<ul style="margin-top: 0px; margin-bottom: 0px;">
+			<li th:each="error : ${#fields.errors('*')}" th:text="${error}"></li>
+		</ul>
+	</div>
+</div>
+	

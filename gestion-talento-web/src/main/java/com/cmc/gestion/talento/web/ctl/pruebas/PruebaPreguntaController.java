@@ -1,4 +1,4 @@
-package com.cmc.gestion.talento.web.controller;
+package com.cmc.gestion.talento.web.ctl.pruebas;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,70 +23,91 @@ import com.cmc.gestion.talento.bussines.dto.PruebaPreguntaDto;
 import com.cmc.gestion.talento.web.config.ArqGestionExcepcion;
 
 @Controller
-@RequestMapping("/administracion/preguntas")
+@RequestMapping("/administracion/pruebas/{idPrueba}/preguntas")
 public class PruebaPreguntaController {
+	
+	private static final String PAGE_INDEX="pages/administracion/pruebas/pruebaPregunta";
 	
 	@Autowired
 	private PruebaPreguntaBussines pruebaPreguntaBussines;
 	
 	
 
-	@GetMapping("/{idPrueba}")
+	@GetMapping(path = { "", "/{idPregunta}" })
 	public String init(@PathVariable(name = "idPrueba", required = true) Optional<Long> idPrueba,
-			@RequestParam(name = "action", defaultValue = "OK") String action, Model model) {
-		List<PruebaPreguntaDto> listaPregunta = new ArrayList<PruebaPreguntaDto>();
-		if(idPrueba.isPresent()) {
-			listaPregunta = pruebaPreguntaBussines.getPreguntaByPrueba(idPrueba.get());
+			@PathVariable(name = "idPregunta", required = false) Optional<Long> idPregunta,
+			@RequestParam(name = "action", defaultValue = "NOK") String action, Model model) {
+		if(idPregunta.isPresent()) {
+			PruebaPreguntaDto pp=pruebaPreguntaBussines.getPregunta(idPregunta.get());
+			initOperation(idPrueba.get(), pp,action,model);
+		}else {
+			initOperation(idPrueba.get(), new PruebaPreguntaDto(),action,model);
 		}
-	
-		model.addAttribute("pregunta" , new PruebaPreguntaDto());
-		model.addAttribute("listaPregunta", listaPregunta);
-		model.addAttribute("mensaje", getMensaje(action));
-		
-		
-		
-		return "pages/administracion/pruebas/pruebaPregunta";
+		return PAGE_INDEX;
 	}
+	
 	
 	@PostMapping("/crear")
-	public String crearPregunta(@Valid @ModelAttribute("pregunta")PruebaPreguntaDto pregunta,BindingResult result, Model model) {
+	public String crearPregunta(@PathVariable(name = "idPrueba", required = true) Optional<Long> idPrueba,
+			@Valid @ModelAttribute("pregunta")PruebaPreguntaDto pregunta,BindingResult result, Model model) {
 		if (result.hasErrors()) {
-//			initOperation(model, pregunta, "NOK");
-			return "pages/administracion/pruebas/pruebaPregunta";
-			
+		    initOperation(idPrueba.get(), pregunta, "NOK",model);
+			return PAGE_INDEX;
 		}
 		try {
-			pruebaPreguntaBussines.crearPregunta(pregunta);
+			pruebaPreguntaBussines.crearPregunta(pregunta,idPrueba.get());
 		} catch (ArqGestionExcepcion e) {
 			result.addError(new FieldError("pregunta", "enunciado", "El enunciado de la pregunta ya existe."));
-//			initOperation(model, pregunta, "NOK");
-			return "pages/administracion/pruebas/pruebaPregunta";
+			initOperation(idPrueba.get(), pregunta, "NOK",model);
+			return PAGE_INDEX;
 		}
-		return "redirect:/administracion/pruebas?action=create";
+		return "redirect:/administracion/pruebas/"+idPrueba.get()+"/preguntas?action=create";
 	}
 	
-	@PostMapping("/modificar/{id}")
-	public String modificarPregunta(@PathVariable(name = "id", required = true) Optional<Long> id,
+	@PostMapping("/{idPregunta}/modificar")
+	public String modificarPregunta(
+			@PathVariable(name = "idPrueba", required = true) Optional<Long> idPrueba,
+			@PathVariable(name = "idPregunta", required = true) Optional<Long> idPregunta,
 			@Valid @ModelAttribute("pregunta") PruebaPreguntaDto pregunta, BindingResult result, Model model) {
 		if (result.hasErrors()) {
-//			initOperation(model, pregunta, "NOK");
-			return "pages/administracion/pruebas/pruebaPregunta";
-			
+			initOperation(idPrueba.get(), pregunta, "NOK", model);
+			return PAGE_INDEX;	
 		}
 		try {
-			pregunta.setIdPregunta(id.get());
+			pregunta.setIdPregunta(idPregunta.get());
 			pruebaPreguntaBussines.actualizarPregunta(pregunta);
-			
 		} catch (ArqGestionExcepcion e) {
 			result.addError(new FieldError("pregunta", "enunciado", "El enunciado de la pregunta ya existe."));
-//			initOperation(model, pregunta, "NOK");
-			return "pages/administracion/pruebas/pruebaPregunta";
+			initOperation(idPrueba.get(), pregunta, "NOK", model);
+			return PAGE_INDEX;
 		}
-		return "redirect:/administracion/pruebas?action=update";
+		return "redirect:/administracion/pruebas/"+idPrueba.get()+"/preguntas?action=update";
 		
 	}
 	
 	
+	@PostMapping("/{idPregunta}/eliminar")
+	public String eliminarPregunta(
+			@PathVariable(name = "idPrueba", required = true) Optional<Long> idPrueba,
+			@PathVariable(name = "idPregunta", required = true) Optional<Long> idPregunta) {
+	
+		try {
+			pruebaPreguntaBussines.eliminarPregunta(idPregunta.get());
+		} catch (ArqGestionExcepcion e) {
+			return "redirect:/administracion/pruebas/"+idPrueba.get()+"/preguntas?action=error-delete";
+		}
+		return "redirect:/administracion/pruebas/"+idPrueba.get()+"/preguntas?action=delete";
+		
+	}
+	
+	private void initOperation(long idPrueba, PruebaPreguntaDto pruebaPregunta, String action, Model model ) {
+		List<PruebaPreguntaDto> listaPregunta = new ArrayList<PruebaPreguntaDto>();
+		listaPregunta = pruebaPreguntaBussines.getPreguntaByPrueba(idPrueba);
+		model.addAttribute("pregunta" , pruebaPregunta);
+		model.addAttribute("listaPregunta", listaPregunta);
+		model.addAttribute("mensaje", getMensaje(action));
+		model.addAttribute("idPrueba", idPrueba);
+	}
 	
 	private String getMensaje(String cod) {
 		String msg;
@@ -100,20 +121,15 @@ public class PruebaPreguntaController {
 		case "delete":
 			msg="Peticion eliminada con exito";
 			break;	
+		case "error-delete":
+			msg="Error al eliminar la pregunta";
+			break;
 		default:
 			msg=cod;
 			break;
 		}
 		return msg;
 	}
-	
-//	private void initOperation(Model model,List<PruebaPreguntaDto> pregunta, String action) {
-//		model.addAttribute("pregunta" ,pregunta);
-//		List<PruebaPreguntaDto> lisPreguntaDto = pruebaPreguntaBussines.getallPregunta();
-//		model.addAttribute("listaPregunta", lisPreguntaDto);
-//		model.addAttribute("mensaje", getMensaje(action));
-//		
-//	}
 	
 	
 }

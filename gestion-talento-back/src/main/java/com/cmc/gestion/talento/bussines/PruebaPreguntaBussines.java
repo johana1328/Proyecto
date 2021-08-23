@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.cmc.gestion.talento.bussines.dto.PruebaPreguntaDto;
 import com.cmc.gestion.talento.bussines.facade.PruebaPreguntaFacade;
+import com.cmc.gestion.talento.jpa.dao.PruebaDao;
 import com.cmc.gestion.talento.jpa.dao.PruebaPreguntaDao;
 import com.cmc.gestion.talento.jpa.entity.Prueba;
 import com.cmc.gestion.talento.jpa.entity.PruebaPregunta;
@@ -20,6 +21,10 @@ import com.cmc.gestion.talento.web.config.ArqGestionExcepcion.ExcepcionType;
 public class PruebaPreguntaBussines {
 	
 	private static final Logger logger = LogManager.getLogger(PruebaPreguntaBussines.class);
+	
+	@Autowired
+	private PruebaDao pruebaDao;
+	
 	@Autowired
 	private PruebaPreguntaDao pruebaPreguntaDao;
 	
@@ -59,18 +64,16 @@ public class PruebaPreguntaBussines {
 		
 	}
 	
-	public void crearPregunta(PruebaPreguntaDto pruebaPreguntaDto) throws ArqGestionExcepcion {
+	public void crearPregunta(PruebaPreguntaDto pruebaPreguntaDto, long idprueba) throws ArqGestionExcepcion {
 		List<PruebaPregunta> lisPregu = pruebaPreguntaDao.findByEnunciado(pruebaPreguntaDto.getEnunciado());
 		
 		if (lisPregu.isEmpty()) {
+			Optional<Prueba> prueba=pruebaDao.findById(idprueba);
 			PruebaPregunta preguntaEntity = new PruebaPregunta();
-			
 			preguntaEntity.setEnunciado(pruebaPreguntaDto.getEnunciado());
 			preguntaEntity.setArchivoAdjunto(pruebaPreguntaDto.getArchivoAdjuto());
-			
-			
+			preguntaEntity.setPrueba(prueba.get());
 			this.pruebaPreguntaDao.save(preguntaEntity);
-			
 		}else {
 			logger.error("Error al momento de crear la prueba : el enunciado ya existe");
 			throw new ArqGestionExcepcion("La pregunta ya se encuentra creada", ExcepcionType.ERROR_VALIDATION);
@@ -105,8 +108,7 @@ public class PruebaPreguntaBussines {
 		Optional<PruebaPregunta> optionalPregun = this.pruebaPreguntaDao.findById(idPregunta);
 		try {
 			if (optionalPregun.isPresent()) {
-				PruebaPregunta pregunta = optionalPregun.get();
-				this.pruebaPreguntaDao.delete(pregunta);
+				this.pruebaPreguntaDao.deleteById(optionalPregun.get().getIdPregunta());
 				
 			}
 		} catch (IllegalArgumentException e) {

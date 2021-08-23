@@ -25,6 +25,9 @@ public class PruebaDto {
 	private boolean estado;
 	
 	private String evaluador;
+	
+	private int numeroPregunta;
+	
 
 
 	public long getIdPrueba() {
@@ -83,6 +86,14 @@ public class PruebaDto {
 
 	public void setEvaluador(String evaluador) {
 		this.evaluador = evaluador;
+	}
+
+	public int getNumeroPregunta() {
+		return numeroPregunta;
+	}
+
+	public void setNumeroPregunta(int numeroPregunta) {
+		this.numeroPregunta = numeroPregunta;
 	}
 
 }
