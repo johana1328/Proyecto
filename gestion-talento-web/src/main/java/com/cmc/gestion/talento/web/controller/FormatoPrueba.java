@@ -5,12 +5,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/administracion/curriculum/academica")
-public class FormacionAcademicaController {
-
+@RequestMapping("/prueba")
+public class FormatoPrueba {
+	
 	@GetMapping
 	public String init() {
-		return "pages/administracion/curriculum/academica";
+		return "pages/administracion/pruebas/formatoPrueba";
 	}
 
 }
