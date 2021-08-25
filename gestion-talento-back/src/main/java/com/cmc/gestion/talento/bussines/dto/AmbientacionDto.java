@@ -2,6 +2,7 @@ package com.cmc.gestion.talento.bussines.dto;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 
 public class AmbientacionDto {
 
@@ -9,8 +10,9 @@ public class AmbientacionDto {
 	private long id;
 	
 	
-	@NotEmpty(message = "El ambiente no puede ser nulo")
-	@NotBlank(message = "El ambiente no puede ser nulo")
+	@NotEmpty(message = "El ambiente es requerido.")
+	@NotBlank(message = "El ambiente es requerido.")
+	@Pattern(regexp = "[A-Za-z]" , message = "El ambiente solo puede contener letras.")
 	private String ambiente;
 
 

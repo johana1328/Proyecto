@@ -2,13 +2,17 @@ package com.cmc.gestion.talento.bussines.dto;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 public class TarifaDto {
      
 	private long id;
 	
-	@NotEmpty(message = "Valor no puede ser nulo")
-	@NotBlank(message = "Valor no puede ser nulo")
+	@NotEmpty(message = "Valor es requerido.")
+	@NotBlank(message = "Valor es requerido.")
+	@NotNull(message = "Valor es requerido.")
+	@Pattern(regexp = "^[1-9]\\d*(\\.\\d+)?$",message = "Valor solo puede contener números decimales")
 	private String valor;
 	
 	public long getId() {

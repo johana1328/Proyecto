@@ -2,6 +2,7 @@ package com.cmc.gestion.talento.bussines.dto;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 
 
 public class EspecialidadDto {
@@ -9,8 +10,9 @@ public class EspecialidadDto {
 	
 	private long id;
 	
-	@NotEmpty(message ="Especialidad no puede ser nulo")
-	@NotBlank(message = "El ambiente no puede ser nulo")
+	@NotEmpty(message ="Especialidad es requerida.")
+	@NotBlank(message = "Especialidad es requerida.")
+	@Pattern(regexp = "[A-Za-z]" , message = "Especialidad solo puede contener letras.")
 
 	private String especialidad;
 

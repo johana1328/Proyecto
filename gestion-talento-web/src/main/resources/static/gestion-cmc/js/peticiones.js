@@ -164,9 +164,9 @@ function validacionFormularioP(){
 				rangelength:" Campo Observaciones generales Longitud no permitida"
 			},
 			salario:{
-				required: "El campo Salario Asignado  es requerido",
-				alphanumeric:"El campo Salario Asignado  solo puede contener letras o numeros",
-				rangelength:" Campo Salario Asignado Longitud no permitida"
+				required: "El campo salario asignado  es requerido",
+				alphanumeric:"El campo salario asignado  solo puede contener letras o numeros",
+				rangelength:" Campo salario asignado Longitud no permitida"
 			},
 			equipoCom:{
 				required:"Seleccione una opcion valida"

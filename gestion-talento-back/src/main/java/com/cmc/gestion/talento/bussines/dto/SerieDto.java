@@ -1,15 +1,17 @@
 package com.cmc.gestion.talento.bussines.dto;
 
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 
 public class SerieDto {
      
 	private long id;
 	private long idSerie;
-	@NotEmpty(message = "{SerieDto.nombre.empy}")
-	@NotBlank(message = "{SerieDto.nombre.empy}")
+	@NotEmpty(message = "El nombre de la serie es requerido.")
+	
+	@Pattern(regexp = "[A-Za-z]", message = "El nombre solo puede contener letras ")
 	private String nombre;
+	@Pattern(regexp = "[A-Za-z]", message = "La descripción solo puede contener letras")
 	private String descripcion;
 	private String estado;
 	

@@ -9,7 +9,7 @@ jQuery.extend(jQuery.validator.messages, {
 	},
 	rangelength:  function(_, el) {
 		let nombre = $('.form-group label[for="'+ el.id+'"]').text();
-		return ` Campo ${nombre} Longitud no permitida`;
+		return ` Campo ${nombre} longitud no permitida`;
 	},
 	email:function(_, el) {
 		let nombre = $('.form-group label[for="'+ el.id+'"]').text();
