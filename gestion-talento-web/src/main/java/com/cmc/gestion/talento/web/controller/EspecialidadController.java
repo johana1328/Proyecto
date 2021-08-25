@@ -71,7 +71,7 @@ public class EspecialidadController {
 	
 	@PostMapping(path = "/{id}/update", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<ModelResponse> modificar(@PathVariable(required = true) long id,
-			@RequestBody EspecialidadDto especialidad) throws ArqGestionExcepcion{
+			@RequestBody @Valid EspecialidadDto especialidad) throws ArqGestionExcepcion{
 		try {
 			especialidad = especialidadBussines.actualizarEspecialidad(especialidad);
 			ModelResponse model = new ModelResponse(null, TypeMessage.FROM_MESSAGE, "Especialidad actualizada con exito");

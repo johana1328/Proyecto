@@ -9,7 +9,7 @@ public class TipoPerfilDto {
 
 	@NotEmpty(message ="Tipo perfil es requerida.")
 	@NotBlank(message = "Tipo perfil es requerida.")
-	@Pattern(regexp = "[A-Za-z]" , message = "Tipo perfil solo puede contener letras.")
+	@Pattern(regexp = "[A-Za-z ]*" , message = "Tipo perfil solo puede contener letras.")
 	private String perfil;
 
 	public long getId() {

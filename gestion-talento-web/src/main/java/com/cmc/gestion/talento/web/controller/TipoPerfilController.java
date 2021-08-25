@@ -72,7 +72,7 @@ public class TipoPerfilController {
 	
 	@PostMapping(path = "/{id}/update", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<ModelResponse> modificar(@PathVariable(required = true) long id,
-			@RequestBody TipoPerfilDto tipoPerfil) throws ArqGestionExcepcion{
+			@RequestBody @Valid TipoPerfilDto tipoPerfil) throws ArqGestionExcepcion{
 		try {
 			tipoPerfil = tipoPerfilBussines.actualizarTipoPerfil(tipoPerfil);
 			ModelResponse model = new ModelResponse(null, TypeMessage.FROM_MESSAGE, "Tipo perfil actualizado con exito");

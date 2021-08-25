@@ -12,7 +12,7 @@ public class EspecialidadDto {
 	
 	@NotEmpty(message ="Especialidad es requerida.")
 	@NotBlank(message = "Especialidad es requerida.")
-	@Pattern(regexp = "[A-Za-z]" , message = "Especialidad solo puede contener letras.")
+	@Pattern(regexp = "[A-Za-z ]*" , message = "Especialidad solo puede contener letras.")
 
 	private String especialidad;
 

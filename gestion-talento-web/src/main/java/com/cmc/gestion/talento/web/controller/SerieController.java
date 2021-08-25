@@ -68,7 +68,7 @@ public class SerieController {
 	
 	@PostMapping(path = "/{idSerie}/update", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<ModelResponse> modificar(@PathVariable(required = true , name = "idSerie") long id,
-			@RequestBody SerieDto serieDto) throws ArqGestionExcepcion{
+			@RequestBody @Valid  SerieDto serieDto) throws ArqGestionExcepcion{
 		try {
 			serieDto = serieBussines.actualizarSerie(serieDto);
 			ModelResponse model = new ModelResponse(null, TypeMessage.FROM_MESSAGE, "Serie actualizada con exito");

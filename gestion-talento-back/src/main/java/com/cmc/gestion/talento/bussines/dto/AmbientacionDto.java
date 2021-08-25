@@ -12,11 +12,10 @@ public class AmbientacionDto {
 	
 	@NotEmpty(message = "El ambiente es requerido.")
 	@NotBlank(message = "El ambiente es requerido.")
-	@Pattern(regexp = "[A-Za-z]" , message = "El ambiente solo puede contener letras.")
+	@Pattern(regexp = "[A-Za-z ]*" , message = "El ambiente solo puede contener letras.")
 	private String ambiente;
 
 
-	
 
 	public long getId() {
 		return id;

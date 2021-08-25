@@ -70,7 +70,7 @@ public class AmbientacionController {
 	
 	@PostMapping(path = "/{id}/update", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<ModelResponse> modificar(@PathVariable(required = true) long id,
-			@RequestBody AmbientacionDto ambientacion) throws ArqGestionExcepcion{
+			@RequestBody @Valid AmbientacionDto ambientacion) throws ArqGestionExcepcion{
 		try {
 			ambientacion = ambientacionBussines.actualizarAmbiente(ambientacion);
 			ModelResponse model = new ModelResponse(null, TypeMessage.FROM_MESSAGE, "Ambiente actualizado con exito");

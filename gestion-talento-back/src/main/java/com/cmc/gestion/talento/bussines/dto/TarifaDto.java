@@ -8,10 +8,9 @@ import javax.validation.constraints.Pattern;
 public class TarifaDto {
      
 	private long id;
-	
-	@NotEmpty(message = "Valor es requerido.")
-	@NotBlank(message = "Valor es requerido.")
-	@NotNull(message = "Valor es requerido.")
+	@NotEmpty(message = "Tarifa es requerido.")
+	@NotBlank(message = "Tarifa es requerido.")
+	@NotNull(message = "Tarifa es requerido.")
 	@Pattern(regexp = "^[1-9]\\d*(\\.\\d+)?$",message = "Valor solo puede contener números decimales")
 	private String valor;
 	
