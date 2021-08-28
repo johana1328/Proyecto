@@ -13,13 +13,13 @@
                       <!-- textarea -->
                       <div class="form-group">
                         <label th:text="#{curriculum.exp.empresa}">Empresa</label>
-                        <input class="form-control" type="text" th:placeholder="#{curriculum.exp.iempresa}"></input>
+                        <input name="empresa" class="form-control" type="text" th:placeholder="#{curriculum.exp.iempresa}"></input>
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label th:text="#{curriculum.exp.rol}">Rol</label>
-                        <input type="text" class="form-control"  th:placeholder="#{curriculum.exp.irol}" ></input>
+                        <input type="text" name="rol"class="form-control"  th:placeholder="#{curriculum.exp.irol}" ></input>
                       </div>
                     </div>
                   </div>
@@ -28,13 +28,13 @@
                       <!-- textarea -->
                       <div class="form-group">
                         <label th:text="#{curriculum.exp.duracion}">Duracion</label>
-                        <input class="form-control" type="text" th:placeholder="#{curriculum.exp.iduracion}"></input>
+                        <input name="duracion" class="form-control" type="text" th:placeholder="#{curriculum.exp.iduracion}"></input>
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label th:text="#{curriculum.exp.funcion}">Funciones</label>
-                        <input type="text" class="form-control"  th:placeholder="#{curriculum.exp.ifuncion}" ></input>
+                        <input name="funciones" type="text" class="form-control"  th:placeholder="#{curriculum.exp.ifuncion}" ></input>
                       </div>
                     </div>
                   </div>
@@ -44,14 +44,14 @@
                       <!-- textarea -->
                       <div class="form-group">
                         <label th:text="#{curriculum.exp.entorno}">Herramientas/tecnologias/entornos</label>
-                        <textarea class="form-control"  th:placeholder="#{curriculum.exp.ilenguajes}"></textarea>
+                        <textarea name="herramientas" class="form-control"  th:placeholder="#{curriculum.exp.ilenguajes}"></textarea>
                       </div>
                     
                  
                    
                   </div>
                   </div>
-                  <button type="submit" th:text="#{curriculum.exp.guardar}" class="btn btn-primary">Submit</button>
+                  <button type="submit" th:text="#{curriculum.exp.guardar}"  class="btn btn-primary">Submit</button>
                     
                       </form>
                      <br></br>
@@ -113,7 +113,10 @@
 <script src="@{~/gestion-cmc/plugins/bs-stepper/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="@{~/gestion-cmc/plugins/bs-stepper/js/demo.js"></script>
-
+	
+	<script th:src="@{~/gestion-cmc/resources/gestion-cmc/js/experiencia.js}"></script>
+	
+	
 	<script>
 		document.addEventListener('DOMContentLoaded', function() {
 			window.stepper = new Stepper(document.querySelector('.bs-stepper'))
