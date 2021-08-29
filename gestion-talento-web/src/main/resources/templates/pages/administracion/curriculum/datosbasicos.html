@@ -5,7 +5,7 @@
 	layout:decorate="~{layout}"
 	th:with="funcionalidad='Administraci&oacuten', evento='Curriculun vitae'">
 <th:block layout:fragment="content">
-	
+	<form id="formDatosBasicos" action="" method="POST">
 	<div class="row">
           <div class="col-md-12">
             <div class="card card-default">
@@ -37,14 +37,14 @@
                     <div class="col-sm-6">
                       <!-- textarea -->
                       <div class="form-group">
-                        <label  th:text="#{curriculum.datos.tipo}">Tipo documento</label>
-                        <input class="form-control" type="text" placeholder="Enter ..."></input>
+                        <label  th:text="#{curriculum.datos.tipo}" >Tipo documento</label>
+                        <input class="form-control" type="text" placeholder="Enter ..." id="tpDoc" name="tpDoc"></input>
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label th:text="#{curriculum.datos.documento}">Documento</label>
-                        <input type="text" class="form-control"  th:placeholder="#{curriculum.datos.idocumento}" ></input>
+                        <input type="text" class="form-control"  th:placeholder="#{curriculum.datos.idocumento}" id="Doc" name="Doc"></input>
                       </div>
                     </div>
                   </div>
@@ -53,13 +53,13 @@
                       <!-- textarea -->
                       <div class="form-group">
                         <label th:text="#{curriculum.datos.fecha}">Fecha de expedicion</label>
-                        <input class="form-control" type="date" placeholder="Enter ..."></input>
+                        <input class="form-control" type="date" placeholder="Enter ..." id="fechaExp" name="fechaExp"></input>
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label th:text="#{curriculum.datos.lugar}">Lugar de expedicion</label>
-                        <input type="text" class="form-control"  th:placeholder="#{curriculum.datos.ilugar}" ></input>
+                        <input type="text" class="form-control"  th:placeholder="#{curriculum.datos.ilugar}" id="lugarExp" name="lugarExp"></input>
                       </div>
                     </div>
                   </div>
@@ -68,13 +68,13 @@
                       <!-- textarea -->
                       <div class="form-group">
                         <label th:text="#{curriculum.datos.pnom}">Primer nombre</label>
-                        <input class="form-control" type="text" th:placeholder="#{curriculum.datos.ipnom}"></input>
+                        <input class="form-control" type="text" th:placeholder="#{curriculum.datos.ipnom}" id="pNombre" name="pNombre"></input>
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label th:text="#{curriculum.datos.snom}">Segundo nombre</label>
-                        <input type="text" class="form-control"  th:placeholder="#{curriculum.datos.isnom}" ></input>
+                        <input type="text" class="form-control"  th:placeholder="#{curriculum.datos.isnom}"  id="sNombre" name="sNombre"></input>
                       </div>
                     </div>
                   </div>
@@ -83,13 +83,13 @@
                       <!-- textarea -->
                       <div class="form-group">
                         <label th:text="#{curriculum.datos.pape}">Primer apellido</label>
-                        <input class="form-control" type="text" th:placeholder="#{curriculum.datos.ipape}"></input>
+                        <input class="form-control" type="text" th:placeholder="#{curriculum.datos.ipape}" id="pApellido" name="pApellido"></input>
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label th:text="#{curriculum.datos.sape}">Segundo apellido</label>
-                        <input type="text" class="form-control"  th:placeholder="#{curriculum.datos.isape}" ></input>
+                        <input type="text" class="form-control"  th:placeholder="#{curriculum.datos.isape}" id="sApellido" name="sApellido"></input>
                       </div>
                     </div>
                   </div>
@@ -97,14 +97,14 @@
                     <div class="col-sm-6">
                       <!-- textarea -->
                       <div class="form-group">
-                        <label th:text="#{curriculum.datos.nacimiento}">Lugar de nacimiento</label>
-                        <input class="form-control" type="text" th:placeholder="#{curriculum.datos.inacimiento}"></input>
+                        <label th:text="#{curriculum.datos.nacimiento}" >Lugar de nacimiento</label>
+                        <input class="form-control" type="text" th:placeholder="#{curriculum.datos.inacimiento}" id="lugarNac" name="lugarNac"></input>
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label th:text="#{curriculum.datos.fnacimiento}">Fecha de nacimiento</label>
-                        <input type="date" class="form-control"  placeholder="Enter ..." ></input>
+                        <input type="date" class="form-control"  placeholder="Enter ..." id="fechaNac" name="fechaNac"></input>
                       </div>
                     </div>
                   </div>
@@ -113,19 +113,19 @@
                       <!-- textarea -->
                       <div class="form-group">
                         <label th:text="#{curriculum.datos.telefono}">Telefono</label>
-                        <input class="form-control" type="text" th:placeholder="#{curriculum.datos.itelefono}"></input>
+                        <input class="form-control" type="text" th:placeholder="#{curriculum.datos.itelefono}" id="tel" name="tel"></input>
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label th:text="#{curriculum.datos.correo}">Correo Electronico</label>
-                        <input type="text" class="form-control"  th:placeholder="#{curriculum.datos.icorreo}" ></input>
+                        <input type="text" class="form-control"  th:placeholder="#{curriculum.datos.icorreo}" id="correo" name="correo" ></input>
                       </div>
                     </div>
                   </div>
                   
                       
-                      <button class="btn btn-primary" th:text="#{curriculum.datos.siguiente}" onclick="stepper.next()">Next</button>
+                      <button class="btn btn-primary" th:text="#{curriculum.datos.siguiente}" onclick="validacionFormularioDB()">Next</button>
                     </div>
                     <div id="information-part" class="content" role="tabpanel" aria-labelledby="information-part-trigger">
                       
@@ -134,13 +134,13 @@
                       <!-- textarea -->
                       <div class="form-group">
                         <label th:text="#{curriculum.datos.direccion}">Direccion domicilio</label>
-                        <input class="form-control" type="text" th:placeholder="#{curriculum.datos.idireccion}"></input>
+                        <input class="form-control" type="text" th:placeholder="#{curriculum.datos.idireccion}" id="direccionDom" name="direccionDom"></input>
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label th:text="#{curriculum.datos.barrio}">Barrio</label>
-                        <input type="text" class="form-control"  th:placeholder="#{curriculum.datos.ibarrio}" ></input>
+                        <input type="text" class="form-control"  th:placeholder="#{curriculum.datos.ibarrio}" id="barrio" name="barrio"></input>
                       </div>
                     </div>
                   </div>
@@ -149,13 +149,13 @@
                       <!-- textarea -->
                       <div class="form-group">
                         <label th:text="#{curriculum.datos.localidad}">Localidad</label>
-                        <input class="form-control" type="text" th:placeholder="#{curriculum.datos.ilocalidad}"></input>
+                        <input class="form-control" type="text" th:placeholder="#{curriculum.datos.ilocalidad}" id="localidad" name="localidad"></input>
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label th:text="#{curriculum.datos.estadoc}">Estado civil</label>
-                        <input type="text" class="form-control"  th:placeholder="#{curriculum.datos.iestadoc}" ></input>
+                        <input type="text" class="form-control"  th:placeholder="#{curriculum.datos.iestadoc}" id="estadoCiv" name="estadoCiv"></input>
                       </div>
                     </div>
                   </div>
@@ -164,13 +164,13 @@
                       <!-- textarea -->
                       <div class="form-group">
                         <label th:text="#{curriculum.datos.nhijos}">Numero de hijos</label>
-                        <input class="form-control" type="text" th:placeholder="#{curriculum.datos.inhijos}"></input>
+                        <input class="form-control" type="text" th:placeholder="#{curriculum.datos.inhijos}" id="numeroHijos" name="numeroHijos"></input>
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label th:text="#{curriculum.datos.estudios}">Nivel de estudios</label>
-                        <input type="text" class="form-control"  th:placeholder="#{curriculum.datos.iestudios}" ></input>
+                        <input type="text" class="form-control"  th:placeholder="#{curriculum.datos.iestudios}" id="nivelEst" name="nivelEst" ></input>
                       </div>
                     </div>
                   </div>
@@ -179,13 +179,13 @@
                       <!-- textarea -->
                       <div class="form-group">
                         <label>EPS</label>
-                        <input class="form-control" type="text" th:placeholder="#{curriculum.datos.eps}"></input>
+                        <input class="form-control" type="text" th:placeholder="#{curriculum.datos.eps}" id="fecha" name="fecha"></input>
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label th:text="#{curriculum.datos.cesantias}">Cesantias</label>
-                        <input type="text" class="form-control"  th:placeholder="#{curriculum.datos.icesantias}" ></input>
+                        <input type="text" class="form-control"  th:placeholder="#{curriculum.datos.icesantias}" id="cesantias" name="cesantias"></input>
                       </div>
                     </div>
                   </div>
@@ -194,13 +194,13 @@
                       <!-- textarea -->
                       <div class="form-group">
                         <label th:text="#{curriculum.datos.afp}">AFP(Pensiones)</label>
-                        <input class="form-control" type="text" th:placeholder="#{curriculum.datos.iaft}"></input>
+                        <input class="form-control" type="text" th:placeholder="#{curriculum.datos.iaft}" id="afp" name="afp"></input>
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label>RH</label>
-                        <input type="text" class="form-control"  th:placeholder="#{curriculum.datos.rh}" ></input>
+                        <input type="text" class="form-control"  th:placeholder="#{curriculum.datos.rh}" id="rh" name="rh"></input>
                       </div>
                     </div>
                   </div>    
@@ -221,11 +221,10 @@
           </div>
         </div>
  		
- 		
- 		
+ 	</form>
 </th:block>
 <th:block layout:fragment="body_end">
-       <script th:src="@{~/gestion-cmc/resources/gestion-cmc/js/ambiente.js}"></script>
+       <script th:src="@{~/gestion-cmc/resources/gestion-cmc/js/datosBasicos.js}"></script>
    	<link rel="stylesheet"
 		th:href="@{~/gestion-cmc/plugins/bs-stepper/css/bs-stepper.min.css}">
 	<script

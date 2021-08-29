@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/administracion/curriculum/academica")
-public class formacionAcademicaController {
+public class FormacionAcademicaController {
 
 	@GetMapping
 	public String init() {

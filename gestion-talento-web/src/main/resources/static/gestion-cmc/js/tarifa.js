@@ -68,7 +68,31 @@ function eliminarTarifa(){
 	}
 }
 
-
+var form = $("#formCrearTarifa");
+function validacionFormularioT(){
+	form.validate({
+		 errorContainer: "#messageBox1",
+         errorLabelContainer: "#messageBox1 ul",
+         wrapper: "li",
+         rules:{
+			tarifa:{
+				required: true,
+				number: true
+			}
+		  },
+		messages:{
+			tarifa:{
+				required: "El campo salario asignado  es requerido",
+				number:"El campo tarifa asignado  solo puede contener números"
+				}			
+			}
+         }).settings.ignore = ":disabled,:hidden";
+	
+	if (form.valid() == true){
+		stepper.next();
+	}
+}
+	
 
 
 

@@ -45,7 +45,7 @@ function obtenerSerie(idSerie){
 		let serie = dataResp.data;	
 		$('#idMod').val(serie.idSerie);
 		$('#nomMod').val(serie.nombre);
-		$('#desMod').val(serie.descripcion);
+		$('#descMod').val(serie.descripcion);
 		$('#estMod').val(serie.estado);
 	}
 	$('#modModificar').modal();

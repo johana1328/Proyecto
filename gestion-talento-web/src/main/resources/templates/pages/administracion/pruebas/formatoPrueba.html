@@ -1,0 +1,101 @@
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:with="http://www.thymeleaf.org/extras/with"
+	layout:decorate="~{layout}" th:with="funcionalidad='', evento=''">
+<th:block layout:fragment="content">
+	<div id="carouselExampleIndicators" class="carousel slide"
+		data-interval="0" data-ride="carousel">
+		<ol class="carousel-indicators">
+			<li data-target="#carouselExampleIndicators" data-slide-to="0"
+				class="active"></li>
+		</ol>
+		<div class="progress">
+			<div class="progress-bar bg-primary progress-bar-striped"
+				role="progressbar" aria-valuenow="40" aria-valuemin="0"
+				aria-valuemax="100" style="width: 0%">
+				<span class="sr-only">40% Complete (success)</span>
+			</div>
+		</div>
+		<br>
+		<div class="carousel-inner">
+			<div class="carousel-item active progreso-item">
+				<p>Pregunta</p>
+				<div class="form-group">
+					<div class="custom-control custom-radio">
+						<input class="custom-control-input" type="radio" id="customRadio1"
+							name="customRadio"> <label for="customRadio1"
+							class="custom-control-label">Custom Radio</label>
+					</div>
+					<div class="custom-control custom-radio">
+						<input class="custom-control-input" type="radio" id="customRadio2"
+							name="customRadio"> <label for="customRadio2"
+							class="custom-control-label">Custom Radio checked</label>
+					</div>
+				</div>
+			</div>
+			<div class="progreso-item  carousel-item">
+				<p>Pregunta2</p>
+				<div class="form-group">
+					<div class="custom-control custom-radio">
+						<input class="custom-control-input" type="radio" id="customRadio3"
+							name="customRadio"> <label for="customRadio3"
+							class="custom-control-label">Custom Radio</label>
+					</div>
+					<div class="custom-control custom-radio">
+						<input class="custom-control-input" type="radio" id="customRadio4"
+							name="customRadio"> <label for="customRadio4"
+							class="custom-control-label">Custom Radio checked</label>
+					</div>
+				</div>
+			</div>
+			
+				<div class=" progreso-item carousel-item ">
+				<p>Pregunta3</p>
+				<div class="form-group">
+					<div class="custom-control custom-radio">
+						<input class="custom-control-input" type="radio" id="customRadio3"
+							name="customRadio"> <label for="customRadio3"
+							class="custom-control-label">Custom Radio</label>
+					</div>
+					<div class="custom-control custom-radio">
+						<input class="custom-control-input" type="radio" id="customRadio4"
+							name="customRadio"> <label for="customRadio4"
+							class="custom-control-label">Custom Radio checked</label>
+					</div>
+				</div>
+			</div>
+			
+				<div class="carousel-item finish ">
+				<p>Finalizado :)</p>
+			
+			</div>
+		</div>
+
+	</div>
+	<a  class="btn btn-primary progreso" 
+		href="#carouselExampleIndicators" role="button" data-slide="prev">Anterior</a>
+	<a  class="btn btn-primary progreso" 
+		href="#carouselExampleIndicators" role="button" data-slide="next">Siguiente</a>
+		
+			<button type="submit" class="btn btn-primary">Enviar</button>
+
+</th:block>
+<th:block layout:fragment="body_end">
+	<script>
+	$('#carouselExampleIndicators').on('slide.bs.carousel', function (f) {
+		var itemActive=0;
+		 var cont=0;
+		$(".progreso-item").each(function(index) {
+		       if($(this).hasClass("active")){	    	
+			     itemActive= cont+1;
+			   }
+		       cont++;
+		   });
+		 var porcentaje= (100*itemActive)/cont;
+		 $(".progress-bar").width( porcentaje + "%" );
+		})
+
+
+</script>
+</th:block>
+</html>

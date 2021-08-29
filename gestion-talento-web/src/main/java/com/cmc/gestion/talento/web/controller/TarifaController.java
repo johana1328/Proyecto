@@ -70,7 +70,7 @@ public class TarifaController {
 	
 	@PostMapping(path = "/{id}/update", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<ModelResponse> modificar(@PathVariable(required = true) long id,
-			@RequestBody TarifaDto tarifa) throws ArqGestionExcepcion{
+			@RequestBody @Valid TarifaDto tarifa) throws ArqGestionExcepcion{
 		try {
 			tarifa = tarifaBussines.actualizarTarifa(tarifa);
 			ModelResponse model = new ModelResponse(null, TypeMessage.FROM_MESSAGE, "Tarifa actualizada con exito");
