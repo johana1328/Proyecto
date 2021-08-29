@@ -5,7 +5,7 @@
 	layout:decorate="~{layout}"
 	th:with="funcionalidad='Administraci&oacuten', evento='Curriculun vitae'">
 <th:block layout:fragment="content">
-	<form action="" method="POST">
+	<form id="formPerfilPro" action="" method="POST">
 	<div class="row">
           <div class="col-md-12">
             
@@ -14,13 +14,13 @@
                       <!-- textarea -->
                       <div class="form-group">
                         <label th:text="#{curriculum.perfil.perfil}">Perfil profesional</label>
-                        <textarea class="form-control"  th:placeholder="#{curriculum.perfil.iperfil}"></textarea>
+                        <textarea name="perfilPro" class="form-control"  th:placeholder="#{curriculum.perfil.iperfil}"></textarea>
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label th:text="#{curriculum.perfil.experiencia}">Experiencia profesional</label>
-                        <textarea  class="form-control"  th:placeholder="#{curriculum.perfil.iexperiencia}" ></textarea>
+                        <textarea name="experiencia" class="form-control"  th:placeholder="#{curriculum.perfil.iexperiencia}" ></textarea>
                       </div>
                     </div>
                       <button type="submit" th:text="#{curriculum.perfil.guardar}" class="btn btn-primary">Submit</button>
@@ -44,6 +44,7 @@
   <!-- Theme style -->
   <link rel="stylesheet"
    href="@{~/gestion-cmc/adminl-lte/css/adminlte.min.css">
+	<script th:src="@{~/gestion-cmc/resources/gestion-cmc/js/perfilProfesional.js}"></script>
 	
 
    

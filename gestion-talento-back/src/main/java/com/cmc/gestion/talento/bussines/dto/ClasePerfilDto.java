@@ -2,12 +2,14 @@ package com.cmc.gestion.talento.bussines.dto;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 
 public class ClasePerfilDto {
 	private long id;
 
-	@NotEmpty(message = "clasePerfil no puede ser nulo")
-	@NotBlank(message = "clasePerfil no puede ser nulo")
+	@NotEmpty(message = "La clase perfil es requerida.")
+	@NotBlank(message = "La clase perfil es requerida.")
+	@Pattern(regexp = "[A-Za-z ]*", message = "La clase perfil solo puede contener letras ")
 	
 	private String claseperfil;
 
