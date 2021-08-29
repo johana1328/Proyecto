@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class PdfPruebaController {
 	
 	@GetMapping("")
-	public String generatePdf() {
+	public void generatePdf() {
 		
-		JRBeanCollectionDataSource beanCollectionDataSource = new JRBeanCollectionDataSource();
+		//JRBeanCollectionDataSource beanCollectionDataSource = new JRBeanCollectionDataSource();
 		
 	}
 
