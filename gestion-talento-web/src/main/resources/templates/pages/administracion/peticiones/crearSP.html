@@ -8,12 +8,14 @@
 	<form id="formCrearPeticion" action="" method="POST">
 	
 	<div class="card-body p-0">
-	<div  class="alert alert-danger alert-dismissible" style="display: none">
-		<button type="button" class="close" onclick="closeAlert('alert-danger')"
-				aria-hidden="true">&times;</button>
-		<i class="icon fas fa-ban"></i> Error! 
-		<ul style="margin-top: 0px; margin-bottom: 0px;"></ul>
-	</div>
+	<div id="messageBox1" class="alert alert-danger alert-dismissible"
+				style="display: none">
+				<button type="button" class="close"
+					onclick="closeAlert('alert-danger')" aria-hidden="true">&times;</button>
+				<i class="icon fas fa-ban"></i> Error!
+				<ul style="margin-top: 0px; margin-bottom: 0px;"></ul>
+			</div>
+		
 		<div class="bs-stepper">
 			<div class="bs-stepper-header" role="tablist">
 				<!-- Definicion paso1 -->
@@ -109,23 +111,7 @@
 								<label th:text="#{administracion.peticiones.perSol}">Perf&iacute;l Solicitado</label> <select name="perfilSolicitado"
 									class="form-control select2" style="width: 100%;">
 									<option value="" selected="selected" th:text="#{administracion.peticiones.selec}">Seleccione...</option>
-									<option value="Programador" th:text="#{administracion.peticiones.programador}">Programador</option>
-									<option value="AnalistaProgramadorSemiSenior" th:text="#{administracion.peticiones.anaProl}">Analista Programador Semi Se&ntilde;or</option>
-									<option value="AnalistaFuncional" th:text="#{administracion.peticiones.anaFun}">Analista Funcional</option>
-									<option value="AnalistaTecnicodeCalidad" th:text="#{administracion.peticiones.anaTec}">Analista T&eacute;cnico de Calidad</option>
-									<option value="Lider" th:text="#{administracion.peticiones.lider}">L&iacute;der</option>
-									<option value="Gerente" th:text="#{administracion.peticiones.gerente}">Gerente</option>
-									<option value="Director" th:text="#{administracion.peticiones.director}">Director</option>
-									<option value="AnalistaProgramador-Scrum" th:text="#{administracion.peticiones.anaProScr}">Analista Programador - Scrum</option>
-									<option value="AnalistaProgramadorSenior" th:text="#{administracion.peticiones.anaProSr}">Analista Programador Se&ntilde;or</option>
-									<option value="ProgramadorJunior" th:text="#{administracion.peticiones.proJu}">Programador Junior</option>
-									<option value="ProgramadorASO" th:text="#{administracion.peticiones.proAso}">Programador ASO</option>
-									<option value="Arquitecto" th:text="#{administracion.peticiones.arqu}">Arquitecto</option>
-									<option value="Scrum">Scrum</option>
-									<option value="Soporte" th:text="#{administracion.peticiones.soporte}">Soporte</option>
-									<option value="AdministradordePlataformas" th:text="#{administracion.peticiones.admPla}">Administrador de Plataformas</option>
-									<option value="SeguridaddelaInformacion" th:text="#{administracion.peticiones.segInfo}">Seguridad de la Informaci&oacute;n</option>
-									<option value="Aprendiz" th:text="#{administracion.peticiones.aprendiz}">Aprendiz</option>
+									<option th:each="perfil : ${perfiles}" th:value="${perfil.id}" th:text="${perfil.perfil}" ></option>
 									
 								</select>
 							</div>
@@ -133,10 +119,7 @@
 								<label th:text="#{administracion.peticiones.especialidad}">Especialidad</label> <select name="especialidad"
 									class="form-control select2" style="width: 100%;">
 									<option value="" selected="selected" th:text="#{administracion.peticiones.selec}">Seleccione...</option>
-									<option value="Front-end">Front-end</option>
-									<option value="Back-end">Back-end</option>
-									<option value="FullStack">Full Stack</option>
-									<option value="N/A">N/A</option>
+									<option th:each="especialidad : ${especialidades}" th:value="${especialidad.id}" th:text="${especialidad.especialidad}" ></option>
 								</select>
 							</div>
 							<div class="form-group">
@@ -161,22 +144,8 @@
 								<label th:text="#{administracion.peticiones.ambiente}">Ambiente</label> <select name="ambiente"
 									class="form-control select2" style="width: 100%;">
 									<option value="" selected="selected"  th:text="#{administracion.peticiones.selec}">Seleccione...</option>
-									<option value="CELLS">CELLS</option>
-									<option value="APX">APX</option>
-									<option value="ASO">ASO</option>
-									<option value="HOST">HOST</option>
-									<option value="NETCASH-PIBBE">NETCASH-PIBBE</option>
-									<option value="LANET-ORQUIDEA">LA NET-ORQUIDEA</option>
-									<option value="ORGANIZACIONAL-FUNCIONALIDAD"  th:text="#{administracion.peticiones.orgFun}">ORGANIZACIONAL - FUNCIONALIDAD</option>
-									<option value="SANTANDER">SANTANDER</option>
-									<option value="ENEL">ENEL</option>
-									<option value="RRHH">RRHH</option>
-									<option value="INFRAESTRUCTURA"  th:text="#{administracion.peticiones.infraestructura}">INFRAESTRUCTURA</option>
-									<option value="GERENCIA"  th:text="#{administracion.peticiones.gerencia}">GERENCIA</option>
-									<option value="COMERCIAL"  th:text="#{administracion.peticiones.comercial}">COMERCIAL</option>
-									<option value="CALIDADYTEST"  th:text="#{administracion.peticiones.calTes}">CALIDAD Y TEST</option>
-									<option value="APPMOBIL">APP MOBIL</option>
-									<option value="ADMINISTRACION"  th:text="#{administracion.peticiones.admin}">ADMINISTRACI&Otilde;N</option>
+									<option th:each="ambientacion : ${ambientaciones}" th:value="${ambientacion.id}" th:text="${ambientacion.ambiente}" ></option>
+						
 								</select>
 							</div>
 							<div class="form-group">
