@@ -73,19 +73,9 @@
 								<label th:text="#{administracion.peticiones.tarifa}">Tarifa</label> <select name="tarifa"
 									class="form-control select2" style="width: 100%;">
 									<option value="" selected="selected" th:text="#{administracion.peticiones.selec}">Seleccione</option>
-									<option value="$56.150" >$56.150</option>
-									<option value="$40.474" >$40.474</option>
-									<option value="$37.749" >$37.749</option>
-									<option value="$36.968" >$36.968</option>
-									<option value="$35.981" >$35.981</option>
-									<option value="$35.292" >$35.292</option>
-									<option value="$35.239" >$35.239</option>
-									<option value="$34.049" >$34.049</option>
-									<option value="$33.000" >$33.000</option>
-									<option value="N/A" >N/A</option>
+									<option th:each="tarifa : ${tarifas}" th:value="${tarifa.id}" th:text="${tarifa.valor}" ></option>
 								</select>
 							</div>
-
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
