@@ -1,15 +1,7 @@
 package com.cmc.gestion.talento.bussines.facade;
 
-import java.util.Date;
-import java.util.List;
-
 import com.cmc.gestion.talento.bussines.dto.SolicitudPersonalDto;
-import com.cmc.gestion.talento.jpa.entity.ParametriaDetalle;
 import com.cmc.gestion.talento.jpa.entity.SolicitudDePersonal;
-import com.cmc.gestion.talento.jpa.type.EquipoComputo;
-import com.cmc.gestion.talento.jpa.type.NivelEstudios;
-import com.cmc.gestion.talento.jpa.type.RangoAnoExperiencia;
-import com.cmc.gestion.talento.jpa.type.TipoContrato;
 import com.cmc.gestion.talento.web.back.FacadeConvert;
 
 public class SolicitudPersonalFacade extends FacadeConvert<SolicitudPersonalDto,SolicitudDePersonal> {
@@ -17,7 +9,6 @@ public class SolicitudPersonalFacade extends FacadeConvert<SolicitudPersonalDto,
 	@Override
 	protected SolicitudPersonalDto mapper(SolicitudDePersonal entidad) {
 		SolicitudPersonalDto solicitudPerson = new SolicitudPersonalDto();
-		solicitudPerson.setIdSolicitudPersonal(entidad.getIdSolicitud());
 		solicitudPerson.setAreaSolicitante(entidad.getAreaSolicitante());
 		solicitudPerson.setPerfil(entidad.getPerfil());
 		solicitudPerson.setEspecialidad(entidad.getEspecialidad());
@@ -37,7 +28,8 @@ public class SolicitudPersonalFacade extends FacadeConvert<SolicitudPersonalDto,
 		solicitudPerson.setSalarioAsignado(entidad.getSalarioAsignado());
 		solicitudPerson.setHorasApagar(entidad.getHorasApagar());
 		solicitudPerson.setTarifa(entidad.getTarifa());
-	
+		// datos solicitud
+		solicitudPerson.setIdSolicitud(entidad.getIdSolicitud());
 		return solicitudPerson;
 	}
 

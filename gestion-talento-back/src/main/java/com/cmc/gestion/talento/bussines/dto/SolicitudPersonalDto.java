@@ -10,9 +10,8 @@ import com.cmc.gestion.talento.jpa.type.NivelEstudios;
 import com.cmc.gestion.talento.jpa.type.RangoAnoExperiencia;
 import com.cmc.gestion.talento.jpa.type.TipoContrato;
 
-public class SolicitudPersonalDto {
+public class SolicitudPersonalDto extends SolicitudDto{
 	
-	private long idSolicitudPersonal;
 	private AreaSolicitante areaSolicitante;
 	private ParametriaDetalle perfil;
 	private ParametriaDetalle especialidad;
@@ -33,12 +32,6 @@ public class SolicitudPersonalDto {
 	private int horasApagar;
 	private ParametriaDetalle tarifa;
 	
-	public long getIdSolicitudPersonal() {
-		return idSolicitudPersonal;
-	}
-	public void setIdSolicitudPersonal(long idSolicitudPersonal) {
-		this.idSolicitudPersonal = idSolicitudPersonal;
-	}
 	public AreaSolicitante getAreaSolicitante() {
 		return areaSolicitante;
 	}

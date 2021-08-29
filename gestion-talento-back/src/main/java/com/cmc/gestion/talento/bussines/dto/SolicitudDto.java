@@ -8,15 +8,15 @@ import com.cmc.gestion.talento.jpa.type.TipoSolicitud;
 
 public class SolicitudDto {
 	
-	private long idSolicitud;
-	private Empleado solicitante;
-	private Date fechaCreacion;
-	private Date fechaActualizacion;
-	private String observacionSolicitante;
-	private String observacionGestor;
-	private TipoSolicitud tipoSolicitud;
-	private TipoEstadoSolicitud estado;
-	private String gestor;
+	protected long idSolicitud;
+	protected Empleado solicitante;
+	protected Date fechaCreacion;
+	protected Date fechaActualizacion;
+	protected String observacionSolicitante;
+	protected String observacionGestor;
+	protected TipoSolicitud tipoSolicitud;
+	protected TipoEstadoSolicitud estado;
+	protected String gestor;
 
 	public long getIdSolicitud() {
 		return idSolicitud;
