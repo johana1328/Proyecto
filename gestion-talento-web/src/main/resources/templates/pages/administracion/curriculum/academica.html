@@ -5,7 +5,7 @@
 	layout:decorate="~{layout}"
 	th:with=" evento='Curriculun vitae'">
 <th:block layout:fragment="content">
-		
+		<form id="academica" action="" method="POST">
 		<div class="row">
           <div class="col-md-12">
             <div class="card card-default">
@@ -38,13 +38,13 @@
                       <!-- textarea -->
                       <div class="form-group">
                         <label th:text="#{curriculum.academico.carrera}">Nombre de la carrera</label>
-                        <input class="form-control" type="text" th:placeholder="#{curriculum.academico.icarrera}"></input>
+                        <input class="form-control" type="text" th:placeholder="#{curriculum.academico.icarrera}" id="nombre" name="nombre"></input>
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label th:text="#{curriculum.academico.lugar}">Lugar donde realizo el estudio</label>
-                        <input type="text" class="form-control"  th:placeholder="#{curriculum.academico.ilugar}" ></input>
+                        <input type="text" class="form-control"  th:placeholder="#{curriculum.academico.ilugar}" id="lugEst" name="lugEst" ></input>
                       </div>
                     </div>
                   </div>
@@ -53,14 +53,14 @@
                       <!-- textarea -->
                       <div class="form-group">
                         <label th:text="#{curriculum.academico.ciudad}">Ciudad</label>
-                        <input class="form-control" type="text" th:placeholder="#{curriculum.academico.iciudad}"></input>
+                        <input class="form-control" type="text" th:placeholder="#{curriculum.academico.iciudad}" id="ciudad" name="ciudad"></input>
                       </div>
                     </div>
                     
                   </div>
                     
                       
-                      <button class="btn btn-primary" th:text="#{curriculum.academico.siguiente}" onclick="stepper.next()">Siguiente</button>
+                      <button class="btn btn-primary" th:text="#{curriculum.academico.siguiente}" onclick="validacionFormularioAca()">Siguiente</button>
                     </div>
                     <div id="information-part" class="content" role="tabpanel" aria-labelledby="information-part-trigger">
                       
@@ -69,20 +69,20 @@
                       <!-- textarea -->
                       <div class="form-group">
                         <label th:text="#{curriculum.academico.finalizacion}">Año de finalizacion</label>
-                        <input class="form-control" type="text" th:placeholder="#{curriculum.academico.ifinalizacion}"></input>
+                        <input class="form-control" type="text" th:placeholder="#{curriculum.academico.ifinalizacion}" id="anoFinalizacion" name="anoFinalizacion"></input>
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label th:text="#{curriculum.academico.certificado}">Certificados</label>
-                        <input type="file" class="form-control"  placeholder="Enter ..." ></input>
+                        <input type="file" class="form-control"  placeholder="Enter ..." id="certificados" name="certificados"></input>
                       </div>
                     </div>
                  	</div>
                  	<div class="col-sm-6">
                       <div class="form-group">
                         <label th:text="#{curriculum.academico.pais}">Pais donde se realizo</label>
-                        <input type="text" class="form-control"  th:placeholder="#{curriculum.academico.ipais}" ></input>
+                        <input type="text" class="form-control"  th:placeholder="#{curriculum.academico.ipais}" id="pais" name="pais"></input>
                       </div>
                     </div> 
                       
@@ -115,20 +115,10 @@
             </tr>
         </thead>
      </table> 
-
-
-
-
-
-
-
-
-
-
-
+	</form>
 </th:block>
 <th:block layout:fragment="body_end">
-      <script th:src="@{~/gestion-cmc/resources/gestion-cmc/js/ambiente.js}"></script>
+      <script th:src="@{~/gestion-cmc/resources/gestion-cmc/js/academica.js}"></script>
    	<link rel="stylesheet"
 		th:href="@{~/gestion-cmc/plugins/bs-stepper/css/bs-stepper.min.css}">
 	<script

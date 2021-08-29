@@ -6,7 +6,7 @@
 	th:with="funcionalidad='Administraci&oacuten', evento='Curriculun vitae'">
 <th:block layout:fragment="content">
 
-<form action="" method="POST">
+<form id="conocimiento" action="" method="POST">
 	<div class="row">
           <div class="col-md-12">
             
@@ -15,16 +15,16 @@
                       <!-- textarea -->
                       <div class="form-group">
                         <label>Front End</label>
-                        <textarea class="form-control"  th:placeholder="#{curriculun.conocimiento.ifront}"></textarea>
+                        <textarea class="form-control"  th:placeholder="#{curriculun.conocimiento.ifront}" id="frontEnd" name="frontEnd"></textarea>
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label>Back End</label>
-                        <textarea  class="form-control"  th:placeholder="#{curriculun.conocimiento.iback}" ></textarea>
+                        <textarea  class="form-control"  th:placeholder="#{curriculun.conocimiento.iback}" id="backEnd" name="backEnd"></textarea>
                       </div>
                     </div>
-                      <button type="submit" th:text="#{curriculum.guardar}"class="btn btn-primary">Submit</button>
+                      <button type="submit" th:text="#{curriculum.guardar}"class="btn btn-primary" onclick="validacionFormularioCon()">Submit</button>
                     
                   </div>
               
@@ -38,7 +38,11 @@
 
 </th:block>
 <th:block layout:fragment="body_end">
-      
+      <script th:src="@{~/gestion-cmc/resources/gestion-cmc/js/conocimiento.js}"></script>
+   	<link rel="stylesheet"
+		th:href="@{~/gestion-cmc/plugins/bs-stepper/css/bs-stepper.min.css}">
+	<script
+		th:src="@{~/gestion-cmc/plugins/bs-stepper/js/bs-stepper.min.js}"></script>
         
 	
 	<!-- Font Awesome -->
