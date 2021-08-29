@@ -132,10 +132,8 @@
 								<select name="pSolicitado"
 									class="form-control select2" style="width: 100%;">
 									<option value="" selected="selected" th:text="#{administracion.peticiones.selec}">Seleccione...</option>
-									<option value="Analisis" th:text="#{administracion.peticiones.analisis}">An&atilde;lisis</option>
-									<option value="Desarrollo=Programacion" th:text="#{administracion.peticiones.desPro}">Desarrollo = Programacion</option>
-									<option value="Gestion" th:text="#{administracion.peticiones.gestion}">Gesti&otilde;n</option>
-									<option value="DesarrolloyGestion" th:text="#{administracion.peticiones.desGes}">Desarrollo y Gesti&otilde;n</option>
+									<option th:each="clasePerfil : ${clasesPerfil}" th:value="${clasePerfil.id}" th:text="${clasePerfil.claseperfil}" ></option>
+									
 								</select>
 							</div>
 						</div>

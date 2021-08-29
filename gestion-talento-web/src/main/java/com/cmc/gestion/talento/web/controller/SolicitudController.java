@@ -9,10 +9,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.cmc.gestion.talento.bussines.AmbientacionBussines;
+import com.cmc.gestion.talento.bussines.ClasePerfilBussines;
 import com.cmc.gestion.talento.bussines.EspecialidadBussines;
 import com.cmc.gestion.talento.bussines.TarifaBussines;
 import com.cmc.gestion.talento.bussines.TipoPerfilBussines;
 import com.cmc.gestion.talento.bussines.dto.AmbientacionDto;
+import com.cmc.gestion.talento.bussines.dto.ClasePerfilDto;
 import com.cmc.gestion.talento.bussines.dto.EspecialidadDto;
 import com.cmc.gestion.talento.bussines.dto.TarifaDto;
 import com.cmc.gestion.talento.bussines.dto.TipoPerfilDto;
@@ -33,6 +35,9 @@ public class SolicitudController {
 	@Autowired
 	private EspecialidadBussines especialidadBussines;
 	
+	@Autowired
+	private ClasePerfilBussines clasePerfilBussines;
+	
 	@GetMapping
 	public String init(Model model) {
 		model.addAttribute("Errror", "NOK");
@@ -45,10 +50,12 @@ public class SolicitudController {
 		List<EspecialidadDto> especialidades = especialidadBussines.getAllEspecialidad();
 		List<TipoPerfilDto> perfiles = tipoPerfilBussines.getAllTipoPerfil();
 		List<AmbientacionDto> ambientaciones = ambientacionBussines.getAllAmbientacion();
+		List<ClasePerfilDto> clasesPerfil = clasePerfilBussines.getAllClasePerfil();
 		model.addAttribute("tarifas", tarifas);
 		model.addAttribute("especialidades", especialidades);
 		model.addAttribute("perfiles", perfiles);
 		model.addAttribute("ambientaciones", ambientaciones);
+		model.addAttribute("clasesPerfil", clasesPerfil);
 		return "pages/administracion/peticiones/crearSP";
 	}
 
