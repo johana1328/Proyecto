@@ -2,7 +2,7 @@ package com.cmc.gestion.talento.jpa.type;
 
 public enum TipoContrato {
 	TERMINO_FIJO("Fijo "),
-	TERMINO_INDEFINIDO("Indefinido"), 
+	TERMINO_INDEFINIDO("Indefinido "), 
 	OBRA_LABOR("Obra labor "),
 	PRESTACION_SERVICIOS("Prestacion de servicios "),
 	OCACIONAL_TRABAJO ("Otra labor ");
