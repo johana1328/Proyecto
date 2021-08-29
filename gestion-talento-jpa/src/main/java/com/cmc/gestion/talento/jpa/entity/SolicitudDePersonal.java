@@ -57,7 +57,7 @@ public class SolicitudDePersonal extends Solicitud{
 	        inverseJoinColumns = @JoinColumn(name="ambinte", nullable = false)
 	    )
 	@ManyToMany()
-	private List<ParametriaDetalle> GrupoAmbientacion;
+	private List<ParametriaDetalle> grupoAmbientacion;
 	
 	@Column(name = "descripcion_perfil", length = 500)
 	private String descripcionPerfil;
@@ -139,13 +139,13 @@ public class SolicitudDePersonal extends Solicitud{
 		this.clasePerfil = clasePerfil;
 	}
 
-	public List<ParametriaDetalle> getGrupoAmbientacion() {
-		return GrupoAmbientacion;
-	}
+	
+	
+	
 
-	public void setGrupoAmbientacion(List<ParametriaDetalle> grupoAmbientacion) {
-		GrupoAmbientacion = grupoAmbientacion;
-	}
+	
+	
+	
 
 	public String getDescripcionPerfil() {
 		return descripcionPerfil;
@@ -257,6 +257,14 @@ public class SolicitudDePersonal extends Solicitud{
 
 	public void setTarifa(ParametriaDetalle tarifa) {
 		this.tarifa = tarifa;
+	}
+
+	public List<ParametriaDetalle> getGrupoAmbientacion() {
+		return grupoAmbientacion;
+	}
+
+	public void setGrupoAmbientacion(List<ParametriaDetalle> grupoAmbientacion) {
+		this.grupoAmbientacion = grupoAmbientacion;
 	}
 		
 }
