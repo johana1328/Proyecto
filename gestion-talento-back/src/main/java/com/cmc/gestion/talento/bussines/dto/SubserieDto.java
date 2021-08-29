@@ -2,22 +2,26 @@ package com.cmc.gestion.talento.bussines.dto;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 
 public class SubserieDto {
 
 	private long id;
-	@NotEmpty(message = "Nombre no puede ser nulo")
-	@NotBlank(message = "Nombre no puede ser nulo")
+	@NotEmpty(message = "El nombre de la subserie es requerido.")
+	@NotBlank(message = "El nombre de la subserie es requerido.")
 	private String nombre;
+	@Pattern(regexp = "^[a-zA-Z0-9]+$", message = "La descripcion solo puede contener valores alfanumericos ")
 	private String descripcion;
 	private String proceso;
 	private String procedimiento;
-	@NotEmpty(message = "Archivo gestión no puede ser nulo")
-	@NotBlank(message = "Archivo gestión ser nulo")
+	@NotEmpty(message = "Archivo gestión es requerido.")
+	@NotBlank(message = "Archivo gestión es requerido.")
 	private int archivoGestion;
-	@NotEmpty(message = "Archivo Central no puede ser nulo")
-	@NotBlank(message = "Archivo Central no puede ser nulo")
+	@NotEmpty(message = "Archivo Central es requerido.")
+	@NotBlank(message = "Archivo Central es requerido.")
 	private int archivoCentral;
+	@NotEmpty(message = "El nombre de la subserie es requerido.")
+	@NotBlank(message = "El nombre de la subserie es requerido.")
 	private SerieDto serieDto;
 	
 	public long getId() {
