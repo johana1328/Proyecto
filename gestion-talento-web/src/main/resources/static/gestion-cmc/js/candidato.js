@@ -13,7 +13,7 @@ function validacionFormulario(){
 			documento:{
 				required:true,
 				number : true,
-				noSpace: true
+				
 			},
 			nombre1:{
 				required: true,
