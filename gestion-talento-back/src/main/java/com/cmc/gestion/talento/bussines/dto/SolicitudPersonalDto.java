@@ -13,10 +13,10 @@ import com.cmc.gestion.talento.jpa.type.TipoContrato;
 public class SolicitudPersonalDto extends SolicitudDto{
 	
 	private AreaSolicitante areaSolicitante;
-	private ParametriaDetalle perfil;
-	private ParametriaDetalle especialidad;
-	private ParametriaDetalle clasePerfil;
-	private List<ParametriaDetalle> grupoAmbientacion;
+	private PerfilDto perfil;
+	private EspecialidadDto especialidad;
+	private ClasePerfilDto clasePerfil;
+	private List<AmbientacionDto> grupoAmbientacion;
 	private String descripcionPerfil;
 	private TipoContrato tipoContrato;
 	private Date fechaInicio;
@@ -30,36 +30,35 @@ public class SolicitudPersonalDto extends SolicitudDto{
 	private int cantidadVacante;
 	private double salarioAsignado;
 	private int horasApagar;
-	private ParametriaDetalle tarifa;
-	
+	private TarifaDto tarifa;
 	public AreaSolicitante getAreaSolicitante() {
 		return areaSolicitante;
 	}
 	public void setAreaSolicitante(AreaSolicitante areaSolicitante) {
 		this.areaSolicitante = areaSolicitante;
 	}
-	public ParametriaDetalle getPerfil() {
+	public PerfilDto getPerfil() {
 		return perfil;
 	}
-	public void setPerfil(ParametriaDetalle perfil) {
+	public void setPerfil(PerfilDto perfil) {
 		this.perfil = perfil;
 	}
-	public ParametriaDetalle getEspecialidad() {
+	public EspecialidadDto getEspecialidad() {
 		return especialidad;
 	}
-	public void setEspecialidad(ParametriaDetalle especialidad) {
+	public void setEspecialidad(EspecialidadDto especialidad) {
 		this.especialidad = especialidad;
 	}
-	public ParametriaDetalle getClasePerfil() {
+	public ClasePerfilDto getClasePerfil() {
 		return clasePerfil;
 	}
-	public void setClasePerfil(ParametriaDetalle clasePerfil) {
+	public void setClasePerfil(ClasePerfilDto clasePerfil) {
 		this.clasePerfil = clasePerfil;
 	}
-	public List<ParametriaDetalle> getGrupoAmbientacion() {
+	public List<AmbientacionDto> getGrupoAmbientacion() {
 		return grupoAmbientacion;
 	}
-	public void setGrupoAmbientacion(List<ParametriaDetalle> grupoAmbientacion) {
+	public void setGrupoAmbientacion(List<AmbientacionDto> grupoAmbientacion) {
 		this.grupoAmbientacion = grupoAmbientacion;
 	}
 	public String getDescripcionPerfil() {
@@ -140,14 +139,13 @@ public class SolicitudPersonalDto extends SolicitudDto{
 	public void setHorasApagar(int horasApagar) {
 		this.horasApagar = horasApagar;
 	}
-	public ParametriaDetalle getTarifa() {
+	public TarifaDto getTarifa() {
 		return tarifa;
 	}
-	public void setTarifa(ParametriaDetalle tarifa) {
+	public void setTarifa(TarifaDto tarifa) {
 		this.tarifa = tarifa;
 	}
 	
 	
-
 
 }

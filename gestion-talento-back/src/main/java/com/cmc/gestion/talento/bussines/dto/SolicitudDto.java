@@ -2,14 +2,13 @@ package com.cmc.gestion.talento.bussines.dto;
 
 import java.util.Date;
 
-import com.cmc.gestion.talento.jpa.entity.Empleado;
 import com.cmc.gestion.talento.jpa.type.TipoEstadoSolicitud;
 import com.cmc.gestion.talento.jpa.type.TipoSolicitud;
 
 public class SolicitudDto {
 	
 	protected long idSolicitud;
-	protected Empleado solicitante;
+	protected EmpleadoDto solicitante;
 	protected Date fechaCreacion;
 	protected Date fechaActualizacion;
 	protected String observacionSolicitante;
@@ -21,12 +20,15 @@ public class SolicitudDto {
 	public long getIdSolicitud() {
 		return idSolicitud;
 	}
-	public Empleado getSolicitante() {
+	
+	public EmpleadoDto getSolicitante() {
 		return solicitante;
 	}
-	public void setSolicitante(Empleado solicitante) {
+
+	public void setSolicitante(EmpleadoDto solicitante) {
 		this.solicitante = solicitante;
 	}
+
 	public void setIdSolicitud(long idSolicitud) {
 		this.idSolicitud = idSolicitud;
 	}
