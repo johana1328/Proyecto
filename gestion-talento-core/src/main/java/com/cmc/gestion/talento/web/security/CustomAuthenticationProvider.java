@@ -28,7 +28,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider{
 				authorities.add(authority);
 			}
 			  return new UsernamePasswordAuthenticationToken(
-					  userdetail.getNombre(), password, authorities);
+					  userdetail, password, authorities);
 		}
 		return null;
 	}

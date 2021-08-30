@@ -27,6 +27,7 @@ public class AutenticateuserImpl implements AutenticateUser {
 				perfiles.add(in.toString());
 			}
 			userdetail.setPerfiles(perfiles);
+			userdetail.setId(usuario.getIdUsuario());
 			userdetail.setNombre(usuario.getPrimerNombre().concat(" ").concat(usuario.getPrimerApellido()));
 			return userdetail;
 		}

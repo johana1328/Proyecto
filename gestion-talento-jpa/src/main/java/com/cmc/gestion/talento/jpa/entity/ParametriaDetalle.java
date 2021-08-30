@@ -23,6 +23,13 @@ public class ParametriaDetalle implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	public ParametriaDetalle(long id) {
+		this.id=id;
+	}
+	
+	public ParametriaDetalle() {
+	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

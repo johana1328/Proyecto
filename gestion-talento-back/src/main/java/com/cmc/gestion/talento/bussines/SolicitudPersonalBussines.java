@@ -1,41 +1,23 @@
 package com.cmc.gestion.talento.bussines;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.ConstraintMode;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.ForeignKey;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
-import com.cmc.gestion.talento.bussines.dto.EmpleadoDto;
 import com.cmc.gestion.talento.bussines.dto.SolicitudPersonalDto;
 import com.cmc.gestion.talento.bussines.facade.SolicitudPersonalFacade;
 import com.cmc.gestion.talento.jpa.dao.SolicitudPersonalDao;
 import com.cmc.gestion.talento.jpa.entity.Empleado;
 import com.cmc.gestion.talento.jpa.entity.ParametriaDetalle;
 import com.cmc.gestion.talento.jpa.entity.SolicitudDePersonal;
-import com.cmc.gestion.talento.jpa.type.AreaSolicitante;
-import com.cmc.gestion.talento.jpa.type.EquipoComputo;
-import com.cmc.gestion.talento.jpa.type.NivelEstudios;
-import com.cmc.gestion.talento.jpa.type.RangoAnoExperiencia;
-import com.cmc.gestion.talento.jpa.type.TipoContrato;
 import com.cmc.gestion.talento.jpa.type.TipoEstadoSolicitud;
 import com.cmc.gestion.talento.jpa.type.TipoSolicitud;
+import com.cmc.gestion.talento.web.security.UserDetail;
 
 @Service
 public class SolicitudPersonalBussines {
@@ -52,11 +34,13 @@ public class SolicitudPersonalBussines {
 	}
 	
 	public void crearSolicitudpersonbal(SolicitudPersonalDto solicitud ) {
-		
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		UserDetail usuario=(UserDetail)authentication.getPrincipal();
 		SolicitudDePersonal solicitudEntity= new SolicitudDePersonal();
-		solicitudEntity.setSolicitante(null);
+		Empleado empleado = new Empleado();
+		empleado.setIdUsuario(usuario.getId());
+		solicitudEntity.setSolicitante(empleado);
 		solicitudEntity.setObservacionSolicitante(solicitud.getObservacionSolicitante());
-		
 		solicitudEntity.setFechaCreacion(Calendar.getInstance());
 		solicitudEntity.setFechaActualizacion(Calendar.getInstance());
 		solicitudEntity.setObservacionGestor("");
@@ -65,11 +49,40 @@ public class SolicitudPersonalBussines {
 		solicitudEntity.setEstado(TipoEstadoSolicitud.SOLICITUD_CREADA);
 		
 		//datos solicitud personal
-		solicitudEntity.setAreaSolicitante(solicitud.getAreaSolicitante());
-		solicitudEntity.setPerfil(solicitud.getPerfil());
-		solicitudEntity.setEspecialidad(solicitud.getEspecialidad());
-		solicitudEntity.setClasePerfil(solicitud.getClasePerfil());
+		solicitudEntity.setDescripcionPerfil(solicitud.getDescripcionPerfil());
+		solicitudEntity.setCaracteriSoftware(solicitud.getCaracteriSoftware());
+		solicitudEntity.setCliente(solicitud.getCliente());
+		solicitudEntity.setResponsableCliente(solicitud.getResponsableCliente());
+		solicitudEntity.setMesaTrabajo(solicitud.getMesaTrabajo());
+		solicitudEntity.setCantidadVacante(Integer.parseInt(solicitud.getCantidadVacante()));
+		solicitudEntity.setSalarioAsignado(Double.parseDouble(solicitud.getSalarioAsignado()));
+		solicitudEntity.setHorasApagar(Integer.parseInt(solicitud.getHorasApagar()));
 		
+		solicitudEntity.setAreaSolicitante(solicitud.getAreaSolicitante());
+		solicitudEntity.setTipoContrato(solicitud.getTipoContrato());
+		solicitudEntity.setEquipoComputo(solicitud.getEquipoComputo());
+		solicitudEntity.setEscolaridad(solicitud.getEscolaridad());
+		solicitudEntity.setAnoExperienciaMin(solicitud.getAnoExperienciaMin());
+		
+		long codigoPerfil=solicitud.getCodigoPerfil();
+		solicitudEntity.setPerfil(new ParametriaDetalle(codigoPerfil));
+		long especialidad= solicitud.getCodigoEspecialidad();
+		solicitudEntity.setEspecialidad(new ParametriaDetalle(especialidad));
+		long clasePerfil=solicitud.getCodClasePerfil();
+		solicitudEntity.setClasePerfil(new ParametriaDetalle(clasePerfil));
+		long tarifa=Long.parseLong(solicitud.getCodTarifa());
+		solicitudEntity.setTarifa(new ParametriaDetalle(tarifa));
+		List<ParametriaDetalle> listaAmbientacion = new ArrayList<>();
+		solicitud.getCodAmbientacion().forEach(codigo->{
+			ParametriaDetalle p= new ParametriaDetalle(codigo);
+			listaAmbientacion.add(p);
+		});
+		solicitudEntity.setGrupoAmbientacion(listaAmbientacion);
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(solicitud.getFechaInicio());
+		solicitudEntity.setFechaInicio(cal);
+		
+		solicitudPersonalDao.save(solicitudEntity);
 
 	}
 

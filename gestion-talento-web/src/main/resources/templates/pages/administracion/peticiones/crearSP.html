@@ -5,16 +5,14 @@
 	th:with="funcionalidad='Administraci&oacuten', evento='Crear Solicitud Personal'">
 	
 	<th:block layout:fragment="content">
-	<form id="formCrearPeticion" action="" method="POST">
+	<form id="formCrearPeticion" 
+	    th:object="${solicitud}"
+		th:action="${solicitud.idSolicitud == 0} ? @{/administracion/solicitud/crear} : @{/administracion/solicitud/modificar/{id}(id=${solicitud.idSolicitud})}"
+	 method="POST">
 	
 	<div class="card-body p-0">
-	<div id="messageBox1" class="alert alert-danger alert-dismissible"
-				style="display: none">
-				<button type="button" class="close"
-					onclick="closeAlert('alert-danger')" aria-hidden="true">&times;</button>
-				<i class="icon fas fa-ban"></i> Error!
-				<ul style="margin-top: 0px; margin-bottom: 0px;"></ul>
-			</div>
+		<!-- Mensajes -->
+		<div layout:replace="~{fragments/formFragment :: mensages}"></div>
 		
 		<div class="bs-stepper">
 			<div class="bs-stepper-header" role="tablist">
@@ -55,25 +53,28 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label for="proyecto" th:text="#{administracion.peticiones.proArea}">Proyecto o &aacute;rea solicitante</label> 
-								<select name="proyecto" id="proyecto"
-									class="form-control select2" style="width: 100%;">
-									<option value="" selected="selected" th:text="#{administracion.peticiones.selec}">Seleccione...</option>
-									<option value="Fabrica"  th:text="#{administracion.peticiones.fabrica}">F&aacute;brica</option>
-									<option value="ServiciosProfesionales"  th:text="#{administracion.peticiones.serProf}">Servicios Profesionales</option>
+								<select name="proyecto" id="proyecto" th:field="*{areaSolicitante}" 
+									class="form-control" style="width: 100%;">
+									<option
+										th:each="areaSolicitante : ${T(com.cmc.gestion.talento.jpa.type.AreaSolicitante).values()}"
+											th:value="${areaSolicitante}" th:text="${areaSolicitante.value}"></option>
 								</select>
 							</div>
 							<div class="form-group">
 								<label for="cliente" th:text="#{administracion.peticiones.cliente}">Cliente</label> <input type="text"
+								th:field="*{cliente}"
 								class="form-control" id="cliente" th:placeholder="#{administracion.peticiones.cliente}" name="cliente">
 							</div>
 							<div class="form-group">
 								<label for="resCliente" th:text="#{administracion.peticiones.responsable}">Responsable en cliente</label> <input
 									type="text" class="form-control" id="responsableCliente" name="responsableCliente" 
+									th:field="*{responsableCliente}"
 									th:placeholder="#{administracion.peticiones.responsable}">
 							</div>
 							<div class="form-group">
 								<label th:text="#{administracion.peticiones.tarifa}">Tarifa</label> <select name="tarifa"
-									class="form-control select2" style="width: 100%;">
+									th:field="*{codTarifa}"
+									class="form-control" style="width: 100%;">
 									<option value="" selected="selected" th:text="#{administracion.peticiones.selec}">Seleccione</option>
 									<option th:each="tarifa : ${tarifas}" th:value="${tarifa.id}" th:text="${tarifa.valor}" ></option>
 								</select>
@@ -83,21 +84,23 @@
 							<div class="form-group">
 								<label for="areaTrabajo" th:text="#{administracion.peticiones.areaTra}">&Aacute;rea de trabajo</label> <input
 									type="text" class="form-control" id="areaTrabajo" name="areaTrabajo"
+									th:field="*{mesaTrabajo}"
 									th:placeholder="#{administracion.peticiones.areaTra}">
 							</div>
 							<div class="form-group">
 								<label for="cantVacante" th:text="#{administracion.peticiones.canPer}">Cantidad de personal solicitado para la vacante</label> <input type="text"
+								   th:field="*{cantidadVacante}"
 									class="form-control" id="cantVacante" name="cantVacante" th:placeholder="#{administracion.peticiones.cant}">
 							</div>
 							<div class="form-group">
 								<label for="horasApagar" th:text="#{administracion.peticiones.numHor}">Numero de horas a pagar a CMC indicadas por el cliente</label> <input
 									type="text" class="form-control" id="horasApagar" name="horasApagar"
+									th:field="*{horasApagar}"
 									th:placeholder="#{administracion.peticiones.horas}">
 							</div>
 						</div>
 					</div>
-
-
+					
 					<button class="btn btn-primary" type="button" onclick="validacionFormularioP()" th:text="#{administracion.peticiones.btnSiguiente}">Siguiente</button>
 				</div>
 				
@@ -109,29 +112,33 @@
 							
 							<div class="form-group">
 								<label th:text="#{administracion.peticiones.perSol}">Perf&iacute;l Solicitado</label> <select name="perfilSolicitado"
-									class="form-control select2" style="width: 100%;">
-									<option value="" selected="selected" th:text="#{administracion.peticiones.selec}">Seleccione...</option>
+									class="form-control" style="width: 100%;"
+									th:field="*{codigoPerfil}" >
 									<option th:each="perfil : ${perfiles}" th:value="${perfil.id}" th:text="${perfil.perfil}" ></option>
 									
 								</select>
 							</div>
 							<div class="form-group">
 								<label th:text="#{administracion.peticiones.especialidad}">Especialidad</label> <select name="especialidad"
-									class="form-control select2" style="width: 100%;">
-									<option value="" selected="selected" th:text="#{administracion.peticiones.selec}">Seleccione...</option>
+									class="form-control" style="width: 100%;"
+									th:field="*{codigoEspecialidad}" >
 									<option th:each="especialidad : ${especialidades}" th:value="${especialidad.id}" th:text="${especialidad.especialidad}" ></option>
 								</select>
 							</div>
 							<div class="form-group">
-								<label for="expMaAnos" th:text="#{administracion.peticiones.expMax}" >Experiencia maxima requerida en a&ntilde;os</label> <input
-									type="text" class="form-control" id="expMaAnos" name="expMaAnos"
-									th:placeholder="#{administracion.peticiones.exper}">
+								<label for="expMaAnos" th:text="#{administracion.peticiones.expMax}" >Experiencia requerida</label> 
+								<select name="expMaAnos" id="proyecto" th:field="*{anoExperienciaMin}" 
+									class="form-control" style="width: 100%;">
+									<option
+										th:each="rango : ${T(com.cmc.gestion.talento.jpa.type.RangoAnoExperiencia).values()}"
+											th:value="${rango}" th:text="${rango.value}"></option>
+								</select>
 							</div>
 							<div class="form-group">
 								<label th:text="#{administracion.peticiones.perSoli}">El perfil solicitado funcionalmente va a realizar</label> 
 								<select name="pSolicitado"
-									class="form-control select2" style="width: 100%;">
-									<option value="" selected="selected" th:text="#{administracion.peticiones.selec}">Seleccione...</option>
+								    th:field="*{codClasePerfil}" 
+									class="form-control" style="width: 100%;">
 									<option th:each="clasePerfil : ${clasesPerfil}" th:value="${clasePerfil.id}" th:text="${clasePerfil.claseperfil}" ></option>
 									
 								</select>
@@ -140,33 +147,27 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label th:text="#{administracion.peticiones.ambiente}">Ambiente</label> <select name="ambiente"
-									class="form-control select2" style="width: 100%;">
-									<option value="" selected="selected"  th:text="#{administracion.peticiones.selec}">Seleccione...</option>
+									class="select2" style="width: 100%;" 
+									th:field="*{codAmbientacion}"
+									multiple="multiple" data-placeholder="Select a State" >
 									<option th:each="ambientacion : ${ambientaciones}" th:value="${ambientacion.id}" th:text="${ambientacion.ambiente}" ></option>
 						
 								</select>
 							</div>
 							<div class="form-group">
-								<label th:text="#{administracion.peticiones.escolaridaMin}">Escolaridad m&itilde;nima requeridad</label> <select name="escolaridad"
-									class="form-control select2" style="width: 100%;">
-									<option value="" selected="selected" th:text="#{administracion.peticiones.selec}">Seleccione...</option>
-									<option value="Bachiller" th:text="#{administracion.peticiones.bachiller}">Bachiller</option>
-									<option value="Tecnico" th:text="#{administracion.peticiones.tecnico}">T&etilde;cnico</option>
-									<option value="Tecnologico" th:text="#{administracion.peticiones.tecnologico}">Tecnologico</option>
-									<option value="ProfesionalUniversitario" th:text="#{administracion.peticiones.profUniver}">Profesional Universitario</option>
-									<option value="Especializacion" th:text="#{administracion.peticiones.especializacion}">Especializacion</option>
-									<option value="Maestria" th:text="#{administracion.peticiones.maestria}">Maestria</option>
-									<option value="Otros" th:text="#{administracion.peticiones.otros}">Otros</option>
+								<label th:text="#{administracion.peticiones.escolaridaMin}">Escolaridad m&itilde;nima requeridad</label> 
+								<select name="escolaridad" id="proyecto" th:field="*{escolaridad}" 
+									class="form-control" style="width: 100%;">
+									<option
+										th:each="escolaridad : ${T(com.cmc.gestion.talento.jpa.type.NivelEstudios).values()}"
+											th:value="${escolaridad}" th:text="${escolaridad.value}"></option>
 								</select>
 							</div>
 							<div class="form-group">
-								<label for="expMiAnos" th:text="#{administracion.peticiones.expMin}">Experiencia minima requerida en anios</label> <input
-									type="text" class="form-control" id="expMiAnos" name="expMiAnos"
-									th:placeholder="#{administracion.peticiones.exper}">
-							</div>
-							<div class="form-group">
 								<label for="descripcion" th:text="#{administracion.peticiones.desDetallada}">Descripci&otilde;n detallada del perfil solicitado</label> 
-									<textarea class="form-control" rows="3" name="descripcion" th:placeholder="#{administracion.peticiones.descri}"></textarea>
+									<textarea class="form-control" 
+									th:field="*{descripcionPerfil}"
+									rows="3" name="descripcion" th:placeholder="#{administracion.peticiones.descri}"></textarea>
 							</div>
 							
 						</div>
@@ -183,22 +184,25 @@
 						<div class="col-md-6">
 							
 							<div class="form-group">
-								<label th:text="#{administracion.peticiones.tipoContra}">Tipo Contrato</label> <select name="tipoContrato"
-								class="form-control select2"
-									style="width: 100%;">
-									<option value="" selected="selected" th:text="#{administracion.peticiones.selec}">Tipo</option>
-									<option value="Indefinido" th:text="#{administracion.peticiones.indefinido}">Indefinido</option>
-									<option value="ObraLabor" th:text="#{administracion.peticiones.obraLabor}">Obra Labor</option>
+								<label th:text="#{administracion.peticiones.tipoContra}">Tipo Contrato</label> 
+								<select name="tipoContrato" id="tipoContrato" th:field="*{tipoContrato}" 
+									class="form-control" style="width: 100%;">
+									<option
+										th:each="tipoContrato : ${T(com.cmc.gestion.talento.jpa.type.TipoContrato).values()}"
+											th:value="${tipoContrato}" th:text="${tipoContrato.value}"></option>
 								</select>
 							</div>
 							<div class="form-group">
 								<label for="fecha" th:text="#{administracion.peticiones.fechaIni}">Fecha esperada de inicio de labores</label> <input
+									th:field="*{fechaInicio}"
 									type="date" class="form-control" id="fecha" name="fecha"
 									th:placeholder="#{administracion.peticiones.fec}">
 							</div>
 							<div class="form-group">
 								<label for="observaciones" th:text="#{administracion.peticiones.obsGener}">Observaciones generales para tener encuenta</label> 
-									<textarea class="form-control" name="observaciones" rows="3" th:placeholder="#{administracion.peticiones.observaciones}"></textarea>
+									<textarea class="form-control"
+									th:field="*{observacionSolicitante}"
+									 name="observaciones" rows="3" th:placeholder="#{administracion.peticiones.observaciones}"></textarea>
 							</div>
 							
 						</div>
@@ -206,20 +210,23 @@
 						    <div class="form-group">
 								<label for="salario" th:text="#{administracion.peticiones.salAsig}">Salario Asignado</label> <input
 									type="text" class="form-control" id="salario" name="salario"
+									th:field="*{salarioAsignado}"
 									th:placeholder="#{administracion.peticiones.salAsig}">
 							</div>
 							<div class="form-group">
-								<label th:text="#{administracion.peticiones.reqEquipo}">Requiere equipo de computo</label> <select name="equipoCom" class="form-control select2"
-									style="width: 100%;">
-									<option value="" selected="selected" th:text="#{administracion.peticiones.selec}">Tipo</option>
-									<option value="Escritorio" th:text="#{administracion.peticiones.escritorio}" >Escritorio</option>
-									<option value="Portatil" th:text="#{administracion.peticiones.portatil}">Portatil</option>
-									<option value="Ninguno" th:text="#{administracion.peticiones.ninguno}">Ninguno</option>
+								<label th:text="#{administracion.peticiones.reqEquipo}">Requiere equipo de computo</label> 
+								<select name="equipoCom" id="equipoCom" th:field="*{equipoComputo}" 
+									class="form-control" style="width: 100%;">
+									<option
+										th:each="computo : ${T(com.cmc.gestion.talento.jpa.type.EquipoComputo).values()}"
+											th:value="${computo}" th:text="${computo.value}"></option>
 								</select>
 							</div>
 							<div class="form-group">
 								<label for="caracteristica" th:text="#{administracion.peticiones.carSoft}">Caracteristica del software Y hadware del equipo</label> 
-									<textarea class="form-control" rows="3" name="caracteristica" th:placeholder="#{administracion.peticiones.caracteristicas}"></textarea>
+									<textarea class="form-control"
+									th:field="*{caracteriSoftware}"  
+									rows="3" name="caracteristica" th:placeholder="#{administracion.peticiones.caracteristicas}"></textarea>
 							</div>
 							
 						</div>
@@ -244,6 +251,9 @@
 	   document.addEventListener('DOMContentLoaded', function () {
 	       window.stepper = new Stepper(document.querySelector('.bs-stepper'))
 	    })
+	    
+	     //Initialize Select2 Elements
+    $('.select2').select2()
 	</script>
 </th:block>
 </html>

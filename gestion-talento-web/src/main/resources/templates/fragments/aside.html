@@ -10,7 +10,7 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="info center-element">
-          <a th:href="@{/administracion/miperfil}" class="d-block" th:text="${#authentication.name}" > Usuario</a>
+          <a th:href="@{/administracion/miperfil}" class="d-block" th:text="${#authentication.principal.nombre}" > Usuario</a>
         </div>
       </div>
       <!-- Sidebar Menu -->

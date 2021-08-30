@@ -16,6 +16,8 @@ public class SolicitudDto {
 	protected TipoSolicitud tipoSolicitud;
 	protected TipoEstadoSolicitud estado;
 	protected String gestor;
+	
+	//campos formulario
 
 	public long getIdSolicitud() {
 		return idSolicitud;
@@ -75,7 +77,5 @@ public class SolicitudDto {
 	public void setGestor(String gestor) {
 		this.gestor = gestor;
 	}
-	
-	
 	
 }

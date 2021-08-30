@@ -3,6 +3,7 @@ package com.cmc.gestion.talento.web.security;
 import java.util.List;
 
 public class UserDetail {
+	private String id;
 	private String nombre;
 	private List<String> perfiles;
 	
@@ -17,6 +18,12 @@ public class UserDetail {
 	}
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
 	} 
 
 }
