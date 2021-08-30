@@ -19,7 +19,7 @@ public class MiperfilController {
 		
 		@GetMapping
 		public String init() {
-			return "pages/administracion/perfil/miperfil";
+			return "pages/administracion/perfil/miPerfil";
 		}
 	
 	}

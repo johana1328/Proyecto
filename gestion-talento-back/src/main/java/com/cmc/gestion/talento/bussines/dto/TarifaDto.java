@@ -12,6 +12,7 @@ public class TarifaDto {
 	@NotBlank(message = "Tarifa es requerido.")
 	@NotNull(message = "Tarifa es requerido.")
 	@Pattern(regexp = "^[1-9]\\d*(\\.\\d+)?$",message = "Valor solo puede contener números decimales")
+	
 	private String valor;
 	
 	public long getId() {

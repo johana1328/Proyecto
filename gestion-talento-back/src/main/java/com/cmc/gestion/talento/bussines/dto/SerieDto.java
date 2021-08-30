@@ -11,6 +11,7 @@ public class SerieDto {
 	@NotEmpty(message = "El nombre de la serie es requerido.")
 	@NotBlank(message = "El nombre de la serie es requerido.")
 	@Pattern(regexp = "[A-Za-z ]*", message = "El nombre solo puede contener letras ")
+	
 	private String nombre;
 	@Pattern(regexp = "[A-Za-z ]*", message = "Descripción solo puede contener letras ")
 	private String descripcion;

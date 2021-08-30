@@ -30,7 +30,7 @@ public class SerieController {
 	
 	@GetMapping
 	public String init() {
-		return "pages/administracion/serie";
+		return "pages/administracion/Serie";
 	}
 	
 	@GetMapping(path = "/getAllSerie", produces = MediaType.APPLICATION_JSON_VALUE )
