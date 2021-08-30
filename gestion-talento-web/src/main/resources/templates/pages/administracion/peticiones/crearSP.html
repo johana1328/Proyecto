@@ -53,8 +53,9 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label for="proyecto" th:text="#{administracion.peticiones.proArea}">Proyecto o &aacute;rea solicitante</label> 
-								<select name="proyecto" id="proyecto" th:field="*{areaSolicitante}" 
+								<select name="areaSolicitante" id="areaSolicitante" th:field="*{areaSolicitante}" 
 									class="form-control" style="width: 100%;">
+									<option value="" selected="selected" th:text="#{administracion.peticiones.selec}">Seleccione</option>
 									<option
 										th:each="areaSolicitante : ${T(com.cmc.gestion.talento.jpa.type.AreaSolicitante).values()}"
 											th:value="${areaSolicitante}" th:text="${areaSolicitante.value}"></option>
@@ -73,7 +74,7 @@
 							</div>
 							<div class="form-group">
 								<label th:text="#{administracion.peticiones.tarifa}">Tarifa</label> <select name="tarifa"
-									th:field="*{codTarifa}"
+									th:field="*{codTarifa}" id="tarifa"
 									class="form-control" style="width: 100%;">
 									<option value="" selected="selected" th:text="#{administracion.peticiones.selec}">Seleccione</option>
 									<option th:each="tarifa : ${tarifas}" th:value="${tarifa.id}" th:text="${tarifa.valor}" ></option>
@@ -127,7 +128,7 @@
 							</div>
 							<div class="form-group">
 								<label for="expMaAnos" th:text="#{administracion.peticiones.expMax}" >Experiencia requerida</label> 
-								<select name="expMaAnos" id="proyecto" th:field="*{anoExperienciaMin}" 
+								<select name="expAnos" id="expAnos" th:field="*{anoExperienciaMin}" 
 									class="form-control" style="width: 100%;">
 									<option
 										th:each="rango : ${T(com.cmc.gestion.talento.jpa.type.RangoAnoExperiencia).values()}"
@@ -136,9 +137,10 @@
 							</div>
 							<div class="form-group">
 								<label th:text="#{administracion.peticiones.perSoli}">El perfil solicitado funcionalmente va a realizar</label> 
-								<select name="pSolicitado"
+								<select name="pSolicitado" id="pSolicitado"
 								    th:field="*{codClasePerfil}" 
 									class="form-control" style="width: 100%;">
+									
 									<option th:each="clasePerfil : ${clasesPerfil}" th:value="${clasePerfil.id}" th:text="${clasePerfil.claseperfil}" ></option>
 									
 								</select>
@@ -149,7 +151,7 @@
 								<label th:text="#{administracion.peticiones.ambiente}">Ambiente</label> <select name="ambiente"
 									class="select2" style="width: 100%;" 
 									th:field="*{codAmbientacion}"
-									multiple="multiple" data-placeholder="Select a State" >
+									multiple="multiple" data-placeholder="Seleccione ambientes" >
 									<option th:each="ambientacion : ${ambientaciones}" th:value="${ambientacion.id}" th:text="${ambientacion.ambiente}" ></option>
 						
 								</select>
@@ -202,7 +204,7 @@
 								<label for="observaciones" th:text="#{administracion.peticiones.obsGener}">Observaciones generales para tener encuenta</label> 
 									<textarea class="form-control"
 									th:field="*{observacionSolicitante}"
-									 name="observaciones" rows="3" th:placeholder="#{administracion.peticiones.observaciones}"></textarea>
+									 name="observaciones"  rows="3" th:placeholder="#{administracion.peticiones.observaciones}"></textarea>
 							</div>
 							
 						</div>
@@ -226,7 +228,7 @@
 								<label for="caracteristica" th:text="#{administracion.peticiones.carSoft}">Caracteristica del software Y hadware del equipo</label> 
 									<textarea class="form-control"
 									th:field="*{caracteriSoftware}"  
-									rows="3" name="caracteristica" th:placeholder="#{administracion.peticiones.caracteristicas}"></textarea>
+									rows="3" name="caracteristica" id="caracteristica" th:placeholder="#{administracion.peticiones.caracteristicas}"></textarea>
 							</div>
 							
 						</div>

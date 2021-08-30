@@ -3,6 +3,11 @@ package com.cmc.gestion.talento.bussines.dto;
 import java.util.Date;
 import java.util.List;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.cmc.gestion.talento.jpa.type.AreaSolicitante;
@@ -12,13 +17,52 @@ import com.cmc.gestion.talento.jpa.type.RangoAnoExperiencia;
 import com.cmc.gestion.talento.jpa.type.TipoContrato;
 
 public class SolicitudPersonalDto extends SolicitudDto{
+	
+	@NotEmpty(message = "El cliente es requerido.")
+	@NotBlank(message = "El cliente es requerido.")
+	@Pattern(regexp = "[A-Za-z ]*", message = "El cliente solo puede contener letras ")
+	
 	private String cliente;
+	
+	@NotEmpty(message = "Responsable cliente es requerido.")
+	@NotBlank(message = "Responsable cliente es es requerido.")
+	@Pattern(regexp = "[A-Za-z ]*", message = "Responsable cliente solo puede contener letras ")
+	
 	private String responsableCliente;
+	
+	@NotEmpty(message = "Mesa de trabajo es requerida.")
+	@NotBlank(message = "Mesa de trabajo es requerida.")
+	@Pattern(regexp = "[A-Za-z ]*", message = "Responsable cliente solo puede contener letras ")
+	
+	
 	private String mesaTrabajo;
+	
 	private String caracteriSoftware;
+	
+	@NotEmpty(message = "Descripción de perfil es requerida.")
+	@NotBlank(message = "Descripción de perfil requerida.")
+	@Pattern(regexp = "[A-Za-z ]*", message = "Responsable cliente solo puede contener letras ")
 	private String descripcionPerfil;
+	
+	@NotEmpty(message = "Salario asignado es requerido.")
+	@NotBlank(message = "Salario asignado es requerido.")
+	@NotNull(message = "Salrio asignado es requerido.")
+	@Pattern(regexp = "^[1-9]\\d*(\\.\\d+)?$",message = "Salario asignado solo puede contener números")
+
 	private String salarioAsignado;
+	
+	@NotEmpty(message = "Salario asignado es requerido.")
+	@NotBlank(message = "Salario asignado es requerido.")
+	@NotNull(message = "Salrio asignado es requerido.")
+	@Pattern(regexp = "^[1-9]\\d*(\\.\\d+)?$",message = "Salario asignado solo puede contener números")
+
 	private String cantidadVacante;
+	
+	@NotEmpty(message = "Salario asignado es requerido.")
+	@NotBlank(message = "Salario asignado es requerido.")
+	@NotNull(message = "Salrio asignado es requerido.")
+	@Pattern(regexp = "^[1-9]\\d*(\\.\\d+)?$",message = "Salario asignado solo puede contener números")
+
 	private String horasApagar;
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
