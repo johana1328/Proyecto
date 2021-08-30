@@ -13,8 +13,6 @@ public class MiperfilController {
 		
   @Autowired
   private UsuarioBussines usuarioBussines;
-  
-  
 		
 		
 		@GetMapping

@@ -96,6 +96,7 @@ public class UsuarioBussines {
 	public List<UsuarioDto> getAllJefes(){
 		List<TipoPerfil> listaPerfiles= new ArrayList<TipoPerfil>();
 		listaPerfiles.add(TipoPerfil.GERENTE);
+		listaPerfiles.add(TipoPerfil.GERENTE_RRHH);
 		List<Usuario> listUserEntity = usuariodao.findByPerfilUsuarioIn(listaPerfiles);
 		UsuarioFacade userFacade = new UsuarioFacade();
 		List<UsuarioDto> resp = userFacade.getListObjec(listUserEntity);

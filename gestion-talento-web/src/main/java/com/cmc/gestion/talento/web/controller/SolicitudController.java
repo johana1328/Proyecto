@@ -73,6 +73,7 @@ public class SolicitudController {
 		model.addAttribute("perfiles", perfiles);
 		model.addAttribute("ambientaciones", ambientaciones);
 		model.addAttribute("clasesPerfil", clasesPerfil);
+		model.addAttribute("mensaje", "NOK");
 		return "pages/administracion/peticiones/crearSP";
 	}
 	
@@ -82,8 +83,7 @@ public class SolicitudController {
 			Model model) throws ArqGestionExcepcion {
 		solicitudPersonalBussines.crearSolicitud(solicitud);
 		System.out.println(solicitud);
-		
-		return "pages/administracion/peticiones/crearSP";
+		return "redirect:/administracion/solicitud";
 	}
 
 }
