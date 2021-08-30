@@ -53,7 +53,7 @@ public class SolicitudPersonalFacade extends FacadeConvert<SolicitudPersonalDto,
 		
 		PerfilDto perfil = new PerfilDto();
 		perfil.setCodigoPerfil(Long.toString(entidad.getPerfil().getId()));
-		perfil.setNombre(entidad.getPerfil().getNombre());
+		perfil.setNombre(entidad.getPerfil().getValor());
 		solicitudPerson.setCodigoPerfil(entidad.getPerfil().getId());
 		solicitudPerson.setPerfil(perfil);
 		EspecialidadDto especialidad= new EspecialidadDto();
