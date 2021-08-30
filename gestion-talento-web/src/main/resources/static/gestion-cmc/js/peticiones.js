@@ -6,7 +6,7 @@ function validacionFormularioP(){
          errorLabelContainer: "#messageBox1 ul",
          wrapper: "li",
 		rules:{
-			proyecto:{
+			areaSolicitante:{
 				required: true
 			},
 			cliente:{
@@ -43,10 +43,9 @@ function validacionFormularioP(){
 			especialidad:{
 				required: true
 			},
-			expMaAnos:{
+			expAnos:{
 				required: true,
-				alphanumeric: true,
-	            rangelength: [1, 20]
+				
 			},
 			pSolicitado:{
 				required: true
@@ -57,11 +56,7 @@ function validacionFormularioP(){
 			escolaridad:{
 				required: true
 			},
-			expMiAnos:{
-				required: true,
-				alphanumeric: true,
-	            rangelength: [1, 50]
-			},
+			
 			descripcion:{
 				required: true,
 				alphanumeric: true,
@@ -74,7 +69,7 @@ function validacionFormularioP(){
 				required: true,
 			},
 			observaciones:{
-				required: true,
+				
 				alphanumeric: true,
 	            rangelength: [3, 20]
 			},
@@ -94,74 +89,71 @@ function validacionFormularioP(){
 			
 		},
 		messages:{
+			areaSolicitante:{
+				required: "El proyecto o area solicitante es requerido. "
+			},
 			cliente:{
-				required: "El campo Cliente es requerido",
-				alphanumeric:"El campo Cliente solo puede contener letras o numeros",
-				rangelength:" Campo Cliente Longitud no permitida"
+				required: "El campo cliente es requerido",
+				alphanumeric:"El campo cliente solo puede contener letras o numeros",
+				rangelength:" Campo cliente longitud no permitida"
 			},
 			responsableCliente:{
-				required: "El campo Responsable Cliente es requerido",
-				alphanumeric:"El campo Responsable Cliente solo puede contener letras o numeros",
-				rangelength:" Campo Responsable Cliente Longitud no permitida"
+				required: "El campo responsable cliente es requerido",
+				alphanumeric:"El campo Responsable cliente solo puede contener letras o numeros",
+				rangelength:" Campo responsable cliente longitud no permitida"
 			},
 			tarifa:{
-				required:"Seleccione una opcion valida"
+				required:"La tarifa es requerida"
 			},
 			areaTrabajo:{
-				required: "El campo Area Trabajo es requerido",
-				alphanumeric:"El campo Area Trabajo solo puede contener letras o numeros",
-				rangelength:" Campo Area Trabajo Longitud no permitida"
+				required: "La area trabajo es requerida.",
+				alphanumeric:"El campo area trabajo solo puede contener letras o numeros",
+				rangelength:" Campo area trabajo longitud no permitida"
 			},
 			cantVacante:{
-				required: "El campo Cantidad Vacante es requerido",
-				alphanumeric:"El campo Cantidad Vacante solo puede contener letras o numeros",
-				rangelength:" Campo Cantidad Vacante Longitud no permitida"
+				required: "El campo cantidad vacante es requerido",
+				alphanumeric:"El campo cantidad vacante solo puede contener letras o numeros",
+				rangelength:" Campo cantidad vacante longitud no permitida"
 			},
 			horasApagar:{
-				required: "El campo Horas Apagar es requerido",
-				alphanumeric:"El campo Horas Apagar solo puede contener letras o numeros",
-				rangelength:" Campo Horas Apagar Longitud no permitida"
+				required: "El campo horas a pagar es requerido",
+				alphanumeric:"El campo horas a pagar solo puede contener letras o numeros",
+				rangelength:" Campo horas a pagar longitud no permitida"
 			},
 			perfilSolicitado:{
-				required:"Seleccione una opcion valida"
+				required:"El perfil solicitado es requerido."
 			},
 			especialidad:{
-				required:"Seleccione una opcion valida"
+				required:"La especialidad es reuqerida."
 			},
-			expMaAnos:{
+			expAnos:{
 				required: "El campo Experiencia maxima es requerido",
-				alphanumeric:"El campo Experiencia maxima solo puede contener letras o numeros",
-				rangelength:" Campo Experiencia maxima Longitud no permitida"
 			},
 			pSolicitado:{
-				required:"Seleccione una opcion valida"
+				required:"El perfil solicitado funcionalmente que va realizar es requerido."
 			},
 			ambiente:{
-				required:"Seleccione una opcion valida"
+				required:"El ambiente es requerido."
 			},
 			escolaridad:{
-				required:"Seleccione una opcion valida"
+				required:"La escolaridad es requerida."
 			},
-			expMiAnos:{
-				required: "El campo Experiencia minima  es requerido",
-				alphanumeric:"El campo Experiencia minima  solo puede contener letras o numeros",
-				rangelength:" Campo Experiencia minima  Longitud no permitida"
-			},
+			
 			descripcion:{
-				required: "El campo Descripcion detallada  es requerido",
-				alphanumeric:"El campo Descripcion detallada  solo puede contener letras o numeros",
-				rangelength:" Campo Descripcion detallada Longitud no permitida"
+				required: "El campo descripcion detallada  es requerido",
+				alphanumeric:"El campo descripcion detallada  solo puede contener letras o numeros",
+				rangelength:" Campo descripcion detallada Longitud no permitida"
 			},
 			tipoContracto:{
-				required:"Seleccione una opcion valida"
+				required:"El tipo de contrato es requerido"
 			},
 			fecha:{
-				required: "El campo Fecha  es requerido",
+				required: "La fecha  es requerida.",
 			},
 			observaciones:{
-				required: "El campo Observaciones generales  es requerido",
-				alphanumeric:"El campo Observaciones generales  solo puede contener letras o numeros",
-				rangelength:" Campo Observaciones generales Longitud no permitida"
+				
+				alphanumeric:"El campo observaciones generales  solo puede contener letras o numeros",
+				rangelength:" Campo observaciones generales Longitud no permitida"
 			},
 			salario:{
 				required: "El campo salario asignado  es requerido",
@@ -169,7 +161,7 @@ function validacionFormularioP(){
 				rangelength:" Campo salario asignado Longitud no permitida"
 			},
 			equipoCom:{
-				required:"Seleccione una opcion valida"
+				required:"El equipo de computo es requerido."
 			},
 			caracteristica:{
 				required: "El campo caracteristica  es requerido",
