@@ -1,6 +1,7 @@
 package com.cmc.gestion.talento.web.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -10,8 +11,10 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cmc.gestion.talento.bussines.AmbientacionBussines;
 import com.cmc.gestion.talento.bussines.ClasePerfilBussines;
@@ -25,6 +28,7 @@ import com.cmc.gestion.talento.bussines.dto.EspecialidadDto;
 import com.cmc.gestion.talento.bussines.dto.SolicitudPersonalDto;
 import com.cmc.gestion.talento.bussines.dto.TarifaDto;
 import com.cmc.gestion.talento.bussines.dto.TipoPerfilDto;
+import com.cmc.gestion.talento.web.config.ArqGestionExcepcion;
 
 @Controller
 @RequestMapping("/administracion/solicitud")
@@ -49,8 +53,10 @@ public class SolicitudController {
 	private ClasePerfilBussines clasePerfilBussines;
 	
 	@GetMapping
-	public String init(Model model) {
-		model.addAttribute("Errror", "NOK");
+	public String init(@RequestParam(name = "action", defaultValue = "NOK") String action, Model model) {
+		List<SolicitudPersonalDto> solicitudes=  solicitudPersonalBussines.listarSolicitudesPersonal();
+		model.addAttribute("Errror", action);
+		model.addAttribute("solicitudes", solicitudes);
 		return "pages/administracion/peticiones/solicitud";
 	}
 	
@@ -73,8 +79,8 @@ public class SolicitudController {
 	@PostMapping("/crear")
 	public String crearSolicitud(@Valid @ModelAttribute("solicitud") SolicitudPersonalDto solicitud, 
 			BindingResult result,
-			Model model) {
-		solicitudPersonalBussines.crearSolicitudpersonbal(solicitud);
+			Model model) throws ArqGestionExcepcion {
+		solicitudPersonalBussines.crearSolicitud(solicitud);
 		System.out.println(solicitud);
 		
 		return "pages/administracion/peticiones/crearSP";
