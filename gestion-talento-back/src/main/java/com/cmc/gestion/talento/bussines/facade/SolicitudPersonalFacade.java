@@ -30,6 +30,12 @@ public class SolicitudPersonalFacade extends FacadeConvert<SolicitudPersonalDto,
 		solicitudPerson.setTarifa(entidad.getTarifa());
 		// datos solicitud
 		solicitudPerson.setIdSolicitud(entidad.getIdSolicitud());
+		//solicitudPerson.setSolicitante(entidad.getSolicitante());
+		solicitudPerson.setFechaCreacion(entidad.getFechaCreacion().getTime());
+		solicitudPerson.setFechaActualizacion(entidad.getFechaActualizacion().getTime());
+		solicitudPerson.setObservacionSolicitante(entidad.getObservacionSolicitante());
+		solicitudPerson.setObservacionGestor(entidad.getObservacionGestor());
+		
 		return solicitudPerson;
 	}
 
