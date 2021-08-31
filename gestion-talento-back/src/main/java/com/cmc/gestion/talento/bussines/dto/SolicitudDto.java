@@ -10,14 +10,10 @@ public class SolicitudDto {
 	protected long idSolicitud;
 	protected EmpleadoDto solicitante;
 	protected Date fechaCreacion;
-	protected Date fechaActualizacion;
 	protected String observacionSolicitante;
-	protected String observacionGestor;
 	protected TipoSolicitud tipoSolicitud;
 	protected TipoEstadoSolicitud estado;
-	protected String gestor;
-	
-	//campos formulario
+	protected SolicitudGestionDto solicitudGestion;
 
 	public long getIdSolicitud() {
 		return idSolicitud;
@@ -41,24 +37,14 @@ public class SolicitudDto {
 	public void setFechaCreacion(Date fechaCreacion) {
 		this.fechaCreacion = fechaCreacion;
 	}
-	public Date getFechaActualizacion() {
-		return fechaActualizacion;
-	}
-	public void setFechaActualizacion(Date fechaActualizacion) {
-		this.fechaActualizacion = fechaActualizacion;
-	}
+	
 	public String getObservacionSolicitante() {
 		return observacionSolicitante;
 	}
 	public void setObservacionSolicitante(String observacionSolicitante) {
 		this.observacionSolicitante = observacionSolicitante;
 	}
-	public String getObservacionGestor() {
-		return observacionGestor;
-	}
-	public void setObservacionGestor(String observacionGestor) {
-		this.observacionGestor = observacionGestor;
-	}
+	
 	public TipoSolicitud getTipoSolicitud() {
 		return tipoSolicitud;
 	}
@@ -71,11 +57,12 @@ public class SolicitudDto {
 	public void setEstado(TipoEstadoSolicitud estado) {
 		this.estado = estado;
 	}
-	public String getGestor() {
-		return gestor;
+
+	public SolicitudGestionDto getSolicitudGestion() {
+		return solicitudGestion;
 	}
-	public void setGestor(String gestor) {
-		this.gestor = gestor;
+
+	public void setSolicitudGestion(SolicitudGestionDto solicitudGestion) {
+		this.solicitudGestion = solicitudGestion;
 	}
-	
 }

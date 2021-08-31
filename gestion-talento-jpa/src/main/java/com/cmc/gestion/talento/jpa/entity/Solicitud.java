@@ -3,6 +3,7 @@ package com.cmc.gestion.talento.jpa.entity;
 import java.io.Serializable;
 import java.util.Calendar;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ConstraintMode;
 import javax.persistence.Entity;
@@ -18,6 +19,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -42,24 +44,14 @@ public class Solicitud implements Serializable {
 
 	@JoinColumn(name = "solicitante", nullable = false, foreignKey = @ForeignKey(name = "solicitante_fk", value = ConstraintMode.CONSTRAINT))
 	@ManyToOne(optional = false, fetch = FetchType.EAGER)
-	private Empleado Solicitante;
-
-	@Column(name = "gestor", nullable = false, length = 100)
-	private String gestor;
+	private Empleado solicitante;
 
 	@Column(name = "fecha_solicitud", updatable = false, nullable = false)
 	@Temporal(TemporalType.DATE)
 	private Calendar fechaCreacion;
 
-	@Column(name = "fecha_actualizacion")
-	@Temporal(TemporalType.DATE)
-	private Calendar fechaActualizacion;
-
 	@Column(name = "observacion_solicitante", length = 500)
 	private String observacionSolicitante;
-
-	@Column(name = "observacion_gestor", length = 500)
-	private String observacionGestor;
 
 	@Enumerated(value = EnumType.STRING)
 	@Column(name = "tipo_solicitud", nullable = false)
@@ -68,6 +60,9 @@ public class Solicitud implements Serializable {
 	@Enumerated(value = EnumType.STRING)
 	@Column(name = "estado", nullable = false)
 	private TipoEstadoSolicitud estado;
+	
+	@OneToOne(mappedBy = "solicitud", cascade = CascadeType.ALL)
+	private SolicitudGestion solicitudGestion;
 
 	public long getIdSolicitud() {
 		return idSolicitud;
@@ -78,11 +73,11 @@ public class Solicitud implements Serializable {
 	}
 
 	public Empleado getSolicitante() {
-		return Solicitante;
+		return solicitante;
 	}
 
 	public void setSolicitante(Empleado solicitante) {
-		Solicitante = solicitante;
+		this.solicitante = solicitante;
 	}
 
 	public Calendar getFechaCreacion() {
@@ -93,28 +88,12 @@ public class Solicitud implements Serializable {
 		this.fechaCreacion = fechaCreacion;
 	}
 
-	public Calendar getFechaActualizacion() {
-		return fechaActualizacion;
-	}
-
-	public void setFechaActualizacion(Calendar fechaActualizacion) {
-		this.fechaActualizacion = fechaActualizacion;
-	}
-
 	public String getObservacionSolicitante() {
 		return observacionSolicitante;
 	}
 
 	public void setObservacionSolicitante(String observacionSolicitante) {
 		this.observacionSolicitante = observacionSolicitante;
-	}
-
-	public String getObservacionGestor() {
-		return observacionGestor;
-	}
-
-	public void setObservacionGestor(String observacionGestor) {
-		this.observacionGestor = observacionGestor;
 	}
 
 	public TipoSolicitud getTipoSolicitud() {
@@ -133,12 +112,12 @@ public class Solicitud implements Serializable {
 		this.estado = estado;
 	}
 
-	public String getGestor() {
-		return gestor;
+	public SolicitudGestion getSolicitudGestion() {
+		return solicitudGestion;
 	}
 
-	public void setGestor(String gestor) {
-		this.gestor = gestor;
+	public void setSolicitudGestion(SolicitudGestion solicitudGestion) {
+		this.solicitudGestion = solicitudGestion;
 	}
 
 }

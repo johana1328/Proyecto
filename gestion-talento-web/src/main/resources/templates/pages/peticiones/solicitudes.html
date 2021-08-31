@@ -1,60 +1,60 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org"
-    xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	xmlns:with="http://www.thymeleaf.org/extras/with"
 	layout:decorate="~{layout}"
 	th:with="funcionalidad='Administraci&oacuten', evento='Solicitud de personal'">
 <th:block layout:fragment="content">
 
-<!-- Mensajes -->
-
-
-<a type="button"
-	th:href="@{/administracion/solicitud/crear}" class="btn btn-primary  ">  Crear Solicitud de personal
-	</a>
+<div class="btn-group"  style="float: none;">
+		<button type="button" class="btn btn-primary">Crear Solicitud</button>
+		<button type="button"
+			class="btn btn-primary dropdown-toggle dropdown-icon"
+			data-toggle="dropdown">
+			<span class="sr-only">Toggle Dropdown</span>
+		</button>
+		<div class="dropdown-menu" role="menu">
+			<a class="dropdown-item linkChangeState" th:href="@{/administracion/solicitud/personal}" >Personal</a> 
+			<a class="dropdown-item linkChangeState" href="#">Carta Laboral</a>
+		</div>
+	</div>
 	
+   <br/>
 
- <table id="tablaSolicitud" class="table table-bordered table-hover ">
-     	<thead>
-        	<tr>
-            	<th>Estado</th>
-            	<th>Fecha Solicitud</th>
-            	<th>Vacantes</th>
-            	<th>Cliente</th>
-            	<th>Perfil</th>
-                 <th sec:authorize="hasAnyAuthority('GERENTE')" >Gestor</th>
-                 <th sec:authorize="hasAnyAuthority('ANALISTA_RRHH','GERENTE_RRHH')">Solicitante</th>
-                
-                <th width="70px">Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-         	<tr th:each="solicitud : ${solicitudes}">
-         		<td th:text="${solicitud.estado.value}">Estado</td>
-         		<td th:text="${#dates.format(solicitud.fechaCreacion, 'dd-MMM-yyyy')}">Fecha</td>
-         		<td th:text="${solicitud.cantidadVacante}">Vacantes</td>
-         		<td th:text="${solicitud.cliente}">Cliente</td>
-         		<td th:text="${solicitud.perfil.nombre}">Perfil</td>
-        	    <th sec:authorize="hasAnyAuthority('GERENTE')" >Juan</th>
-                <th sec:authorize="hasAnyAuthority('ANALISTA_RRHH','GERENTE_RRHH')">Mario</th>
-         		<td>
-         		
-         			<a type="button"
-					th:href="@{/administracion/usuario/modificar}"
+	<table id="tablaSolicitud" class="table table-bordered table-hover ">
+		<thead>
+			<tr>
+				<th>Tipo Solicitud</th>
+				<th>Estado</th>
+				<th>Fecha Solicitud</th>
+				<th>Solicitante</th>
+				<th>Gestor</th>
+				<th width="100px">Acciones</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="solicitud : ${solicitudes}">
+				<td th:text="${solicitud.tipoSolicitud.value}">Tipo</td>
+				<td th:text="${solicitud.estado.value}">Estado</td>
+				<td
+					th:text="${#dates.format(solicitud.fechaCreacion, 'dd-MMM-yyyy')}">Fecha</td>
+				<td
+					th:text="${solicitud.solicitante.primerNombre}+' '+${solicitud.solicitante.primerApellido}">Solicitante</td>
+				<td
+					th:text="${solicitud.solicitudGestion != null}? ${solicitud.solicitante.primerNombre}+' '+${solicitud.solicitante.primerApellido} : 'Sin Asignar'">Gestor</td>
+				<td><a type="button"
+					th:href="@{/administracion/solicitud/{id}(id=${solicitud.idSolicitud})}"
 					class="btn btn-primary  "> <i class="fas fa-pen"></i>
-				</a>
-				
-         		</td>
-         	</tr>
-        </tbody>
-     </table> 
-     <form id="changeStade" th:action="@{/administracion/usuario/modificar}" method="post" >
-     </form>
- </th:block>
- <th:block layout:fragment="body_end">
-    <script type="text/javascript">
-    
-    
+				</a></td>
+			</tr>
+		</tbody>
+	</table>
+	<form id="changeStade" th:action="@{/administracion/usuario/modificar}"
+		method="post"></form>
+</th:block>
+<th:block layout:fragment="body_end">
+	<script type="text/javascript">
+   
     $('#tablaSolicitud').DataTable({
         "paging": true,
         "lengthChange": false,
@@ -66,4 +66,4 @@
       });
     </script>
 </th:block>
- </html> 
+</html>

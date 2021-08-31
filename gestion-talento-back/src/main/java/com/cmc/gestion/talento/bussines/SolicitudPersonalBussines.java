@@ -82,13 +82,9 @@ public class SolicitudPersonalBussines {
 			solicitudEntity.setTipoSolicitud(TipoSolicitud.PERSONAL);
 			solicitudEntity.setEstado(TipoEstadoSolicitud.SOLICITUD_CREADA);
 			solicitudEntity.setFechaCreacion(Calendar.getInstance());
-			solicitudEntity.setObservacionGestor("");
-			solicitudEntity.setGestor("");
 		}else if(mapType.equalsIgnoreCase("ACTUALIZAR")) {
 			
 		}
-		
-		solicitudEntity.setFechaActualizacion(Calendar.getInstance());
 		solicitudEntity.setObservacionSolicitante(solicitud.getObservacionSolicitante());
 		
 		// datos solicitud personal
