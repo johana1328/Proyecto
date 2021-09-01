@@ -55,44 +55,12 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
 <!--                 </a> -->
 <!--               </li>  -->
           <li class="nav-item " sec:authorize="hasAnyAuthority('ANALISTA_RRHH','GERENTE_RRHH','GERENTE')">
-            <a href="#" class="nav-link ">
+            <a th:href="@{/administracion/solicitud}" class="nav-link ">
               <i class="nav-icon fas fa-envelope-open-text"></i>
               <p th:text="#{aside.opcion.solicitudes}">  Solicitudes
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
-<!--               <li class="nav-item"> -->
-<!--                 <a th:href="@{/tabla}" class="nav-link "> -->
-<!--                   <i class="far fa-circle nav-icon"></i> -->
-<!--                   <p th:text="#{aside.opcion.solicitudes.permisos}">Permisos</p> -->
-<!--                 </a> -->
-<!--               </li> -->
-<!--               <li class="nav-item"> -->
-<!--                 <a th:href="@{/pagina1}" class="nav-link"> -->
-<!--                   <i class="far fa-circle nav-icon"></i> -->
-<!--                   <p th:text="#{aside.opcion.solicitudes.vacaciones}">Vacaciones</p> -->
-<!--                 </a> -->
-<!--               </li> -->
-<!--               <li class="nav-item"> -->
-<!--                 <a href="#" class="nav-link"> -->
-<!--                   <i class="far fa-circle nav-icon"></i> -->
-<!--                   <p th:text="#{aside.opcion.solicitudes.certificaciones}">Certificaciones</p> -->
-<!--                 </a> -->
-<!--               </li> -->
-<!--                <li class="nav-item"> -->
-<!--                 <a href="#" class="nav-link"> -->
-<!--                   <i class="far fa-circle nav-icon"></i> -->
-<!--                   <p th:text="#{aside.opcion.solicitudes.incapacidades}">Incapacidades</p> -->
-<!--                 </a> -->
-<!--               </li> -->
-               <li class="nav-item" sec:authorize="hasAnyAuthority('ANALISTA_RRHH','GERENTE_RRHH','GERENTE')" >
-                <a th:href="@{/administracion/solicitud}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p th:text="#{aside.opcion.solicitudes.personal}">Solicitud de personal</p>
-                </a>
-              </li>
-            </ul>
           </li>
            <li class="nav-item " sec:authorize="hasAnyAuthority('ANALISTA_RRHH','GERENTE','GERENTE_RRHH','EVALUADOR','CANDIDATO')"   >
             <a href="#" class="nav-link ">

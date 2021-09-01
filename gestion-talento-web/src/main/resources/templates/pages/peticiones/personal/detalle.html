@@ -2,66 +2,91 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	xmlns:with="http://www.thymeleaf.org/extras/with"
 	layout:decorate="~{layout}"
-	th:with="funcionalidad='Administraci&oacuten', evento='Crear Solicitud Personal'">
+	th:with="funcionalidad='Administraci&oacuten', evento='Detalle Solicitud '">
 
 <th:block layout:fragment="content">
 	<section class="content">
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-12">
-					<div class="callout callout-primary">
-						<div class="invoice p-3 mb-3">
-							<div class="row">
-								<div class="col-12">
-									<h4>
-										<small class="float-right">Fecha : 2/10/2014</small>
-									</h4>
-								</div>
-								<div class="row invoice-info">
-									<div class="col-sm-4 invoice-col">
-										<strong><i class="fas fa-file-alt"></i>Información Básica</strong>
-										<address>
-											<p><strong>&Aacute;rea solicitante:</strong> Fabrica</p><br>
-											<p><strong>Cliente:</strong> BBVA </p><br>
-											<p><strong>Responsable en cliente:</strong> Julia</p><br>
-											<p><strong>Tarifa:</strong> 2000</p><br>
-											<p><strong>&Aacute;rea de trabajo:</strong> </p><br>
-											<p><strong>Cantidad de personal:</strong> </p><br>
-											<p><strong>Numero de horas a pagar:</strong> </p><br>
-										</address>
-									</div>
-									<!-- /.col -->
-									<div class="col-sm-4 invoice-col">
-										<strong><i class="fas fa-user-circle"></i>Perfil</strong>
-										<address>
-											<p><strong>Perf&aicute;l Solicitado:</strong> Fabrica</p><br>
-											<p><strong>Especialidad:</strong> BBVA </p><br>
-											<p><strong>Experiencia requerida:</strong> Julia</p><br>
-											<p><strong>El perfil solicitado funcionalmente :</strong> 2000</p><br>
-											<p><strong>Ambiente:</strong> </p><br>
-											<p><strong>Escolaridad mínima:</strong> </p><br>
-											<p><strong>Descripción detallada del perfil:</strong> </p><br>
-										</address>
-									</div>
-									<!-- /.col -->
-									<div class="col-sm-4 invoice-col">
-										<strong><i class="fas fa-file-signature"></i>Información de contratación</strong>
-										<address>
-											<p><strong>Tipo Contrato:</strong> Fabrica</p><br>
-											<p><strong>Salario Asignado:</strong> BBVA </p><br>
-											<p><strong>Fecha de inicio de labores:</strong> Julia</p><br>
-											<p><strong>Requiere equipo de computo:</strong> 2000</p><br>
-											<p><strong>Observaciones generales:</strong> </p><br>
-											<p><strong>Caracteristica del software y hadware :</strong> </p><br>
-										</address>
-									</div>
-									<!-- /.col -->
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+          <div class="col-12">
+            <!-- Main content -->
+            <div class="invoice p-3 mb-3">
+              <!-- title row -->
+              <div class="row">
+                <div class="col-12">
+                  <h4>
+                  <i class="fas fa-id-card"></i> Solicitud de personal 
+                    <small class="float-right" th:text="$solicitud">Fecha: 2/10/2014</small>
+                  </h4>
+                </div>
+                <!-- /.col -->
+              </div><br>
+              <!-- info row -->
+              <div class="row invoice-info">
+                <div class="col-sm-4 invoice-col">
+                  <h5>Informaci&oacute;n b&aacute;sica</h5>
+                  <br>
+                  <b>&Aacute;rea solicitante:</b> 4F3S8J<br>
+                  <b>&Aacute;rea de trabajo:</b> 2/22/2014<br>
+                  <b>Cliente:</b> 968-34567<br>
+                  <b>Cantidad de Personal:</b> 2/22/2014<br>
+                  <b>N&uacute;meros de horas a pagar:</b> 2/22/2014<br>
+                  <b>Responsable cliente:</b> 2/22/2014<br>
+                  <b>Tarifa:</b> 2/22/2014<br>
+                  <b>Observaciones generales:</b> 
+                  <p  style="text-align: justify;">
+                   Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly ning heekya handango imeem
+                  </p><br>
+                </div>
+                <!-- /.col -->
+                
+                <div class="col-sm-4 invoice-col">
+                  <h5>Perf&iacute;l</h5>
+                  <br>
+                  <b>Perf&iacute;l solicitado:</b> 4F3S8J<br>
+                  <b>Especialidad:</b> 2/22/2014<br>
+                  <b>Experencia requerida:</b> 968-34567<br>
+                  <b>El perf&iacute;l solicitado funcionalmente:</b> 2/22/2014<br>
+                  <b>Ambiente:</b> 2/22/2014<br>
+                  <b>Escolaridad m&iacute;nima:</b> 2/22/2014<br>
+                  <b>Descripci&oacute;n del perfil:</b>
+                  <p  style="text-align: justify;">
+                   Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly ning heekya handango imeem
+                    plugg
+                    dopplr jibjab, movity jajah plickers sifteo edmodo ifttt zimbra.
+                  </p><br>
+                </div>
+                <!-- /.col -->
+           		 <div class="col-sm-4 invoice-col">
+                  <h5>Informaci&oacute;n contrataci&oacute;n</h5>
+                  <br>
+                  <b>Tipo contrato:</b> 4F3S8J<br>
+                  <b>Salario asignado:</b> 2/22/2014<br>
+                  <b>Fecha inicio de labores:</b> 968-34567<br>
+                  <b>Equipo de computo:</b> 2/22/2014<br>
+                  <b>Caracteristica del software y hadware del equipo:</b> 
+                  <p  style="text-align: justify;">
+                   Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly ning heekya handango imeem plugg
+                    dopplr jibjab, movity jajah plickers sifteo edmodo ifttt zimbra.
+                  </p>
+                </div>
+              </div>
+              <!-- /.row -->
+              
+				<br>
+              <div class="row">
+                <div class="col-12">
+                  <button type="button" class="btn btn-success float-right"> Submit Payment
+                  </button>
+                  <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
+                   Asignar
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- /.invoice -->
+          </div><!-- /.col -->
+        </div>
 		</div>
 	</section>
 </th:block>
