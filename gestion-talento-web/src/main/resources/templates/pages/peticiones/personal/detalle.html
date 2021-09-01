@@ -3,11 +3,69 @@
 	xmlns:with="http://www.thymeleaf.org/extras/with"
 	layout:decorate="~{layout}"
 	th:with="funcionalidad='Administraci&oacuten', evento='Crear Solicitud Personal'">
-	
+
 <th:block layout:fragment="content">
-	<h1>detalle</h1>
+	<section class="content">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-12">
+					<div class="callout callout-primary">
+						<div class="invoice p-3 mb-3">
+							<div class="row">
+								<div class="col-12">
+									<h4>
+										<small class="float-right">Fecha : 2/10/2014</small>
+									</h4>
+								</div>
+								<div class="row invoice-info">
+									<div class="col-sm-4 invoice-col">
+										<strong><i class="fas fa-file-alt"></i>Información Básica</strong>
+										<address>
+											<p><strong>&Aacute;rea solicitante:</strong> Fabrica</p><br>
+											<p><strong>Cliente:</strong> BBVA </p><br>
+											<p><strong>Responsable en cliente:</strong> Julia</p><br>
+											<p><strong>Tarifa:</strong> 2000</p><br>
+											<p><strong>&Aacute;rea de trabajo:</strong> </p><br>
+											<p><strong>Cantidad de personal:</strong> </p><br>
+											<p><strong>Numero de horas a pagar:</strong> </p><br>
+										</address>
+									</div>
+									<!-- /.col -->
+									<div class="col-sm-4 invoice-col">
+										<strong><i class="fas fa-user-circle"></i>Perfil</strong>
+										<address>
+											<p><strong>Perf&aicute;l Solicitado:</strong> Fabrica</p><br>
+											<p><strong>Especialidad:</strong> BBVA </p><br>
+											<p><strong>Experiencia requerida:</strong> Julia</p><br>
+											<p><strong>El perfil solicitado funcionalmente :</strong> 2000</p><br>
+											<p><strong>Ambiente:</strong> </p><br>
+											<p><strong>Escolaridad mínima:</strong> </p><br>
+											<p><strong>Descripción detallada del perfil:</strong> </p><br>
+										</address>
+									</div>
+									<!-- /.col -->
+									<div class="col-sm-4 invoice-col">
+										<strong><i class="fas fa-file-signature"></i>Información de contratación</strong>
+										<address>
+											<p><strong>Tipo Contrato:</strong> Fabrica</p><br>
+											<p><strong>Salario Asignado:</strong> BBVA </p><br>
+											<p><strong>Fecha de inicio de labores:</strong> Julia</p><br>
+											<p><strong>Requiere equipo de computo:</strong> 2000</p><br>
+											<p><strong>Observaciones generales:</strong> </p><br>
+											<p><strong>Caracteristica del software y hadware :</strong> </p><br>
+										</address>
+									</div>
+									<!-- /.col -->
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 </th:block>
 <th:block layout:fragment="body_end">
-	
+
 </th:block>
 </html>
