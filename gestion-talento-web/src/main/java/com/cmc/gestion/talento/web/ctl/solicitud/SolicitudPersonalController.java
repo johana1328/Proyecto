@@ -1,6 +1,7 @@
 package com.cmc.gestion.talento.web.ctl.solicitud;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,6 +25,7 @@ import com.cmc.gestion.talento.bussines.TipoPerfilBussines;
 import com.cmc.gestion.talento.bussines.dto.AmbientacionDto;
 import com.cmc.gestion.talento.bussines.dto.ClasePerfilDto;
 import com.cmc.gestion.talento.bussines.dto.EspecialidadDto;
+import com.cmc.gestion.talento.bussines.dto.PruebaDto;
 import com.cmc.gestion.talento.bussines.dto.SolicitudPersonalDto;
 import com.cmc.gestion.talento.bussines.dto.TarifaDto;
 import com.cmc.gestion.talento.bussines.dto.TipoPerfilDto;
@@ -51,13 +54,18 @@ public class SolicitudPersonalController {
 	private ClasePerfilBussines clasePerfilBussines;
 	
 	@GetMapping(path = {"","/{id}"})
-	public String viewCrear(Model model) {
+	public String viewCrear(Model model, @PathVariable(name = "id", required = false) Optional<Long> id) {
 		List<TarifaDto> tarifas=tarifaBussines.getAllTarifa();
 		List<EspecialidadDto> especialidades = especialidadBussines.getAllEspecialidad();
 		List<TipoPerfilDto> perfiles = tipoPerfilBussines.getAllTipoPerfil();
 		List<AmbientacionDto> ambientaciones = ambientacionBussines.getAllAmbientacion();
 		List<ClasePerfilDto> clasesPerfil = clasePerfilBussines.getAllClasePerfil();
-		model.addAttribute("solicitud", new SolicitudPersonalDto());
+		SolicitudPersonalDto sp =new SolicitudPersonalDto();
+		if(id.isPresent()) {
+			model.addAttribute("solicitud", solicitudPersonalBussines.getSolicitud(id.get()));
+		}else {
+			model.addAttribute("solicitud", sp);
+		}
 		model.addAttribute("tarifas", tarifas);
 		model.addAttribute("especialidades", especialidades);
 		model.addAttribute("perfiles", perfiles);
@@ -68,7 +76,9 @@ public class SolicitudPersonalController {
 	}
 	
 	@GetMapping("/{id}/detalle")
-	public String detalle(@PathVariable(name = "id", required = true) Long id) throws ArqGestionExcepcion {
+	public String detalle(@PathVariable(name = "id", required = true) Long id,
+			Model model) throws ArqGestionExcepcion {
+		model.addAttribute("solicitud", solicitudPersonalBussines.getSolicitud(id));
 		return "pages/peticiones/personal/detalle";
 	}
 	
@@ -76,9 +86,30 @@ public class SolicitudPersonalController {
 	public String crearSolicitud(@Valid @ModelAttribute("solicitud") SolicitudPersonalDto solicitud, 
 			BindingResult result,
 			Model model) throws ArqGestionExcepcion {
-		   solicitudPersonalBussines.crearSolicitud(solicitud);
-		System.out.println(solicitud);
-		return "redirect:/administracion/solicitud";
+		    solicitudPersonalBussines.crearSolicitud(solicitud);
+		  return "redirect:/administracion/solicitud";
 	}
+	
+	@PostMapping("/modificar/{id}")
+	public String modificarSolicitud(@PathVariable(name = "id", required = true) Optional<Long> id,
+			@Valid @ModelAttribute("solicitud") SolicitudPersonalDto solicitud, 
+			BindingResult result,
+			Model model) throws ArqGestionExcepcion {
+			if (result.hasErrors()) {
+				//initOperation(model, prueba, "NOK");
+				return "pages/peticiones/personal/crearEditar";
+			}
+			
+			try {
+				solicitud.setIdSolicitud(id.get());
+				solicitudPersonalBussines.actualizarSolicitud(solicitud);
+			} catch (ArqGestionExcepcion e) {
+				result.addError(new FieldError("prueba", "nombre", "El nombre de la prueba ya existe."));
+				//initOperation(model, prueba, "NOK");
+				return "pages/administracion/pruebas/crearPrueba";
+			}
+		  return "redirect:/administracion/solicitud";
+	}
+	
 
 }
