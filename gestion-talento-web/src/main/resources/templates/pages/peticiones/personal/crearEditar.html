@@ -7,7 +7,7 @@
 	<th:block layout:fragment="content">
 	<form id="formCrearPeticion" 
 	    th:object="${solicitud}"
-		th:action="${solicitud.idSolicitud == 0} ? @{/administracion/solicitud/crear} : @{/administracion/solicitud/modificar/{id}(id=${solicitud.idSolicitud})}"
+		th:action="${solicitud.idSolicitud == 0} ? @{/administracion/solicitud/personal/crear} : @{/administracion/solicitud/personal/modificar/{id}(id=${solicitud.idSolicitud})}"
 	 method="POST">
 	
 	<div class="card-body p-0">
