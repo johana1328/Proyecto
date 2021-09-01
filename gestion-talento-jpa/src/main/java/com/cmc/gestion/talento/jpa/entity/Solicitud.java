@@ -38,31 +38,31 @@ public class Solicitud implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_solicitud")
-	private long idSolicitud;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	protected long idSolicitud;
 
 	@JoinColumn(name = "solicitante", nullable = false, foreignKey = @ForeignKey(name = "solicitante_fk", value = ConstraintMode.CONSTRAINT))
 	@ManyToOne(optional = false, fetch = FetchType.EAGER)
-	private Empleado solicitante;
+	protected Empleado solicitante;
 
 	@Column(name = "fecha_solicitud", updatable = false, nullable = false)
 	@Temporal(TemporalType.DATE)
-	private Calendar fechaCreacion;
+	protected Calendar fechaCreacion;
 
 	@Column(name = "observacion_solicitante", length = 500)
-	private String observacionSolicitante;
+	protected String observacionSolicitante;
 
 	@Enumerated(value = EnumType.STRING)
 	@Column(name = "tipo_solicitud", nullable = false)
-	private TipoSolicitud tipoSolicitud;
+	protected TipoSolicitud tipoSolicitud;
 
 	@Enumerated(value = EnumType.STRING)
 	@Column(name = "estado", nullable = false)
-	private TipoEstadoSolicitud estado;
+	protected TipoEstadoSolicitud estado;
 	
 	@OneToOne(mappedBy = "solicitud", cascade = CascadeType.ALL)
-	private SolicitudGestion solicitudGestion;
+	protected SolicitudGestion solicitudGestion;
 
 	public long getIdSolicitud() {
 		return idSolicitud;

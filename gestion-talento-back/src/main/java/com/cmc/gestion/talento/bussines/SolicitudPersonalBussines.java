@@ -1,7 +1,9 @@
 package com.cmc.gestion.talento.bussines;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -62,7 +64,7 @@ public class SolicitudPersonalBussines {
 		return resp;
 	}
 	
-	public void actualizarSolicitud(SolicitudPersonalDto solicitud) {
+	public void actualizarSolicitud(SolicitudPersonalDto solicitud) throws ArqGestionExcepcion{
 		Optional<SolicitudDePersonal> empleadoOP =solicitudPersonalDao.findById(solicitud.getIdSolicitud());
 		if(empleadoOP.isPresent()) {
 			SolicitudDePersonal solicitudEntity=empleadoOP.get();
@@ -122,6 +124,6 @@ public class SolicitudPersonalBussines {
 					solicitudEntity.setFechaInicio(cal);
 		
 		return solicitudEntity;
-	}
+	}	
 
 }
