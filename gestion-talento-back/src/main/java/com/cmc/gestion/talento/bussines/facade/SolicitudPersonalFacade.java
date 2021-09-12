@@ -55,12 +55,12 @@ public class SolicitudPersonalFacade extends FacadeConvert<SolicitudPersonalDto,
 		solicitudPerson.setPerfil(perfil);
 		EspecialidadDto especialidad= new EspecialidadDto();
 		especialidad.setId(entidad.getEspecialidad().getId());
-		especialidad.setEspecialidad(entidad.getEspecialidad().getNombre());
+		especialidad.setEspecialidad(entidad.getEspecialidad().getValor());
 		solicitudPerson.setCodigoEspecialidad(entidad.getEspecialidad().getId());
 		solicitudPerson.setEspecialidad(especialidad);
 		ClasePerfilDto clasePerfil = new ClasePerfilDto();
 		clasePerfil.setId(entidad.getClasePerfil().getId());
-		clasePerfil.setClaseperfil(entidad.getClasePerfil().getNombre());
+		clasePerfil.setClaseperfil(entidad.getClasePerfil().getValor());
 		solicitudPerson.setCodClasePerfil(entidad.getClasePerfil().getId());
 		solicitudPerson.setClasePerfil(clasePerfil);
 		TarifaDto tarifa = new TarifaDto();
@@ -73,7 +73,7 @@ public class SolicitudPersonalFacade extends FacadeConvert<SolicitudPersonalDto,
 		entidad.getGrupoAmbientacion().forEach(ga->{
 			AmbientacionDto ega= new AmbientacionDto();
 			ega.setId(ga.getId());
-			ega.setAmbiente(ga.getNombre());
+			ega.setAmbiente(ga.getValor());
 			codAmbientacion.add(ga.getId());
 			grupoAmbientacion.add(ega);
 		});

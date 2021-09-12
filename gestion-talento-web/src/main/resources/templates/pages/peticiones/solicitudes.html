@@ -42,12 +42,18 @@
 					th:text="${solicitud.solicitante.primerNombre}+' '+${solicitud.solicitante.primerApellido}">Solicitante</td>
 				<td
 					th:text="${solicitud.solicitudGestion != null}? ${solicitud.solicitante.primerNombre}+' '+${solicitud.solicitante.primerApellido} : 'Sin Asignar'">Gestor</td>
-				<td><a type="button"
+				<td style="width: 15%;">
+			
+				<a type="button"
 					th:href="@{/administracion/solicitud/{id}(id=${solicitud.idSolicitud})}"
-					class="btn btn-primary  "> <i class="fas fa-pen"></i></a>
+					class="btn btn-primary  "> <i class="far fa-file-alt"></i></a>
 					<a type="button"
 					th:href="@{/administracion/solicitud/personal/{id}(id=${solicitud.idSolicitud})}"
 					class="btn btn-primary  "> <i class="fas fa-pen"></i></a>
+					<a type="button"
+					
+					class="btn btn-primary  "><i class="fas fa-trash-alt"></i></a>
+				
 				</td>
 			</tr>
 		</tbody>
