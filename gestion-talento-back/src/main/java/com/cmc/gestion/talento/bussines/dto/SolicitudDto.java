@@ -9,11 +9,16 @@ public class SolicitudDto {
 	
 	protected long idSolicitud;
 	protected EmpleadoDto solicitante;
+	protected EmpleadoDto gestor;
 	protected Date fechaCreacion;
+	protected Date fechaAsignacion;
 	protected String observacionSolicitante;
+	protected String observacionGestor;
 	protected TipoSolicitud tipoSolicitud;
 	protected TipoEstadoSolicitud estado;
 	protected SolicitudGestionDto solicitudGestion;
+	
+	
 
 	public long getIdSolicitud() {
 		return idSolicitud;
@@ -64,5 +69,29 @@ public class SolicitudDto {
 
 	public void setSolicitudGestion(SolicitudGestionDto solicitudGestion) {
 		this.solicitudGestion = solicitudGestion;
+	}
+
+	public EmpleadoDto getGestor() {
+		return gestor;
+	}
+
+	public void setGestor(EmpleadoDto gestor) {
+		this.gestor = gestor;
+	}
+
+	public Date getFechaAsignacion() {
+		return fechaAsignacion;
+	}
+
+	public void setFechaAsignacion(Date fechaAsignacion) {
+		this.fechaAsignacion = fechaAsignacion;
+	}
+
+	public String getObservacionGestor() {
+		return observacionGestor;
+	}
+
+	public void setObservacionGestor(String observacionGestor) {
+		this.observacionGestor = observacionGestor;
 	}
 }

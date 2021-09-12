@@ -24,19 +24,14 @@ public class SolicitudFacade extends FacadeConvert<SolicitudDto, Solicitud> {
 		 solicitudDto.setObservacionSolicitante(entidad.getObservacionSolicitante());
 		 solicitudDto.setTipoSolicitud(entidad.getTipoSolicitud());
 		 solicitudDto.setEstado(entidad.getEstado());
-		 if(entidad.getSolicitudGestion()!= null) {
-			 SolicitudGestionDto solicitudGestion = new SolicitudGestionDto();
-			 SolicitudGestion sge=entidad.getSolicitudGestion();
-			 solicitudGestion.setIdAsignacion(sge.getIdAsignacion());
-			 solicitudGestion.setFechaAsignacion(sge.getFechaAsignacion().getTime());
-			 solicitudGestion.setFechaGestion(sge.getFechaGestion().getTime());
-			 solicitudGestion.setObservacionGestor(sge.getObservacionGestor());
-			 EmpleadoDto gestor = new EmpleadoDto();
-			 gestor.setIdUsuario(sge.getGestor().getIdUsuario());
-			 gestor.setPrimerNombre(sge.getGestor().getPrimerNombre());
-			 gestor.setPrimerApellido(sge.getGestor().getPrimerApellido());
-			 solicitudGestion.setGestor(gestor);
-		 }	
+		 EmpleadoDto gestor = new EmpleadoDto();
+		 gestor.setIdUsuario(entidad.getSolicitante().getIdUsuario());
+		 gestor.setPrimerNombre(entidad.getSolicitante().getPrimerNombre());
+		 gestor.setPrimerApellido(entidad.getSolicitante().getPrimerApellido());
+		 solicitudDto.setGestor(gestor);
+		 solicitudDto.setObservacionGestor(entidad.getObservacionGestor());
+		 solicitudDto.setFechaAsignacion(entidad.getFechaAsignacion().getTime());
+		
         return solicitudDto;
 	}
 

@@ -56,6 +56,13 @@ public class Solicitud implements Serializable {
 
 	@Column(name = "observacion_solicitante", length = 500)
 	protected String observacionSolicitante;
+	
+	@Column(name = "observacion_gestor", length = 500)
+	protected String observacionGestor;
+	
+	@Column(name = "fecha_asignacion")
+	@Temporal(TemporalType.DATE)
+	protected Calendar fechaAsignacion;
 
 	@Enumerated(value = EnumType.STRING)
 	@Column(name = "tipo_solicitud", nullable = false)
@@ -130,6 +137,22 @@ public class Solicitud implements Serializable {
 
 	public void setGestor(Empleado gestor) {
 		this.gestor = gestor;
+	}
+
+	public String getObservacionGestor() {
+		return observacionGestor;
+	}
+
+	public void setObservacionGestor(String observacionGestor) {
+		this.observacionGestor = observacionGestor;
+	}
+
+	public Calendar getFechaAsignacion() {
+		return fechaAsignacion;
+	}
+
+	public void setFechaAsignacion(Calendar fechaAsignacion) {
+		this.fechaAsignacion = fechaAsignacion;
 	}
 
 }
