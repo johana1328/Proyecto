@@ -45,6 +45,10 @@ public class Solicitud implements Serializable {
 	@JoinColumn(name = "solicitante", nullable = false, foreignKey = @ForeignKey(name = "solicitante_fk", value = ConstraintMode.CONSTRAINT))
 	@ManyToOne(optional = false, fetch = FetchType.EAGER)
 	protected Empleado solicitante;
+	
+	@JoinColumn(name = "gestor", nullable = false, foreignKey = @ForeignKey(name = "gestor_fk", value = ConstraintMode.CONSTRAINT))
+	@ManyToOne(optional = false, fetch = FetchType.EAGER)
+	protected Empleado gestor;
 
 	@Column(name = "fecha_solicitud", updatable = false, nullable = false)
 	@Temporal(TemporalType.DATE)
@@ -118,6 +122,14 @@ public class Solicitud implements Serializable {
 
 	public void setSolicitudGestion(SolicitudGestion solicitudGestion) {
 		this.solicitudGestion = solicitudGestion;
+	}
+
+	public Empleado getGestor() {
+		return gestor;
+	}
+
+	public void setGestor(Empleado gestor) {
+		this.gestor = gestor;
 	}
 
 }

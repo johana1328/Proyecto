@@ -102,5 +102,14 @@ public class UsuarioBussines {
 		List<UsuarioDto> resp = userFacade.getListObjec(listUserEntity);
 		return resp;
 	}
+	
+	public List<UsuarioDto> getAllAnalistaLider(){
+		List<TipoPerfil> listaPerfiles= new ArrayList<TipoPerfil>();
+		listaPerfiles.add(TipoPerfil.ANALISTA_PRINCIPAL_RRHH);
+		List<Usuario> listUserEntity = usuariodao.findByPerfilUsuarioIn(listaPerfiles);
+		UsuarioFacade userFacade = new UsuarioFacade();
+		List<UsuarioDto> resp = userFacade.getListObjec(listUserEntity);
+		return resp;
+	}
 
 }

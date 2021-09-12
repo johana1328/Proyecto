@@ -21,7 +21,7 @@ public interface UsuarioDao extends PagingAndSortingRepository<Usuario, String> 
 	//@Query(value="SELECT u from Usuario u where u.perfilUsuario.perfil in ('GERENTE')")
 	//public List<Usuario> getGefes();
 	
-	public List<Usuario> findByPerfilUsuarioIn(List<TipoPerfil> iipoPerfil);
+	public List<Usuario> findByPerfilUsuarioIn(List<TipoPerfil> tipoPerfil);
 	
 	
    

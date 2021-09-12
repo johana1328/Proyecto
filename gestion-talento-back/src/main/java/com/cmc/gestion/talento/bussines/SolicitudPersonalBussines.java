@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import com.cmc.gestion.talento.bussines.dto.SolicitudPersonalDto;
 import com.cmc.gestion.talento.bussines.facade.SolicitudPersonalFacade;
+import com.cmc.gestion.talento.jpa.dao.EmpleadoDao;
 import com.cmc.gestion.talento.jpa.dao.SolicitudPersonalDao;
 import com.cmc.gestion.talento.jpa.entity.Empleado;
 import com.cmc.gestion.talento.jpa.entity.ParametriaDetalle;
@@ -29,6 +30,9 @@ public class SolicitudPersonalBussines {
 
 	@Autowired
 	private SolicitudPersonalDao solicitudPersonalDao;
+	
+	@Autowired
+	private UsuarioBussines usuarioBussines;
 
 	@Autowired
 	private SolicitudPersonalFacade solicitudPersonalFacade;
@@ -84,6 +88,10 @@ public class SolicitudPersonalBussines {
 			solicitudEntity.setTipoSolicitud(TipoSolicitud.PERSONAL);
 			solicitudEntity.setEstado(TipoEstadoSolicitud.SOLICITUD_CREADA);
 			solicitudEntity.setFechaCreacion(Calendar.getInstance());
+			Empleado gestor = new Empleado();
+			String idgestor=usuarioBussines.getAllAnalistaLider().get(0).getIdUsuario();
+			gestor.setIdUsuario(idgestor);
+			solicitudEntity.setGestor(gestor);
 		}else if(mapType.equalsIgnoreCase("ACTUALIZAR")) {
 			
 		}

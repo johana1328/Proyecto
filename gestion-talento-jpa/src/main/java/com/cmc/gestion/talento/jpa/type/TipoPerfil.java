@@ -4,6 +4,7 @@ public enum TipoPerfil {
 	EMPLEADO("Empleado"),
 	GERENTE("Gerente"),
 	GERENTE_RRHH("Gerente RRHH"),
+	ANALISTA_PRINCIPAL_RRHH("Analista Lider RRHH"),
 	ANALISTA_RRHH("Analista RRHH"),
 	DIRECTOR("Director"),
 	CANDIDATO("Candidato");
