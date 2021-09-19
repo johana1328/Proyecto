@@ -2,7 +2,7 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	xmlns:with="http://www.thymeleaf.org/extras/with"
 	layout:decorate="~{layout}"
-	th:with="funcionalidad='Administraci&oacuten', evento='Mi perfil'">
+	th:with="funcionalidad='Administraci&oacuten', evento='Perfil'">
 <th:block layout:fragment="content">
 	<section class="content">
 		<div class="container-fluid">
@@ -16,23 +16,19 @@
 									th:src="@{~/gestion-cmc/resources/gestion-cmc/img/usuario.jpg}"
 									alt="User profile picture">
 							</div>
-							<h3 class="profile-username text-center" th:text="${#authentication.principal.nombre}" >Mario Mendez</h3>
+							<h3 class="profile-username text-center" th:text="${userInfo.primerNombre} + ' ' + ${userInfo.primerApellido}" >XXXXXXX</h3>
 <!-- 							<p class="text-muted text-center">Gerente RRHH</p> -->
 
 							<ul class="list-group list-group-unbordered mb-3">
 
 								<li class="list-group-item"><b>Telefono</b> <a
-									class="float-right">2312131</a></li>
+									class="float-right"   th:text="${userInfo.telefono}" >2312131</a></li>
 								<li class="list-group-item"><b>Correo</b> <a
-									class="float-right">prueba@gmail.com</a></li>
-								<li class="list-group-item"><b>Direccion</b> <a
-									class="float-right">cll2131</a></li>
-								<li class="list-group-item"><b>Estado civil</b> <a
-									class="float-right">soltero</a></li>
-								<li class="list-group-item"><b>Nivel de estudios</b> <a
-									class="float-right">basico</a></li>
-
-
+									class="float-right" th:text="${userInfo.correoElectronico}" >prueba@gmail.com</a></li>
+								<div  th:if="${escandidato}"   th:remove="tag">
+									<li class="list-group-item"><b>Nivel de estudios</b> <a
+									class="float-right"    th:text="${candidato.tituloProfesional}">basico</a></li>
+								</div>
 							</ul>
 						</div>
 					</div>
@@ -43,8 +39,14 @@
 					<div class="card">
 						<div class="card-header ">
 							<ul class="nav nav-pills">
-								<li class="nav-item"><a class="nav-link active" href="#pro"
-									data-toggle="tab">Informacion Profesional</a></li>
+							    <div th:if="${escandidato}" th:remove="tag" >
+							       <li class="nav-item"><a class="nav-link active" href="#canInfo"
+									data-toggle="tab">Inf. Candidato</a></li>
+							    </div>
+							        <li class="nav-item"><a class="nav-link" 
+							        th:classappend="${escandidato} ? '' : active"
+							        href="#pro"
+									data-toggle="tab">Inf. Profesional</a></li>
 								<li class="nav-item"><a class="nav-link" href="#academica"
 									data-toggle="tab">Estudios</a></li>
 								<li class="nav-item"><a class="nav-link"

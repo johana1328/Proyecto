@@ -12,7 +12,7 @@ public interface SolicitudDao extends JpaRepository<Solicitud, Long>{
 	@Query("SELECT s FROM Solicitud s WHERE s.solicitante.idUsuario = ?1")
 	List<Solicitud> findByGerente(String idUsuario);
 	
-	@Query("SELECT s FROM Solicitud s WHERE s.solicitudGestion.gestor.idUsuario = ?1")
+	@Query("SELECT s FROM Solicitud s WHERE s.gestor.idUsuario = ?1")
 	List<Solicitud> findByAnalista(String idUsuario);
 
 }

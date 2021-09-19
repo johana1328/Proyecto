@@ -25,13 +25,14 @@ public class SolicitudFacade extends FacadeConvert<SolicitudDto, Solicitud> {
 		 solicitudDto.setTipoSolicitud(entidad.getTipoSolicitud());
 		 solicitudDto.setEstado(entidad.getEstado());
 		 EmpleadoDto gestor = new EmpleadoDto();
-		 gestor.setIdUsuario(entidad.getSolicitante().getIdUsuario());
-		 gestor.setPrimerNombre(entidad.getSolicitante().getPrimerNombre());
-		 gestor.setPrimerApellido(entidad.getSolicitante().getPrimerApellido());
+		 gestor.setIdUsuario(entidad.getGestor().getIdUsuario());
+		 gestor.setPrimerNombre(entidad.getGestor().getPrimerNombre());
+		 gestor.setPrimerApellido(entidad.getGestor().getPrimerApellido());
 		 solicitudDto.setGestor(gestor);
 		 solicitudDto.setObservacionGestor(entidad.getObservacionGestor());
-		 solicitudDto.setFechaAsignacion(entidad.getFechaAsignacion().getTime());
-		
+		 if(entidad.getFechaAsignacion()!=null) {
+			 solicitudDto.setFechaAsignacion(entidad.getFechaAsignacion().getTime());
+		 }
         return solicitudDto;
 	}
 

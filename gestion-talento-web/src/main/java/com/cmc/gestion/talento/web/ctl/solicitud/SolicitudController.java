@@ -51,11 +51,4 @@ public class SolicitudController {
 		return "pages/peticiones/solicitudes";
 	}
 	
-	@PostMapping("/{id}/asignar")
-	public String asignar(@RequestParam(name = "action", defaultValue = "NOK") String action, Model model) {
-		List<SolicitudDto> solicitudes=  solicitudBussines.getAllSolicitud();
-		model.addAttribute("Errror", action);
-		model.addAttribute("solicitudes", solicitudes);
-		return "pages/peticiones/solicitudes";
-	}
 }

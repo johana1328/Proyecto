@@ -1,6 +1,7 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	xmlns:with="http://www.thymeleaf.org/extras/with"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
 	layout:decorate="~{layout}"
 	th:with="funcionalidad='Administraci&oacuten', evento='Detalle Solicitud '">
 
@@ -47,7 +48,7 @@
                   <b>Especialidad:</b> <span th:text="${solicitud.especialidad.especialidad}"></span><br>
                   <b>Experencia requerida:</b> <span th:text="${solicitud.anoExperienciaMin.value}"></span><br>
                   <b>El perf&iacute;l solicitado funcionalmente:</b> <span th:text="${solicitud.clasePerfil.claseperfil}"></span><br>
-                  <b>Ambiente:</b> <span ></span><br>
+                  <b>Ambiente:</b> <span th:each="ambiente : ${solicitud.grupoAmbientacion}" th:text="${ambiente.ambiente} + ' '"  > </span><br>
                   <b>Escolaridad m&iacute;nima:</b> <span th:text="${solicitud.escolaridad.value}"></span><br>
                   <b>Descripci&oacute;n del perfil:</b>
                   <p  style="text-align: justify;" th:text="${solicitud.descripcionPerfil}" > 
@@ -76,6 +77,21 @@
                   <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;" sec:authorize="hasAnyAuthority('GERENTE_RRHH','ANALISTA_PRINCIPAL_RRHH')">
                    Asignar
                   </button>
+                  <button type="button" class="btn btn-success float-right"> Submit Payment
+                  </button>
+                  <div class="btn-group"  style="float: none;" sec:authorize="hasAnyAuthority('GERENTE_RRHH','ANALISTA_PRINCIPAL_RRHH')">
+						<button type="button" class="btn btn-primary">Asignar</button>
+						<button type="button"
+							class="btn btn-primary dropdown-toggle dropdown-icon"
+							data-toggle="dropdown">
+							<span class="sr-only">Toggle Dropdown</span>
+						</button>
+						<div class="dropdown-menu" role="menu">
+							<a th:each="analista : ${analistas}" class="dropdown-item linkChangeState" 
+							th:href="@{/administracion/solicitud/personal/{id}/asignar/{idEmpleado}(idEmpleado=${analista.idUsuario},id=${solicitud.idSolicitud})}" 
+							th:text="${analista.primerNombre}+' '+${analista.primerApellido}"  >Personal</a> 
+						</div>
+					</div>
                 </div>
               </div>
             </div>
