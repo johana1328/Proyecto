@@ -35,6 +35,8 @@ public class SolicitudBussines {
             return getSolicitudByGRH();
 		case GERENTE_RRHH:
 			return getSolicitudByGRH();
+		case ANALISTA_PRINCIPAL_RRHH:
+			return getSolicitudByGRH();
 		default:
 			return getSolicitudByGerente(usuario.getId());
 		}

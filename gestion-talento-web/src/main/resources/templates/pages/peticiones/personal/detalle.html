@@ -73,7 +73,7 @@
                 <div class="col-12">
                   <button type="button" class="btn btn-success float-right"> Submit Payment
                   </button>
-                  <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
+                  <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;" sec:authorize="hasAnyAuthority('GERENTE_RRHH','ANALISTA_PRINCIPAL_RRHH')">
                    Asignar
                   </button>
                 </div>

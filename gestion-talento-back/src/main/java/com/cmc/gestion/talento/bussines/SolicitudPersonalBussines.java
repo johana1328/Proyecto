@@ -1,9 +1,7 @@
 package com.cmc.gestion.talento.bussines;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import com.cmc.gestion.talento.bussines.dto.SolicitudPersonalDto;
 import com.cmc.gestion.talento.bussines.facade.SolicitudPersonalFacade;
-import com.cmc.gestion.talento.jpa.dao.EmpleadoDao;
 import com.cmc.gestion.talento.jpa.dao.SolicitudPersonalDao;
 import com.cmc.gestion.talento.jpa.entity.Empleado;
 import com.cmc.gestion.talento.jpa.entity.ParametriaDetalle;

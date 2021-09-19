@@ -41,7 +41,7 @@
 				<td
 					th:text="${solicitud.solicitante.primerNombre}+' '+${solicitud.solicitante.primerApellido}">Solicitante</td>
 				<td
-					th:text="${solicitud.solicitudGestion != null}? ${solicitud.solicitante.primerNombre}+' '+${solicitud.solicitante.primerApellido} : 'Sin Asignar'">Gestor</td>
+					th:text="${solicitud.gestor.primerNombre}+' '+${solicitud.gestor.primerApellido}">Gestor</td>
 				<td style="width: 15%;">
 			
 				<a type="button"
