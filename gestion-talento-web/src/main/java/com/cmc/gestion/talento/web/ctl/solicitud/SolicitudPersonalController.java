@@ -22,10 +22,10 @@ import com.cmc.gestion.talento.bussines.EspecialidadBussines;
 import com.cmc.gestion.talento.bussines.SolicitudPersonalBussines;
 import com.cmc.gestion.talento.bussines.TarifaBussines;
 import com.cmc.gestion.talento.bussines.TipoPerfilBussines;
+import com.cmc.gestion.talento.bussines.UsuarioBussines;
 import com.cmc.gestion.talento.bussines.dto.AmbientacionDto;
 import com.cmc.gestion.talento.bussines.dto.ClasePerfilDto;
 import com.cmc.gestion.talento.bussines.dto.EspecialidadDto;
-import com.cmc.gestion.talento.bussines.dto.PruebaDto;
 import com.cmc.gestion.talento.bussines.dto.SolicitudPersonalDto;
 import com.cmc.gestion.talento.bussines.dto.TarifaDto;
 import com.cmc.gestion.talento.bussines.dto.TipoPerfilDto;
@@ -53,6 +53,9 @@ public class SolicitudPersonalController {
 	@Autowired
 	private ClasePerfilBussines clasePerfilBussines;
 	
+	@Autowired
+	private UsuarioBussines usuarioBussines;
+	
 	@GetMapping(path = {"","/{id}"})
 	public String viewCrear(Model model, @PathVariable(name = "id", required = false) Optional<Long> id) {
 		List<TarifaDto> tarifas=tarifaBussines.getAllTarifa();
@@ -78,6 +81,7 @@ public class SolicitudPersonalController {
 	@GetMapping("/{id}/detalle")
 	public String detalle(@PathVariable(name = "id", required = true) Long id,
 			Model model) throws ArqGestionExcepcion {
+		model.addAttribute("analistas", usuarioBussines.getAllAnalistaAndLider());
 		model.addAttribute("solicitud", solicitudPersonalBussines.getSolicitud(id));
 		return "pages/peticiones/personal/detalle";
 	}
@@ -99,7 +103,6 @@ public class SolicitudPersonalController {
 				//initOperation(model, prueba, "NOK");
 				return "pages/peticiones/personal/crearEditar";
 			}
-			
 			try {
 				solicitud.setIdSolicitud(id.get());
 				solicitudPersonalBussines.actualizarSolicitud(solicitud);
@@ -109,6 +112,14 @@ public class SolicitudPersonalController {
 				return "pages/administracion/pruebas/crearPrueba";
 			}
 		  return "redirect:/administracion/solicitud";
+	}
+	
+	
+	@GetMapping("/{id}/asignar/{idEmpleado}")
+	public String asignar(@PathVariable(name = "id", required = true) long id,
+			              @PathVariable(name = "idEmpleado", required = true) String idEmpleado) {
+		solicitudPersonalBussines.asignarSolicitud(idEmpleado,id);
+		return "redirect:/administracion/solicitud";
 	}
 	
 

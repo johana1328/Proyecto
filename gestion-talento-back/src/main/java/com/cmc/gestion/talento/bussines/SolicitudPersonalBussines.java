@@ -74,6 +74,20 @@ public class SolicitudPersonalBussines {
 		}
 	}
 	
+	public void asignarSolicitud(String idUsuario, long idSolicitud) {
+		Empleado empleado = new Empleado();
+		empleado.setIdUsuario(idUsuario);
+		Optional<SolicitudDePersonal> solicitudOp =solicitudPersonalDao.findById(idSolicitud);
+		if(solicitudOp.isPresent()) {
+			SolicitudDePersonal solicitud=solicitudOp.get();
+			solicitud.setGestor(empleado);
+			solicitud.setFechaAsignacion(Calendar.getInstance());
+			solicitud.setEstado(TipoEstadoSolicitud.SOLICITUD_ASIGNADA);
+			solicitudPersonalDao.save(solicitud);
+		}
+		
+	}
+	
 	public SolicitudDePersonal mapSolucitud(SolicitudPersonalDto solicitud, SolicitudDePersonal solicitudEntity, String mapType) {
 		if(mapType.equalsIgnoreCase("CREAR")) {
 			Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -130,5 +144,7 @@ public class SolicitudPersonalBussines {
 		
 		return solicitudEntity;
 	}	
+	
+	
 
 }

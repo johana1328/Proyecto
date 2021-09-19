@@ -37,6 +37,14 @@ public class CandidatoBussines {
 		return this.candidatoFacade.getListObjec(listaCandidatos);
 	}
 	
+	public CandidatoDto getCandidato(String id) {
+		Optional<Candidato> candidatoOp = this.candidatoDao.findById(id);
+		if(candidatoOp.isPresent()) {
+			return candidatoFacade.getObject(candidatoOp.get());
+		}
+		return null;
+	}
+	
 	public void crearCandidato(CandidatoDto candidato) throws ArqGestionExcepcion {
 		Optional<Candidato> candidatoOp = this.candidatoDao.findById(candidato.getDocumento());
 		if (!candidatoOp.isPresent()) {
