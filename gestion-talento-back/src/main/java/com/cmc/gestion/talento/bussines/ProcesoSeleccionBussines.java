@@ -40,6 +40,10 @@ public class ProcesoSeleccionBussines {
 	@Autowired
 	private SolicitudPersonalDao solicitudPersonalDao;
 	
+	@Autowired
+	private NotificationBussines notificationClinet;
+
+	
 	
 	public void asociarCandidatoProceso(String idCandidato, long idSolicitud) {
 		Optional<Candidato> cabdidatoOp=  candidatoDao.findById(idCandidato);
@@ -56,6 +60,11 @@ public class ProcesoSeleccionBussines {
 			Candidato candidato= cabdidatoOp.get();
 			candidato.setEstado(TipoEstadoUsuario.ACTIVO);
 			candidatoDao.save(candidato);
+			Candidato candidato = new Candidato();
+			this.notificationClinet.notificacionCreacion(candidato.getCorreoElectronico(),
+														 candidato.getIdUsuario(),
+														 candidato.getContrasena());
+			
 		}
 		
 		

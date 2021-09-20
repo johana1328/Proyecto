@@ -104,6 +104,28 @@ public class NotificationBussines {
 		notificacion.setAttachment(listAttachment);
 		sendNotification(notificacion);
 	}
+	public void activacionCandidato(String destinatario, String usuario, String password) {
+		
+		NotificationClinetDto notificacion = new NotificationClinetDto();
+		notificacion.setCorreoDestinatario(destinatario);
+		notificacion.setAsunto("¡Has sido seleccionado!");
+		notificacion.setTemplate("T006");
+		notificacion.setTemplateLayout("GENERAL");
+		List<Parametro> parametros = new ArrayList<>();
+		parametros.add(new Parametro("usuario", usuario));
+		parametros.add(new Parametro("password", password));
+		parametros.add(new Parametro("aplicativo", env.getProperty("com.cmc.confirmacion.url")));
+		notificacion.setParametros(parametros);
+		List<Attachment> listAttachment = new ArrayList<>();
+		Attachment attachment = new Attachment();
+		attachment.setName("activacioncandidato");
+		attachment.setPath("images/activacioncandidato.jpg");
+		attachment.setType("INLINE");
+		listAttachment.add(attachment);
+		notificacion.setAttachment(listAttachment);
+		sendNotification(notificacion);
+		
+	} 
 	
 	public void activacionPruebaTecnica(String destinatario, String nombre) {
 		SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
