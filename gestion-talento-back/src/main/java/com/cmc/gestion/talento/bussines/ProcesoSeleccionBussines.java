@@ -60,10 +60,10 @@ public class ProcesoSeleccionBussines {
 			Candidato candidato= cabdidatoOp.get();
 			candidato.setEstado(TipoEstadoUsuario.ACTIVO);
 			candidatoDao.save(candidato);
-			Candidato candidato = new Candidato();
-			this.notificationClinet.activacionCandidato(candidato.getCorreoElectronico(),
-														 candidato.getIdUsuario(),
-														 candidato.getContrasena());
+			Candidato candidatoEnti = new Candidato();
+			this.notificationClinet.activacionCandidato(candidatoEnti.getCorreoElectronico(),
+					candidatoEnti.getIdUsuario(),
+					candidatoEnti.getContrasena());
 			
 		}
 		
