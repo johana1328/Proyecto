@@ -122,5 +122,12 @@ public class SolicitudPersonalController {
 		return "redirect:/administracion/solicitud";
 	}
 	
+	@GetMapping("/{id}/asignar/{idCandidato}")
+	public String asociarCandidato(@PathVariable(name = "id", required = true) long id,
+			              @PathVariable(name = "idEmpleado", required = true) String idEmpleado) {
+		solicitudPersonalBussines.asignarSolicitud(idEmpleado,id);
+		return "redirect:/administracion/solicitud";
+	}
+	
 
 }
