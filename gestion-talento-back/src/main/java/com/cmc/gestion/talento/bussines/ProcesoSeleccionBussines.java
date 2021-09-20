@@ -56,7 +56,7 @@ public class ProcesoSeleccionBussines {
 			ps.setEstado(TipoEstadoSeleccion.ASOCIADO);
 			ps.setFechaAsociacion(Calendar.getInstance());
 			Candidato candidato = new Candidato();
-			this.notificationClinet.notificacionCreacion(candidato.getCorreoElectronico(),
+			this.notificationClinet.activacionCandidato(candidato.getCorreoElectronico(),
 														 candidato.getIdUsuario(),
 														 candidato.getContrasena());
 			
