@@ -72,13 +72,10 @@
 				<br>
               <div class="row">
                 <div class="col-12">
-                  <a type="button" class="btn btn-primary float-right" th:href="@{/administracion/solicitud}"> Regresar
+                  <a type="button" class="btn btn-primary" th:href="@{/administracion/solicitud}"> Regresar
                   </a>
-                  <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;" sec:authorize="hasAnyAuthority('GERENTE_RRHH','ANALISTA_PRINCIPAL_RRHH')">
-                   Asignar
-                  </button>
-                  <button type="button" class="btn btn-success float-right"> Submit Payment
-                  </button>
+                  <a type="button" class="btn btn-primary" th:href="@{/administracion/candidato/{id}(id=${solicitud.idSolicitud})}" sec:authorize="hasAnyAuthority('ANALISTA_RRHH')"> Asignar
+                  </a>
                   <div class="btn-group"  style="float: none;" sec:authorize="hasAnyAuthority('GERENTE_RRHH','ANALISTA_PRINCIPAL_RRHH')">
 						<button type="button" class="btn btn-primary">Asignar</button>
 						<button type="button"
