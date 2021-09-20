@@ -48,8 +48,8 @@ public class ActividadProcesoSeleccion implements Serializable{
 	@Temporal(TemporalType.DATE)
 	private Calendar fechaAsignacion;
 	
-	@Column(name = "fecha_realizacion", updatable = false, nullable = false)
-	@Temporal(TemporalType.DATE)
+	@Column(name = "fecha_realizacion", updatable = false)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar fechaRealizacion;
 	
 	@Column(name = "id_prueba")
@@ -64,5 +64,101 @@ public class ActividadProcesoSeleccion implements Serializable{
 	
 	@Column(name = "calificador", length = 100)
 	private String idUsuario;
+
+
+	public int getIdActividad() {
+		return idActividad;
+	}
+
+
+	public void setIdActividad(int idActividad) {
+		this.idActividad = idActividad;
+	}
+
+
+	public ProcesoSeleccion getProcesoSeleccion() {
+		return ProcesoSeleccion;
+	}
+
+
+	public void setProcesoSeleccion(ProcesoSeleccion procesoSeleccion) {
+		ProcesoSeleccion = procesoSeleccion;
+	}
+
+
+	public double getCalificacion() {
+		return calificacion;
+	}
+
+
+	public void setCalificacion(double calificacion) {
+		this.calificacion = calificacion;
+	}
+
+
+	public Calendar getFechaAsignacion() {
+		return fechaAsignacion;
+	}
+
+
+	public void setFechaAsignacion(Calendar fechaAsignacion) {
+		this.fechaAsignacion = fechaAsignacion;
+	}
+
+
+	public Calendar getFechaRealizacion() {
+		return fechaRealizacion;
+	}
+
+
+	public void setFechaRealizacion(Calendar fechaRealizacion) {
+		this.fechaRealizacion = fechaRealizacion;
+	}
+
+
+	public int getIdPrueba() {
+		return idPrueba;
+	}
+
+
+	public void setIdPrueba(int idPrueba) {
+		this.idPrueba = idPrueba;
+	}
+
+
+	public String getEstado() {
+		return estado;
+	}
+
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+
+	public double getDuracion() {
+		return duracion;
+	}
+
+
+	public void setDuracion(double duracion) {
+		this.duracion = duracion;
+	}
+
+
+	public String getIdUsuario() {
+		return idUsuario;
+	}
+
+
+	public void setIdUsuario(String idUsuario) {
+		this.idUsuario = idUsuario;
+	}
+
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	
 	
 }
