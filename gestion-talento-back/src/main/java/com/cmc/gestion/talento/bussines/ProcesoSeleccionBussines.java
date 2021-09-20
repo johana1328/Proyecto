@@ -16,6 +16,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.cmc.gestion.talento.jpa.dao.CandidatoDao;
 import com.cmc.gestion.talento.jpa.dao.ProcesoSeleccionDao;
@@ -26,6 +27,7 @@ import com.cmc.gestion.talento.jpa.entity.ProcesoSeleccionPk;
 import com.cmc.gestion.talento.jpa.entity.SolicitudDePersonal;
 import com.cmc.gestion.talento.jpa.type.TipoEstadoSeleccion;
 
+@Service
 public class ProcesoSeleccionBussines {
 	
 	@Autowired
@@ -36,6 +38,10 @@ public class ProcesoSeleccionBussines {
 	
 	@Autowired
 	private SolicitudPersonalDao solicitudPersonalDao;
+	
+	@Autowired
+	private NotificationBussines notificationClinet;
+
 	
 	
 	public void asociarCandidatoProceso(String idCandidato, long idSolicitud) {
@@ -49,6 +55,11 @@ public class ProcesoSeleccionBussines {
 			ps.setProcesoSeleccionPk(pk);
 			ps.setEstado(TipoEstadoSeleccion.ASOCIADO);
 			ps.setFechaAsociacion(Calendar.getInstance());
+			Candidato candidato = new Candidato();
+			this.notificationClinet.notificacionCreacion(candidato.getCorreoElectronico(),
+														 candidato.getIdUsuario(),
+														 candidato.getContrasena());
+			
 		}
 		
 		
