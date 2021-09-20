@@ -56,14 +56,13 @@ public class ProcesoSeleccionBussines {
 			ps.setProcesoSeleccionPk(pk);
 			ps.setEstado(TipoEstadoSeleccion.ASOCIADO);
 			ps.setFechaAsociacion(Calendar.getInstance());
-			ProcesoSeleccion psCreado=  procesoSeleccionDao.save(ps);
+			procesoSeleccionDao.save(ps);
 			Candidato candidato= cabdidatoOp.get();
 			candidato.setEstado(TipoEstadoUsuario.ACTIVO);
 			candidatoDao.save(candidato);
-			Candidato candidatoEnti = new Candidato();
-			this.notificationClinet.activacionCandidato(candidatoEnti.getCorreoElectronico(),
-					candidatoEnti.getIdUsuario(),
-					candidatoEnti.getContrasena());
+			this.notificationClinet.activacionCandidato(candidato.getCorreoElectronico(),
+					candidato.getIdUsuario(),
+					candidato.getContrasena());
 			
 		}
 		
