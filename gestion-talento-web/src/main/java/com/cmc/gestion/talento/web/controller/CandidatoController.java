@@ -30,7 +30,7 @@ public class CandidatoController {
 	@Autowired
 	private CandidatoBussines candidatoBussines;
 
-	@GetMapping(path = {"","/idSolicitud"})
+	@GetMapping(path = {"","/{idSolicitud}"})
 	public String init(@PathVariable(name = "id", required = false) Optional<String> id,
 			@RequestParam(name = "action", defaultValue = "NOK") String action, 
 			@PathVariable(name = "idSolicitud", required = false) Optional<String> idSolicitud,
