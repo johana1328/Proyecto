@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.cmc.gestion.talento.bussines.AmbientacionBussines;
 import com.cmc.gestion.talento.bussines.ClasePerfilBussines;
 import com.cmc.gestion.talento.bussines.EspecialidadBussines;
+import com.cmc.gestion.talento.bussines.ProcesoSeleccionBussines;
 import com.cmc.gestion.talento.bussines.SolicitudPersonalBussines;
 import com.cmc.gestion.talento.bussines.TarifaBussines;
 import com.cmc.gestion.talento.bussines.TipoPerfilBussines;
@@ -55,6 +56,9 @@ public class SolicitudPersonalController {
 	
 	@Autowired
 	private UsuarioBussines usuarioBussines;
+	
+	@Autowired
+	private ProcesoSeleccionBussines procesoSeleccionBussines;
 	
 	@GetMapping(path = {"","/{id}"})
 	public String viewCrear(Model model, @PathVariable(name = "id", required = false) Optional<Long> id) {
@@ -122,11 +126,11 @@ public class SolicitudPersonalController {
 		return "redirect:/administracion/solicitud";
 	}
 	
-	@GetMapping("/{id}/asignar/{idCandidato}")
+	@GetMapping("/{id}/asociar/{idCandidato}")
 	public String asociarCandidato(@PathVariable(name = "id", required = true) long id,
-			              @PathVariable(name = "idEmpleado", required = true) String idEmpleado) {
-		solicitudPersonalBussines.asignarSolicitud(idEmpleado,id);
-		return "redirect:/administracion/solicitud";
+			              @PathVariable(name = "idCandidato", required = true) String idCandidato) {
+		procesoSeleccionBussines.asociarCandidatoProceso(idCandidato, id);
+		return "redirect:/administracion/candidato/"+id;
 	}
 	
 

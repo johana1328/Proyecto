@@ -32,14 +32,6 @@ public class ProcesoSeleccion implements Serializable{
 	@EmbeddedId
 	private ProcesoSeleccionPk procesoSeleccionPk;
 	
-	@JoinColumn(name = "id_candidato", nullable = false,foreignKey = @ForeignKey(name = "candidato_fk", value = ConstraintMode.CONSTRAINT))
-	@ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	private Candidato candidato;
-	
-	@JoinColumn(name = "solicitud_personal", nullable = false,foreignKey = @ForeignKey(name = "id_solicitud_fk", value = ConstraintMode.CONSTRAINT))
-	@ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	private SolicitudDePersonal solicitudDePersonal;
-	
 	@Column(name = "fecha_asociacion", updatable = false, nullable = false)
 	@Temporal(TemporalType.DATE)
 	private Calendar fechaAsociacion;
@@ -56,22 +48,6 @@ public class ProcesoSeleccion implements Serializable{
 		this.procesoSeleccionPk = procesoSeleccionPk;
 	}
 
-	public Candidato getCandidato() {
-		return candidato;
-	}
-
-	public void setCandidato(Candidato candidato) {
-		this.candidato = candidato;
-	}
-
-	public SolicitudDePersonal getSolicitudDePersonal() {
-		return solicitudDePersonal;
-	}
-
-	public void setSolicitudDePersonal(SolicitudDePersonal solicitudDePersonal) {
-		this.solicitudDePersonal = solicitudDePersonal;
-	}
-
 	public Calendar getFechaAsociacion() {
 		return fechaAsociacion;
 	}
@@ -84,13 +60,8 @@ public class ProcesoSeleccion implements Serializable{
 		return estado;
 	}
 
-	public void setEstado(TipoEstadoSeleccion stado) {
-		this.estado = stado;
+	public void setEstado(TipoEstadoSeleccion estado) {
+		this.estado = estado;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-	
-	
 }
