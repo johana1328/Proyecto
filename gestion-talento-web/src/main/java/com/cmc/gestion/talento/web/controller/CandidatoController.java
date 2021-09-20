@@ -30,11 +30,16 @@ public class CandidatoController {
 	@Autowired
 	private CandidatoBussines candidatoBussines;
 
-	@GetMapping
-	public String init(@PathVariable(name = "id", required = false) Optional<String> id,@RequestParam(name = "action", defaultValue = "NOK") String action, Model model) {
+	@GetMapping(path = {"","/idSolicitud"})
+	public String init(@PathVariable(name = "id", required = false) Optional<String> id,
+			@RequestParam(name = "action", defaultValue = "NOK") String action, 
+			@PathVariable(name = "idSolicitud", required = false) Optional<String> idSolicitud,
+			Model model) {
+		String solicitud=idSolicitud.isPresent()?idSolicitud.get():"NOK";
 		List<CandidatoDto> listaCandidatos = candidatoBussines.getAllCandidatos();
 		model.addAttribute("listaCandidatos", listaCandidatos);
 		model.addAttribute("mensaje", getMensaje(action));
+		model.addAttribute("idSolicitud",solicitud);
 		return "pages/administracion/candidato/candidato";
 	}
 
