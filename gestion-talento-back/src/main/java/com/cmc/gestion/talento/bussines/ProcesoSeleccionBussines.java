@@ -16,6 +16,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.cmc.gestion.talento.jpa.dao.CandidatoDao;
 import com.cmc.gestion.talento.jpa.dao.ProcesoSeleccionDao;
@@ -25,7 +26,9 @@ import com.cmc.gestion.talento.jpa.entity.ProcesoSeleccion;
 import com.cmc.gestion.talento.jpa.entity.ProcesoSeleccionPk;
 import com.cmc.gestion.talento.jpa.entity.SolicitudDePersonal;
 import com.cmc.gestion.talento.jpa.type.TipoEstadoSeleccion;
+import com.cmc.gestion.talento.jpa.type.TipoEstadoUsuario;
 
+@Service
 public class ProcesoSeleccionBussines {
 	
 	@Autowired
@@ -49,6 +52,10 @@ public class ProcesoSeleccionBussines {
 			ps.setProcesoSeleccionPk(pk);
 			ps.setEstado(TipoEstadoSeleccion.ASOCIADO);
 			ps.setFechaAsociacion(Calendar.getInstance());
+			ProcesoSeleccion psCreado=  procesoSeleccionDao.save(ps);
+			Candidato candidato= cabdidatoOp.get();
+			candidato.setEstado(TipoEstadoUsuario.ACTIVO);
+			candidatoDao.save(candidato);
 		}
 		
 		
