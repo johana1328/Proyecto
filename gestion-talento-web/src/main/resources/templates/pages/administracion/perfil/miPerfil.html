@@ -64,7 +64,7 @@
 						<div class="card-body">
 							<div class="tab-content">
 								<!-- /.tab-pane informacion candidato -->
-									<div class="active tab-pane" id="canInfo">
+									<div th:if="${escandidato}"  class="active tab-pane" id="canInfo">
 								<div class="row">
 										<div class="card w-50">
 										<div class="col-12">
@@ -107,7 +107,7 @@
 									</div>
 								</div>
 								<!-- /.tab-pane informacion profesional -->
-								<div class=" tab-pane" id="pro">
+								<div class=" tab-pane" id="pro" th:classappend="${escandidato} ? '' : active">
 									<div class="card w-75">
 										<blockquote  class="quote-navy">
 											<h5>Perfil profesional.</h5>
