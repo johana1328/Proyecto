@@ -20,14 +20,18 @@
 <!-- 							<p class="text-muted text-center">Gerente RRHH</p> -->
 
 							<ul class="list-group list-group-unbordered mb-3">
-
-								<li class="list-group-item"><b>Telefono</b> <a
-									class="float-right"   th:text="${userInfo.telefono}" >2312131</a></li>
-								<li class="list-group-item"><b>Correo</b> <a
-									class="float-right" th:text="${userInfo.correoElectronico}" >prueba@gmail.com</a></li>
+								<li class="list-group-item"><b>Documento:</b> <br> <a
+								  th:text="${userInfo.documento}" >2312131</a></li>
+								<li class="list-group-item"><b>Tipo documento:</b> <br>  <a
+									   th:text="${userInfo.tipoDocumento.value}" >2312131</a></li>
+								
+								<li class="list-group-item"><b>Celular: </b> <br> <a
+								  th:text="${userInfo.telefono}" >2312131</a></li>
+								<li class="list-group-item"><b>Correo Electronico:</b> <br> <a
+									th:text="${userInfo.correoElectronico}" >prueba@gmail.com</a></li>
 								<div  th:if="${escandidato}"   th:remove="tag">
-									<li class="list-group-item"><b>Nivel de estudios</b> <a
-									class="float-right"    th:text="${candidato.tituloProfesional}">basico</a></li>
+									<li class="list-group-item"><b>Titulo Profesional:</b> <br> <a
+									th:text="${candidato.tituloProfesional}">basico</a></li>
 								</div>
 							</ul>
 						</div>
@@ -45,8 +49,7 @@
 							    </div>
 							        <li class="nav-item"><a class="nav-link" 
 							        th:classappend="${escandidato} ? '' : active"
-							        href="#pro"
-									data-toggle="tab">Inf. Profesional</a></li>
+							        href="#pro" data-toggle="tab">Inf. Profesional</a></li>
 								<li class="nav-item"><a class="nav-link" href="#academica"
 									data-toggle="tab">Estudios</a></li>
 								<li class="nav-item"><a class="nav-link"
@@ -60,8 +63,51 @@
 						</div>
 						<div class="card-body">
 							<div class="tab-content">
+								<!-- /.tab-pane informacion candidato -->
+									<div class="active tab-pane" id="canInfo">
+								<div class="row">
+										<div class="card w-50">
+										<div class="col-12">
+											<blockquote  class="quote-navy">
+												<h6 class="card-title">Estado:</h6> <br>
+												<p th:text="${candidato.estado.value}">2018</p>
+												<h6 class="card-title">Nombre: </h6> <br>
+												<p th:text="${userInfo.primerNombre} + ' ' + ${userInfo.segundoNombre}+ ' ' + ${userInfo.primerApellido} + ' ' + ${userInfo.segundoApellido}">nnn</p>
+												<h6 class="card-title">Fecha inscripci&oacute;n:</h6><br>
+												<p th:text="${#dates.format(candidato.fechaActualizacion, 'dd-MMM-yyyy')}">Sena</p>
+												<h6 class="card-title">Trabaja actual</h6> <br>
+												<p th:text="${candidato.trabajoActual}" >Bogota</p>
+												<h6 class="card-title">Tipo contrato</h6> <br>
+												<p th:text="${candidato.tipoContrato.value}">Colombia</p>
+												<h6 class="card-title">Salario actual</h6> <br>
+												<p th:text="${candidato.salarioActual}">2018</p>
+												
+											</blockquote>
+											</div>
+										</div>
+											<div class="card w-50">
+										<div class="col-12">
+											<blockquote  class="quote-navy">
+												<h6 class="card-title">Salario flexible</h6> <br>
+												<p th:text="${candidato.salarioFlexible}">2018</p>
+												<h6 class="card-title">Aspiraci&oacute;n salarial</h6><br>
+												<p th:text="${candidato.aspiracionSalarial}">Sena</p>
+												<h6 class="card-title">Disponibilidad: </h6> <br>
+												<p th:text="${candidato.disponibilidad} + ' dia(s)'">nnn</p>
+												<h6 class="card-title">Origen de hoja </h6> <br>
+												<p th:text="${candidato.origenHoja}" >Bogota</p>
+												<h6 class="card-title">Objetivos</h6> <br>
+												<p th:text="${candidato.objetivos}">Colombia</p>
+												<h6 class="card-title">Observaciones </h6> <br>
+												<p th:text="${candidato.observaciones}" >2018</p>
+											</blockquote>
+											</div>
+										</div>
+										
+									</div>
+								</div>
 								<!-- /.tab-pane informacion profesional -->
-								<div class="active tab-pane" id="pro">
+								<div class=" tab-pane" id="pro">
 									<div class="card w-75">
 										<blockquote  class="quote-navy">
 											<h5>Perfil profesional.</h5>
